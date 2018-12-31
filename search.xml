@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hexo develop]]></title>
+    <url>%2F2018%2F12%2F31%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment update to Github在主机的hexo目录下 执行以下命令将自动更新到Github1$ hexo d change theme在切换主题之后、验证之前,最好用以下命令清楚缓存1$ hexo clean debug调试模式1$ hexo s --debug]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>develop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[日语变形]]></title>
+    <url>%2F2018%2F12%2F31%2F%E6%97%A5%E8%AF%AD%E5%8F%98%E5%BD%A2%2F</url>
+    <content type="text"><![CDATA[本篇主要记载日语常用变形，以便个人查询 动词的敬体I类动词1う段变成い段，再接ます：かく ＝＞ かきます II类动词1去掉る接ます：みる ＝＞ みます III类动词12くる ＝＞ きますする ＝＞ します 动词的简体否定型I类动词1う段变成あ段，再接ない：読む ＝＞ よまない II类动词1去掉る接ない：着る ＝＞ きない III类动词12くる ＝＞ こないする ＝＞ しない 动词的简体过去式I类动词123456789く、ぐ发生“イ音变”：Vく ＝＞ Vいた； Vぐ ＝＞ Vぃだう、つ、る发生“促音变”：Vう/つ/る ＝＞ Vったぬ、ぶ、む发生“拨音变”：Vぬ/ぶ/む ＝＞ Vんだす不发生音变：Vす ＝＞ Vした特殊动词：行く ＝＞ 行った II类动词1直接去掉“る”,然后接“た” III类动词12くる ＝＞ きたする ＝＞ した 动词的能动态相当于汉语的“能～，会～，可以～”等意 I类动词1う段变成え段，再接る：送る ＝＞ 送れる II类动词1去掉る接られる：出る ＝＞ 出られる III类动词12くる ＝＞ こられるする ＝＞ できる 动词的意志型表示意志、建议 I类动词1う段变成お段，再接う：かく ＝＞ かこう II类动词1去掉る接ます：あつめる ＝＞ あつめよう III类动词12くる ＝＞ こようする ＝＞ しよう 动词、形容词的条件型相当于汉语的“如果～就～、假如～、要是～”等 I类动词1う段变成え段，再接ば：いそぐ ＝＞いそげば II类动词1去掉る接れば：おきる ＝＞ おきれば III类动词12くる ＝＞ くればする ＝＞ しれば 形容词1234I类：去掉i加けれ：たかい ＝＞ たかければII类：接なら，再接ば(现代日语中ば大多省略)：げんき ＝＞ げんきなら(ば) 动词的ない型1Vない ＝＞ Vなければ]]></content>
+      <categories>
+        <category>日语</category>
+      </categories>
+      <tags>
+        <tag>词型变换</tag>
+      </tags>
+  </entry>
+</search>
