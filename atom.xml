@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://janvia.github.io/"/>
   <updated>2018-12-31T08:13:03.430Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://janvia.github.io/</id>
   
   <author>
     <name>Steve</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hexo develop</title>
-    <link href="http://yoursite.com/2018/12/31/hello-world/"/>
-    <id>http://yoursite.com/2018/12/31/hello-world/</id>
+    <link href="https://janvia.github.io/2018/12/31/hello-world/"/>
+    <id>https://janvia.github.io/2018/12/31/hello-world/</id>
     <published>2018-12-31T08:13:03.438Z</published>
     <updated>2018-12-31T08:13:03.430Z</updated>
     
@@ -34,17 +34,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="hexo" scheme="https://janvia.github.io/categories/hexo/"/>
     
     
-      <category term="develop" scheme="http://yoursite.com/tags/develop/"/>
+      <category term="develop" scheme="https://janvia.github.io/tags/develop/"/>
     
   </entry>
   
   <entry>
     <title>日语变形</title>
-    <link href="http://yoursite.com/2018/12/31/%E6%97%A5%E8%AF%AD%E5%8F%98%E5%BD%A2/"/>
-    <id>http://yoursite.com/2018/12/31/日语变形/</id>
+    <link href="https://janvia.github.io/2018/12/31/%E6%97%A5%E8%AF%AD%E5%8F%98%E5%BD%A2/"/>
+    <id>https://janvia.github.io/2018/12/31/日语变形/</id>
     <published>2018-12-31T05:10:40.000Z</published>
     <updated>2018-12-31T08:12:17.109Z</updated>
     
@@ -60,10 +60,10 @@
     
     </summary>
     
-      <category term="日语" scheme="http://yoursite.com/categories/%E6%97%A5%E8%AF%AD/"/>
+      <category term="日语" scheme="https://janvia.github.io/categories/%E6%97%A5%E8%AF%AD/"/>
     
     
-      <category term="词型变换" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%9E%8B%E5%8F%98%E6%8D%A2/"/>
+      <category term="词型变换" scheme="https://janvia.github.io/tags/%E8%AF%8D%E5%9E%8B%E5%8F%98%E6%8D%A2/"/>
     
   </entry>
   
