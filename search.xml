@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[Hexo develop]]></title>
-    <url>%2F2018%2F12%2F31%2Fhello-world%2F</url>
+    <url>%2F2019%2F01%2F01%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment update to Github在主机的hexo目录下 执行以下命令将自动更新到Github1$ hexo d change theme在切换主题之后、验证之前,最好用以下命令清楚缓存1$ hexo clean debug调试模式1$ hexo s --debug]]></content>
       <categories>
         <category>hexo</category>
