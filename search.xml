@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[on_my_zsh]]></title>
+    <url>%2F2019%2F01%2F03%2Fon-my-zsh%2F</url>
+    <content type="text"><![CDATA[1. 安装 Oh My Zsh安装 Zsh安装:1sudo apt install zsh 将 Zsh 设置为默认 Shell1chsh -s /bin/zsh 安装 Oh My Zsh1wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 2. 配置 Oh My Zsh配置字体1git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k autojump更快地切换目录，不受当前所在目录的限制。12345sudo apt install autojump# 跳转到目录j dir# 可以通过GUI文件管理器打开指定目录，执行命令:jo dir fasd快速访问文件或目录，功能比前一个插件强大。 安装：1sudo apt install fasd 使用：123456789alias f=&apos;fasd -f&apos; # 文件alias d=&apos;fasd -d&apos; # 目录alias a=&apos;fasd -a&apos; # 任意alias s=&apos;fasd -si&apos; # 显示并选择alias sd=&apos;fasd -sid&apos; # 选择目录alias sf=&apos;fasd -sif&apos; # 选择文件alias z=&apos;fasd_cd -d&apos; # 跳转至目录alias zz=&apos;fasd_cd -d -i&apos; # 选择并跳转至目录 zsh-autosuggestions命令行命令键入时的历史命令建议插件1git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions zsh-syntax-highlighting语法高亮插件1git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting 修改「.zshrc」文件Oh My Zsh 配置文件的完整修改结果，只有对配置文件进行如下修改，才能使上述配置生效。123456789101112131415# 设置字体模式以及配置命令行的主题，语句顺序不能颠倒POWERLEVEL9K_MODE=&apos;nerdfont-complete&apos;ZSH_THEME=&quot;powerlevel9k/powerlevel9k&quot;# 以下内容去掉注释即可生效：# 启动错误命令自动更正ENABLE_CORRECTION=&quot;true&quot;# 在命令执行的过程中，使用小红点进行提示COMPLETION_WAITING_DOTS=&quot;true&quot;# 启用已安装的插件plugins=( git extract fasd zsh-autosuggestions zsh-syntax-highlighting)]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>zsh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Anconda常用命令总结]]></title>
     <url>%2F2019%2F01%2F02%2FAnconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[anaconda是python发行的包的管理工具，其中自带python的版本，还带很多python的包.安装它比起安装python可以省掉再安装python包的时间。并且利用 Python 进行科学计算，就需要一一安装所需的模块， 而这些模块可能又依赖于其它的软件包或库，安装和使用起来相对麻烦但是用Anaconda只需直接输入conda install &lt;包名&gt;，所有依赖的包和库会自动安装好。 下载地址官网：https://www.anaconda.com/最新版本下载地址：https://www.anaconda.com/download/历史版本：https://repo.anaconda.com/archive/ Anaconda的安装进入文件所在路径1bash Anaconda3-4.4.0-Linux-x86_64.sh (下载的对应的文件名) conda的环境管理比如创建名为tensorflow的tensorflow-gpu版的python环境1conda create --name tensorflow python=3.6 tensorflow-gpu 激活tensorflow环境1source activate tensorflow 测试环境1python --version 退出虚拟环境1source deactivate tensorflow 删除虚拟环境1conda remove --name tensorflow --all Conda的包管理安装包12conda install -n tensorflow sklearn注：如果不用-n指定环境名称，则被安装在当前活跃环境 删除包1conda remove -n tensorflow numpy 在当前环境下安装anaconda包集合1conda install anaconda 添加Anaconda的TUNA镜像1conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/]]></content>
+    <content type="text"><![CDATA[anaconda是python发行的包的管理工具，其中自带python的版本，还带很多python的包.安装它比起安装python可以省掉再安装python包的时间。并且利用 Python 进行科学计算，就需要一一安装所需的模块， 而这些模块可能又依赖于其它的软件包或库，安装和使用起来相对麻烦但是用Anaconda只需直接输入conda install &lt;包名&gt;，所有依赖的包和库会自动安装好。 下载地址官网：https://www.anaconda.com/最新版本下载地址：https://www.anaconda.com/download/历史版本：https://repo.anaconda.com/archive/ Anaconda的安装进入文件所在路径1bash Anaconda3-4.4.0-Linux-x86_64.sh (下载的对应的文件名) conda的环境管理比如创建名为tensorflow的tensorflow-gpu版的python环境1conda create --name tensorflow python=3.6 tensorflow-gpu 激活tensorflow环境1source activate tensorflow 测试环境1python --version 退出虚拟环境1source deactivate tensorflow 删除虚拟环境1conda remove --name tensorflow --all Conda的包管理安装包12conda install -n tensorflow sklearn注：如果不用-n指定环境名称，则被安装在当前活跃环境 删除包1conda remove -n tensorflow numpy 在当前环境下安装anaconda包集合1conda install anaconda 添加Anaconda的TUNA镜像1conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ jupter notebook添加conda环境首先安装：1conda install ipykernel 激活对应的conda环境1source activate 环境名称 将环境写入notebook的kernel中1python -m ipykernel install --user --name 环境名称 --display-name &quot;Python (环境名称)&quot;]]></content>
       <categories>
         <category>工具</category>
       </categories>
