@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Steve|好きかも">
 <meta property="og:description" content="1. 安装 Oh My Zsh安装 Zsh安装:1sudo apt install zsh 将 Zsh 设置为默认 Shell1chsh -s /bin/zsh 安装 Oh My Zsh1wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 2. 配置 Oh My Zsh配置字体1g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-03T09:24:04.767Z">
+<meta property="og:updated_time" content="2019-01-03T11:21:03.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="on_my_zsh">
 <meta name="twitter:description" content="1. 安装 Oh My Zsh安装 Zsh安装:1sudo apt install zsh 将 Zsh 设置为默认 Shell1chsh -s /bin/zsh 安装 Oh My Zsh1wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 2. 配置 Oh My Zsh配置字体1g">
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  437
+                  513
                 </span>
               
 
@@ -461,6 +461,9 @@
 <h3 id="zsh-autosuggestions"><a href="#zsh-autosuggestions" class="headerlink" title="zsh-autosuggestions"></a>zsh-autosuggestions</h3><p>命令行命令键入时的历史命令建议插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure></p>
 <h3 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="headerlink" title="zsh-syntax-highlighting"></a>zsh-syntax-highlighting</h3><p>语法高亮插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure></p>
 <h3 id="修改「-zshrc」文件"><a href="#修改「-zshrc」文件" class="headerlink" title="修改「.zshrc」文件"></a>修改「.zshrc」文件</h3><p>Oh My Zsh 配置文件的完整修改结果，只有对配置文件进行如下修改，才能使上述配置生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 设置字体模式以及配置命令行的主题，语句顺序不能颠倒</span><br><span class="line">POWERLEVEL9K_MODE=&apos;nerdfont-complete&apos;</span><br><span class="line">ZSH_THEME=&quot;powerlevel9k/powerlevel9k&quot;</span><br><span class="line"></span><br><span class="line"># 以下内容去掉注释即可生效：</span><br><span class="line"># 启动错误命令自动更正</span><br><span class="line">ENABLE_CORRECTION=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># 在命令执行的过程中，使用小红点进行提示</span><br><span class="line">COMPLETION_WAITING_DOTS=&quot;true&quot;</span><br><span class="line"></span><br><span class="line"># 启用已安装的插件</span><br><span class="line">plugins=(</span><br><span class="line">  git extract fasd zsh-autosuggestions zsh-syntax-highlighting</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>打开配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<p>添加环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/python/bin:$PATH</span><br></pre></td></tr></table></figure></p>
+<p>注：环境变量中，各个值是以“冒号”分隔开的。上面的语句表示给PATH这个变量重新赋值，让它等于/usr/local/python/bin ；再加上原来的$PATH</p>
 
       
     </div>
@@ -500,6 +503,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/04/语法总结（5-15）/" rel="prev" title="语法总结（5-15）">
+                语法总结（5-15） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -614,7 +621,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -636,7 +643,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -676,7 +683,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装-Oh-My-Zsh"><span class="nav-number">1.</span> <span class="nav-text">1. 安装 Oh My Zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Zsh"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Oh-My-Zsh"><span class="nav-number">1.2.</span> <span class="nav-text">安装 Oh My Zsh</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置-Oh-My-Zsh"><span class="nav-number">2.</span> <span class="nav-text">2. 配置 Oh My Zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置字体"><span class="nav-number">2.1.</span> <span class="nav-text">配置字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autojump"><span class="nav-number">2.2.</span> <span class="nav-text">autojump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fasd"><span class="nav-number">2.3.</span> <span class="nav-text">fasd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-autosuggestions"><span class="nav-number">2.4.</span> <span class="nav-text">zsh-autosuggestions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-syntax-highlighting"><span class="nav-number">2.5.</span> <span class="nav-text">zsh-syntax-highlighting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改「-zshrc」文件"><span class="nav-number">2.6.</span> <span class="nav-text">修改「.zshrc」文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装-Oh-My-Zsh"><span class="nav-number">1.</span> <span class="nav-text">1. 安装 Oh My Zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Zsh"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Oh-My-Zsh"><span class="nav-number">1.2.</span> <span class="nav-text">安装 Oh My Zsh</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置-Oh-My-Zsh"><span class="nav-number">2.</span> <span class="nav-text">2. 配置 Oh My Zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置字体"><span class="nav-number">2.1.</span> <span class="nav-text">配置字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autojump"><span class="nav-number">2.2.</span> <span class="nav-text">autojump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fasd"><span class="nav-number">2.3.</span> <span class="nav-text">fasd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-autosuggestions"><span class="nav-number">2.4.</span> <span class="nav-text">zsh-autosuggestions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-syntax-highlighting"><span class="nav-number">2.5.</span> <span class="nav-text">zsh-syntax-highlighting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改「-zshrc」文件"><span class="nav-number">2.6.</span> <span class="nav-text">修改「.zshrc」文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加环境变量"><span class="nav-number">3.</span> <span class="nav-text">添加环境变量</span></a></li></ol></div>
             
 
           </div>
@@ -710,7 +717,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.3k</span>
+    <span title="Site words total count">7.3k</span>
   
 </div>
 
