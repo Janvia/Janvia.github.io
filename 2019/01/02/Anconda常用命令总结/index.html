@@ -447,19 +447,19 @@
         <p>anaconda是python发行的包的管理工具，其中自带python的版本，还带很多python的包.安装它比起安装python可以省掉再安装python包的时间。并且利用 Python 进行科学计算，就需要一一安装所需的模块， 而这些模块可能又依赖于其它的软件包或库，安装和使用起来相对麻烦但是用Anaconda只需直接输入conda install &lt;包名&gt;，所有依赖的包和库会自动安装好。</p>
 <h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>官网：<a href="https://www.anaconda.com/" target="_blank" rel="noopener">https://www.anaconda.com/</a><br>最新版本下载地址：<a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">https://www.anaconda.com/download/</a><br>历史版本：<a href="https://repo.anaconda.com/archive/" target="_blank" rel="noopener">https://repo.anaconda.com/archive/</a></p>
 <a id="more"></a>
-<h3 id="Anaconda的安装"><a href="#Anaconda的安装" class="headerlink" title="Anaconda的安装"></a>Anaconda的安装</h3><p>进入文件所在路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Anaconda3-4.4.0-Linux-x86_64.sh (下载的对应的文件名)</span><br></pre></td></tr></table></figure></p>
-<h3 id="conda的环境管理"><a href="#conda的环境管理" class="headerlink" title="conda的环境管理"></a>conda的环境管理</h3><p>比如创建名为tensorflow的tensorflow-gpu版的python环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name tensorflow python=3.6 tensorflow-gpu</span><br></pre></td></tr></table></figure></p>
-<p>激活tensorflow环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate tensorflow</span><br></pre></td></tr></table></figure></p>
-<p>测试环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></p>
-<p>退出虚拟环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source deactivate tensorflow</span><br></pre></td></tr></table></figure></p>
-<p>删除虚拟环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name tensorflow --all</span><br></pre></td></tr></table></figure></p>
-<h3 id="Conda的包管理"><a href="#Conda的包管理" class="headerlink" title="Conda的包管理"></a>Conda的包管理</h3><p>安装包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install -n tensorflow sklearn</span><br><span class="line">注：如果不用-n指定环境名称，则被安装在当前活跃环境</span><br></pre></td></tr></table></figure></p>
-<p>删除包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n tensorflow numpy</span><br></pre></td></tr></table></figure></p>
-<p>在当前环境下安装anaconda包集合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install anaconda</span><br></pre></td></tr></table></figure></p>
-<h3 id="添加Anaconda的TUNA镜像"><a href="#添加Anaconda的TUNA镜像" class="headerlink" title="添加Anaconda的TUNA镜像"></a>添加Anaconda的TUNA镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
-<h3 id="jupter-notebook添加conda环境"><a href="#jupter-notebook添加conda环境" class="headerlink" title="jupter notebook添加conda环境"></a>jupter notebook添加conda环境</h3><p>首先安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install ipykernel</span><br></pre></td></tr></table></figure></p>
-<p>激活对应的conda环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate 环境名称</span><br></pre></td></tr></table></figure></p>
-<p>将环境写入notebook的kernel中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m ipykernel install --user --name 环境名称 --display-name &quot;Python (环境名称)&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Anaconda的安装"><a href="#Anaconda的安装" class="headerlink" title="Anaconda的安装"></a>Anaconda的安装</h3><p>进入文件所在路径<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bash Anaconda3-4.4.0-Linux-x86_64.sh (下载的对应的文件名)</span><br></pre></td></tr></table></figure></p>
+<h3 id="conda的环境管理"><a href="#conda的环境管理" class="headerlink" title="conda的环境管理"></a>conda的环境管理</h3><p>比如创建名为tensorflow的tensorflow-gpu版的python环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda create --name tensorflow python=3.6 tensorflow-gpu</span><br></pre></td></tr></table></figure></p>
+<p>激活tensorflow环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source activate tensorflow</span><br></pre></td></tr></table></figure></p>
+<p>测试环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></p>
+<p>退出虚拟环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source deactivate tensorflow</span><br></pre></td></tr></table></figure></p>
+<p>删除虚拟环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda remove --name tensorflow --all</span><br></pre></td></tr></table></figure></p>
+<h3 id="Conda的包管理"><a href="#Conda的包管理" class="headerlink" title="Conda的包管理"></a>Conda的包管理</h3><p>安装包<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install -n tensorflow sklearn</span><br><span class="line">注：如果不用-n指定环境名称，则被安装在当前活跃环境</span><br></pre></td></tr></table></figure></p>
+<p>删除包<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda remove -n tensorflow numpy</span><br></pre></td></tr></table></figure></p>
+<p>在当前环境下安装anaconda包集合<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install anaconda</span><br></pre></td></tr></table></figure></p>
+<h3 id="添加Anaconda的TUNA镜像"><a href="#添加Anaconda的TUNA镜像" class="headerlink" title="添加Anaconda的TUNA镜像"></a>添加Anaconda的TUNA镜像</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
+<h3 id="jupter-notebook添加conda环境"><a href="#jupter-notebook添加conda环境" class="headerlink" title="jupter notebook添加conda环境"></a>jupter notebook添加conda环境</h3><p>首先安装：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install ipykernel</span><br></pre></td></tr></table></figure></p>
+<p>激活对应的conda环境<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source activate 环境名称</span><br></pre></td></tr></table></figure></p>
+<p>将环境写入notebook的kernel中<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python -m ipykernel install --user --name 环境名称 --display-name &quot;Python (环境名称)&quot;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -617,7 +617,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -639,7 +639,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -713,7 +713,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">16k</span>
+    <span title="Site words total count">17.6k</span>
   
 </div>
 
