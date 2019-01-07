@@ -12,7 +12,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[opencv]]></title>
+    <title><![CDATA[opencv基础]]></title>
     <url>%2F2019%2F01%2F07%2Fopencv%2F</url>
     <content type="text"><![CDATA[安装# pippip3 install opencv-python# condaconda install --channel https://conda.anaconda.org/menpo opencv3# conda虚拟环境source activate 环境名pip install opencv-python 读取与展示import cv2 # 导入cv库img = cv2.imread(&apos;image0.jpg&apos;,1) # 读取图片文件， 1：彩色， 0：灰色cv2.imshow(&apos;image&apos;,img) # 显示图片cv2.waitKey(0) # 没有会一闪而过 写入import cv2 # 导入cv库img = cv2.imread(&apos;image0.jpg&apos;,1) # 读取图片文件， 1：彩色， 0：灰色cv2.imwrite(&apos;image1.jpg&apos;,img) # 写入文件名字 ， 图片数据 有损压缩import cv2 # 导入cv库img = cv2.imread(&apos;image0.jpg&apos;,1) # 读取图片文件， 1：彩色， 0：灰色cv2.imwrite(&apos;imageTest.jpg&apos;,img,[cv2.IMWRITE_JPEG_QUALITY,50]) # 写入文件名字 ， 图片数据 ， 当前jpg图片保存的质量（范围0-100）#1M 100k 10k 0-100 有损压缩 无损压缩# 1 无损 2 透明度属性import cv2 # 导入cv库img = cv2.imread(&apos;image0.jpg&apos;,1) # 读取图片文件， 1：彩色， 0：灰色cv2.imwrite(&apos;imageTest.png&apos;,img,[cv2.IMWRITE_PNG_COMPRESSION,0]) # 写入文件名字 ， 图片数据 ， 当前jpg图片保存的质量（范围0-100）# jpg 0 压缩比高0-100 png 0 压缩比低0-9 像素操作import cv2 # 导入cv库 img = cv2.imread(&apos;image0.jpg&apos;,1) # 读取图片文件， 1：彩色， 0：灰色(b,g,r) = img[100,100] # 获取图片的（100,100）坐标的像素值，按照bgr的形式读取print(b,g,r)# bgr#10 100 --- 110 100for i in range(1,100): # 总共一百个像素点 img[10+i,100] = (255,0,0) # 写入标准的蓝色cv2.imshow(&apos;image&apos;,img)]]></content>
       <categories>
