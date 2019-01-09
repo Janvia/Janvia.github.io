@@ -111,13 +111,13 @@
 
 
 
-<meta name="description" content="直方图均衡化-灰度import cv2import numpy as npimg = cv2.imread(&amp;apos;image2.jpg&amp;apos;,1)gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化cv2.imshow(&amp;apos;gray&amp;apos;,gray)cv2.imwrite(&amp;apos;gray2.jpg&amp;apos;,gra">
+<meta name="description" content="直方图均衡化-灰度import cv2import numpy as npimg = cv2.imread(&amp;apos;image2.jpg&amp;apos;,1)gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化cv2.imshow(&amp;apos;gray&amp;apos;,gray)cv2.imwrite(&amp;apos;gray2.jpg&amp;apos;,gr">
 <meta name="keywords" content="图像美化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="opencv图像美化">
 <meta property="og:url" content="https://janvia.github.io/2019/01/09/opencv图像美化/index.html">
 <meta property="og:site_name" content="Steve|好きかも">
-<meta property="og:description" content="直方图均衡化-灰度import cv2import numpy as npimg = cv2.imread(&amp;apos;image2.jpg&amp;apos;,1)gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化cv2.imshow(&amp;apos;gray&amp;apos;,gray)cv2.imwrite(&amp;apos;gray2.jpg&amp;apos;,gra">
+<meta property="og:description" content="直方图均衡化-灰度import cv2import numpy as npimg = cv2.imread(&amp;apos;image2.jpg&amp;apos;,1)gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化cv2.imshow(&amp;apos;gray&amp;apos;,gray)cv2.imwrite(&amp;apos;gray2.jpg&amp;apos;,gr">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://janvia.github.io/2019/01/09/opencv图像美化/gray1.jpg">
 <meta property="og:image" content="https://janvia.github.io/2019/01/09/opencv图像美化/hist1.jpg">
@@ -137,10 +137,10 @@
 <meta property="og:image" content="https://janvia.github.io/2019/01/09/opencv图像美化/dst6.jpg">
 <meta property="og:image" content="http://pkxzrpxol.bkt.clouddn.com/images/image3.png">
 <meta property="og:image" content="http://pkxzrpxol.bkt.clouddn.com/images/dst7.png">
-<meta property="og:updated_time" content="2019-01-09T07:53:17.105Z">
+<meta property="og:updated_time" content="2019-01-09T14:40:56.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="opencv图像美化">
-<meta name="twitter:description" content="直方图均衡化-灰度import cv2import numpy as npimg = cv2.imread(&amp;apos;image2.jpg&amp;apos;,1)gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化cv2.imshow(&amp;apos;gray&amp;apos;,gray)cv2.imwrite(&amp;apos;gray2.jpg&amp;apos;,gra">
+<meta name="twitter:description" content="直方图均衡化-灰度import cv2import numpy as npimg = cv2.imread(&amp;apos;image2.jpg&amp;apos;,1)gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化cv2.imshow(&amp;apos;gray&amp;apos;,gray)cv2.imwrite(&amp;apos;gray2.jpg&amp;apos;,gr">
 <meta name="twitter:image" content="https://janvia.github.io/2019/01/09/opencv图像美化/gray1.jpg">
 
 
@@ -176,21 +176,6 @@
 
 
 
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
-<style>
-    .pace .pace-progress {
-        background: #1E92FB; /*进度条颜色*/
-        height: 3px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
-    }
-    .pace .pace-activity {
-        border-top-color: #1E92FB;    /*上边框颜色*/
-        border-left-color: #1E92FB;    /*左边框颜色*/
-    }
-</style>
 
 
   <title>opencv图像美化 | Steve|好きかも</title>
@@ -482,7 +467,8 @@
       
 
       
-        <h2 id="直方图均衡化-灰度"><a href="#直方图均衡化-灰度" class="headerlink" title="直方图均衡化-灰度"></a>直方图均衡化-灰度</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">img = cv2.imread(&apos;image2.jpg&apos;,1)</span><br><span class="line">gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化</span><br><span class="line">cv2.imshow(&apos;gray&apos;,gray)</span><br><span class="line">cv2.imwrite(&apos;gray2.jpg&apos;,gray)</span><br><span class="line">hist = cv2.equalizeHist(gray) # api 完成直方图均衡化</span><br><span class="line">cv2.imshow(&apos;hist&apos;,hist)</span><br><span class="line">cv2.imwrite(&apos;hist2.jpg&apos;,hist)</span><br><span class="line">cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+<h2 id="直方图均衡化-灰度"><a href="#直方图均衡化-灰度" class="headerlink" title="直方图均衡化-灰度"></a>直方图均衡化-灰度</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">img = cv2.imread(&apos;image2.jpg&apos;,1)</span><br><span class="line">gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化</span><br><span class="line">cv2.imshow(&apos;gray&apos;,gray)</span><br><span class="line">cv2.imwrite(&apos;gray2.jpg&apos;,gray)</span><br><span class="line">hist = cv2.equalizeHist(gray) # api 完成直方图均衡化</span><br><span class="line">cv2.imshow(&apos;hist&apos;,hist)</span><br><span class="line">cv2.imwrite(&apos;hist2.jpg&apos;,hist)</span><br><span class="line">cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
 <img src="/2019/01/09/opencv图像美化/gray1.jpg" title="gray"> <img src="/2019/01/09/opencv图像美化/hist1.jpg" title="hist">
 <h2 id="直方图均衡化-彩色"><a href="#直方图均衡化-彩色" class="headerlink" title="直方图均衡化-彩色"></a>直方图均衡化-彩色</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">img = cv2.imread(&apos;image2.jpg&apos;,1)</span><br><span class="line">cv2.imshow(&apos;src&apos;,img)</span><br><span class="line">(b,g,r) = cv2.split(img) # 通道分解</span><br><span class="line"># 图片单通道处理</span><br><span class="line">bH = cv2.equalizeHist(b)</span><br><span class="line">gH = cv2.equalizeHist(g)</span><br><span class="line">rH = cv2.equalizeHist(r)</span><br><span class="line">result = cv2.merge((bH,gH,rH))# 通道合成</span><br><span class="line">cv2.imshow(&apos;dst&apos;,result)</span><br><span class="line">cv2.imwrite(&apos;dst2.jpg&apos;,result)</span><br><span class="line">cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
 <img src="/2019/01/09/opencv图像美化/image2.jpg" title="image.jpg"> <img src="/2019/01/09/opencv图像美化/dst2.jpg" title="result.jpg">
@@ -553,6 +539,7 @@
       
     </footer>
   </div>
+
 <div>
     
     <div>

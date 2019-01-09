@@ -1843,7 +1843,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #03714e;
+  background: #ffa;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3185,4 +3185,18 @@ body {
 .main-inner {
   background: #fff;
   opacity: 0.8;
+}
+.out-img-topic {
+  display: block;
+  max-height: 300px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+img.img-topic {
+  display: block;
+  margin-left: 0.7em;
+  margin-right: 0.7em;
+  padding: 0;
+  float: right;
+  clear: right;
 }

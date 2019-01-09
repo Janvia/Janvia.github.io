@@ -111,18 +111,18 @@
 
 
 
-<meta name="description" content="安装# pippip3 install opencv-python# condaconda install --channel https://conda.anaconda.org/menpo opencv3# conda虚拟环境source activate 环境名pip install opencv-python 读取与展示import cv2  # 导入cv库img = cv2.imread">
+<meta name="description" content="安装# pippip3 install opencv-python# condaconda install --channel https://conda.anaconda.org/menpo opencv3# conda虚拟环境source activate 环境名pip install opencv-python 读取与展示import cv2  # 导入cv库img = cv2.imrea">
 <meta name="keywords" content="opencv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="opencv基础">
 <meta property="og:url" content="https://janvia.github.io/2019/01/07/opencv/index.html">
 <meta property="og:site_name" content="Steve|好きかも">
-<meta property="og:description" content="安装# pippip3 install opencv-python# condaconda install --channel https://conda.anaconda.org/menpo opencv3# conda虚拟环境source activate 环境名pip install opencv-python 读取与展示import cv2  # 导入cv库img = cv2.imread">
+<meta property="og:description" content="安装# pippip3 install opencv-python# condaconda install --channel https://conda.anaconda.org/menpo opencv3# conda虚拟环境source activate 环境名pip install opencv-python 读取与展示import cv2  # 导入cv库img = cv2.imrea">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-07T09:22:02.078Z">
+<meta property="og:updated_time" content="2019-01-09T14:17:43.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="opencv基础">
-<meta name="twitter:description" content="安装# pippip3 install opencv-python# condaconda install --channel https://conda.anaconda.org/menpo opencv3# conda虚拟环境source activate 环境名pip install opencv-python 读取与展示import cv2  # 导入cv库img = cv2.imread">
+<meta name="twitter:description" content="安装# pippip3 install opencv-python# condaconda install --channel https://conda.anaconda.org/menpo opencv3# conda虚拟环境source activate 环境名pip install opencv-python 读取与展示import cv2  # 导入cv库img = cv2.imrea">
 
 
 
@@ -157,21 +157,6 @@
 
 
 
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
-<style>
-    .pace .pace-progress {
-        background: #1E92FB; /*进度条颜色*/
-        height: 3px;
-    }
-    .pace .pace-progress-inner {
-         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
-    }
-    .pace .pace-activity {
-        border-top-color: #1E92FB;    /*上边框颜色*/
-        border-left-color: #1E92FB;    /*左边框颜色*/
-    }
-</style>
 
 
   <title>opencv基础 | Steve|好きかも</title>
@@ -463,7 +448,8 @@
       
 
       
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># pip</span><br><span class="line">pip3 install opencv-python</span><br><span class="line"># conda</span><br><span class="line">conda install --channel https://conda.anaconda.org/menpo opencv3</span><br><span class="line"># conda虚拟环境</span><br><span class="line">source activate 环境名</span><br><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># pip</span><br><span class="line">pip3 install opencv-python</span><br><span class="line"># conda</span><br><span class="line">conda install --channel https://conda.anaconda.org/menpo opencv3</span><br><span class="line"># conda虚拟环境</span><br><span class="line">source activate 环境名</span><br><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
 <h2 id="读取与展示"><a href="#读取与展示" class="headerlink" title="读取与展示"></a>读取与展示</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import cv2  # 导入cv库</span><br><span class="line"></span><br><span class="line">img = cv2.imread(&apos;image0.jpg&apos;,1)  # 读取图片文件， 1：彩色， 0：灰色</span><br><span class="line">cv2.imshow(&apos;image&apos;,img)  # 显示图片</span><br><span class="line"></span><br><span class="line">cv2.waitKey(0) # 没有会一闪而过</span><br></pre></td></tr></table></figure>
 <h2 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import cv2 # 导入cv库</span><br><span class="line">img = cv2.imread(&apos;image0.jpg&apos;,1) # 读取图片文件， 1：彩色， 0：灰色</span><br><span class="line">cv2.imwrite(&apos;image1.jpg&apos;,img) # 写入文件名字 ， 图片数据</span><br></pre></td></tr></table></figure>
 <h2 id="有损压缩"><a href="#有损压缩" class="headerlink" title="有损压缩"></a>有损压缩</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import cv2 # 导入cv库</span><br><span class="line">img = cv2.imread(&apos;image0.jpg&apos;,1) # 读取图片文件， 1：彩色， 0：灰色</span><br><span class="line">cv2.imwrite(&apos;imageTest.jpg&apos;,img,[cv2.IMWRITE_JPEG_QUALITY,50]) # 写入文件名字 ， 图片数据 ， 当前jpg图片保存的质量（范围0-100）</span><br><span class="line">#1M 100k 10k 0-100 有损压缩</span><br></pre></td></tr></table></figure>
@@ -521,6 +507,7 @@
       
     </footer>
   </div>
+
 <div>
     
     <div>
