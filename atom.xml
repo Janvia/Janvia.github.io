@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://janvia.github.io/"/>
-  <updated>2019-01-09T07:53:17.105Z</updated>
+  <updated>2019-01-09T09:06:13.627Z</updated>
   <id>https://janvia.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>markdown</title>
+    <link href="https://janvia.github.io/2019/01/09/markdown/"/>
+    <id>https://janvia.github.io/2019/01/09/markdown/</id>
+    <published>2019-01-09T09:06:13.000Z</published>
+    <updated>2019-01-09T09:06:13.627Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="粗体、斜体"><a href="#粗体、斜体" class="headerlink" title="粗体、斜体"></a>粗体、斜体</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*这是斜体*</span><br><span class="line">**这是粗体**</span><br><span class="line">***这是粗体+斜体***</span><br></pre></td></tr></table></figure><h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~~就像这样~~</span><br></pre></td></tr></table></figure><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>通过在行首加上大于号&gt;来添加引用格式。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; This is the first level of quoting.</span><br><span class="line">&gt;</span><br><span class="line">&gt; &gt; This is nested blockquote.</span><br><span class="line">&gt;</span><br><span class="line">&gt; Back to the first level.</span><br></pre></td></tr></table></figure></p><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>无序列表使用星号、加号或是减号作为列表标记：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*   Red</span><br><span class="line">*   Green</span><br><span class="line">*   Blue</span><br></pre></td></tr></table></figure></p><h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">* * *</span><br><span class="line">***</span><br><span class="line">*****</span><br><span class="line">- - -</span><br><span class="line">---------------------------------------</span><br></pre></td></tr></table></figure><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[an example](http://example.com/)</span><br><span class="line">[an example](http://example.com/ &quot;Optional Title&quot;)</span><br></pre></td></tr></table></figure><h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><h4 id="普通方式"><a href="#普通方式" class="headerlink" title="普通方式"></a>普通方式</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![Alt text](/path/to/img.jpg)</span><br><span class="line">![Alt text](/path/to/img.jpg &quot;Optional Title&quot;)</span><br></pre></td></tr></table></figure><h4 id="通过管理文件夹"><a href="#通过管理文件夹" class="headerlink" title="通过管理文件夹"></a>通过管理文件夹</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img img.jpg titel %&#125;</span><br></pre></td></tr></table></figure><h4 id="通过图床引用"><a href="#通过图床引用" class="headerlink" title="通过图床引用"></a>通过图床引用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;figure class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://address.com/images/image.png&quot; title=&quot;title1&quot;/&gt;</span><br><span class="line">    &lt;img src=&quot;http://path/image.png&quot; title=&quot;title2&quot;/&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| Item     | Value | Qty   |</span><br><span class="line">| :------- | ----: | :---: |</span><br><span class="line">| Computer | $1600 |  5    |</span><br><span class="line">| Phone    | $12   |  12   |</span><br><span class="line">| Pipe     | $1    |  234  |</span><br></pre></td></tr></table></figure><h3 id="TeX公式"><a href="#TeX公式" class="headerlink" title="TeX公式"></a>TeX公式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">\Gamma(z) = \int_0^\infty t^&#123;z-1&#125;e^&#123;-t&#125;dt\,.</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;粗体、斜体&quot;&gt;&lt;a href=&quot;#粗体、斜体&quot; class=&quot;headerlink&quot; title=&quot;粗体、斜体&quot;&gt;&lt;/a&gt;粗体、斜体&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="markdown" scheme="https://janvia.github.io/tags/markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>opencv图像美化</title>
