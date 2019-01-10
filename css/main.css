@@ -1842,7 +1842,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #096bdd;
+  background: #ffeb29;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2706,10 +2706,26 @@ embed {
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
 }
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body p a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #fc6423;
+}
 body {
   background: url("http://pkxzrpxol.bkt.clouddn.com/images/backGround.jpg");
   background-attachment: fixed;
   background-position: 50% 50%;
+}
+.main-inner {
+  margin-top: 20px;
+  padding: 10px 10px 0px 10px;
+  background: #fff;
+  opacity: 0.8;
 }
 .headband {
   height: 1.5px;
@@ -2719,14 +2735,14 @@ body {
   line-height: 1.5;
 }
 .container {
-  background-color: rgba(0,0,0,0.35);
+  background-color: rgba(0,0,0,0.25);
 }
 .header-inner {
   padding-top: 0px;
   padding-bottom: 0px;
 }
 .posts-expand {
-  padding-top: 80px;
+  padding-top: 0px;
 }
 .posts-expand .post-meta {
   margin: 5px 0px 0px 0px;
@@ -2742,14 +2758,14 @@ body {
 }
 .brand {
   background-color: rgba(255,255,255,0);
-  margin-top: 5px;
+  margin-top: 0px;
   padding: 0px;
 }
 .site-title {
-  font-size: 65px;
+  font-size: 55px;
   font-weight: bold;
   color: #fff;
-  line-height: 90px;
+  line-height: 80px;
   letter-spacing: 3px;
 }
 .site-subtitle {
@@ -2783,13 +2799,7 @@ body {
 .post {
   margin-bottom: 50px;
   padding: 45px 36px 36px 36px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-  background-color: #fff;
-}
-.post {
-  margin-bottom: 50px;
-  padding: 45px 36px 36px 36px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.5);
   background-color: #fff;
 }
 .posts-expand .post-title {
@@ -2886,8 +2896,8 @@ body {
 }
 .comments {
   background-color: #fff;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
-  margin: 80px 0px 40px 0px;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.35);
+  margin: 30px 40px 40px 40px;
 }
 a {
   color: #5073b8;
@@ -3148,6 +3158,29 @@ img:hover {
     padding: 96px 10px 0px 10px;
   }
 }
+.about-page {
+  margin: -80px 0px 60px 0px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  background-color: #fff;
+  padding: 106px 36px 36px 36px;
+}
+@media (max-width: 767px) {
+  .about-page {
+    margin: -73px 0px 50px 0px;
+    padding: 96px 15px 20px 15px;
+  }
+}
+h2.about-title {
+  border-left: none !important;
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+  text-align: center;
+  background-image: linear-gradient(90deg, #a166ab 0%, #a166ab 40%, #ef4e7b 45%, #f37055 50%, #ef4e7b 55%, #a166ab 60%, #a166ab 100%);
+  background-size: cover;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
 .local-search-popup .search-icon,
 .local-search-popup .popup-btn-close {
   color: #f79533;
@@ -3311,7 +3344,7 @@ code.description {
 }
 @media (max-width: 767px) {
   .site-title {
-    font-size: 70px !important;
+    font-size: 50px !important;
     letter-spacing: 0px !important;
   }
   .site-subtitle {
