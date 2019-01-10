@@ -1842,7 +1842,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e8086f;
+  background: #096bdd;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2742,14 +2742,14 @@ body {
 }
 .brand {
   background-color: rgba(255,255,255,0);
-  margin-top: 15px;
+  margin-top: 5px;
   padding: 0px;
 }
 .site-title {
-  font-size: 75px;
+  font-size: 65px;
   font-weight: bold;
   color: #fff;
-  line-height: 80px;
+  line-height: 90px;
   letter-spacing: 3px;
 }
 .site-subtitle {
