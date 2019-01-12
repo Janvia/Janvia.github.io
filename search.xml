@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[tensorflow-基础语法]]></title>
+    <url>%2F2019%2F01%2F12%2Ftensorflow-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[数学公式API：https://github.com/tensorflow/docs/blob/master/site/en/api_guides/python constanta = tf.constant(0, name=&apos;B&apos;)b = tf.constant(1) 常量x = tf.zeros([2, 3], tf.int32)y = tf.zeros_like(x, optimize=True) 变量with tf.variable_scope(&apos;meh&apos;) as scope: a = tf.get_variable(&apos;a&apos;, [10]) b = tf.get_variable(&apos;b&apos;, [100])writer = tf.summary.FileWriter(&apos;./graphs/test&apos;, tf.get_default_graph())writer.close() placeholdder占位符input1 = tf.placeholder(tf.float32)input2 = tf.placeholder(tf.float32)output = tf.multiply(input1, input2)with tf.Session() as sess: print(sess.run([output], feed_dict=&#123;input1:[7.], input2:[2.]&#125;)) 类型转换tf.cast(tf.constant(2.0), tf.int32) 把numpy转换成Tensorimport numpy as npa = np.zeros((3,3))print(a)print(&apos;----------------&apos;)ta = tf.convert_to_tensor(a)with tf.Session() as sess: print(sess.run(ta))]]></content>
+      <categories>
+        <category>tensorflow</category>
+      </categories>
+      <tags>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tensorflow-可视化]]></title>
+    <url>%2F2019%2F01%2F12%2Ftensorflow-%E5%8F%AF%E8%A7%86%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[导入包import numpy as npimport osimport tensorflow as tfimport matplotlib.pyplot as plt 设置生成的图像尺寸和去除警告os.environ[&apos;TF_CPP_MIN_LOG_LEVEL&apos;] = &apos;2&apos;plt.rcParams[&quot;figure.figsize&quot;] = (14, 8) # 生成的图像尺寸 随机生成一个线性的数据n_observations = 100xs = np.linspace(-3, 3, n_observations) #生成-3到3的n为100等差数列ys = 0.8*xs + 0.1 + np.random.uniform(-0.5, 0.5, n_observations)plt.scatter(xs, ys) #画图plt.show() #画图 准备placeholderX = tf.placeholder(tf.float32, name=&apos;X&apos;)Y = tf.placeholder(tf.float32, name=&apos;Y&apos;) 初始化参数/权重W = tf.Variable(tf.random_normal([1]), name=&apos;weight&apos;)tf.summary.histogram(&apos;weight&apos;, W) #画图b = tf.Variable(tf.random_normal([1]), name=&apos;bias&apos;)tf.summary.histogram(&apos;bias&apos;, b)#画图 计算预测结果Y_pred = tf.add(tf.multiply(X, W), b) 计算损失值loss = tf.square(Y - Y_pred, name=&apos;loss&apos;) #tf.square:平方tf.summary.scalar(&apos;loss&apos;, tf.reshape(loss, []))#画图 初始化optimizerlearning_rate = 0.01optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss) 指定迭代次数，并在session里执行graphn_samples = xs.shape[0]init = tf.global_variables_initializer()with tf.Session() as sess: # 记得初始化所有变量 sess.run(init) merged = tf.summary.merge_all()#画图 log_writer = tf.summary.FileWriter(&quot;./logs/linear_regression&quot;, sess.graph) # 训练模型 for i in range(50): total_loss = 0 for x, y in zip(xs, ys): # 通过feed_dic把数据灌进去 _, loss_value, merged_summary = sess.run([optimizer, loss, merged], feed_dict=&#123;X: x, Y: y&#125;) total_loss += loss_value if i % 5 == 0: print(&apos;Epoch &#123;0&#125;: &#123;1&#125;&apos;.format(i, total_loss / n_samples)) log_writer.add_summary(merged_summary, i)#画图 # 关闭writer log_writer.close()#画图 # 取出w和b的值 W, b = sess.run([W, b])print(W, b)print(&quot;W:&quot;+str(W[0]))print(&quot;b:&quot;+str(b[0])) 画出线性回归线plt.plot(xs, ys, &apos;bo&apos;, label=&apos;Real data&apos;)plt.plot(xs, xs * W + b, &apos;r&apos;, label=&apos;Predicted data&apos;)plt.legend()plt.show() Tensorboard查看图形数据tensorboard --logdir path/to/logs(你保存文件所在位置) 如：（log_writer = tf.summary.FileWriter(“./logs/linear_regression”, sess.graph)保存的地址）： tensorboard –logdir ./logs/linear_regression 输出：TensorBoard x.x.x at http://(你的用户名):6006 (Press CTRL+C to quit) 然后打开网页：http://localhost:6006]]></content>
+      <categories>
+        <category>tensorflow</category>
+      </categories>
+      <tags>
+        <tag>可视化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[20单元语法]]></title>
     <url>%2F2019%2F01%2F11%2F20%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95%2F</url>
     <content type="text"><![CDATA[N + なら（ば）＜凸显、条件＞用法一接在体言后面，凸显、强调所指事物，作提示助词，提出主题，并用自信、有把握的语气进行叙述，如果以此为主题的话。接续：N+ ✿汉语：就~方面来说、~的话 1、お金なら心配は要りません。2、花なら桜です。 用法2以假设的形式提出话题，前项为前提，后项为说话人判断、决定或建议；接续： N ・ A ・ V ・ Na 直接裸接 なら ✿汉语：要是~的话~1、私ならそんなことを言いませんよ。2、海が静かならいいですが。3、彼が出席するなら、私は行きません。 ～場合は＜假设＞表示假设的情况。当假设出现了前项情况时，后项一般为针对此情况所采取的方法或对策。接续：N ・ A ・ V ・ Na 连体形+場合は ✿汉语：当~时、在~的情况下 1、王さんの都合が悪い場合は、ほかの日にしましょう。2、電話が通じない場合はどうしたらいいですか。3、雨が降った場合は、運動会を中止します。 Vたらどうですか＜建议＞表示建议或劝诱的惯用表达， ✿汉语：~怎么样、~如何★：礼貌表达方式为：~たらどうですか。 ~たらいかがですか。 ~たらいかがでしょうか1、ABC病院に行ってみたらどうでしょう。(2011年真题)2、朝からずっと勉強していますね。少し休んだらどうですか。3、ネクタイでも買ってあげたらどう？(2010年真题) くらい＜程度＞接在分句后面表示程度。举出具体的事例来说明其程度。也可写做ぐらい。基本可与「ほど」互换。接续：裸接分句后 1、怖くて怖くて、大声で叫びたいくらいだった。(2009年真题)2、涙が出るくらい痛いです。 「ほど」VS「くらい」在表示某种程度时: 如果说话人心目中对其程度没有进行高低取向时，くらい和ほど有时可以互换使用，表示相同的意思。 1、日曜は足が痛くなる**ぐらい**（〇ほど）歩いた。 如果有高低取向，则くらい表示低，而ほど表示高， 1、彼**くらい**（Ｘほど）のレベルでは通訳はできない。2、党の御恩は山**ほど**（Ｘくらい）高く、海**ほど**（Ｘくらい）深い。3、死ぬ**ほど**（×くらい）疲れた。 Vてくださいませんか＜客气的请求＞表示请求别人做某事。比｢Vてくれませんか｣更加委婉、客气，是一种尊他，客气的表达。 ✿ 汉语：能不能请您（为我做)～ １、先生のお写真を見せてくださいませんか。２、もう少し説明してくださいませんか。 VてしまったVてしまった＜感慨＞表示说话人对意外发生的事（无法挽回的事情、消极的结果等）感到很遗憾、后悔的语气。常与副词「もう」搭配１、バスで財布を落としてしまった。２、急いで来たから、財布を忘れてしまった。(2005年真题) Vてしまった＜完了＞表示动作过程的完了。用于表示持续动作的动词时，与｢V第一连用－おわる｣意思相近。１、この宿題をしてしまったら、遊びに行ける。２、この本はもう読んでしまったから、図書館に返します。 N+の＋うち＜范围＞表示限定范围。 ✿ 汉语：~当中、~之中★在表示从某范围中挑选某事物时，可与｢Ｎのなか｣替换。１、三人のうち、林さんが一番若いです。２、クラスメートのうち、6人が男性です。３、相撲とサッカーと野球のうちで、一番人気があるのはやはり野球だそうだ。 N1 または N2＜选择＞表示两者择一，多用于书面语，表示要求、指示等场合。 ✿ 汉语：~或是~1、3番の部屋、または4番の部屋に行ってください。(2008年真题)2、漢字または仮名で書いてください。]]></content>

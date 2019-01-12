@@ -1,165 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/11/20%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95/</loc>
-    
-    <lastmod>2019-01-12T01:32:12.980Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/11/wine%E5%AE%89%E8%A3%85qq/</loc>
-    
-    <lastmod>2019-01-11T13:45:25.760Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/11/19%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95/</loc>
-    
-    <lastmod>2019-01-11T13:33:24.016Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/02/%E5%8F%A5%E5%9E%8B/</loc>
-    
-    <lastmod>2019-01-11T12:19:11.355Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/11/opencv-%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E5%8F%8A%E7%BB%98%E5%9B%BE/</loc>
-    
-    <lastmod>2019-01-11T08:21:06.630Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/11/opencv-%E5%9B%BE%E7%89%87%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/</loc>
-    
-    <lastmod>2019-01-11T02:42:24.091Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/04/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-01-09T15:08:22.559Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/04/%E3%80%8A%E5%BD%93%E6%88%91%E9%81%87%E8%A7%81%E4%B8%80%E4%B8%AA%E4%BA%BA%E3%80%8B%E6%91%98%E5%BD%95/</loc>
-    
-    <lastmod>2019-01-09T15:08:19.189Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/04/%E3%80%8A%E7%A6%85%E4%B8%8E%E6%91%A9%E6%89%98%E8%BD%A6%E7%BB%B4%E4%BF%AE%E8%89%BA%E6%9C%AF%E3%80%8B%E6%91%98%E5%BD%95/</loc>
-    
-    <lastmod>2019-01-09T15:07:17.576Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/04/%E4%B8%80%E4%BA%9B%E5%BF%98%E8%AE%B0%E4%B9%A6%E5%90%8D%E7%9A%84%E5%BF%83%E7%90%86%E5%AD%A6%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-01-09T15:05:54.232Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/09/opencv%E5%9B%BE%E5%83%8F%E7%BE%8E%E5%8C%96/</loc>
-    
-    <lastmod>2019-01-09T14:40:56.158Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/04/%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93%EF%BC%885-15%EF%BC%89/</loc>
-    
-    <lastmod>2019-01-09T14:20:05.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2018/12/31/%E6%97%A5%E8%AF%AD%E5%8F%98%E5%BD%A2/</loc>
-    
-    <lastmod>2019-01-09T14:19:21.447Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/06/%E6%95%AC%E8%AF%AD/</loc>
-    
-    <lastmod>2019-01-09T14:18:51.445Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/07/opencv/</loc>
-    
-    <lastmod>2019-01-09T14:17:43.506Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/03/on-my-zsh/</loc>
-    
-    <lastmod>2019-01-09T14:17:20.071Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/05/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    
-    <lastmod>2019-01-09T14:17:00.408Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/09/markdown/</loc>
-    
-    <lastmod>2019-01-09T14:16:34.977Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/02/Anconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</loc>
-    
-    <lastmod>2019-01-09T14:16:19.792Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/07/linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</loc>
-    
-    <lastmod>2019-01-07T09:17:38.740Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/02/%E6%97%A5%E8%AF%AD%E5%8A%A9%E8%AF%8D/</loc>
-    
-    <lastmod>2019-01-02T08:28:39.311Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/tags/index.html</loc>
-    
-    <lastmod>2018-12-31T12:26:36.640Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/categories/index.html</loc>
-    
-    <lastmod>2018-12-31T08:24:43.976Z</lastmod>
-    
-  </url>
-  
-</urlset>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    <sitemap>
+        <loc>https://janvia.github.io/post-sitemap.xml</loc>
+        <lastmod>2019-01-12T08:24:04.040Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://janvia.github.io/page-sitemap.xml</loc>
+        <lastmod>2018-12-31T12:26:36.640Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://janvia.github.io/category-sitemap.xml</loc>
+        <lastmod>2019-01-09T14:16:34.977Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://janvia.github.io/tag-sitemap.xml</loc>
+        <lastmod>2019-01-02T08:28:39.311Z</lastmod>
+    </sitemap>
+
+</sitemapindex>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->
