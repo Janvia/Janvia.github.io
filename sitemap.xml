@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janvia.github.io/2019/01/13/RNN/</loc>
+    
+    <lastmod>2019-01-13T14:07:49.054Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janvia.github.io/2019/01/13/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
     
     <lastmod>2019-01-13T13:51:43.475Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://janvia.github.io/2019/01/13/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E5%AF%B9%E6%8A%97%E7%94%9F%E6%88%90%E7%BD%91%E7%BB%9C-DCGAN/</loc>
     
     <lastmod>2019-01-13T12:46:58.990Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/13/RNN/</loc>
-    
-    <lastmod>2019-01-13T10:43:54.250Z</lastmod>
     
   </url>
   
