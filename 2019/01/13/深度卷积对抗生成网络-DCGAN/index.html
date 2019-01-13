@@ -98,7 +98,7 @@
 
 
 
-  <meta name="keywords" content="语法,">
+  <meta name="keywords" content="DCGAN,">
 
 
 
@@ -111,18 +111,18 @@
 
 
 
-<meta name="description" content="数学公式API：https://github.com/tensorflow/docs/blob/master/site/en/api_guides/python constanta = tf.constant(0, name=&amp;apos;B&amp;apos;)b = tf.constant(1) 常量x = tf.zeros([2, 3], tf.int32)y = tf.zeros_like(x, o">
-<meta name="keywords" content="语法">
+<meta name="description" content="导入环境import numpy as npimport tensorflow as tfimport matplotlib.pyplot as pltfrom tensorflow.examples.tutorials.mnist import input_data 数据准备运行程序下面代码，mnist数据集会自动下载mnist = input_data.read_data_sets(&amp;apos">
+<meta name="keywords" content="DCGAN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow-基础语法">
-<meta property="og:url" content="https://janvia.github.io/2019/01/12/tensorflow-基础语法/index.html">
+<meta property="og:title" content="深度卷积对抗生成网络-DCGAN">
+<meta property="og:url" content="https://janvia.github.io/2019/01/13/深度卷积对抗生成网络-DCGAN/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="数学公式API：https://github.com/tensorflow/docs/blob/master/site/en/api_guides/python constanta = tf.constant(0, name=&amp;apos;B&amp;apos;)b = tf.constant(1) 常量x = tf.zeros([2, 3], tf.int32)y = tf.zeros_like(x, o">
+<meta property="og:description" content="导入环境import numpy as npimport tensorflow as tfimport matplotlib.pyplot as pltfrom tensorflow.examples.tutorials.mnist import input_data 数据准备运行程序下面代码，mnist数据集会自动下载mnist = input_data.read_data_sets(&amp;apos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-12T08:24:04.040Z">
+<meta property="og:updated_time" content="2019-01-13T12:46:58.990Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorflow-基础语法">
-<meta name="twitter:description" content="数学公式API：https://github.com/tensorflow/docs/blob/master/site/en/api_guides/python constanta = tf.constant(0, name=&amp;apos;B&amp;apos;)b = tf.constant(1) 常量x = tf.zeros([2, 3], tf.int32)y = tf.zeros_like(x, o">
+<meta name="twitter:title" content="深度卷积对抗生成网络-DCGAN">
+<meta name="twitter:description" content="导入环境import numpy as npimport tensorflow as tfimport matplotlib.pyplot as pltfrom tensorflow.examples.tutorials.mnist import input_data 数据准备运行程序下面代码，mnist数据集会自动下载mnist = input_data.read_data_sets(&amp;apos">
 
 
 
@@ -152,14 +152,14 @@
 
 
 
-  <link rel="canonical" href="https://janvia.github.io/2019/01/12/tensorflow-基础语法/">
+  <link rel="canonical" href="https://janvia.github.io/2019/01/13/深度卷积对抗生成网络-DCGAN/">
 
 
 
 
 
 
-  <title>tensorflow-基础语法 | sylvia</title>
+  <title>深度卷积对抗生成网络-DCGAN | sylvia</title>
   
 
 
@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/12/tensorflow-基础语法/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/13/深度卷积对抗生成网络-DCGAN/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tensorflow-基础语法</h1>
+          <h1 class="post-title" itemprop="name headline">深度卷积对抗生成网络-DCGAN</h1>
         
 
         <div class="post-meta">
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-12T16:09:54+08:00">
-                2019-01-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-13T20:37:42+08:00">
+                2019-01-13
               </time>
             
 
@@ -360,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/tensorflow/" itemprop="url" rel="index">
-                    <span itemprop="name">tensorflow</span>
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/12/tensorflow-基础语法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/12/tensorflow-基础语法/" itemprop="commentCount"></span>
+                <a href="/2019/01/13/深度卷积对抗生成网络-DCGAN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/13/深度卷积对抗生成网络-DCGAN/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  155
+                  1k
                 </span>
               
 
@@ -417,7 +417,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -438,13 +438,15 @@
       
 
       
-        <p>数学公式API：<a href="https://github.com/tensorflow/docs/blob/master/site/en/api_guides/python" target="_blank" rel="noopener">https://github.com/tensorflow/docs/blob/master/site/en/api_guides/python</a></p>
-<h2 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a = tf.constant(0, name=&apos;B&apos;)</span><br><span class="line">b = tf.constant(1)</span><br></pre></td></tr></table></figure>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x = tf.zeros([2, 3], tf.int32)</span><br><span class="line">y = tf.zeros_like(x, optimize=True)</span><br></pre></td></tr></table></figure>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with tf.variable_scope(&apos;meh&apos;) as scope:</span><br><span class="line">    a = tf.get_variable(&apos;a&apos;, [10])</span><br><span class="line">    b = tf.get_variable(&apos;b&apos;, [100])</span><br><span class="line"></span><br><span class="line">writer = tf.summary.FileWriter(&apos;./graphs/test&apos;, tf.get_default_graph())</span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure>
-<h2 id="placeholdder占位符"><a href="#placeholdder占位符" class="headerlink" title="placeholdder占位符"></a>placeholdder占位符</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">input1 = tf.placeholder(tf.float32)</span><br><span class="line">input2 = tf.placeholder(tf.float32)</span><br><span class="line">output = tf.multiply(input1, input2)</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    print(sess.run([output], feed_dict=&#123;input1:[7.], input2:[2.]&#125;))</span><br></pre></td></tr></table></figure>
-<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tf.cast(tf.constant(2.0), tf.int32)</span><br></pre></td></tr></table></figure>
-<h2 id="把numpy转换成Tensor"><a href="#把numpy转换成Tensor" class="headerlink" title="把numpy转换成Tensor"></a>把numpy转换成Tensor</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a = np.zeros((3,3))</span><br><span class="line">print(a)</span><br><span class="line">print(&apos;----------------&apos;)</span><br><span class="line">ta = tf.convert_to_tensor(a)</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">     print(sess.run(ta))</span><br></pre></td></tr></table></figure>
+        <h2 id="导入环境"><a href="#导入环境" class="headerlink" title="导入环境"></a>导入环境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from tensorflow.examples.tutorials.mnist import input_data</span><br></pre></td></tr></table></figure>
+<h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><p>运行程序下面代码，mnist数据集会自动下载<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mnist = input_data.read_data_sets(&apos;data&apos;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="获得输入数据"><a href="#获得输入数据" class="headerlink" title="获得输入数据"></a>获得输入数据</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_inputs(noise_dim, image_height, image_width, image_depth):</span><br><span class="line">    # 真实数据</span><br><span class="line">    inputs_real = tf.placeholder(tf.float32, [None, image_height, image_width, image_depth], name=&apos;inputs_real&apos;)</span><br><span class="line">    # 噪声数据</span><br><span class="line">    inputs_noise = tf.placeholder(tf.float32, [None, noise_dim], name=&apos;inputs_noise&apos;)</span><br><span class="line"></span><br><span class="line">    return inputs_real, inputs_noise</span><br></pre></td></tr></table></figure>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_generator(noise_img, output_dim, is_train=True, alpha=0.01):</span><br><span class="line">    with tf.variable_scope(&quot;generator&quot;, reuse=(not is_train)):</span><br><span class="line">        # 100 x 1 to 4 x 4 x 512</span><br><span class="line">        # 全连接层</span><br><span class="line">        layer1 = tf.layers.dense(noise_img, 4 * 4 * 512)</span><br><span class="line">        layer1 = tf.reshape(layer1, [-1, 4, 4, 512])</span><br><span class="line">        # batch normalization</span><br><span class="line">        layer1 = tf.layers.batch_normalization(layer1, training=is_train)</span><br><span class="line">        # Leaky ReLU</span><br><span class="line">        layer1 = tf.maximum(alpha * layer1, layer1)</span><br><span class="line">        # dropout</span><br><span class="line">        layer1 = tf.nn.dropout(layer1, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 4 x 4 x 512 to 7 x 7 x 256</span><br><span class="line">        layer2 = tf.layers.conv2d_transpose(layer1, 256, 4, strides=1, padding=&apos;valid&apos;)</span><br><span class="line">        layer2 = tf.layers.batch_normalization(layer2, training=is_train)</span><br><span class="line">        layer2 = tf.maximum(alpha * layer2, layer2)</span><br><span class="line">        layer2 = tf.nn.dropout(layer2, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 7 x 7 256 to 14 x 14 x 128</span><br><span class="line">        layer3 = tf.layers.conv2d_transpose(layer2, 128, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        layer3 = tf.layers.batch_normalization(layer3, training=is_train)</span><br><span class="line">        layer3 = tf.maximum(alpha * layer3, layer3)</span><br><span class="line">        layer3 = tf.nn.dropout(layer3, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 14 x 14 x 128 to 28 x 28 x 1</span><br><span class="line">        logits = tf.layers.conv2d_transpose(layer3, output_dim, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        # MNIST原始数据集的像素范围在0-1，这里的生成图片范围为(-1,1)</span><br><span class="line">        # 因此在训练时，记住要把MNIST像素范围进行resize</span><br><span class="line">        outputs = tf.tanh(logits)</span><br><span class="line"></span><br><span class="line">        return outputs</span><br></pre></td></tr></table></figure>
+<h2 id="判别器"><a href="#判别器" class="headerlink" title="判别器"></a>判别器</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_discriminator(inputs_img, reuse=False, alpha=0.01):</span><br><span class="line">    with tf.variable_scope(&quot;discriminator&quot;, reuse=reuse):</span><br><span class="line">        # 28 x 28 x 1 to 14 x 14 x 128</span><br><span class="line">        # 第一层不加入BN</span><br><span class="line">        layer1 = tf.layers.conv2d(inputs_img, 128, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        layer1 = tf.maximum(alpha * layer1, layer1)</span><br><span class="line">        layer1 = tf.nn.dropout(layer1, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 14 x 14 x 128 to 7 x 7 x 256</span><br><span class="line">        layer2 = tf.layers.conv2d(layer1, 256, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        layer2 = tf.layers.batch_normalization(layer2, training=True)</span><br><span class="line">        layer2 = tf.maximum(alpha * layer2, layer2)</span><br><span class="line">        layer2 = tf.nn.dropout(layer2, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 7 x 7 x 256 to 4 x 4 x 512</span><br><span class="line">        layer3 = tf.layers.conv2d(layer2, 512, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        layer3 = tf.layers.batch_normalization(layer3, training=True)</span><br><span class="line">        layer3 = tf.maximum(alpha * layer3, layer3)</span><br><span class="line">        layer3 = tf.nn.dropout(layer3, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 4 x 4 x 512 to 4*4*512 x 1</span><br><span class="line">        flatten = tf.reshape(layer3, (-1, 4 * 4 * 512))</span><br><span class="line">        logits = tf.layers.dense(flatten, 1)</span><br><span class="line">        outputs = tf.sigmoid(logits)</span><br><span class="line"></span><br><span class="line">        return logits, outputs</span><br></pre></td></tr></table></figure>
+<h2 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_loss(inputs_real, inputs_noise, image_depth, smooth=0.1):</span><br><span class="line">    g_outputs = get_generator(inputs_noise, image_depth, is_train=True)</span><br><span class="line">    d_logits_real, d_outputs_real = get_discriminator(inputs_real)</span><br><span class="line">    d_logits_fake, d_outputs_fake = get_discriminator(g_outputs, reuse=True)</span><br><span class="line"></span><br><span class="line">    # 计算Loss</span><br><span class="line">    g_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=d_logits_fake,</span><br><span class="line">                                                                    labels=tf.ones_like(d_outputs_fake) * (1 - smooth)))</span><br><span class="line"></span><br><span class="line">    d_loss_real = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=d_logits_real,</span><br><span class="line">                                                                         labels=tf.ones_like(d_outputs_real) * (</span><br><span class="line">                                                                                     1 - smooth)))</span><br><span class="line">    d_loss_fake = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=d_logits_fake,</span><br><span class="line">                                                                         labels=tf.zeros_like(d_outputs_fake)))</span><br><span class="line">    d_loss = tf.add(d_loss_real, d_loss_fake)</span><br><span class="line"></span><br><span class="line">    return g_loss, d_loss</span><br></pre></td></tr></table></figure>
+<h2 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_optimizer(g_loss, d_loss, learning_rate=0.001):</span><br><span class="line">    train_vars = tf.trainable_variables()</span><br><span class="line"></span><br><span class="line">    g_vars = [var for var in train_vars if var.name.startswith(&quot;generator&quot;)]</span><br><span class="line">    d_vars = [var for var in train_vars if var.name.startswith(&quot;discriminator&quot;)]</span><br><span class="line"></span><br><span class="line">    # Optimizer</span><br><span class="line">    with tf.control_dependencies(tf.get_collection(tf.GraphKeys.UPDATE_OPS)):</span><br><span class="line">        g_opt = tf.train.RMSPropOptimizer(learning_rate).minimize(g_loss, var_list=g_vars)</span><br><span class="line">        d_opt = tf.train.RMSPropOptimizer(learning_rate).minimize(d_loss, var_list=d_vars)</span><br><span class="line"></span><br><span class="line">    return g_opt, d_opt</span><br></pre></td></tr></table></figure>
+<h2 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def plot_images(samples):</span><br><span class="line">    fig, axes = plt.subplots(nrows=5, ncols=5, sharex=True, sharey=True, figsize=(7, 7))</span><br><span class="line">    for img, ax in zip(samples, axes.flatten()):</span><br><span class="line">        ax.imshow(img.reshape((28, 28)), cmap=&apos;Greys_r&apos;)</span><br><span class="line">        ax.get_xaxis().set_visible(False)</span><br><span class="line">        ax.get_yaxis().set_visible(False)</span><br><span class="line">    fig.tight_layout(pad=0)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def show_generator_output(sess, n_images, inputs_noise, output_dim):</span><br><span class="line">    noise_shape = inputs_noise.get_shape().as_list()[-1]</span><br><span class="line">    # 生成噪声图片</span><br><span class="line">    examples_noise = np.random.uniform(-1, 1, size=[n_images, noise_shape])</span><br><span class="line"></span><br><span class="line">    samples = sess.run(get_generator(inputs_noise, output_dim, False),</span><br><span class="line">                       feed_dict=&#123;inputs_noise: examples_noise&#125;)</span><br><span class="line"></span><br><span class="line">    result = np.squeeze(samples, -1)</span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
+<h2 id="开始训练"><a href="#开始训练" class="headerlink" title="开始训练"></a>开始训练</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 定义参数</span><br><span class="line">batch_size = 64</span><br><span class="line">noise_size = 100</span><br><span class="line">epochs = 5</span><br><span class="line">n_samples = 25</span><br><span class="line">learning_rate = 0.001</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def train(noise_size, data_shape, batch_size, n_samples):</span><br><span class="line">    # 存储loss</span><br><span class="line">    losses = []</span><br><span class="line">    steps = 0</span><br><span class="line"></span><br><span class="line">    inputs_real, inputs_noise = get_inputs(noise_size, data_shape[1], data_shape[2], data_shape[3])</span><br><span class="line">    g_loss, d_loss = get_loss(inputs_real, inputs_noise, data_shape[-1])</span><br><span class="line">    print(&quot;FUNCTION READY!!&quot;)</span><br><span class="line">    for _ in range(6):</span><br><span class="line">        g_train_opt, d_train_opt = get_optimizer(g_loss, d_loss, learning_rate)</span><br><span class="line">    print(&quot;TRAINING....&quot;)</span><br><span class="line">    #exit()</span><br><span class="line">    with tf.Session() as sess:</span><br><span class="line">        sess.run(tf.global_variables_initializer())</span><br><span class="line">        # 迭代epoch</span><br><span class="line">        for e in range(epochs):</span><br><span class="line">            for batch_i in range(mnist.train.num_examples // batch_size):</span><br><span class="line">                steps += 1</span><br><span class="line">                batch = mnist.train.next_batch(batch_size)</span><br><span class="line"></span><br><span class="line">                batch_images = batch[0].reshape((batch_size, data_shape[1], data_shape[2], data_shape[3]))</span><br><span class="line">                # scale to -1, 1</span><br><span class="line">                batch_images = batch_images * 2 - 1</span><br><span class="line"></span><br><span class="line">                # noise</span><br><span class="line">                batch_noise = np.random.uniform(-1, 1, size=(batch_size, noise_size))</span><br><span class="line"></span><br><span class="line">                # run optimizer</span><br><span class="line">                sess.run(g_train_opt, feed_dict=&#123;inputs_real: batch_images,</span><br><span class="line">                                                 inputs_noise: batch_noise&#125;)</span><br><span class="line">                sess.run(d_train_opt, feed_dict=&#123;inputs_real: batch_images,</span><br><span class="line">                                                 inputs_noise: batch_noise&#125;)</span><br><span class="line"></span><br><span class="line">                if steps % 101 == 0:</span><br><span class="line">                    train_loss_d = d_loss.eval(&#123;inputs_real: batch_images,</span><br><span class="line">                                                inputs_noise: batch_noise&#125;)</span><br><span class="line">                    train_loss_g = g_loss.eval(&#123;inputs_real: batch_images,</span><br><span class="line">                                                inputs_noise: batch_noise&#125;)</span><br><span class="line">                    losses.append((train_loss_d, train_loss_g))</span><br><span class="line">                    print(&quot;Epoch &#123;&#125;/&#123;&#125;....&quot;.format(e + 1, epochs),</span><br><span class="line">                          &quot;Discriminator Loss: &#123;:.4f&#125;....&quot;.format(train_loss_d),</span><br><span class="line">                          &quot;Generator Loss: &#123;:.4f&#125;....&quot;.format(train_loss_g))</span><br><span class="line"></span><br><span class="line">            if e % 1 == 0:</span><br><span class="line">                # 显示图片</span><br><span class="line">                samples = show_generator_output(sess, n_samples, inputs_noise, data_shape[-1])</span><br><span class="line">                plot_images(samples)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">with tf.Graph().as_default():</span><br><span class="line">    train(noise_size, [-1, 28, 28, 1], batch_size, n_samples)</span><br><span class="line">    print(&quot;OPTIMIZER END!!&quot;)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -462,7 +464,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/语法/" rel="tag">✿✿✿ 语法</a>
+            <a href="/tags/DCGAN/" rel="tag">✿✿✿ DCGAN</a>
           
         </div>
       
@@ -475,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/12/tensorflow-可视化/" rel="next" title="tensorflow-可视化">
-                <i class="fa fa-chevron-left"></i> tensorflow-可视化
+              <a href="/2019/01/13/RNN/" rel="next" title="RNN写文章">
+                <i class="fa fa-chevron-left"></i> RNN写文章
               </a>
             
           </div>
@@ -485,8 +487,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/13/循环神经网络RNN-写诗/" rel="prev" title="循环神经网络RNN-写诗">
-                循环神经网络RNN-写诗 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/13/keras实现CNN/" rel="prev" title="keras实现CNN">
+                keras实现CNN <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -667,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#constant"><span class="nav-number">1.</span> <span class="nav-text">constant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量"><span class="nav-number">2.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#placeholdder占位符"><span class="nav-number">4.</span> <span class="nav-text">placeholdder占位符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-number">5.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把numpy转换成Tensor"><span class="nav-number">6.</span> <span class="nav-text">把numpy转换成Tensor</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导入环境"><span class="nav-number">1.</span> <span class="nav-text">导入环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据准备"><span class="nav-number">2.</span> <span class="nav-text">数据准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获得输入数据"><span class="nav-number">3.</span> <span class="nav-text">获得输入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器"><span class="nav-number">4.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判别器"><span class="nav-number">5.</span> <span class="nav-text">判别器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标函数"><span class="nav-number">6.</span> <span class="nav-text">目标函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化器"><span class="nav-number">7.</span> <span class="nav-text">优化器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示图片"><span class="nav-number">8.</span> <span class="nav-text">显示图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始训练"><span class="nav-number">9.</span> <span class="nav-text">开始训练</span></a></li></ol></div>
             
 
           </div>
@@ -842,9 +844,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://janvia.github.io/2019/01/12/tensorflow-基础语法/';
-          this.page.identifier = '2019/01/12/tensorflow-基础语法/';
-          this.page.title = 'tensorflow-基础语法';
+          this.page.url = 'https://janvia.github.io/2019/01/13/深度卷积对抗生成网络-DCGAN/';
+          this.page.identifier = '2019/01/13/深度卷积对抗生成网络-DCGAN/';
+          this.page.title = '深度卷积对抗生成网络-DCGAN';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://sylvia.disqus.com/embed.js';
