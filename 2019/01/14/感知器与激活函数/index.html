@@ -111,21 +111,21 @@
 
 
 
-<meta name="description" content="感知器是激活函数为阶跃函数的神经元。感知器的模型如下：·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。·　加权和(weighted sum)：就是输入权值 x x 权值 w + 偏置项 b的总和。·　激活函数(step function)：感知器的激活函数">
+<meta name="description" content="定义感知器是激活函数为阶跃函数的神经元。感知器的模型如下：·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。·　加权和(weighted sum)：就是输入权值 x x 权值 w + 偏置项 b的总和。·　激活函数(step function)：感知器的激活">
 <meta name="keywords" content="感知器,激活函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="感知器与激活函数">
 <meta property="og:url" content="https://janvia.github.io/2019/01/14/感知器与激活函数/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="感知器是激活函数为阶跃函数的神经元。感知器的模型如下：·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。·　加权和(weighted sum)：就是输入权值 x x 权值 w + 偏置项 b的总和。·　激活函数(step function)：感知器的激活函数">
+<meta property="og:description" content="定义感知器是激活函数为阶跃函数的神经元。感知器的模型如下：·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。·　加权和(weighted sum)：就是输入权值 x x 权值 w + 偏置项 b的总和。·　激活函数(step function)：感知器的激活">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://janvia.github.io/2019/01/14/感知器与激活函数/神经元.png">
-<meta property="og:image" content="https://janvia.github.io/2019/01/14/感知器与激活函数/unit.png">
-<meta property="og:updated_time" content="2019-01-14T02:14:20.528Z">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/神经元.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/unit.png">
+<meta property="og:updated_time" content="2019-01-14T09:17:31.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="感知器与激活函数">
-<meta name="twitter:description" content="感知器是激活函数为阶跃函数的神经元。感知器的模型如下：·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。·　加权和(weighted sum)：就是输入权值 x x 权值 w + 偏置项 b的总和。·　激活函数(step function)：感知器的激活函数">
-<meta name="twitter:image" content="https://janvia.github.io/2019/01/14/感知器与激活函数/神经元.png">
+<meta name="twitter:description" content="定义感知器是激活函数为阶跃函数的神经元。感知器的模型如下：·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。·　加权和(weighted sum)：就是输入权值 x x 权值 w + 偏置项 b的总和。·　激活函数(step function)：感知器的激活">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/神经元.png">
 
 
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  232
+                  371
                 </span>
               
 
@@ -441,10 +441,24 @@
       
 
       
-        <p>感知器是激活函数为阶跃函数的神经元。感知器的模型如下：<br><img src="/2019/01/14/感知器与激活函数/神经元.png" title="感知器"><br>·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)<br>·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。<br>·　加权和(weighted sum)：就是输入权值 x x 权值 w + 偏置项 b的总和。<br>·　激活函数(step function)：感知器的激活函数：f(x)={0x&gt;0 1x≤0</p>
-<p>$$<br>f(n) =<br>\begin{cases}<br>n/2,  &amp; \text{if $n$ is even} \<br>3n+1, &amp; \text{if $n$ is odd}<br>\end{cases}<br>$$<br>·　输出(output)：感知器的输出由加权值用激活函数做非线性变换。也就是这个公式：y=f(w⋅x+b)<br>我们使用unit激活函数结合上图就有：</p>
-<p>y=f(w⋅x+b)=f(w1x1+w2x2+w3x3+bias)<br>其中f(x)就是激活函数 f(x)={1x&gt;0 0x≤0 ，图像如下图所示。<br><img src="/2019/01/14/感知器与激活函数/unit.png" title="unit激活函数"></p>
-
+        <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>感知器是激活函数为阶跃函数的神经元。感知器的模型如下：<br><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/神经元.png" alt=""><br>·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)<br>·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。<br>·　加权和(weighted sum)：就是<strong>输入权值 x</strong> x <strong>权值 w</strong> + <strong>偏置项 b</strong>的总和。<br>·　激活函数(step function)：感知器的激活函数：</p>
+<script type="math/tex; mode=display">
+f(x) =
+\begin{cases}
+0,  & \text{x>0} \\
+1, & \text{x≤0}
+\end{cases}</script><p>·　输出(output)：感知器的输出由加权值用激活函数做非线性变换。也就是这个公式：y=f(w⋅x+b)<br>我们使用unit激活函数结合上图就有：</p>
+<p>y=f(w⋅x+b)=f(w1x1+w2x2+w3x3+bias)</p>
+<p>其中f(x)就是激活函数 f(x)={1x&gt;0 0x≤0 ，图像如下图所示:<br><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/unit.png" alt=""></p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><script type="math/tex; mode=display">
+x_1=[-1.0, 3.0, 2.0] \\ x_2=[2.0, -1.0, 5.0] \\ x_3=[-2.0, 0.0, 3.0 ] \\ x_4=[4.0, 1.0, 6.0] \\ w=[4.0, -3.0, 5.0 ] \\ b=2.0</script><p>则：</p>
+<script type="math/tex; mode=display">
+X=\begin{bmatrix}  -1.0 & 3.0 & 2.0 \\ 2.0 & -1.0& 5.0 \\ -2.0& 0.0& 3.0 \\ 4.0& 1.0 & 6.0  \end{bmatrix}</script><script type="math/tex; mode=display">
+w^T =\begin{bmatrix} 4.0 \\ -3.0 \\ 5.0 \end{bmatrix}</script><p>所以：</p>
+<script type="math/tex; mode=display">
+logits =  X\cdot w^T + b= \begin{bmatrix}  -1.0 & 3.0 & 2.0 \\ 2.0 & -1.0& 5.0 \\ -2.0& 0.0& 3.0 \\ 4.0& 1.0 & 6.0  \end{bmatrix} \cdot \begin{bmatrix} 4.0 \\ -3.0 \\ 5.0 \end{bmatrix} + 2.0 \\ =[-1.0 \ \ \  38.0 \ \ \ 7.0 \ \ \ 43.0 ]</script><p>带入激活函数：</p>
+<script type="math/tex; mode=display">
+output = f(x)=[0\ \ \ 1 \ \ \ 1 \ \ \ 1 ]</script>
       
     </div>
     
@@ -485,6 +499,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/14/图床/" rel="prev" title="图床">
+                图床 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -559,8 +577,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -577,7 +604,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -599,7 +626,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -646,6 +673,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -673,7 +716,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.2k</span>
+    <span title="Site words total count">34.5k</span>
   
 </div>
 
