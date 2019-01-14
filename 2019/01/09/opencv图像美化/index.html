@@ -135,9 +135,9 @@
 <meta property="og:image" content="https://janvia.github.io/2019/01/09/opencv图像美化/dst5.jpg">
 <meta property="og:image" content="https://janvia.github.io/2019/01/09/opencv图像美化/src6.jpg">
 <meta property="og:image" content="https://janvia.github.io/2019/01/09/opencv图像美化/dst6.jpg">
-<meta property="og:image" content="http://pkxzrpxol.bkt.clouddn.com/images/image3.png">
-<meta property="og:image" content="http://pkxzrpxol.bkt.clouddn.com/images/dst7.png">
-<meta property="og:updated_time" content="2019-01-09T14:40:56.158Z">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/image3.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dst7.png">
+<meta property="og:updated_time" content="2019-01-14T07:54:14.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="opencv图像美化">
 <meta name="twitter:description" content="直方图均衡化-灰度import cv2import numpy as npimg = cv2.imread(&amp;apos;image2.jpg&amp;apos;,1)gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) # 图片灰度化cv2.imshow(&amp;apos;gray&amp;apos;,gray)cv2.imwrite(&amp;apos;gray2.jpg&amp;apos;,gr">
@@ -475,7 +475,8 @@
 <h2 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">img = cv2.imread(&apos;image1.jpg&apos;,1)</span><br><span class="line">imgInfo = img.shape</span><br><span class="line">height = imgInfo[0]</span><br><span class="line">width = imgInfo[1]</span><br><span class="line">img = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)</span><br><span class="line">#cv2.imshow(&apos;src&apos;,img)</span><br><span class="line">cv2.imwrite(&apos;src6.jpg&apos;,img)</span><br><span class="line">dst = np.zeros((height,width,3),np.uint8)</span><br><span class="line">collect = np.zeros(9,np.uint8)</span><br><span class="line">for i in range(1,height-1):</span><br><span class="line">    for j in range(1,width-1):</span><br><span class="line">        k = 0</span><br><span class="line">        for m in range(-1,2):</span><br><span class="line">            for n in range(-1,2):</span><br><span class="line">                gray = img[i+m,j+n]</span><br><span class="line">                collect[k] = gray</span><br><span class="line">                k = k+1</span><br><span class="line">        # 0 1 2 3 4 5 6 7 8</span><br><span class="line">        #   1 </span><br><span class="line">        for k in range(0,9):</span><br><span class="line">            p1 = collect[k]</span><br><span class="line">            for t in range(k+1,9):</span><br><span class="line">                if p1&lt;collect[t]:</span><br><span class="line">                    mid = collect[t]</span><br><span class="line">                    collect[t] = p1</span><br><span class="line">                    p1 = mid</span><br><span class="line">        dst[i,j] = collect[4]</span><br><span class="line">#cv2.imshow(&apos;dst&apos;,dst)</span><br><span class="line">cv2.imwrite(&apos;dst6.jpg&apos;,dst)</span><br></pre></td></tr></table></figure>
 <img src="/2019/01/09/opencv图像美化/src6.jpg" title="灰度图片"> <img src="/2019/01/09/opencv图像美化/dst6.jpg" title="中值滤波后的灰度图片">
 <h2 id="皮肤磨皮美白-双边滤波"><a href="#皮肤磨皮美白-双边滤波" class="headerlink" title="皮肤磨皮美白-双边滤波"></a>皮肤磨皮美白-双边滤波</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import cv2</span><br><span class="line">img = cv2.imread(&apos;image3.png&apos;,1)</span><br><span class="line">#cv2.imshow(&apos;src&apos;,img)</span><br><span class="line">dst = cv2.bilateralFilter(img,15,35,35) # 滤波函数</span><br><span class="line">#cv2.imshow(&apos;dst&apos;,dst)</span><br><span class="line">cv2.imwrite(&apos;dst7.png&apos;,dst)</span><br></pre></td></tr></table></figure>
-<figure class="half"><br>    <img src="http://pkxzrpxol.bkt.clouddn.com/images/image3.png" title="美白前的图片"><br>    <img src="http://pkxzrpxol.bkt.clouddn.com/images/dst7.png" title="美白后的图片"><br></figure>
+<figure class="half"><br>    <img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/image3.png" title="美白前的图片"><br>    <img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dst7.png" title="美白后的图片"><br></figure>
+
 
 
       
