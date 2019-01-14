@@ -1906,7 +1906,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9fffff;
+  background: #1cb1a8;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2781,7 +2781,7 @@ embed {
   border-bottom: 1px solid #fc6423;
 }
 body {
-  background: url("http://pkxzrpxol.bkt.clouddn.com/images/backGround.jpg");
+  background: url("https://jiangvia.oss-cn-shenzhen.aliyuncs.com/backGround.jpg");
   background-attachment: fixed;
   background-position: 50% 50%;
 }
