@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播3.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播4.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播5.png">
-<meta property="og:updated_time" content="2019-01-14T14:01:06.983Z">
+<meta property="og:updated_time" content="2019-01-14T14:10:04.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反向传播">
 <meta name="twitter:description" content="反向传播推导 定义损失函数： E_{total}=\frac12 (y-outo)^2定义激活函数： \sigma(x)=sigmod(x)前向传播第一层(输入层)：  x_1\ \ \ x_2\ \ \ b_1  加权和：  net h_1=x_1w_1+x_2w_2+b_1  第二层(隐层)：  outh_1=sigmod(neth_1)  加权和：  neto_1=outh_1w_3+out">
@@ -500,14 +500,17 @@ b_{2new}=b_{2old}-\eta \frac{\partial E_{total}}{\partial b_2}, η是学习率</
 \frac{\partial Eo_2}{\partial outh_1} = \frac{\partial Eo_2}{\partial neto_2} \cdot \frac{\partial neto_2}{\partial outh_1}</script><script type="math/tex; mode=display">
 \frac{\partial Eo_2}{\partial neto_2} = \frac{\partial E_{o_2}}{\partial outo_2} \cdot \frac{\partial outo_2}{\partial neto_2} = (outo_2-y_2)\cdot outo_2(1-outo_2)</script><script type="math/tex; mode=display">
 \frac{\partial neto_2}{\partial outh_1} = w_5（(outh1连接outo2的权重，暂定为w5,）</script><h4 id="综合上式："><a href="#综合上式：" class="headerlink" title="综合上式："></a>综合上式：</h4><script type="math/tex; mode=display">
-\frac{\partial E_{total}}{\partial w_1}= [w_3 (outo_1-y_1)\cdot outo_1(1-outo_1) + w_5(outo_2-y_2)\cdot outo_2(1-outo_2)] \cdot outh_1(1-outh_1) \cdot x_1</script><script type="math/tex; mode=display">
-\frac{\partial E_{total}}{\partial b_1}= [w_3 (outo_1-y_1)\cdot outo_1(1-outo_1) +w_5(outo_2-y_2)\cdot outo_2(1-outo_2)] \cdot outh_1(1-outh_1)</script><p>更新：</p>
+\frac{\partial E_{total}}{\partial w_1}= [w_3 (outo_1-y_1)\cdot outo_1(1-outo_1)</script><script type="math/tex; mode=display">
++ w_5(outo_2-y_2)\cdot outo_2(1-outo_2)] \cdot outh_1(1-outh_1) \cdot x_1</script><script type="math/tex; mode=display">
+\frac{\partial E_{total}}{\partial b_1}= [w_3 (outo_1-y_1)\cdot outo_1(1-outo_1)</script><script type="math/tex; mode=display">
++w_5(outo_2-y_2)\cdot outo_2(1-outo_2)] \cdot outh_1(1-outh_1)</script><p>更新：</p>
 <script type="math/tex; mode=display">
 w_{1new}=w_{1old}-\eta \frac{\partial E_{total}}{\partial w_1}</script><script type="math/tex; mode=display">
 b_{1new}=b_{1old}-\eta \frac{\partial E_{total}}{\partial b_1}</script><h4 id="同理可得：w2：也就是同一层的w都可以用这种方式更新。"><a href="#同理可得：w2：也就是同一层的w都可以用这种方式更新。" class="headerlink" title="同理可得：w2：也就是同一层的w都可以用这种方式更新。"></a>同理可得：<code>w2</code>：也就是同一层的<code>w</code>都可以用这种方式更新。</h4><h4 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播2.png" alt=""></p>
 <h4 id="我们定义第L层的第i个神经元更新权重参数时-上标表示层数，下标表示神经元-："><a href="#我们定义第L层的第i个神经元更新权重参数时-上标表示层数，下标表示神经元-：" class="headerlink" title="我们定义第L层的第i个神经元更新权重参数时(上标表示层数，下标表示神经元)："></a>我们定义第<code>L</code>层的第<code>i</code>个神经元更新权重参数时(上标表示层数，下标表示神经元)：</h4><script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial net_i^{(L)}} = \delta_i^{(L)}</script><script type="math/tex; mode=display">
-\frac{\partial E_{total}}{\partial w_{ij}^{(l)}}=outh_j^{(l-1)}\delta_i^{(l)}，其中w_{ij}^{(l)}表示第l层的第i个神经元连接第l−1层的第j的神经元的相连的权重参数w。如下图所示：</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播3.png" alt=""></p>
+\frac{\partial E_{total}}{\partial w_{ij}^{(l)}}=outh_j^{(l-1)}\delta_i^{(l)}，其中w_{ij}^{(l)}</script><p>表示第l层的第i个神经元连接第l−1层的第j的神经元的相连的权重参数w。如下图所示：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播3.png" alt=""></p>
 <h4 id="推广总结"><a href="#推广总结" class="headerlink" title="推广总结"></a>推广总结</h4><h4 id="根据前面所定义的："><a href="#根据前面所定义的：" class="headerlink" title="根据前面所定义的："></a>根据前面所定义的：</h4><script type="math/tex; mode=display">
 E_{total}=\frac12 (y-outo)^2</script><script type="math/tex; mode=display">
 \sigma(x)=sigmod(x)</script><script type="math/tex; mode=display">
@@ -548,7 +551,8 @@ w_{new}^2 = w_{old}^2-\Delta w^{(2)}</script><script type="math/tex; mode=displa
 b_{new}^2=b_{old}^2-\Delta b^2
 = \begin{bmatrix} 1 \\ 1  \end{bmatrix}-\begin{bmatrix} -0.01240932\\ 0.08379177\end{bmatrix}
 =\begin{bmatrix} 1.01240932\\ 0.91620823\end{bmatrix}</script><script type="math/tex; mode=display">
-w_{new}^1= w_{old}^1-\Delta w^{(1)}=\begin{bmatrix} 0.1 & 0.3 \\ 0.2 & 0.4\end{bmatrix} -  \begin{bmatrix} 0.00537109& 0.01074218\\ 0.00643758 & 0.01287516 \end{bmatrix}= \begin{bmatrix} 0.09462891& 0.28925782\\ 0.19356242& 0.38712484\end{bmatrix}</script><script type="math/tex; mode=display">
+w_{new}^1= w_{old}^1-\Delta w^{(1)}=\begin{bmatrix} 0.1 & 0.3 \\ 0.2 & 0.4\end{bmatrix} -  \begin{bmatrix} 0.00537109& 0.01074218\\ 0.00643758 & 0.01287516 \end{bmatrix}</script><script type="math/tex; mode=display">
+= \begin{bmatrix} 0.09462891& 0.28925782\\ 0.19356242& 0.38712484\end{bmatrix}</script><script type="math/tex; mode=display">
 b_{new}^1=b_{old}^1-\Delta b^1=\begin{bmatrix} 0.5 \\ 0.5  \end{bmatrix} - \begin{bmatrix} 0.01074218\\ 0.01287516\end{bmatrix}=\begin{bmatrix} 0.48925782\\ 0.48712484\end{bmatrix}</script><h3 id="权重初始化"><a href="#权重初始化" class="headerlink" title="权重初始化"></a>权重初始化</h3><h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播5.png" alt=""></h3>
       
     </div>
