@@ -122,7 +122,31 @@
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习１.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习2.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习3.png">
-<meta property="og:updated_time" content="2019-01-15T08:44:56.671Z">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习4.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习5.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习6.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习7.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习8.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习10.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习9.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习11.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习12.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习13.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习15.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习16.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习17.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习18.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习19.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习20.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习21.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片1.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片2.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片3.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片7.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片8.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片9.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片10.png">
+<meta property="og:updated_time" content="2019-01-15T11:38:55.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="强化学习基础">
 <meta name="twitter:description" content="强化学习的作用Reinforcement learning is learning what to do—how to map situations to actions—so as to maximize a numerical reward signal.强化学习是学习做什么（决策），即基于当前的场景，学习如何做出一个可以最大化回报的动作。 深度学习与强化学习的关系multiple layer">
@@ -405,7 +429,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  398
+                  696
                 </span>
               
 
@@ -421,7 +445,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -470,6 +494,51 @@ v_\pi(s)=E_\pi[G_t|S_t=s]=E_\pi[\sum_{k=0}^\infty\gamma^kR_{t+k+1}|S_t=s]</scrip
 q_\pi(s,a)=E_\pi[G_t|S_t=s,A_t=a]=E_\pi[\sum_{k=0}^\infty\gamma^kR_{t+k+1}|S_t=s,A_t=a]</script><h4 id="贝尔曼方程"><a href="#贝尔曼方程" class="headerlink" title="贝尔曼方程"></a>贝尔曼方程</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习2.png" alt=""></p>
 <p>描述了当前状态下的价值函数与其下一时刻状态下的价值函数的关系</p>
 <p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习3.png" alt=""></p>
+<h3 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h3><p>“The term dynamic programming (DP) refers to a collection of algorithms that can be used to compute optimal policies given a perfect model of the environment as a Markov decision process (MDP).”<br>动态规划是在给定模型情况下求解最优策略的马尔科夫决策过程的一系列算法的统称。</p>
+<p>动态规划主要分为：策略迭代与值迭代（Policy iteration vs Value iteration）</p>
+<p>前提条件：转移概率p(s’,r|s,a)已知</p>
+<p>贝尔曼最优性方程：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习4.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习5.png" alt=""></p>
+<h3 id="值迭代"><a href="#值迭代" class="headerlink" title="值迭代"></a>值迭代</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习6.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习7.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习8.png" alt=""></p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习10.png" alt=""></p>
+<p>运用公式：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习9.png" alt=""></p>
+<p>结果：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习11.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习12.png" alt=""></p>
+<h3 id="策略迭代"><a href="#策略迭代" class="headerlink" title="策略迭代"></a>策略迭代</h3><p>策略迭代＝策略评估＋策略提升</p>
+<h4 id="策略评估"><a href="#策略评估" class="headerlink" title="策略评估"></a>策略评估</h4><p>目标：通过执行策略π，计算每个状态对应的状态函数值</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习13.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习15.png" alt=""></p>
+<p>实例：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习16.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习17.png" alt=""></p>
+<h4 id="策略提升"><a href="#策略提升" class="headerlink" title="策略提升"></a>策略提升</h4><p>在策略评估之后，采用贪婪策略进行策略更新</p>
+<script type="math/tex; mode=display">
+v_\pi=E_{a\sim\pi}(q_\pi(s,a))</script><p>将策略改成：</p>
+<script type="math/tex; mode=display">
+\pi'=argmax_a(q_\pi(s,a))</script><p>则：</p>
+<script type="math/tex; mode=display">
+v_\pi'>v_\pi</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习18.png" alt=""></p>
+<h4 id="VI和PI的联系"><a href="#VI和PI的联系" class="headerlink" title="VI和PI的联系"></a>VI和PI的联系</h4><p>策略评估：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习19.png" alt=""></p>
+<p>策略提升：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习20.png" alt=""></p>
+<p>值迭代：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/强化学习21.png" alt=""></p>
+<h3 id="PMDP"><a href="#PMDP" class="headerlink" title="ＰＭＤＰ"></a>ＰＭＤＰ</h3><p>ＭＤＰ假设中，状态是完全已知的。实际生活中，由于传感器的局限性。往往难以得到当前状态的准确状态值。</p>
+<p>但我们可以估计当前的状态分布belief: b(s)</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片1.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片2.png" alt=""></p>
+<p>更新belief:</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片3.png" alt=""></p>
+<h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片7.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片8.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片9.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片10.png" alt=""></p>
 
       
     </div>
@@ -688,7 +757,7 @@ q_\pi(s,a)=E_\pi[G_t|S_t=s,A_t=a]=E_\pi[\sum_{k=0}^\infty\gamma^kR_{t+k+1}|S_t=s
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#强化学习的作用"><span class="nav-number">1.</span> <span class="nav-text">强化学习的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习与强化学习的关系"><span class="nav-number">2.</span> <span class="nav-text">深度学习与强化学习的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本结构"><span class="nav-number">3.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MDP"><span class="nav-number">4.</span> <span class="nav-text">MDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#价值函数"><span class="nav-number">4.1.</span> <span class="nav-text">价值函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贝尔曼方程"><span class="nav-number">4.2.</span> <span class="nav-text">贝尔曼方程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#强化学习的作用"><span class="nav-number">1.</span> <span class="nav-text">强化学习的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度学习与强化学习的关系"><span class="nav-number">2.</span> <span class="nav-text">深度学习与强化学习的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本结构"><span class="nav-number">3.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MDP"><span class="nav-number">4.</span> <span class="nav-text">MDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#价值函数"><span class="nav-number">4.1.</span> <span class="nav-text">价值函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贝尔曼方程"><span class="nav-number">4.2.</span> <span class="nav-text">贝尔曼方程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DP"><span class="nav-number">5.</span> <span class="nav-text">DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#值迭代"><span class="nav-number">6.</span> <span class="nav-text">值迭代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">6.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#策略迭代"><span class="nav-number">7.</span> <span class="nav-text">策略迭代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#策略评估"><span class="nav-number">7.1.</span> <span class="nav-text">策略评估</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#策略提升"><span class="nav-number">7.2.</span> <span class="nav-text">策略提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VI和PI的联系"><span class="nav-number">7.3.</span> <span class="nav-text">VI和PI的联系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PMDP"><span class="nav-number">8.</span> <span class="nav-text">ＰＭＤＰ</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1"><span class="nav-number">8.1.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -722,7 +791,7 @@ q_\pi(s,a)=E_\pi[G_t|S_t=s,A_t=a]=E_\pi[\sum_{k=0}^\infty\gamma^kR_{t+k+1}|S_t=s
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">37.6k</span>
+    <span title="Site words total count">37.9k</span>
   
 </div>
 
