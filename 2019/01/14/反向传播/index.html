@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播3.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播4.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播5.png">
-<meta property="og:updated_time" content="2019-01-14T14:10:04.865Z">
+<meta property="og:updated_time" content="2019-01-15T00:38:02.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反向传播">
 <meta name="twitter:description" content="反向传播推导 定义损失函数： E_{total}=\frac12 (y-outo)^2定义激活函数： \sigma(x)=sigmod(x)前向传播第一层(输入层)：  x_1\ \ \ x_2\ \ \ b_1  加权和：  net h_1=x_1w_1+x_2w_2+b_1  第二层(隐层)：  outh_1=sigmod(neth_1)  加权和：  neto_1=outh_1w_3+out">
@@ -447,27 +447,27 @@
         <h3 id="反向传播推导"><a href="#反向传播推导" class="headerlink" title="反向传播推导"></a>反向传播推导</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播１.png" alt=""></p>
 <h4 id="定义损失函数："><a href="#定义损失函数：" class="headerlink" title="定义损失函数："></a>定义损失函数：</h4><script type="math/tex; mode=display">
 E_{total}=\frac12 (y-outo)^2</script><h4 id="定义激活函数："><a href="#定义激活函数：" class="headerlink" title="定义激活函数："></a>定义激活函数：</h4><script type="math/tex; mode=display">
-\sigma(x)=sigmod(x)</script><h4 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h4><h4 id="第一层-输入层-："><a href="#第一层-输入层-：" class="headerlink" title="第一层(输入层)："></a>第一层(输入层)：</h4><ul>
+\sigma(x)=sigmod(x)</script><h4 id="前向传播"><a href="#前向传播" class="headerlink" title="前向传播"></a>前向传播</h4><h5 id="第一层-输入层-："><a href="#第一层-输入层-：" class="headerlink" title="第一层(输入层)："></a>第一层(输入层)：</h5><ul>
 <li><script type="math/tex; mode=display">
 x_1\ \ \ x_2\ \ \ b_1</script></li>
 </ul>
-<h4 id="加权和："><a href="#加权和：" class="headerlink" title="加权和："></a>加权和：</h4><ul>
+<h5 id="加权和："><a href="#加权和：" class="headerlink" title="加权和："></a>加权和：</h5><ul>
 <li><script type="math/tex; mode=display">
 net h_1=x_1w_1+x_2w_2+b_1</script></li>
 </ul>
-<h4 id="第二层-隐层-："><a href="#第二层-隐层-：" class="headerlink" title="第二层(隐层)："></a>第二层(隐层)：</h4><ul>
+<h5 id="第二层-隐层-："><a href="#第二层-隐层-：" class="headerlink" title="第二层(隐层)："></a>第二层(隐层)：</h5><ul>
 <li><script type="math/tex; mode=display">
 outh_1=sigmod(neth_1)</script></li>
 </ul>
-<h4 id="加权和：-1"><a href="#加权和：-1" class="headerlink" title="加权和："></a>加权和：</h4><ul>
+<h5 id="加权和：-1"><a href="#加权和：-1" class="headerlink" title="加权和："></a>加权和：</h5><ul>
 <li><script type="math/tex; mode=display">
 neto_1=outh_1w_3+outh_2w_4+b_2</script></li>
 </ul>
-<h4 id="第三层-输出层-："><a href="#第三层-输出层-：" class="headerlink" title="第三层(输出层)："></a>第三层(输出层)：</h4><ul>
+<h5 id="第三层-输出层-："><a href="#第三层-输出层-：" class="headerlink" title="第三层(输出层)："></a>第三层(输出层)：</h5><ul>
 <li><script type="math/tex; mode=display">
 outo_1=sigmod(neto_1)</script></li>
 </ul>
-<h4 id="计算误差值："><a href="#计算误差值：" class="headerlink" title="计算误差值："></a>计算误差值：</h4><ul>
+<h5 id="计算误差值："><a href="#计算误差值：" class="headerlink" title="计算误差值："></a>计算误差值：</h5><ul>
 <li><script type="math/tex; mode=display">
 Eo_1 = \frac12 (y_1-outo_1)^2</script></li>
 </ul>
@@ -480,18 +480,24 @@ Eo_2 = \frac12 (y_2-outo_2)^2</script></li>
 E_{total}=Eo_1+Eo_2</script></li>
 </ul>
 <p><code>总结</code>：要是使误差值最小，就需要<code>误差反向传播算法</code>，更新得到最小误差的权重参数<code>w和b</code>。</p>
-<h4 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h4><p><code>须知</code>：我们需要反向传递回去更新每一层对应的权重参数<code>w和b</code>。我们使用<code>链式法则</code>来<code>反向模式求导</code>。</p>
-<h4 id="更新第三层（输出层）的权重参数："><a href="#更新第三层（输出层）的权重参数：" class="headerlink" title="更新第三层（输出层）的权重参数："></a><strong>更新第三层（输出层）的权重参数：</strong></h4><h4 id="更新参数w："><a href="#更新参数w：" class="headerlink" title="更新参数w："></a>更新参数<code>w</code>：</h4><script type="math/tex; mode=display">
+<h4 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h4><p><code>须知</code>：我们需要反向传递回去更新每一层对应的权重参数<code>w和b</code>。</p>
+<p>我们使用<code>链式法则</code>来<code>反向模式求导</code>。</p>
+<h5 id="更新第三层（输出层）的权重参数："><a href="#更新第三层（输出层）的权重参数：" class="headerlink" title="更新第三层（输出层）的权重参数："></a><strong>更新第三层（输出层）的权重参数：</strong></h5><p>更新参数<code>w</code>：</p>
+<script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial w_3}=\frac{\partial E_{total}}{\partial outo_1} \cdot \frac{\partial outo_1}{\partial neto_1} \cdot \frac{\partial neto_1}{\partial w_3}</script><script type="math/tex; mode=display">
 = \frac{\partial \frac12(y_1-outo_1)^2}{\partial outo_1} \cdot \frac{\partial sigmod(neto_1)}{\partial neto_1} \cdot \frac{\partial neto_1}{\partial w_3}</script><script type="math/tex; mode=display">
 =(outo_1-y_1)\cdot outo_1(1-outo_1)\cdot outh_1</script><script type="math/tex; mode=display">
-w_{3new}=w_{3old}-\eta \frac{\partial E_{total}}{\partial w_3}，η是学习率</script><h4 id="更新参数b："><a href="#更新参数b：" class="headerlink" title="更新参数b："></a>更新参数<code>b</code>：</h4><script type="math/tex; mode=display">
+w_{3new}=w_{3old}-\eta \frac{\partial E_{total}}{\partial w_3}，η是学习率</script><p>更新参数<code>b</code>：</p>
+<script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial b_2}=\frac{\partial E_{total}}{\partial outo_1} \cdot \frac{\partial outo_1}{\partial neto_1} \cdot \frac{\partial neto_1}{\partial b_2}</script><script type="math/tex; mode=display">
 = \frac{\partial \frac12(y_1-outo_1)^2}{\partial outo_1} \cdot \frac{\partial sigmod(neto_1)}{\partial neto_1} \cdot \frac{\partial neto_1}{\partial b_2}</script><script type="math/tex; mode=display">
 =(outo_1-y_1)\cdot outo_1(1-outo_1)</script><script type="math/tex; mode=display">
-b_{2new}=b_{2old}-\eta \frac{\partial E_{total}}{\partial b_2}, η是学习率</script><h4 id="同理可得：w4：也就是同一层的w都可以用这种方式更新。"><a href="#同理可得：w4：也就是同一层的w都可以用这种方式更新。" class="headerlink" title="同理可得：w4：也就是同一层的w都可以用这种方式更新。"></a>同理可得：<code>w4</code>：也就是同一层的<code>w</code>都可以用这种方式更新。</h4><h4 id="更新上一层-隐层-的权重参数："><a href="#更新上一层-隐层-的权重参数：" class="headerlink" title="更新上一层(隐层)的权重参数："></a><strong>更新上一层(隐层)的权重参数</strong>：</h4><h4 id="更新权重参数w和b："><a href="#更新权重参数w和b：" class="headerlink" title="更新权重参数w和b："></a>更新权重参数<code>w和b</code>：</h4><script type="math/tex; mode=display">
+b_{2new}=b_{2old}-\eta \frac{\partial E_{total}}{\partial b_2}, η是学习率</script><p>同理可得：<code>w4</code>：也就是同一层的<code>w</code>都可以用这种方式更新。</p>
+<h5 id="更新上一层-隐层-的权重参数："><a href="#更新上一层-隐层-的权重参数：" class="headerlink" title="更新上一层(隐层)的权重参数："></a><strong>更新上一层(隐层)的权重参数</strong>：</h5><p>更新权重参数<code>w和b</code>：</p>
+<script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial w_1}=\frac{\partial E_{total}}{\partial outh_1} \cdot \frac{\partial outh_1}{\partial neth_1} \cdot \frac{\partial neth_1}{\partial w_1}</script><script type="math/tex; mode=display">
-\frac{\partial E_{total}}{\partial b_1}=\frac{\partial E_{total}}{\partial outh_1} \cdot \frac{\partial outh_1}{\partial neth_1} \cdot \frac{\partial neth_1}{\partial b_1}</script><h4 id="其中："><a href="#其中：" class="headerlink" title="其中："></a>其中：</h4><script type="math/tex; mode=display">
+\frac{\partial E_{total}}{\partial b_1}=\frac{\partial E_{total}}{\partial outh_1} \cdot \frac{\partial outh_1}{\partial neth_1} \cdot \frac{\partial neth_1}{\partial b_1}</script><p>其中：</p>
+<script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial outh_1} = \frac{\partial Eo_1}{\partial outh_1}+ \frac{\partial Eo_2}{\partial outh_1}</script><script type="math/tex; mode=display">
 \frac{\partial Eo_1}{\partial outh_1} = \frac{\partial Eo_1}{\partial neto_1} \cdot \frac{\partial neto_1}{\partial outh_1}</script><script type="math/tex; mode=display">
 \frac{\partial Eo_1}{\partial neto_1} = \frac{\partial E_{o_1}}{\partial outo_1} \cdot \frac{\partial outo_1}{\partial neto_1} = (outo_1-y_1)\cdot outo_1(1-outo_1)</script><script type="math/tex; mode=display">
@@ -499,44 +505,54 @@ b_{2new}=b_{2old}-\eta \frac{\partial E_{total}}{\partial b_2}, η是学习率</
 <script type="math/tex; mode=display">
 \frac{\partial Eo_2}{\partial outh_1} = \frac{\partial Eo_2}{\partial neto_2} \cdot \frac{\partial neto_2}{\partial outh_1}</script><script type="math/tex; mode=display">
 \frac{\partial Eo_2}{\partial neto_2} = \frac{\partial E_{o_2}}{\partial outo_2} \cdot \frac{\partial outo_2}{\partial neto_2} = (outo_2-y_2)\cdot outo_2(1-outo_2)</script><script type="math/tex; mode=display">
-\frac{\partial neto_2}{\partial outh_1} = w_5（(outh1连接outo2的权重，暂定为w5,）</script><h4 id="综合上式："><a href="#综合上式：" class="headerlink" title="综合上式："></a>综合上式：</h4><script type="math/tex; mode=display">
+\frac{\partial neto_2}{\partial outh_1} = w_5（(outh1连接outo2的权重，暂定为w5,）</script><p>综合上式：</p>
+<script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial w_1}= [w_3 (outo_1-y_1)\cdot outo_1(1-outo_1)</script><script type="math/tex; mode=display">
 + w_5(outo_2-y_2)\cdot outo_2(1-outo_2)] \cdot outh_1(1-outh_1) \cdot x_1</script><script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial b_1}= [w_3 (outo_1-y_1)\cdot outo_1(1-outo_1)</script><script type="math/tex; mode=display">
 +w_5(outo_2-y_2)\cdot outo_2(1-outo_2)] \cdot outh_1(1-outh_1)</script><p>更新：</p>
 <script type="math/tex; mode=display">
 w_{1new}=w_{1old}-\eta \frac{\partial E_{total}}{\partial w_1}</script><script type="math/tex; mode=display">
-b_{1new}=b_{1old}-\eta \frac{\partial E_{total}}{\partial b_1}</script><h4 id="同理可得：w2：也就是同一层的w都可以用这种方式更新。"><a href="#同理可得：w2：也就是同一层的w都可以用这种方式更新。" class="headerlink" title="同理可得：w2：也就是同一层的w都可以用这种方式更新。"></a>同理可得：<code>w2</code>：也就是同一层的<code>w</code>都可以用这种方式更新。</h4><h4 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播2.png" alt=""></p>
-<h4 id="我们定义第L层的第i个神经元更新权重参数时-上标表示层数，下标表示神经元-："><a href="#我们定义第L层的第i个神经元更新权重参数时-上标表示层数，下标表示神经元-：" class="headerlink" title="我们定义第L层的第i个神经元更新权重参数时(上标表示层数，下标表示神经元)："></a>我们定义第<code>L</code>层的第<code>i</code>个神经元更新权重参数时(上标表示层数，下标表示神经元)：</h4><script type="math/tex; mode=display">
+b_{1new}=b_{1old}-\eta \frac{\partial E_{total}}{\partial b_1}</script><p>同理可得：<code>w2</code>：也就是同一层的<code>w</code>都可以用这种方式更新。</p>
+<h4 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播2.png" alt=""></p>
+<p>我们定义第<code>L</code>层的第<code>i</code>个神经元更新权重参数时(上标表示层数，下标表示神经元)：</p>
+<script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial net_i^{(L)}} = \delta_i^{(L)}</script><script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial w_{ij}^{(l)}}=outh_j^{(l-1)}\delta_i^{(l)}，其中w_{ij}^{(l)}</script><p>表示第l层的第i个神经元连接第l−1层的第j的神经元的相连的权重参数w。如下图所示：</p>
 <p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播3.png" alt=""></p>
-<h4 id="推广总结"><a href="#推广总结" class="headerlink" title="推广总结"></a>推广总结</h4><h4 id="根据前面所定义的："><a href="#根据前面所定义的：" class="headerlink" title="根据前面所定义的："></a>根据前面所定义的：</h4><script type="math/tex; mode=display">
+<h4 id="推广总结"><a href="#推广总结" class="headerlink" title="推广总结"></a>推广总结</h4><p>根据前面所定义的：</p>
+<script type="math/tex; mode=display">
 E_{total}=\frac12 (y-outo)^2</script><script type="math/tex; mode=display">
 \sigma(x)=sigmod(x)</script><script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial w_{ij}^{(l)}}=outh_j^{(l-1)}\delta_i^{(l)}</script><script type="math/tex; mode=display">
 \delta_i^{(L)}=\frac{\partial E_{total}}{\partial net_i^{(L)}}</script><script type="math/tex; mode=display">
 = \frac{\partial E_{total}}{\partial outh_i} \cdot \frac{\partial outh_i}{\partial net_i^{(L)}}</script><script type="math/tex; mode=display">
-= \bigtriangledown_{out} E_{total} \times   \sigma^{\prime}(net_i^{(L)})</script><h4 id="对于第ll层："><a href="#对于第ll层：" class="headerlink" title="对于第ll层："></a>对于第ll层：</h4><script type="math/tex; mode=display">
+= \bigtriangledown_{out} E_{total} \times   \sigma^{\prime}(net_i^{(L)})</script><p>对于第ll层：</p>
+<script type="math/tex; mode=display">
 \delta^{(l)}=\frac{\partial E_{total}}{\partial net^{(l)}}</script><script type="math/tex; mode=display">
 = \frac{\partial E_{total}}{\partial net^{(l+1)}} \cdot \frac{\partial net^{(l+1)}}{\partial net^{(l)}}</script><script type="math/tex; mode=display">
 = \delta^{(l+1)} \times  \frac{\partial net^{(l+1)}}{\partial net^{(l)}}</script><script type="math/tex; mode=display">
 = \delta^{(l+1)} \times  \frac{\partial (w^{(l+1)}\sigma (net^{(l)}))}{\partial net^{(l)}}</script><script type="math/tex; mode=display">
-= \delta^{(l+1)} w^{(l+1)}  \sigma^{\prime}(net^{(L)})</script><h4 id="对于偏置项bias："><a href="#对于偏置项bias：" class="headerlink" title="对于偏置项bias："></a>对于偏置项<code>bias</code>：</h4><script type="math/tex; mode=display">
-\frac{\partial E_{total}}{\partial bias_i^{(l)}}=\delta_i^{(l)}</script><h4 id="四项基本原则"><a href="#四项基本原则" class="headerlink" title="四项基本原则"></a>四项基本原则</h4><h4 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式:"></a>基本形式:</h4><script type="math/tex; mode=display">
+= \delta^{(l+1)} w^{(l+1)}  \sigma^{\prime}(net^{(L)})</script><p>对于偏置项<code>bias</code>：</p>
+<script type="math/tex; mode=display">
+\frac{\partial E_{total}}{\partial bias_i^{(l)}}=\delta_i^{(l)}</script><h4 id="四项基本原则"><a href="#四项基本原则" class="headerlink" title="四项基本原则"></a>四项基本原则</h4><h5 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h5><script type="math/tex; mode=display">
 \delta_i^{(L)}= \bigtriangledown_{out} E_{total} \times   \sigma^{\prime}(net_i^{(L)})</script><script type="math/tex; mode=display">
 \delta^{(l)} = \sum_j \delta_j^{(l+1)} w_{ji}^{(l+1)}  \sigma^{\prime}(net_i^{(l)})</script><script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial bias_i^{(l)}}=\delta_i^{(l)}</script><script type="math/tex; mode=display">
-\frac{\partial E_{total}}{\partial w_{ij}^{(l)}}=outh_j^{(l-1)}\delta_i^{(l)}</script><h4 id="矩阵形式："><a href="#矩阵形式：" class="headerlink" title="矩阵形式："></a>矩阵形式：</h4><script type="math/tex; mode=display">
-\delta_i^{(L)}= \bigtriangledown_{out} E_{total} \bigodot   \sigma^{\prime}(net_i^{(L)})， ⨀是Hadamard乘积（对应位置相乘）</script><script type="math/tex; mode=display">
+\frac{\partial E_{total}}{\partial w_{ij}^{(l)}}=outh_j^{(l-1)}\delta_i^{(l)}</script><h5 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h5><script type="math/tex; mode=display">
+\delta_i^{(L)}= \bigtriangledown_{out} E_{total} \bigodot   \sigma^{\prime}(net_i^{(L)})</script><p>　　　　　　　　　　　　　　其中 ⨀是Hadamard乘积（对应位置相乘）</p>
+<script type="math/tex; mode=display">
 \delta^{(l)} = (w^{(l+1)})^T \delta^{(l+1)} \bigodot  \sigma^{\prime}(net^{(l)})</script><script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial bias^{(l)}}=\delta^{(l)}</script><script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial w^{(l)}}=\delta^{(l)}(outh^{(l-1)})^T</script><h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播4.png" alt=""></p>
-<h4 id="因为："><a href="#因为：" class="headerlink" title="因为："></a>因为：</h4><script type="math/tex; mode=display">
-\delta_i^{(L)}= \bigtriangledown_{out} E_{total} \bigodot   \sigma^{\prime}(net_i^{(L)})</script><h4 id="所以："><a href="#所以：" class="headerlink" title="所以："></a>所以：</h4><script type="math/tex; mode=display">
+<p>因为：</p>
+<script type="math/tex; mode=display">
+\delta_i^{(L)}= \bigtriangledown_{out} E_{total} \bigodot   \sigma^{\prime}(net_i^{(L)})</script><p>所以：</p>
+<script type="math/tex; mode=display">
 \delta^{(1)} = (w^{(2)})^T \delta^{(2)} \bigodot  \sigma^{\prime}(net^{(1)})</script><script type="math/tex; mode=display">
 =(\begin{bmatrix} 0.6 & 0.8 \\ 0.7 & 0.9\end{bmatrix}^T \cdot \begin{bmatrix} -0.01240932\\ 0.08379177\end{bmatrix}) \bigodot \begin{bmatrix} 0.20977282 \\ 0.19661193\end{bmatrix}</script><script type="math/tex; mode=display">
-=\begin{bmatrix} 0.01074218\\ 0.01287516\end{bmatrix}</script><h4 id="因为：-1"><a href="#因为：-1" class="headerlink" title="因为："></a>因为：</h4><script type="math/tex; mode=display">
+=\begin{bmatrix} 0.01074218\\ 0.01287516\end{bmatrix}</script><p>因为：</p>
+<script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial w^{(l)}}=\delta^{(l)}(outh^{(l-1)})^T</script><p>所以：</p>
 <script type="math/tex; mode=display">
 \Delta w^{(2)} = \delta^{(2)}(outh^{(1)})^T</script><script type="math/tex; mode=display">
@@ -544,16 +560,20 @@ E_{total}=\frac12 (y-outo)^2</script><script type="math/tex; mode=display">
 = \begin{bmatrix} -0.00869356 & -0.00907194 \\ 0.5870176 & 0.612567 \end{bmatrix}</script><script type="math/tex; mode=display">
 \Delta w^{(1)} = \delta^{(1)}x^T</script><script type="math/tex; mode=display">
 =\begin{bmatrix} 0.01074218\\ 0.01287516\end{bmatrix} \cdot \begin{bmatrix} 0.5\\ 1\end{bmatrix}^T</script><script type="math/tex; mode=display">
-= \begin{bmatrix} 0.00537109& 0.01074218\\ 0.00643758 & 0.01287516 \end{bmatrix}</script><h4 id="权重更新："><a href="#权重更新：" class="headerlink" title="权重更新："></a>权重更新：</h4><script type="math/tex; mode=display">
+= \begin{bmatrix} 0.00537109& 0.01074218\\ 0.00643758 & 0.01287516 \end{bmatrix}</script><p>权重更新：</p>
+<script type="math/tex; mode=display">
 w_{new}^2 = w_{old}^2-\Delta w^{(2)}</script><script type="math/tex; mode=display">
 = {\begin{bmatrix} 0.6 & 0.8 \\ 0.7 & 0.9\end{bmatrix}}-\begin{bmatrix} -0.00869356 & 0.00907194 \\ 0.5870176 & 0.612567 \end{bmatrix}</script><script type="math/tex; mode=display">
 = \begin{bmatrix} 0.60869356 & 0.80907194 \\ 0.64129824& 0.8387433 \end{bmatrix}</script><script type="math/tex; mode=display">
-b_{new}^2=b_{old}^2-\Delta b^2
-= \begin{bmatrix} 1 \\ 1  \end{bmatrix}-\begin{bmatrix} -0.01240932\\ 0.08379177\end{bmatrix}
+b_{new}^2=b_{old}^2-\Delta b^2</script><script type="math/tex; mode=display">
+= \begin{bmatrix} 1 \\ 1  \end{bmatrix}-\begin{bmatrix} -0.01240932\\ 0.08379177\end{bmatrix}</script><script type="math/tex; mode=display">
 =\begin{bmatrix} 1.01240932\\ 0.91620823\end{bmatrix}</script><script type="math/tex; mode=display">
-w_{new}^1= w_{old}^1-\Delta w^{(1)}=\begin{bmatrix} 0.1 & 0.3 \\ 0.2 & 0.4\end{bmatrix} -  \begin{bmatrix} 0.00537109& 0.01074218\\ 0.00643758 & 0.01287516 \end{bmatrix}</script><script type="math/tex; mode=display">
+w_{new}^1= w_{old}^1-\Delta w^{(1)}</script><script type="math/tex; mode=display">
+=\begin{bmatrix} 0.1 & 0.3 \\ 0.2 & 0.4\end{bmatrix} -  \begin{bmatrix} 0.00537109& 0.01074218\\ 0.00643758 & 0.01287516 \end{bmatrix}</script><script type="math/tex; mode=display">
 = \begin{bmatrix} 0.09462891& 0.28925782\\ 0.19356242& 0.38712484\end{bmatrix}</script><script type="math/tex; mode=display">
-b_{new}^1=b_{old}^1-\Delta b^1=\begin{bmatrix} 0.5 \\ 0.5  \end{bmatrix} - \begin{bmatrix} 0.01074218\\ 0.01287516\end{bmatrix}=\begin{bmatrix} 0.48925782\\ 0.48712484\end{bmatrix}</script><h3 id="权重初始化"><a href="#权重初始化" class="headerlink" title="权重初始化"></a>权重初始化</h3><h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播5.png" alt=""></h3>
+b_{new}^1=b_{old}^1-\Delta b^1</script><script type="math/tex; mode=display">
+=\begin{bmatrix} 0.5 \\ 0.5  \end{bmatrix} - \begin{bmatrix} 0.01074218\\ 0.01287516\end{bmatrix}</script><script type="math/tex; mode=display">
+=\begin{bmatrix} 0.48925782\\ 0.48712484\end{bmatrix}</script><h4 id="权重初始化"><a href="#权重初始化" class="headerlink" title="权重初始化"></a>权重初始化</h4><h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播5.png" alt=""></h3>
       
     </div>
     
@@ -771,7 +791,7 @@ b_{new}^1=b_{old}^1-\Delta b^1=\begin{bmatrix} 0.5 \\ 0.5  \end{bmatrix} - \begi
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#反向传播推导"><span class="nav-number">1.</span> <span class="nav-text">反向传播推导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义损失函数："><span class="nav-number">1.1.</span> <span class="nav-text">定义损失函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义激活函数："><span class="nav-number">1.2.</span> <span class="nav-text">定义激活函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前向传播"><span class="nav-number">1.3.</span> <span class="nav-text">前向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第一层-输入层-："><span class="nav-number">1.4.</span> <span class="nav-text">第一层(输入层)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加权和："><span class="nav-number">1.5.</span> <span class="nav-text">加权和：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二层-隐层-："><span class="nav-number">1.6.</span> <span class="nav-text">第二层(隐层)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加权和：-1"><span class="nav-number">1.7.</span> <span class="nav-text">加权和：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三层-输出层-："><span class="nav-number">1.8.</span> <span class="nav-text">第三层(输出层)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算误差值："><span class="nav-number">1.9.</span> <span class="nav-text">计算误差值：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向传播"><span class="nav-number">1.10.</span> <span class="nav-text">反向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新第三层（输出层）的权重参数："><span class="nav-number">1.11.</span> <span class="nav-text">更新第三层（输出层）的权重参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新参数w："><span class="nav-number">1.12.</span> <span class="nav-text">更新参数w：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新参数b："><span class="nav-number">1.13.</span> <span class="nav-text">更新参数b：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同理可得：w4：也就是同一层的w都可以用这种方式更新。"><span class="nav-number">1.14.</span> <span class="nav-text">同理可得：w4：也就是同一层的w都可以用这种方式更新。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新上一层-隐层-的权重参数："><span class="nav-number">1.15.</span> <span class="nav-text">更新上一层(隐层)的权重参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新权重参数w和b："><span class="nav-number">1.16.</span> <span class="nav-text">更新权重参数w和b：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其中："><span class="nav-number">1.17.</span> <span class="nav-text">其中：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#综合上式："><span class="nav-number">1.18.</span> <span class="nav-text">综合上式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同理可得：w2：也就是同一层的w都可以用这种方式更新。"><span class="nav-number">1.19.</span> <span class="nav-text">同理可得：w2：也就是同一层的w都可以用这种方式更新。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推广"><span class="nav-number">1.20.</span> <span class="nav-text">推广</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们定义第L层的第i个神经元更新权重参数时-上标表示层数，下标表示神经元-："><span class="nav-number">1.21.</span> <span class="nav-text">我们定义第L层的第i个神经元更新权重参数时(上标表示层数，下标表示神经元)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推广总结"><span class="nav-number">1.22.</span> <span class="nav-text">推广总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据前面所定义的："><span class="nav-number">1.23.</span> <span class="nav-text">根据前面所定义的：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对于第ll层："><span class="nav-number">1.24.</span> <span class="nav-text">对于第ll层：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对于偏置项bias："><span class="nav-number">1.25.</span> <span class="nav-text">对于偏置项bias：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四项基本原则"><span class="nav-number">1.26.</span> <span class="nav-text">四项基本原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本形式"><span class="nav-number">1.27.</span> <span class="nav-text">基本形式:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵形式："><span class="nav-number">1.28.</span> <span class="nav-text">矩阵形式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">1.29.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#因为："><span class="nav-number">1.30.</span> <span class="nav-text">因为：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所以："><span class="nav-number">1.31.</span> <span class="nav-text">所以：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#因为：-1"><span class="nav-number">1.32.</span> <span class="nav-text">因为：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权重更新："><span class="nav-number">1.33.</span> <span class="nav-text">权重更新：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权重初始化"><span class="nav-number">2.</span> <span class="nav-text">权重初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#反向传播推导"><span class="nav-number">1.</span> <span class="nav-text">反向传播推导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义损失函数："><span class="nav-number">1.1.</span> <span class="nav-text">定义损失函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义激活函数："><span class="nav-number">1.2.</span> <span class="nav-text">定义激活函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前向传播"><span class="nav-number">1.3.</span> <span class="nav-text">前向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一层-输入层-："><span class="nav-number">1.3.1.</span> <span class="nav-text">第一层(输入层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加权和："><span class="nav-number">1.3.2.</span> <span class="nav-text">加权和：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二层-隐层-："><span class="nav-number">1.3.3.</span> <span class="nav-text">第二层(隐层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加权和：-1"><span class="nav-number">1.3.4.</span> <span class="nav-text">加权和：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三层-输出层-："><span class="nav-number">1.3.5.</span> <span class="nav-text">第三层(输出层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算误差值："><span class="nav-number">1.3.6.</span> <span class="nav-text">计算误差值：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向传播"><span class="nav-number">1.4.</span> <span class="nav-text">反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#更新第三层（输出层）的权重参数："><span class="nav-number">1.4.1.</span> <span class="nav-text">更新第三层（输出层）的权重参数：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更新上一层-隐层-的权重参数："><span class="nav-number">1.4.2.</span> <span class="nav-text">更新上一层(隐层)的权重参数：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推广"><span class="nav-number">1.5.</span> <span class="nav-text">推广</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推广总结"><span class="nav-number">1.6.</span> <span class="nav-text">推广总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四项基本原则"><span class="nav-number">1.7.</span> <span class="nav-text">四项基本原则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本形式"><span class="nav-number">1.7.1.</span> <span class="nav-text">基本形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵形式"><span class="nav-number">1.7.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">1.8.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权重初始化"><span class="nav-number">1.9.</span> <span class="nav-text">权重初始化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>

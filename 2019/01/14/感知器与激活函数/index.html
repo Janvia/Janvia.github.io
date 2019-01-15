@@ -126,7 +126,7 @@
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/sigmod.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/tanh.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/relu.png">
-<meta property="og:updated_time" content="2019-01-14T12:42:02.039Z">
+<meta property="og:updated_time" content="2019-01-15T00:20:20.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="感知器与激活函数">
 <meta name="twitter:description" content="定义感知器是激活函数为阶跃函数的神经元。感知器的模型如下：·　输入(inputs)：一个感知器可以接收多个输入(x1,x2,…,xn|xi∈R)·　权值(weights)：每一个输入上都有一个权值wi∈R，此外还有一个偏置项b∈R，也就是上图的w0。·　加权和(weighted sum)：就是输入权值 x x 权值 w + 偏置项 b的总和。·　激活函数(step function)：感知器的激活">
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  737
+                  735
                 </span>
               
 
@@ -461,12 +461,17 @@ x_1=[-1.0, 3.0, 2.0] \\ x_2=[2.0, -1.0, 5.0] \\ x_3=[-2.0, 0.0, 3.0 ] \\ x_4=[4.
 X=\begin{bmatrix}  -1.0 & 3.0 & 2.0 \\ 2.0 & -1.0& 5.0 \\ -2.0& 0.0& 3.0 \\ 4.0& 1.0 & 6.0  \end{bmatrix}</script><script type="math/tex; mode=display">
 w^T =\begin{bmatrix} 4.0 \\ -3.0 \\ 5.0 \end{bmatrix}</script><p>所以：</p>
 <script type="math/tex; mode=display">
-logits =  X\cdot w^T + b= \begin{bmatrix}  -1.0 & 3.0 & 2.0 \\ 2.0 & -1.0& 5.0 \\ -2.0& 0.0& 3.0 \\ 4.0& 1.0 & 6.0  \end{bmatrix} \cdot \begin{bmatrix} 4.0 \\ -3.0 \\ 5.0 \end{bmatrix} + 2.0 \\ =[-1.0 \ \ \  38.0 \ \ \ 7.0 \ \ \ 43.0 ]</script><p>带入激活函数：</p>
+logits =  X\cdot w^T + b</script><script type="math/tex; mode=display">
+= \begin{bmatrix}  -1.0 & 3.0 & 2.0 \\ 2.0 & -1.0& 5.0 \\ -2.0& 0.0& 3.0 \\ 4.0& 1.0 & 6.0  \end{bmatrix} \cdot \begin{bmatrix} 4.0 \\ -3.0 \\ 5.0 \end{bmatrix} + 2.0 \\ =[-1.0 \ \ \  38.0 \ \ \ 7.0 \ \ \ 43.0 ]</script><p>带入激活函数：</p>
 <script type="math/tex; mode=display">
 output = f(x)=[0\ \ \ 1 \ \ \ 1 \ \ \ 1 ]</script><h3 id="隐层"><a href="#隐层" class="headerlink" title="隐层"></a>隐层</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/yincen.png" alt=""></p>
 <h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>unit激活函数：</p>
 <script type="math/tex; mode=display">
-f(x)=unit(x)=  \begin{cases} 0&  x>0 \ 1& x  \le 0 \end{cases}</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/unit.png" alt=""></p>
+f(x) =
+\begin{cases}
+0,  & \text{x>0} \\
+1, & \text{x≤0}
+\end{cases}</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/unit.png" alt=""></p>
 <p>sigmod激活函数：</p>
 <script type="math/tex; mode=display">
 f(x)=sigmod(x)=\frac{1}{1+e^{-x}}</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/sigmod.png" alt=""></p>
@@ -475,7 +480,11 @@ f(x)=sigmod(x)=\frac{1}{1+e^{-x}}</script><p><img src="https://jiangvia.oss-cn-s
 f(x)=tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/tanh.png" alt=""></p>
 <p>relu激活函数：</p>
 <script type="math/tex; mode=display">
-f(x)=ReLU(x)=\begin{cases} x& x>0\ 0& x \le 0 \end{cases}</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/relu.png" alt=""></p>
+f(x) =
+\begin{cases}
+x,  & \text{x>0} \\
+0, & \text{x≤0}
+\end{cases}</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/relu.png" alt=""></p>
 <h4 id="激活函数的作用"><a href="#激活函数的作用" class="headerlink" title="激活函数的作用"></a>激活函数的作用</h4><ul>
 <li><p><strong>引入非线性因素。</strong></p>
 <p>在我们面对线性可分的数据集的时候，简单的用线性分类器即可解决分类问题。但是现实生活中的数据往往不是线性可分的，面对这样的数据，一般有两个方法：引入非线性函数、线性变换。</p>
