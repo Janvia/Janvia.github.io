@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播3.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播4.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播5.png">
-<meta property="og:updated_time" content="2019-01-15T00:52:07.533Z">
+<meta property="og:updated_time" content="2019-01-15T00:58:55.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反向传播">
 <meta name="twitter:description" content="定义损失函数： E_{total}=\frac12 (y-outo)^2定义激活函数： \sigma(x)=sigmod(x)前向传播第一层(输入层)： x_1\ \ \ x_2\ \ \ b_1加权和：  net h_1=x_1w_1+x_2w_2+b_1  第二层(隐层)：  outh_1=sigmod(neth_1)  加权和：  neto_1=outh_1w_3+outh_2w_4+b">
@@ -504,7 +504,7 @@ b_{2new}=b_{2old}-\eta \frac{\partial E_{total}}{\partial b_2}, η是学习率</
 \frac{\partial Eo_2}{\partial outh_1} = \frac{\partial Eo_2}{\partial neto_2} \cdot \frac{\partial neto_2}{\partial outh_1}</script><script type="math/tex; mode=display">
 \frac{\partial Eo_2}{\partial neto_2} = \frac{\partial E_{o_2}}{\partial outo_2} \cdot \frac{\partial outo_2}{\partial neto_2}</script><script type="math/tex; mode=display">
 = (outo_2-y_2)\cdot outo_2(1-outo_2)</script><script type="math/tex; mode=display">
-\frac{\partial neto_2}{\partial outh_1} = w_5（(outh1连接outo2的权重，暂定为w5,）</script><p>综合上式：</p>
+\frac{\partial neto_2}{\partial outh_1} = w_5（outh1连接outo2的权重，暂定为w5）</script><p>综合上式：</p>
 <script type="math/tex; mode=display">
 \frac{\partial E_{total}}{\partial w_1}= [w_3 (outo_1-y_1)\cdot outo_1(1-outo_1)</script><script type="math/tex; mode=display">
 + w_5(outo_2-y_2)\cdot outo_2(1-outo_2)] \cdot outh_1(1-outh_1) \cdot x_1</script><script type="math/tex; mode=display">
@@ -572,7 +572,8 @@ w_{new}^1= w_{old}^1-\Delta w^{(1)}</script><script type="math/tex; mode=display
 = \begin{bmatrix} 0.09462891& 0.28925782\\ 0.19356242& 0.38712484\end{bmatrix}</script><script type="math/tex; mode=display">
 b_{new}^1=b_{old}^1-\Delta b^1</script><script type="math/tex; mode=display">
 =\begin{bmatrix} 0.5 \\ 0.5  \end{bmatrix} - \begin{bmatrix} 0.01074218\\ 0.01287516\end{bmatrix}</script><script type="math/tex; mode=display">
-=\begin{bmatrix} 0.48925782\\ 0.48712484\end{bmatrix}</script><h4 id="权重初始化"><a href="#权重初始化" class="headerlink" title="权重初始化"></a>权重初始化</h4><h3 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播5.png" alt=""></h3>
+=\begin{bmatrix} 0.48925782\\ 0.48712484\end{bmatrix}</script><h4 id="权重初始化"><a href="#权重初始化" class="headerlink" title="权重初始化"></a>权重初始化</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/反向传播/反向传播5.png" alt=""></p>
+
       
     </div>
     
@@ -611,6 +612,10 @@ b_{new}^1=b_{old}^1-\Delta b^1</script><script type="math/tex; mode=display">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/15/经典神经网络/" rel="prev" title="经典卷积神经网络">
+                经典卷积神经网络 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -712,7 +717,7 @@ b_{new}^1=b_{old}^1-\Delta b^1</script><script type="math/tex; mode=display">
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -723,7 +728,7 @@ b_{new}^1=b_{old}^1-\Delta b^1</script><script type="math/tex; mode=display">
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -734,7 +739,7 @@ b_{new}^1=b_{old}^1-\Delta b^1</script><script type="math/tex; mode=display">
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -790,7 +795,7 @@ b_{new}^1=b_{old}^1-\Delta b^1</script><script type="math/tex; mode=display">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义损失函数："><span class="nav-number">2.</span> <span class="nav-text">定义损失函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义激活函数："><span class="nav-number">3.</span> <span class="nav-text">定义激活函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前向传播"><span class="nav-number">4.</span> <span class="nav-text">前向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一层-输入层-："><span class="nav-number">4.1.</span> <span class="nav-text">第一层(输入层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加权和："><span class="nav-number">4.2.</span> <span class="nav-text">加权和：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二层-隐层-："><span class="nav-number">4.3.</span> <span class="nav-text">第二层(隐层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加权和：-1"><span class="nav-number">4.4.</span> <span class="nav-text">加权和：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三层-输出层-："><span class="nav-number">4.5.</span> <span class="nav-text">第三层(输出层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算误差值："><span class="nav-number">4.6.</span> <span class="nav-text">计算误差值：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向传播"><span class="nav-number">5.</span> <span class="nav-text">反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#更新第三层（输出层）的权重参数："><span class="nav-number">5.1.</span> <span class="nav-text">更新第三层（输出层）的权重参数：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更新上一层-隐层-的权重参数："><span class="nav-number">5.2.</span> <span class="nav-text">更新上一层(隐层)的权重参数：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推广"><span class="nav-number">6.</span> <span class="nav-text">推广</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推广总结"><span class="nav-number">7.</span> <span class="nav-text">推广总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四项基本原则"><span class="nav-number">8.</span> <span class="nav-text">四项基本原则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本形式"><span class="nav-number">8.1.</span> <span class="nav-text">基本形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵形式"><span class="nav-number">8.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">9.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权重初始化"><span class="nav-number">10.</span> <span class="nav-text">权重初始化</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number"></span> <span class="nav-text"></span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义损失函数："><span class="nav-number">2.</span> <span class="nav-text">定义损失函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义激活函数："><span class="nav-number">3.</span> <span class="nav-text">定义激活函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前向传播"><span class="nav-number">4.</span> <span class="nav-text">前向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一层-输入层-："><span class="nav-number">4.1.</span> <span class="nav-text">第一层(输入层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加权和："><span class="nav-number">4.2.</span> <span class="nav-text">加权和：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二层-隐层-："><span class="nav-number">4.3.</span> <span class="nav-text">第二层(隐层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加权和：-1"><span class="nav-number">4.4.</span> <span class="nav-text">加权和：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三层-输出层-："><span class="nav-number">4.5.</span> <span class="nav-text">第三层(输出层)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算误差值："><span class="nav-number">4.6.</span> <span class="nav-text">计算误差值：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向传播"><span class="nav-number">5.</span> <span class="nav-text">反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#更新第三层（输出层）的权重参数："><span class="nav-number">5.1.</span> <span class="nav-text">更新第三层（输出层）的权重参数：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#更新上一层-隐层-的权重参数："><span class="nav-number">5.2.</span> <span class="nav-text">更新上一层(隐层)的权重参数：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推广"><span class="nav-number">6.</span> <span class="nav-text">推广</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推广总结"><span class="nav-number">7.</span> <span class="nav-text">推广总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四项基本原则"><span class="nav-number">8.</span> <span class="nav-text">四项基本原则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本形式"><span class="nav-number">8.1.</span> <span class="nav-text">基本形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵形式"><span class="nav-number">8.2.</span> <span class="nav-text">矩阵形式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">9.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权重初始化"><span class="nav-number">10.</span> <span class="nav-text">权重初始化</span></a></li></ol></div>
             
 
           </div>
@@ -824,7 +829,7 @@ b_{new}^1=b_{old}^1-\Delta b^1</script><script type="math/tex; mode=display">
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.2k</span>
+    <span title="Site words total count">37.6k</span>
   
 </div>
 
