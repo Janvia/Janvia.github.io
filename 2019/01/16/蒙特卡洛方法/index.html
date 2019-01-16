@@ -98,7 +98,7 @@
 
 
 
-  <meta name="keywords" content="心理学,">
+  <meta name="keywords" content="MC,">
 
 
 
@@ -111,20 +111,35 @@
 
 
 
-<meta name="description" content="当一个生命带着极大的爱和信任降临到家庭中，他最渴望的是被看见，  被父母看见真实的自己，而不是通过一堆‘正确’的数据来评价和矫正自己。">
-<meta name="keywords" content="心理学">
+<meta name="description" content="MC如何在没有模型的情况下评估一个策略？ 如何计算Ｖ（ｓ）和Ｑ（ｓ）？ 通过采样的方式  如何得到数据？  On policy: 使用当下的策略生成的数据进行策略评估 Off policy: 使用其他策略生成的数据进行策略评估  首次访问蒙特卡洛预测（评估）：  Every-Visit Monte-Carlo Policy Evaluation:  Incremental Mean:  Incre">
+<meta name="keywords" content="MC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《当我遇见一个人》摘录">
-<meta property="og:url" content="https://janvia.github.io/2019/01/04/《当我遇见一个人》摘录/index.html">
+<meta property="og:title" content="蒙特卡洛方法">
+<meta property="og:url" content="https://janvia.github.io/2019/01/16/蒙特卡洛方法/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="当一个生命带着极大的爱和信任降临到家庭中，他最渴望的是被看见，  被父母看见真实的自己，而不是通过一堆‘正确’的数据来评价和矫正自己。">
+<meta property="og:description" content="MC如何在没有模型的情况下评估一个策略？ 如何计算Ｖ（ｓ）和Ｑ（ｓ）？ 通过采样的方式  如何得到数据？  On policy: 使用当下的策略生成的数据进行策略评估 Off policy: 使用其他策略生成的数据进行策略评估  首次访问蒙特卡洛预测（评估）：  Every-Visit Monte-Carlo Policy Evaluation:  Incremental Mean:  Incre">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/主页/lixue.jpg">
-<meta property="og:updated_time" content="2019-01-14T09:26:36.081Z">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC1.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC2.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC3.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC4.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC5.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC6.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC7.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC8.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片1.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC10.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC11.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC12.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC13.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC14.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC15.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC16.png">
+<meta property="og:updated_time" content="2019-01-16T07:26:02.468Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《当我遇见一个人》摘录">
-<meta name="twitter:description" content="当一个生命带着极大的爱和信任降临到家庭中，他最渴望的是被看见，  被父母看见真实的自己，而不是通过一堆‘正确’的数据来评价和矫正自己。">
-<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/主页/lixue.jpg">
+<meta name="twitter:title" content="蒙特卡洛方法">
+<meta name="twitter:description" content="MC如何在没有模型的情况下评估一个策略？ 如何计算Ｖ（ｓ）和Ｑ（ｓ）？ 通过采样的方式  如何得到数据？  On policy: 使用当下的策略生成的数据进行策略评估 Off policy: 使用其他策略生成的数据进行策略评估  首次访问蒙特卡洛预测（评估）：  Every-Visit Monte-Carlo Policy Evaluation:  Incremental Mean:  Incre">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC1.png">
 
 
 
@@ -154,14 +169,14 @@
 
 
 
-  <link rel="canonical" href="https://janvia.github.io/2019/01/04/《当我遇见一个人》摘录/">
+  <link rel="canonical" href="https://janvia.github.io/2019/01/16/蒙特卡洛方法/">
 
 
 
 
 
 
-  <title>《当我遇见一个人》摘录 | sylvia</title>
+  <title>蒙特卡洛方法 | sylvia</title>
   
 
 
@@ -310,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/04/《当我遇见一个人》摘录/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/16/蒙特卡洛方法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -327,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">《当我遇见一个人》摘录</h1>
+          <h1 class="post-title" itemprop="name headline">蒙特卡洛方法</h1>
         
 
         <div class="post-meta">
@@ -339,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T14:49:43+08:00">
-                2019-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T08:24:29+08:00">
+                2019-01-16
               </time>
             
 
@@ -362,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/强化学习/" itemprop="url" rel="index">
+                    <span itemprop="name">强化学习</span>
                   </a>
                 </span>
 
@@ -380,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/04/《当我遇见一个人》摘录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/04/《当我遇见一个人》摘录/" itemprop="commentCount"></span>
+                <a href="/2019/01/16/蒙特卡洛方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/16/蒙特卡洛方法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -403,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  606
+                  378
                 </span>
               
 
@@ -419,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -440,16 +455,45 @@
       
 
       
-        <p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/主页/lixue.jpg" alt=""></p>
-<p>  当一个生命带着极大的爱和信任降临到家庭中，他最渴望的是被看见，<br>  被父母看见真实的自己，而不是通过一堆‘正确’的数据来评价和矫正自己。</p>
-<a id="more"></a>
-<p>  当我放下预期和目的，以我的全部本真与一个人或事物建立关系时，我就会与这个存在的全部本真相遇。</p>
-<p>　　父母看不到孩子本身，他们看到的是孩子的功能价值。父母能否看到孩子本身的存在，而不是用外在价值去定义物质性的‘它’，这一点决定了孩子内心能否直接感受到爱。若孩子本然的存在不被看见，即使父母为孩子倾注一切，孩子也只是父母表达爱的道具。</p>
-<p>  爱，是如他所是，非吾所愿</p>
-<p>　　我拒绝了这件事情，不等于拒绝你这个人，不等于你提的要求不合理，不等于我不在乎你。我的拒绝仅仅是因为现在我不想这样做。拒绝的同时，我不会把自己关闭，我依然感受到你的爱，理解你的需要，理解自己的需要，让我们的需要共同创造出爱的方式。如果我答应你，一定是因为我也喜欢用这种方式爱你，而不是迫于维持关系的委曲求全，所以即使我付出再多，你也不必内疚。 不带评判地拒绝，没有委屈地付出，爱的流动如此之美。</p>
-<p>　　规则要建立在尊重感受的基础上，一个人内心极度缺爱，同时对得到爱已经绝望，会通过牺牲自己来满足所爱的人，间接地满足自己内在的小孩，而实际上，所爱的人抢走了那个内在小孩的爱，她付出越多，也就越怨恨所爱的人。</p>
-<p>　　最好的教育就是不教育。在爱的陪伴下，不打扰就是对专注力最好的培养。孩子的精神世界我们无须全部了解，但需要时常放下成人已被高度训练过的头脑的假想，带着敬畏之心去体验。</p>
-<p>  我们面对痛苦时最容易做的就是直接解决掉引起痛苦的外在的人或事。真正的勇士，是直面痛苦，向内看的人。</p>
+        <h3 id="MC"><a href="#MC" class="headerlink" title="MC"></a>MC</h3><p>如何在没有模型的情况下评估一个策略？</p>
+<p>如何计算Ｖ（ｓ）和Ｑ（ｓ）？</p>
+<p>通过采样的方式</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC1.png" alt=""></p>
+<p>如何得到数据？</p>
+<ul>
+<li>On policy: 使用当下的策略生成的数据进行策略评估</li>
+<li>Off policy: 使用其他策略生成的数据进行策略评估</li>
+</ul>
+<p>首次访问蒙特卡洛预测（评估）：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC2.png" alt=""></p>
+<p>Every-Visit Monte-Carlo Policy Evaluation:</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC3.png" alt=""></p>
+<p>Incremental Mean:</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC4.png" alt=""></p>
+<p>Incremental Monte-Carlo Updates</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC5.png" alt=""></p>
+<h4 id="随机策略"><a href="#随机策略" class="headerlink" title="随机策略"></a>随机策略</h4><p>在预测完成当前策略下的V和Q之后，我们需要对当下的策略进行改进<br>可以采用完全贪婪的策略提升吗？</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC6.png" alt=""></p>
+<p>s4-&gt;s3; s3-&gt;s2;s2-&gt;s2;s2-&gt;s1;<br>s4-&gt;s3; s3-&gt;s2;s2-&gt;s1;</p>
+<p>V(s)，Q(s,a)<br>0,1,1,1,0,0,0<br>Q(s2,a=左)= Q(s3,a=左)= Q(s4,a=左)=1，Q(s4,a=右)=0<br>一直向左走？</p>
+<h3 id="ε-贪婪（greedy）策略"><a href="#ε-贪婪（greedy）策略" class="headerlink" title="ε-贪婪（greedy）策略"></a>ε-贪婪（greedy）策略</h3><p>目的： Exploration（探索）与Exploitation（利用）</p>
+<p>ε∈(0,1)，随着时间的推移逐渐减小直至0</p>
+<p>产生一个(0,1)的随机数m</p>
+<p>如果ε&gt;m<br>    采取随机策略，例如一共4个动作，那么选每一个动作的概率都是    0.25<br>如果ε&lt;m<br>    采取贪婪策略，计算当前网络所有输出值Q(St,a)，选择使得Q(St,a)最大的那个at值作为下一步的动作</p>
+<p>On-pokicy first-visit 蒙特卡洛方法：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC7.png" alt=""></p>
+<h4 id="重要性采样"><a href="#重要性采样" class="headerlink" title="重要性采样"></a>重要性采样</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC8.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/图片1.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC10.png" alt=""></p>
+<p>一个特定的回合内，其生成的轨迹概率：</p>
+<p>轨迹：<img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC11.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC12.png" alt=""></p>
+<p>重要性采样比率：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC13.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC14.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC15.png" alt=""></p>
+<p>使用重要性采样的蒙特卡洛方法：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/MC16.png" alt=""></p>
 
       
     </div>
@@ -467,7 +511,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/心理学/" rel="tag">✿✿✿ 心理学</a>
+            <a href="/tags/MC/" rel="tag">✿✿✿ MC</a>
           
         </div>
       
@@ -480,8 +524,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/04/语法总结（5-15）/" rel="next" title="语法总结（5-15）">
-                <i class="fa fa-chevron-left"></i> 语法总结（5-15）
+              <a href="/2019/01/15/图片分类之pca-svc/" rel="next" title="图片分类-pca_svc">
+                <i class="fa fa-chevron-left"></i> 图片分类-pca_svc
               </a>
             
           </div>
@@ -489,10 +533,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/04/《禅与摩托车维修艺术》摘录/" rel="prev" title="《禅与摩托车维修艺术》摘录">
-                《禅与摩托车维修艺术》摘录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,8 +607,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -653,6 +702,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MC"><span class="nav-number">1.</span> <span class="nav-text">MC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机策略"><span class="nav-number">1.1.</span> <span class="nav-text">随机策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ε-贪婪（greedy）策略"><span class="nav-number">2.</span> <span class="nav-text">ε-贪婪（greedy）策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重要性采样"><span class="nav-number">2.1.</span> <span class="nav-text">重要性采样</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -822,9 +887,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://janvia.github.io/2019/01/04/《当我遇见一个人》摘录/';
-          this.page.identifier = '2019/01/04/《当我遇见一个人》摘录/';
-          this.page.title = '《当我遇见一个人》摘录';
+          this.page.url = 'https://janvia.github.io/2019/01/16/蒙特卡洛方法/';
+          this.page.identifier = '2019/01/16/蒙特卡洛方法/';
+          this.page.title = '蒙特卡洛方法';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://sylvia.disqus.com/embed.js';
