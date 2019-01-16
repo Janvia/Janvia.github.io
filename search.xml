@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[DQN]]></title>
+    <url>%2F2019%2F01%2F16%2FDQN%2F</url>
+    <content type="text"><![CDATA[DQN的背景传统强化学习的局限性，无法很好的解决状态空间或者动作空间很大的实际问题举例：小车使用相机进行导航，动作为向左，向前，向右，3种 100 x 100的灰度图片，状态数： 256^{10000}如果使用q-learning，q(s,a)的个数为3\times256^{10000}以现在的存储与计算能力，不可能完成 首先解决状态空间很大的问题 能不能根据现在的状态来估计Q(s,a)的值？ 价值函数估计假设近似器参数为w,注意有些公式给的是θ，两者是一个意思 回归器的选择: 特征线性组合 神经网络 决策树 最近邻 傅里叶/小波基 DQN VS Q_learning深度Q网络(Deep Q-Network,DQN): Q-learning(离策略（Off-policy）TD控制): Q learning学习目标： Q函数近似的学习目标: θ可以是任何回归器的参数，如果特指深度神经网络，那么我们也称之为深度Q网络 深度Q网络(Deep Q-Network,dqn)1、如何通过神经网络进行近似端到端的形式输入：状态或者观测输出：Q值２、与监督学习的异同？ 不用人工标注,神经网络生成 目标值 １、数据怎么来？使用当下策略生成。2.、有没有问题？相邻两次的更新使用的样本是是相关的Q（s1,a1）=0.9, 估计成了1.0, s2与s1很相似Q(s2,a1) = 0.05+1*0.99=1.04，s3与s2很相似……3 、在训练时，打散训练样本的顺序 经验回放定义一个replay buffer，RB, 记录下前N次的rollouts在训练的时候，随机采样，进行训练 DQN with experience replay ：]]></content>
+      <categories>
+        <category>强化学习</category>
+      </categories>
+      <tags>
+        <tag>DQN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[TCP传输图片]]></title>
     <url>%2F2019%2F01%2F16%2FTCP%E4%BC%A0%E8%BE%93%E5%9B%BE%E7%89%87%2F</url>
     <content type="text"><![CDATA[import socketimport pickleimport numpy as npfrom PIL import Imageimport ioimport sysimport threadingdef main(img):# start_svc = datetime.datetime.now() try: img = img.convert(&apos;L&apos;) img = img.resize((256,256)) # print(img.mode) # print(img.size) arr = np.asarray(img, dtype=&quot;float32&quot;) # arr = arr.flatten() arr = arr.reshape(1,-1) #data.append(arr) # name = &quot;&quot; + job_name + &quot;.pkl&quot; # name = &quot;AAA.pkl&quot; #end_svc = datetime.datetime.now() pca_data = pca.transform(arr) y_test_pred = svc.predict(pca_data) #time = end_svc - start_svc #print(time) return y_test_pred except Exception as err: return str(err)len_rev=0def tcp_connected(s,addr): print(&apos;Accept new connection from %s:%s...&apos; % addr) while 1: data =s.recv(1600000) len_rev=len(data) # print(len_rev) if len_rev&gt;=1000000: image = Image.open(io.BytesIO(data)) result=main(image)[0] s.send(result.encode()) print(result) elif len_rev&lt;=100 and data.decode()== &apos;close&apos;: sock.close() sys.exit(0)arg1 = &quot;&quot; + sys.argv[1]s = socket.socket() # 创建 socket 对象all_port=[6001,42683]arg=int(arg1)port=all_port[arg]print(port)#path_to_watch=r&apos;image/Cam&#123;&#125;/&apos;.format(arg+1)s.bind((&apos;127.0.0.1&apos;, port)) # 绑定端口s.listen(2) # 监听连接,传入连接请求的最大数5 # 接受一个新连接sock,ad=s.accept() # 创建新线程来处理TCP连接name = &quot;SVC_PCA.pkl&quot;pca, svc = pickle.load(open(name, &apos;rb&apos;))t = threading.Thread(tcp=tcp_connected(sock, ad))]]></content>
