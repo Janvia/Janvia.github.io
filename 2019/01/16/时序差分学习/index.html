@@ -98,7 +98,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="TD,">
 
 
 
@@ -111,16 +111,30 @@
 
 
 
-<meta name="description" content="君がいるだから、今の僕は幸せです。今日もありがとう。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sylvia">
-<meta property="og:url" content="https://janvia.github.io/archives/2019/index.html">
+<meta name="description" content="时序差分学习（Temporal-Difference Learning, TD learning）是强化学习中最核心与最著名的思想    ‘If one had to identify one idea as central and novel to reinforcement learning, it would     undoubtedly be temporal-difference (T">
+<meta name="keywords" content="TD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时序差分学习">
+<meta property="og:url" content="https://janvia.github.io/2019/01/16/时序差分学习/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="君がいるだから、今の僕は幸せです。今日もありがとう。">
+<meta property="og:description" content="时序差分学习（Temporal-Difference Learning, TD learning）是强化学习中最核心与最著名的思想    ‘If one had to identify one idea as central and novel to reinforcement learning, it would     undoubtedly be temporal-difference (T">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf1.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf2.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf3.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf4.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf6.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf7.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf8.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf9.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf10.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf11.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf12.png">
+<meta property="og:updated_time" content="2019-01-16T08:25:35.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sylvia">
-<meta name="twitter:description" content="君がいるだから、今の僕は幸せです。今日もありがとう。">
+<meta name="twitter:title" content="时序差分学习">
+<meta name="twitter:description" content="时序差分学习（Temporal-Difference Learning, TD learning）是强化学习中最核心与最著名的思想    ‘If one had to identify one idea as central and novel to reinforcement learning, it would     undoubtedly be temporal-difference (T">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf1.png">
 
 
 
@@ -150,14 +164,14 @@
 
 
 
-  <link rel="canonical" href="https://janvia.github.io/archives/2019/">
+  <link rel="canonical" href="https://janvia.github.io/2019/01/16/时序差分学习/">
 
 
 
 
 
 
-  <title>归档 | sylvia</title>
+  <title>时序差分学习 | sylvia</title>
   
 
 
@@ -176,7 +190,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -292,390 +306,243 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 38 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/16/时序差分学习/">
 
-      
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">时序差分学习</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T15:34:43+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/强化学习/" itemprop="url" rel="index">
+                    <span itemprop="name">强化学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/16/时序差分学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/16/时序差分学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  240
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>时序差分学习（Temporal-Difference Learning, TD learning）是强化学习中最核心与最著名的思想<br>    ‘If one had to identify one idea as central and novel to reinforcement learning, it would     undoubtedly be temporal-difference (TD) learning.’ —Richard S. Sutton&amp; Andrew G. Barto<br>TD = DP + MC<br>TD, DP都是使用下一时刻的状态函数来估计当前时刻的状态函数。<br>TD,MC都是通过经历一次一次与环境互动，产生多个episode来估计状态函数。</p>
+<p>ＴＤ：</p>
+<script type="math/tex; mode=display">
+V(S_t)\leftarrow V(S_t)+\alpha(G_t-V(S_t))</script><p>ＭＣ：</p>
+<script type="math/tex; mode=display">
+V(S_t)\leftarrow V(S_t)+\alpha(R_{t+1}+V(S_{t+1})-V(S_t))</script><h3 id="Sarsa"><a href="#Sarsa" class="headerlink" title="Sarsa"></a>Sarsa</h3><p>在策略（On policy）ＴＤ控制</p>
+<script type="math/tex; mode=display">
+Q(S_t,A_t)\leftarrow Q(S_t,A_t)+\gamma(R_{t+1}+Q(S_{t+1},A_{t+1})-Q(S_t,A_t))</script><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf1.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf2.png" alt=""></p>
+<h3 id="Expected-Sarsa"><a href="#Expected-Sarsa" class="headerlink" title="Expected Sarsa"></a>Expected Sarsa</h3><p>离策略（Off-policy）TD控制</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf3.png" alt=""></p>
+<h3 id="Q-learning"><a href="#Q-learning" class="headerlink" title="Q-learning"></a>Q-learning</h3><p>离策略（Off-policy）TD控制</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf4.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf6.png" alt=""></p>
+<h3 id="Q-learning-vs-Sarsa"><a href="#Q-learning-vs-Sarsa" class="headerlink" title="Q-learning vs Sarsa"></a>Q-learning vs Sarsa</h3><p>例子：悬崖行走（固定的ε=0.1）</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf7.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf8.png" alt=""></p>
+<h3 id="Q-learning的问题"><a href="#Q-learning的问题" class="headerlink" title="Q-learning的问题"></a>Q-learning的问题</h3><p>过估计（overestimate），因此产生了Double Q learning</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf9.png" alt=""></p>
+<h3 id="Double-Q-learning"><a href="#Double-Q-learning" class="headerlink" title="Double Q learning"></a>Double Q learning</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf10.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf11.png" alt=""></p>
+<h3 id="Q-learning-vs-Double-Q-learning"><a href="#Q-learning-vs-Double-Q-learning" class="headerlink" title="Q learning vs. Double Q learning"></a>Q learning vs. Double Q learning</h3><p>训练参数：ε=0.1，α=0.1, γ=1</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/cf12.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TD/" rel="tag">✿✿✿ TD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/16/蒙特卡洛方法/" rel="next" title="蒙特卡洛方法">
+                <i class="fa fa-chevron-left"></i> 蒙特卡洛方法
+              </a>
+            
           </div>
-        
-        
 
-        
+          <span class="post-nav-divider"></span>
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/16/时序差分学习/" itemprop="url">
-              
-                <span itemprop="name">时序差分学习</span>
-              
-            </a>
-        
-      </h2>
+      
+      
+    </footer>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-16T15:34:43+08:00" content="2019-01-16">
-          01-16
-        </time>
-      </div>
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
 
-    </header>
+    
+</div>
+  
+  
+  
   </article>
 
 
 
+    <div class="post-spread">
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/16/蒙特卡洛方法/" itemprop="url">
-              
-                <span itemprop="name">蒙特卡洛方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-16T08:24:29+08:00" content="2019-01-16">
-          01-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/15/图片分类之pca-svc/" itemprop="url">
-              
-                <span itemprop="name">图片分类-pca_svc</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-15T22:59:45+08:00" content="2019-01-15">
-          01-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/15/PIL简单应用/" itemprop="url">
-              
-                <span itemprop="name">PIL简单应用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-15T22:30:50+08:00" content="2019-01-15">
-          01-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/15/强化学习基础/" itemprop="url">
-              
-                <span itemprop="name">强化学习基础</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-15T13:55:18+08:00" content="2019-01-15">
-          01-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/15/卷积神经网络理论/" itemprop="url">
-              
-                <span itemprop="name">卷积神经网络理论</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-15T09:38:55+08:00" content="2019-01-15">
-          01-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/15/经典神经网络/" itemprop="url">
-              
-                <span itemprop="name">经典卷积神经网络</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-15T09:10:59+08:00" content="2019-01-15">
-          01-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/14/反向传播/" itemprop="url">
-              
-                <span itemprop="name">反向传播</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-14T20:54:32+08:00" content="2019-01-14">
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/14/图床/" itemprop="url">
-              
-                <span itemprop="name">图床</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-14T16:11:01+08:00" content="2019-01-14">
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/14/感知器与激活函数/" itemprop="url">
-              
-                <span itemprop="name">感知器与激活函数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-14T08:48:40+08:00" content="2019-01-14">
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
   </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/4/">4</a><a class="extend next" rel="next" href="/archives/2019/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
 
 
           </div>
@@ -683,6 +550,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -705,8 +586,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -791,6 +681,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sarsa"><span class="nav-number">1.</span> <span class="nav-text">Sarsa</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expected-Sarsa"><span class="nav-number">2.</span> <span class="nav-text">Expected Sarsa</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-learning"><span class="nav-number">3.</span> <span class="nav-text">Q-learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-learning-vs-Sarsa"><span class="nav-number">4.</span> <span class="nav-text">Q-learning vs Sarsa</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-learning的问题"><span class="nav-number">5.</span> <span class="nav-text">Q-learning的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Double-Q-learning"><span class="nav-number">6.</span> <span class="nav-text">Double Q learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-learning-vs-Double-Q-learning"><span class="nav-number">7.</span> <span class="nav-text">Q learning vs. Double Q learning</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -936,6 +842,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -953,6 +863,18 @@
       <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/16/时序差分学习/';
+          this.page.identifier = '2019/01/16/时序差分学习/';
+          this.page.title = '时序差分学习';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

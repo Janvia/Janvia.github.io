@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[时序差分学习]]></title>
+    <url>%2F2019%2F01%2F16%2F%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[时序差分学习（Temporal-Difference Learning, TD learning）是强化学习中最核心与最著名的思想 ‘If one had to identify one idea as central and novel to reinforcement learning, it would undoubtedly be temporal-difference (TD) learning.’ —Richard S. Sutton&amp; Andrew G. BartoTD = DP + MCTD, DP都是使用下一时刻的状态函数来估计当前时刻的状态函数。TD,MC都是通过经历一次一次与环境互动，产生多个episode来估计状态函数。 ＴＤ： V(S_t)\leftarrow V(S_t)+\alpha(G_t-V(S_t))ＭＣ： V(S_t)\leftarrow V(S_t)+\alpha(R_{t+1}+V(S_{t+1})-V(S_t))Sarsa在策略（On policy）ＴＤ控制 Q(S_t,A_t)\leftarrow Q(S_t,A_t)+\gamma(R_{t+1}+Q(S_{t+1},A_{t+1})-Q(S_t,A_t)) Expected Sarsa离策略（Off-policy）TD控制 Q-learning离策略（Off-policy）TD控制 Q-learning vs Sarsa例子：悬崖行走（固定的ε=0.1） Q-learning的问题过估计（overestimate），因此产生了Double Q learning Double Q learning Q learning vs. Double Q learning训练参数：ε=0.1，α=0.1, γ=1]]></content>
+      <categories>
+        <category>强化学习</category>
+      </categories>
+      <tags>
+        <tag>TD</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[蒙特卡洛方法]]></title>
     <url>%2F2019%2F01%2F16%2F%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[MC如何在没有模型的情况下评估一个策略？ 如何计算Ｖ（ｓ）和Ｑ（ｓ）？ 通过采样的方式 如何得到数据？ On policy: 使用当下的策略生成的数据进行策略评估 Off policy: 使用其他策略生成的数据进行策略评估 首次访问蒙特卡洛预测（评估）： Every-Visit Monte-Carlo Policy Evaluation: Incremental Mean: Incremental Monte-Carlo Updates 随机策略在预测完成当前策略下的V和Q之后，我们需要对当下的策略进行改进可以采用完全贪婪的策略提升吗？ s4-&gt;s3; s3-&gt;s2;s2-&gt;s2;s2-&gt;s1;s4-&gt;s3; s3-&gt;s2;s2-&gt;s1; V(s)，Q(s,a)0,1,1,1,0,0,0Q(s2,a=左)= Q(s3,a=左)= Q(s4,a=左)=1，Q(s4,a=右)=0一直向左走？ ε-贪婪（greedy）策略目的： Exploration（探索）与Exploitation（利用） ε∈(0,1)，随着时间的推移逐渐减小直至0 产生一个(0,1)的随机数m 如果ε&gt;m 采取随机策略，例如一共4个动作，那么选每一个动作的概率都是 0.25如果ε&lt;m 采取贪婪策略，计算当前网络所有输出值Q(St,a)，选择使得Q(St,a)最大的那个at值作为下一步的动作 On-pokicy first-visit 蒙特卡洛方法： 重要性采样 一个特定的回合内，其生成的轨迹概率： 轨迹： 重要性采样比率： 使用重要性采样的蒙特卡洛方法：]]></content>
