@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://janvia.github.io/"/>
-  <updated>2019-01-16T15:15:38.230Z</updated>
+  <updated>2019-01-17T02:55:55.274Z</updated>
   <id>https://janvia.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DDQN &amp; DDPG</title>
+    <link href="https://janvia.github.io/2019/01/17/Double-QDN/"/>
+    <id>https://janvia.github.io/2019/01/17/Double-QDN/</id>
+    <published>2019-01-17T00:13:32.000Z</published>
+    <updated>2019-01-17T02:55:55.274Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="ε-贪婪（greedy）策略"><a href="#ε-贪婪（greedy）策略" class="headerlink" title="ε-贪婪（greedy）策略"></a>ε-贪婪（greedy）策略</h3><p>目的：探索与利用<br>ε∈(0,1)，随着时间的推移逐渐减小直至0<br>产生一个(0,1)的随机数m<br>如果ε&gt;m<br>    采取随机策略，例如一共4个动作，那么选每一个动作的概率都是    0.25<br>如果ε&lt;m<br>    采取贪婪策略，计算当前网络所有输出值Q(St,a)，选择使得    Q(St,a)最大的那个at值作为下一步的动作</p><h3 id="玻尔兹曼softmax"><a href="#玻尔兹曼softmax" class="headerlink" title="玻尔兹曼softmax"></a>玻尔兹曼softmax</h3><p>$q_t(a)$为t时刻，采取动作a的Q值大小</p><p>τ表示是一个衰减系数（类似于模拟退火算法的温度项），随着训练次数的增加而逐渐减少，与ε相对应。<br>随着τ的减小，选择使Q值最大的那个动作a值的概率也越来越高。</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN1.png" alt=""></p><h3 id="ε-贪婪-VS-玻尔兹曼"><a href="#ε-贪婪-VS-玻尔兹曼" class="headerlink" title="ε-贪婪 VS 玻尔兹曼"></a>ε-贪婪 VS 玻尔兹曼</h3><p>`<img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN4.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN2.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN5.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN3.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN6.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN7.png" alt=""></p><h3 id="DDQN"><a href="#DDQN" class="headerlink" title="DDQN"></a>DDQN</h3><p>DQN:</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN8.png" alt=""></p><p>Double Q learning:</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/选区_002.png" alt=""></p><p>Double DQN:</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/选区_003.png" alt=""></p><h3 id="PRIORITIZED-EXPERIENCE-REPLAY-优先化记忆回放"><a href="#PRIORITIZED-EXPERIENCE-REPLAY-优先化记忆回放" class="headerlink" title="PRIORITIZED EXPERIENCE REPLAY(优先化记忆回放)"></a>PRIORITIZED EXPERIENCE REPLAY(优先化记忆回放)</h3><p>每一个rollout的被采样概率:</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/选区_004.png" alt=""></p><p>其中:</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/选区_005.png" alt=""></p><p>importance-sampling (IS) weights（重要性采样权重）:</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/选区_006.png" alt=""></p><p>SumTree:</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN10.png" alt=""></p><p>DDQN+PER:</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN11.png" alt=""></p><h3 id="Dueling-DQN"><a href="#Dueling-DQN" class="headerlink" title="Dueling DQN"></a>Dueling DQN</h3><p>Dueling Network Architectures for Deep Reinforcement Learning<br>value和Q value：</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN12.png" alt=""></p><p>优势值（Advantage function）</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN13.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN14.png" alt=""></p><p>结合方式：</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN15.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN16.png" alt=""></p><h3 id="DQN性能"><a href="#DQN性能" class="headerlink" title="DQN性能"></a>DQN性能</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN17.png" alt=""></p><h3 id="DDPG"><a href="#DDPG" class="headerlink" title="DDPG"></a>DDPG</h3><p>ＤＱＮ的问题：</p><p>动作空间必须是离散的<br>能不能将DQN的思想应用到连续的动作空间？</p><p>DDPG 是一种离策略算法<br>DDPG仅可以用于连续动作空间的问题</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN18.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/DDPN19.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;ε-贪婪（greedy）策略&quot;&gt;&lt;a href=&quot;#ε-贪婪（greedy）策略&quot; class=&quot;headerlink&quot; title=&quot;ε-贪婪（greedy）策略&quot;&gt;&lt;/a&gt;ε-贪婪（greedy）策略&lt;/h3&gt;&lt;p&gt;目的：探索与利用&lt;br&gt;ε∈(0,1)，随着
+      
+    
+    </summary>
+    
+      <category term="强化学习" scheme="https://janvia.github.io/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="DDPG" scheme="https://janvia.github.io/tags/DDPG/"/>
+    
+      <category term="DDQN" scheme="https://janvia.github.io/tags/DDQN/"/>
+    
+  </entry>
   
   <entry>
     <title>DQN</title>
@@ -503,31 +530,6 @@
     
     
       <category term="可视化" scheme="https://janvia.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>20单元语法</title>
-    <link href="https://janvia.github.io/2019/01/11/20%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95/"/>
-    <id>https://janvia.github.io/2019/01/11/20单元语法/</id>
-    <published>2019-01-11T13:49:36.000Z</published>
-    <updated>2019-01-12T01:32:12.980Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="N-なら（ば）＜凸显、条件＞"><a href="#N-なら（ば）＜凸显、条件＞" class="headerlink" title="N + なら（ば）＜凸显、条件＞"></a>N + なら（ば）＜凸显、条件＞</h2><h3 id="用法一"><a href="#用法一" class="headerlink" title="用法一"></a>用法一</h3><p>接在体言后面，凸显、强调所指事物，作提示助词，<strong>提出主题</strong>，<br>并用自信、有把握的语气进行叙述，如果以此为主题的话。<br>接续：N+<br>  ✿汉语：就~方面来说、~的话</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、お金なら心配は要りません。</span><br><span class="line">2、花なら桜です。</span><br></pre></td></tr></table></figure><h3 id="用法2"><a href="#用法2" class="headerlink" title="用法2"></a>用法2</h3><p>以<strong>假设的形式提出话题</strong>，前项为前提，后项为说话人<strong>判断、决定或建议</strong>；<br>接续： N ・ A ・ V ・ Na <strong>直接裸接</strong>　なら<br>  ✿汉语：要是~的话~<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、私ならそんなことを言いませんよ。</span><br><span class="line">2、海が静かならいいですが。</span><br><span class="line">3、彼が出席するなら、私は行きません。</span><br></pre></td></tr></table></figure></p><h2 id="～場合は＜假设＞"><a href="#～場合は＜假设＞" class="headerlink" title="～場合は＜假设＞"></a>～場合は＜假设＞</h2><p>表示<strong>假设</strong>的情况。当假设出现了前项情况时，后项一般为针对此情况所采取的方法或对策。<br>接续：N ・ A ・ V ・ Na 连体形+場合は<br>  ✿汉语：当~时、在~的情况下</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、王さんの都合が悪い場合は、ほかの日にしましょう。</span><br><span class="line">2、電話が通じない場合はどうしたらいいですか。</span><br><span class="line">3、雨が降った場合は、運動会を中止します。</span><br></pre></td></tr></table></figure><h2 id="Vたらどうですか＜建议＞"><a href="#Vたらどうですか＜建议＞" class="headerlink" title="Vたらどうですか＜建议＞"></a>Vたらどうですか＜建议＞</h2><p>表示<strong>建议或劝诱</strong>的惯用表达，<br>  ✿汉语：~怎么样、~如何<br>★：礼貌表达方式为：~たらどうですか。<br>　　　　　　　　　　~たらいかがですか。<br>　　　　　　　　　　~たらいかがでしょうか<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、ABC病院に行ってみたらどうでしょう。(2011年真题)</span><br><span class="line">2、朝からずっと勉強していますね。少し休んだらどうですか。</span><br><span class="line">3、ネクタイでも買ってあげたらどう？(2010年真题)</span><br></pre></td></tr></table></figure></p><h2 id="くらい＜程度＞"><a href="#くらい＜程度＞" class="headerlink" title="くらい＜程度＞"></a>くらい＜程度＞</h2><p>接在分句后面表示程度。举出具体的事例来说明其程度。也可写做ぐらい。基本可与「ほど」互换。<br>接续：裸接分句后</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、怖くて怖くて、大声で叫びたいくらいだった。(2009年真题)</span><br><span class="line">2、涙が出るくらい痛いです。</span><br></pre></td></tr></table></figure><h2 id="「ほど」VS「くらい」"><a href="#「ほど」VS「くらい」" class="headerlink" title="「ほど」VS「くらい」"></a>「ほど」VS「くらい」</h2><p>在表示某种程度时:</p><ul><li><p>如果说话人心目中对其程度<strong>没有进行高低取向</strong>时，くらい和ほど有时可以互换使用，表示相同的意思。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、日曜は足が痛くなる**ぐらい**（〇ほど）歩いた。</span><br></pre></td></tr></table></figure></li><li><p>如果有高低取向，则くらい表示低，而ほど表示高，</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、彼**くらい**（Ｘほど）のレベルでは通訳はできない。</span><br><span class="line">2、党の御恩は山**ほど**（Ｘくらい）高く、海**ほど**（Ｘくらい）深い。</span><br><span class="line">3、死ぬ**ほど**（×くらい）疲れた。</span><br></pre></td></tr></table></figure></li></ul><h2 id="Vてくださいませんか＜客气的请求＞"><a href="#Vてくださいませんか＜客气的请求＞" class="headerlink" title="Vてくださいませんか＜客气的请求＞"></a>Vてくださいませんか＜客气的请求＞</h2><p>表示请求别人做某事。比｢Vてくれませんか｣更加委婉、客气，是一种尊他，客气的表达。<br>  ✿ 汉语：能不能请您（为我做)～</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">１、先生のお写真を見せてくださいませんか。</span><br><span class="line">２、もう少し説明してくださいませんか。</span><br></pre></td></tr></table></figure><h2 id="Vてしまった"><a href="#Vてしまった" class="headerlink" title="Vてしまった"></a>Vてしまった</h2><h3 id="Vてしまった＜感慨＞"><a href="#Vてしまった＜感慨＞" class="headerlink" title="Vてしまった＜感慨＞"></a>Vてしまった＜感慨＞</h3><p>表示说话人对意外发生的事（无法挽回的事情、消极的结果等）感到很遗憾、后悔的语气。常与副词「もう」搭配<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">１、バスで財布を落としてしまった。</span><br><span class="line">２、急いで来たから、財布を忘れてしまった。(2005年真题)</span><br></pre></td></tr></table></figure></p><h3 id="Vてしまった＜完了＞"><a href="#Vてしまった＜完了＞" class="headerlink" title="Vてしまった＜完了＞"></a>Vてしまった＜完了＞</h3><p>表示动作过程的完了。<br>用于表示持续动作的动词时，与｢V第一连用－おわる｣意思相近。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">１、この宿題をしてしまったら、遊びに行ける。</span><br><span class="line">２、この本はもう読んでしまったから、図書館に返します。</span><br></pre></td></tr></table></figure></p><h2 id="N-の＋うち＜范围＞"><a href="#N-の＋うち＜范围＞" class="headerlink" title="N+の＋うち＜范围＞"></a>N+の＋うち＜范围＞</h2><p>表示限定范围。<br>  ✿ 汉语：~当中、~之中<br>★在表示从某范围中挑选某事物时，可与｢Ｎのなか｣替换。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">１、三人のうち、林さんが一番若いです。</span><br><span class="line">２、クラスメートのうち、6人が男性です。</span><br><span class="line">３、相撲とサッカーと野球のうちで、一番人気があるのはやはり野球だそうだ。</span><br></pre></td></tr></table></figure></p><h2 id="N1-または-N2＜选择＞"><a href="#N1-または-N2＜选择＞" class="headerlink" title="N1 または N2＜选择＞"></a>N1 または N2＜选择＞</h2><p>表示两者择一，多用于书面语，表示要求、指示等场合。<br>  ✿ 汉语：~或是~<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、3番の部屋、または4番の部屋に行ってください。(2008年真题)</span><br><span class="line">2、漢字または仮名で書いてください。</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;N-なら（ば）＜凸显、条件＞&quot;&gt;&lt;a href=&quot;#N-なら（ば）＜凸显、条件＞&quot; class=&quot;headerlink&quot; title=&quot;N + なら（ば）＜凸显、条件＞&quot;&gt;&lt;/a&gt;N + なら（ば）＜凸显、条件＞&lt;/h2&gt;&lt;h3 id=&quot;用法一&quot;&gt;&lt;a href=
-      
-    
-    </summary>
-    
-      <category term="日语" scheme="https://janvia.github.io/categories/%E6%97%A5%E8%AF%AD/"/>
-    
-    
-      <category term="语法" scheme="https://janvia.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   

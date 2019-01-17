@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[DDQN & DDPG]]></title>
+    <url>%2F2019%2F01%2F17%2FDouble-QDN%2F</url>
+    <content type="text"><![CDATA[ε-贪婪（greedy）策略目的：探索与利用ε∈(0,1)，随着时间的推移逐渐减小直至0产生一个(0,1)的随机数m如果ε&gt;m 采取随机策略，例如一共4个动作，那么选每一个动作的概率都是 0.25如果ε&lt;m 采取贪婪策略，计算当前网络所有输出值Q(St,a)，选择使得 Q(St,a)最大的那个at值作为下一步的动作 玻尔兹曼softmax$q_t(a)$为t时刻，采取动作a的Q值大小 τ表示是一个衰减系数（类似于模拟退火算法的温度项），随着训练次数的增加而逐渐减少，与ε相对应。随着τ的减小，选择使Q值最大的那个动作a值的概率也越来越高。 ε-贪婪 VS 玻尔兹曼` DDQNDQN: Double Q learning: Double DQN: PRIORITIZED EXPERIENCE REPLAY(优先化记忆回放)每一个rollout的被采样概率: 其中: importance-sampling (IS) weights（重要性采样权重）: SumTree: DDQN+PER: Dueling DQNDueling Network Architectures for Deep Reinforcement Learningvalue和Q value： 优势值（Advantage function） 结合方式： DQN性能 DDPGＤＱＮ的问题： 动作空间必须是离散的能不能将DQN的思想应用到连续的动作空间？ DDPG 是一种离策略算法DDPG仅可以用于连续动作空间的问题]]></content>
+      <categories>
+        <category>强化学习</category>
+      </categories>
+      <tags>
+        <tag>DDPG</tag>
+        <tag>DDQN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[DQN]]></title>
     <url>%2F2019%2F01%2F16%2FDQN%2F</url>
     <content type="text"><![CDATA[DQN的背景传统强化学习的局限性，无法很好的解决状态空间或者动作空间很大的实际问题举例：小车使用相机进行导航，动作为向左，向前，向右，3种 100 x 100的灰度图片，状态数： 256^{10000}如果使用q-learning，q(s,a)的个数为3\times256^{10000}以现在的存储与计算能力，不可能完成 首先解决状态空间很大的问题 能不能根据现在的状态来估计Q(s,a)的值？ 价值函数估计假设近似器参数为w,注意有些公式给的是θ，两者是一个意思 回归器的选择: 特征线性组合 神经网络 决策树 最近邻 傅里叶/小波基 DQN VS Q_learning深度Q网络(Deep Q-Network,DQN): Q-learning(离策略（Off-policy）TD控制): Q learning学习目标： Q函数近似的学习目标: θ可以是任何回归器的参数，如果特指深度神经网络，那么我们也称之为深度Q网络 深度Q网络(Deep Q-Network,dqn)1、如何通过神经网络进行近似端到端的形式输入：状态或者观测输出：Q值２、与监督学习的异同？ 不用人工标注,神经网络生成 目标值 １、数据怎么来？使用当下策略生成。2.、有没有问题？相邻两次的更新使用的样本是是相关的Q（s1,a1）=0.9, 估计成了1.0, s2与s1很相似Q(s2,a1) = 0.05+1*0.99=1.04，s3与s2很相似……3 、在训练时，打散训练样本的顺序 经验回放定义一个replay buffer，RB, 记录下前N次的rollouts在训练的时候，随机采样，进行训练 DQN with experience replay ：]]></content>
