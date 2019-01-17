@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://janvia.github.io/"/>
-  <updated>2019-01-17T02:55:55.274Z</updated>
+  <updated>2019-01-17T06:08:19.832Z</updated>
   <id>https://janvia.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>梯度下降</title>
+    <link href="https://janvia.github.io/2019/01/17/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"/>
+    <id>https://janvia.github.io/2019/01/17/梯度下降/</id>
+    <published>2019-01-17T03:10:33.000Z</published>
+    <updated>2019-01-17T06:08:19.832Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="梯度下降方法"><a href="#梯度下降方法" class="headerlink" title="梯度下降方法"></a>梯度下降方法</h3><p>用负梯度作搜索方向，即令$\bigtriangleup x=-\bigtriangledown f(x)$, 是一种自然的选择。相应的方法就称梯度方法或者梯度下降方法。</p><h3 id="梯度下降算法的概念"><a href="#梯度下降算法的概念" class="headerlink" title="梯度下降算法的概念"></a>梯度下降算法的概念</h3><p><strong>梯度下降算法</strong>是一个被广泛使用的优化算法, 它可以用于寻找<strong>最小化成本函数</strong>的参数值. 也就是说: 当函数$ J(\theta)$取得最小值时, 求所对应的自变量<strong>θ</strong>的过程， 此处<strong>θ</strong>就是机器要学习的参数，$J(\theta)$就是用于参数估计的成本函数, 是关于θ的函数.</p><h3 id="梯度下降的基本步骤"><a href="#梯度下降的基本步骤" class="headerlink" title="梯度下降的基本步骤"></a>梯度下降的基本步骤</h3><p>梯度下降法的计算过程就是沿梯度下降的方向求解极小值（也可以沿梯度上升方向求解极大值）</p><p>给定 初始点:$x \in dom f$</p><p>重复进行：</p><ol><li>$\bigtriangleup x :=-\bigtriangledown f(x)$</li><li>直线搜索。通过精确或回溯直线搜索方法确实步长t.</li><li>修改 :$x =x+t\bigtriangleup x$</li></ol><p>直到：满足停止准则。</p><h4 id="换种方式："><a href="#换种方式：" class="headerlink" title="换种方式："></a>换种方式：</h4><ol><li>对成本函数进行微分, 得到其在给定点的梯度. 梯度的正负指示了成本函数值的上升或下降:$Δ(\theta)=\frac{∂J(\theta)}{∂\theta}$</li><li>选择使成本函数值减小的方向, 即梯度负方向, 乘以学习率为 α 计算得参数的更新量, 并更新参数:$\theta=\theta−αΔ(\theta)$</li><li>重复以上步骤, 直到取得最小的成本</li></ol><h3 id="批量梯度下降法（Batch-Gradient-Descent）"><a href="#批量梯度下降法（Batch-Gradient-Descent）" class="headerlink" title="批量梯度下降法（Batch Gradient Descent）"></a>批量梯度下降法（Batch Gradient Descent）</h3><p>　批量梯度下降法，是梯度下降法最常用的形式，具体做法也就是在更新参数时使用所有的样本来进行更新，这个方法对应于<strong>线性回归的梯度下降算法</strong>，也就是说线性回归的梯度下降算法就是批量梯度下降法。</p><p>具体实现过程：</p><hr><ol><li>假设函数:<script type="math/tex">h_\theta = \sum_{i=1}^n\theta_ix_i</script></li><li>成本函数:<script type="math/tex">J(\theta)=\frac{1}{2m} \sum_{i=1}^n(h_\theta(x_i)-y_i)^2</script></li><li>对成本函数进行求偏导：对每一个参数<script type="math/tex">\theta_j</script>进行分别求偏导，得出各自的梯度。<script type="math/tex">\frac{\partial J(\theta)}{\partial  \theta}=-\frac1 m  \sum_{i=1}^n(y_i-h_\theta(x_i))x_j^i</script></li><li>每个参数都按照梯度的负方向进行更新:</li></ol><script type="math/tex; mode=display">\theta_j=\theta_j+\frac a m \sum_{i=1}^n(y_i-h_\theta(x_i))x_j^i</script><hr><p>BGD伪代码：</p><hr><p>repeat{</p><script type="math/tex; mode=display">\theta_j=\theta_j+\frac a m \sum_{i=1}^n(y_i-h_\theta(x_i))x_j^i</script><p>(for every j = 0, 1, .. n)</p><p>}</p><hr><p>总结：</p><p>优点：BGD 得到的是全局最优解, 因为它总是以整个训练集来计算梯度,</p><p>缺点：因此带来了巨大的计算量, 计算迭代速度很很慢.</p><h3 id="随机梯度下降法（Stochastic-Gradient-Descent）"><a href="#随机梯度下降法（Stochastic-Gradient-Descent）" class="headerlink" title="随机梯度下降法（Stochastic Gradient Descent）"></a>随机梯度下降法（Stochastic Gradient Descent）</h3><p>随机梯度下降法，其实和批量梯度下降法原理类似，区别在于求梯度时没有用所有的m个样本的数据，而是仅仅选取一个样本j来求梯度。</p><p>具体实现过程：</p><p>SGD 每次以一个样本, 而不是整个数据集来计算梯度. 因此, SGD 从成本函数开始, 就不必再求和了, 针对单个样例的成本函数可以写成:</p><script type="math/tex; mode=display">J(\theta)=\frac{1}{2} (h_\theta(x_i)-y_i)^2</script><p>于是, SGD 的参数更新规则就可以写成 ：</p><script type="math/tex; mode=display">\theta_j=\theta_j+a (y_i-h_\theta(x_i))x_j^i</script><p>SGD伪代码：</p><hr><p>repeat {     </p><p>for i = 1, .., m{    </p><script type="math/tex; mode=display">\theta_j=\theta_j+a (y_i-h_\theta(x_i))x_j^i</script><p>           (for every j = 0, 1, .. n)    </p><p>}</p><p>}</p><hr><p>总结：</p><p>SGD 的关键点在于以随机顺序选取样本. 因为 SGD 存在局部最优困境, 若每次都以相同的顺序选取样本, 其有很大的可能会在相同的地方陷入局部最优解困境, 或者收敛减缓. 因此, 欲使 SGD 发挥更好的效果, 应充分利用<strong>随机化</strong>带来的优势: 可以<strong>在每次迭代之前 (伪代码中最外围循环), 对训练集进行随机排列. </strong></p><p>缺点：因为每次只取一个样本来进行梯度下降, SGD 的训练<strong>速度很快</strong>, 但会引入噪声, 使准确度下降</p><p>优点：可以使用<strong>在线学习</strong>. 也就是说, 在模型训练好之后, 只要有新的数据到来, 模型都可以利用新的数据进行再学习, 更新参数,以适应新的变化.</p><h3 id="BGD-vs-SGD"><a href="#BGD-vs-SGD" class="headerlink" title="ＢＧＤ vs ＳＧＤ"></a>ＢＧＤ vs ＳＧＤ</h3><p><strong>随机梯度下降法和批量梯度下降法</strong>是两个极端，一个采用所有数据来梯度下降，一个用一个样本来梯度下降。自然各自的优缺点都非常突出。对于训练速度来说，随机梯度下降法由于每次仅仅采用一个样本来迭代，训练速度很快，而批量梯度下降法在样本量很大的时候，训练速度不能让人满意。对于准确度来说，随机梯度下降法用于仅仅用一个样本决定梯度方向，导致解很有可能不是最优。对于收敛速度来说，由于随机梯度下降法一次迭代一个样本，导致迭代方向变化很大，不能很快的收敛到局部最优解。</p><p><strong>MBGD</strong>就综合了这两种方法的优点。</p><h3 id="小批量梯度下降法（Mini-batch-Gradient-Descent）"><a href="#小批量梯度下降法（Mini-batch-Gradient-Descent）" class="headerlink" title="小批量梯度下降法（Mini-batch Gradient Descent）"></a>小批量梯度下降法（Mini-batch Gradient Descent）</h3><p>MBGD 是为解决 BGD 与 SGD 各自缺点而发明的折中算法, 或者说它利用了 BGD 和 SGD 各自优点. 其基本思想是: <em>每次更新参数时, 使用 n 个样本, 既不是全部, 也不是 1.</em> (SGD 可以看成是 n=1 的 MBGD 的一个特例)</p><p>MBGD 的成本函数或其求导公式或参数更新规则公式基本同 BGD 。</p><p>MBGD 的伪代码：</p><hr><p>say b=10, m=1000,</p><p>repeat {     </p><p>for i = 1, 11, 21, .., 991 {</p><script type="math/tex; mode=display">\theta_j=\theta_j+\frac a {10} \sum_{i=1}^{i+9}(y_i-h_\theta(x_i))x_j^i</script><p> (for every j = 0, 1, .. n)    </p><p> }</p><p>}</p><hr><h3 id="梯度下降算法总结"><a href="#梯度下降算法总结" class="headerlink" title="梯度下降算法总结"></a>梯度下降算法总结</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/选区_007.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;梯度下降方法&quot;&gt;&lt;a href=&quot;#梯度下降方法&quot; class=&quot;headerlink&quot; title=&quot;梯度下降方法&quot;&gt;&lt;/a&gt;梯度下降方法&lt;/h3&gt;&lt;p&gt;用负梯度作搜索方向，即令$\bigtriangleup x=-\bigtriangledown f(x)$,
+      
+    
+    </summary>
+    
+      <category term="优化算法" scheme="https://janvia.github.io/categories/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="梯度下降" scheme="https://janvia.github.io/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>DDQN &amp; DDPG</title>
@@ -505,31 +530,6 @@
     
     
       <category term="语法" scheme="https://janvia.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tensorflow-可视化</title>
-    <link href="https://janvia.github.io/2019/01/12/tensorflow-%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    <id>https://janvia.github.io/2019/01/12/tensorflow-可视化/</id>
-    <published>2019-01-12T07:30:35.000Z</published>
-    <updated>2019-01-12T08:08:05.141Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import os</span><br><span class="line">import tensorflow as tf</span><br><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure><h2 id="设置生成的图像尺寸和去除警告"><a href="#设置生成的图像尺寸和去除警告" class="headerlink" title="设置生成的图像尺寸和去除警告"></a>设置生成的图像尺寸和去除警告</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">os.environ[&apos;TF_CPP_MIN_LOG_LEVEL&apos;] = &apos;2&apos;</span><br><span class="line">plt.rcParams[&quot;figure.figsize&quot;] = (14, 8)  # 生成的图像尺寸</span><br></pre></td></tr></table></figure><h2 id="随机生成一个线性的数据"><a href="#随机生成一个线性的数据" class="headerlink" title="随机生成一个线性的数据"></a>随机生成一个线性的数据</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">n_observations = 100</span><br><span class="line">xs = np.linspace(-3, 3, n_observations)    #生成-3到3的n为100等差数列</span><br><span class="line">ys = 0.8*xs + 0.1 + np.random.uniform(-0.5, 0.5, n_observations)</span><br><span class="line">plt.scatter(xs, ys) #画图</span><br><span class="line">plt.show() #画图</span><br></pre></td></tr></table></figure><h2 id="准备placeholder"><a href="#准备placeholder" class="headerlink" title="准备placeholder"></a>准备placeholder</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">X = tf.placeholder(tf.float32, name=&apos;X&apos;)</span><br><span class="line">Y = tf.placeholder(tf.float32, name=&apos;Y&apos;)</span><br></pre></td></tr></table></figure><h2 id="初始化参数-权重"><a href="#初始化参数-权重" class="headerlink" title="初始化参数/权重"></a>初始化参数/权重</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">W = tf.Variable(tf.random_normal([1]), name=&apos;weight&apos;)</span><br><span class="line">tf.summary.histogram(&apos;weight&apos;, W) #画图</span><br><span class="line">b = tf.Variable(tf.random_normal([1]), name=&apos;bias&apos;)</span><br><span class="line">tf.summary.histogram(&apos;bias&apos;, b)#画图</span><br></pre></td></tr></table></figure><h2 id="计算预测结果"><a href="#计算预测结果" class="headerlink" title="计算预测结果"></a>计算预测结果</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Y_pred = tf.add(tf.multiply(X, W), b)</span><br></pre></td></tr></table></figure><h2 id="计算损失值"><a href="#计算损失值" class="headerlink" title="计算损失值"></a>计算损失值</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">loss = tf.square(Y - Y_pred, name=&apos;loss&apos;)  #tf.square:平方</span><br><span class="line"></span><br><span class="line">tf.summary.scalar(&apos;loss&apos;, tf.reshape(loss, []))#画图</span><br></pre></td></tr></table></figure><h2 id="初始化optimizer"><a href="#初始化optimizer" class="headerlink" title="初始化optimizer"></a>初始化optimizer</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">learning_rate = 0.01</span><br><span class="line">optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)</span><br></pre></td></tr></table></figure><h2 id="指定迭代次数，并在session里执行graph"><a href="#指定迭代次数，并在session里执行graph" class="headerlink" title="指定迭代次数，并在session里执行graph"></a>指定迭代次数，并在session里执行graph</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">n_samples = xs.shape[0]</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">    # 记得初始化所有变量</span><br><span class="line">    sess.run(init)</span><br><span class="line">    merged = tf.summary.merge_all()#画图</span><br><span class="line">    log_writer = tf.summary.FileWriter(&quot;./logs/linear_regression&quot;, sess.graph)</span><br><span class="line"></span><br><span class="line">    # 训练模型</span><br><span class="line">    for i in range(50):</span><br><span class="line">        total_loss = 0</span><br><span class="line">        for x, y in zip(xs, ys):</span><br><span class="line">            # 通过feed_dic把数据灌进去</span><br><span class="line">            _, loss_value, merged_summary = sess.run([optimizer, loss, merged], feed_dict=&#123;X: x, Y: y&#125;)</span><br><span class="line">            total_loss += loss_value</span><br><span class="line"></span><br><span class="line">        if i % 5 == 0:</span><br><span class="line">            print(&apos;Epoch &#123;0&#125;: &#123;1&#125;&apos;.format(i, total_loss / n_samples))</span><br><span class="line">            log_writer.add_summary(merged_summary, i)#画图</span><br><span class="line"></span><br><span class="line">    # 关闭writer</span><br><span class="line">    log_writer.close()#画图</span><br><span class="line"></span><br><span class="line">    # 取出w和b的值</span><br><span class="line">    W, b = sess.run([W, b])</span><br><span class="line"></span><br><span class="line">print(W, b)</span><br><span class="line">print(&quot;W:&quot;+str(W[0]))</span><br><span class="line">print(&quot;b:&quot;+str(b[0]))</span><br></pre></td></tr></table></figure><h2 id="画出线性回归线"><a href="#画出线性回归线" class="headerlink" title="画出线性回归线"></a>画出线性回归线</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plt.plot(xs, ys, &apos;bo&apos;, label=&apos;Real data&apos;)</span><br><span class="line">plt.plot(xs, xs * W + b, &apos;r&apos;, label=&apos;Predicted data&apos;)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><h2 id="Tensorboard查看图形数据"><a href="#Tensorboard查看图形数据" class="headerlink" title="Tensorboard查看图形数据"></a>Tensorboard查看图形数据</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tensorboard --logdir path/to/logs(你保存文件所在位置)</span><br></pre></td></tr></table></figure><p>如：（log_writer = tf.summary.FileWriter(“./logs/linear_regression”, sess.graph)保存的地址）：</p><p>tensorboard —logdir ./logs/linear_regression </p><p>输出：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TensorBoard x.x.x at http://(你的用户名):6006 (Press CTRL+C to quit)</span><br></pre></td></tr></table></figure></p><p>然后打开网页：<code>http://localhost:6006</code></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;导入包&quot;&gt;&lt;a href=&quot;#导入包&quot; class=&quot;headerlink&quot; title=&quot;导入包&quot;&gt;&lt;/a&gt;导入包&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;spa
-      
-    
-    </summary>
-    
-      <category term="tensorflow" scheme="https://janvia.github.io/categories/tensorflow/"/>
-    
-    
-      <category term="可视化" scheme="https://janvia.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
   </entry>
   
