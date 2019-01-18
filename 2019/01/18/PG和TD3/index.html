@@ -98,7 +98,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="PG,TD3,">
 
 
 
@@ -111,16 +111,41 @@
 
 
 
-<meta name="description" content="君がいるだから、今の僕は幸せです。今日もありがとう。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sylvia">
-<meta property="og:url" content="https://janvia.github.io/tags/语法/index.html">
+<meta name="description" content="TD3TD3 = Twin Delayed DDPG：三点改进： 改进１Twin:有两个Q值预测网络，使用输出Q值较小的那个用作计算TD error的目标值； Double DQN:  Double q learning(Q值来自于神经网络):  Clipped Double Q-learning algorithm:  改进２Delayed：更新策略的频率要小于更新Q值，即训练actor网络的次">
+<meta name="keywords" content="PG,TD3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PG和TD3">
+<meta property="og:url" content="https://janvia.github.io/2019/01/18/PG和TD3/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="君がいるだから、今の僕は幸せです。今日もありがとう。">
+<meta property="og:description" content="TD3TD3 = Twin Delayed DDPG：三点改进： 改进１Twin:有两个Q值预测网络，使用输出Q值较小的那个用作计算TD error的目标值； Double DQN:  Double q learning(Q值来自于神经网络):  Clipped Double Q-learning algorithm:  改进２Delayed：更新策略的频率要小于更新Q值，即训练actor网络的次">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/图片2.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD2.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD3.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD4.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD5.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD6.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD7.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD8.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD9.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD10.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/选区_002.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/选区_003.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/选区_004.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/选区_005.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD15.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/图片5.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/图片6.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/QQ截图20190118034441.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/PG1.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD12.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD13.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD14.png">
+<meta property="og:updated_time" content="2019-01-18T09:17:09.400Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sylvia">
-<meta name="twitter:description" content="君がいるだから、今の僕は幸せです。今日もありがとう。">
+<meta name="twitter:title" content="PG和TD3">
+<meta name="twitter:description" content="TD3TD3 = Twin Delayed DDPG：三点改进： 改进１Twin:有两个Q值预测网络，使用输出Q值较小的那个用作计算TD error的目标值； Double DQN:  Double q learning(Q值来自于神经网络):  Clipped Double Q-learning algorithm:  改进２Delayed：更新策略的频率要小于更新Q值，即训练actor网络的次">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/图片2.png">
 
 
 
@@ -150,14 +175,14 @@
 
 
 
-  <link rel="canonical" href="https://janvia.github.io/tags/语法/">
+  <link rel="canonical" href="https://janvia.github.io/2019/01/18/PG和TD3/">
 
 
 
 
 
 
-  <title>标签: 语法 | sylvia</title>
+  <title>PG和TD3 | sylvia</title>
   
 
 
@@ -176,7 +201,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -292,130 +317,277 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>语法<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/18/PG和TD3/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/01/12/tensorflow-基础语法/" itemprop="url">
-              
-                <span itemprop="name">tensorflow-基础语法</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">PG和TD3</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-12T16:09:54+08:00" content="2019-01-12">
-          01-12
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-18T08:11:14+08:00">
+                2019-01-18
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/强化学习/" itemprop="url" rel="index">
+                    <span itemprop="name">强化学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/18/PG和TD3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/18/PG和TD3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  385
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/11/20单元语法/" itemprop="url">
-              
-                <span itemprop="name">20单元语法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-11T21:49:36+08:00" content="2019-01-11">
-          01-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/11/19单元语法/" itemprop="url">
-              
-                <span itemprop="name">19单元语法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-11T20:23:24+08:00" content="2019-01-11">
-          01-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/04/语法总结（5-15）/" itemprop="url">
-              
-                <span itemprop="name">语法总结（5-15）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-04T08:23:09+08:00" content="2019-01-04">
-          01-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h3 id="TD3"><a href="#TD3" class="headerlink" title="TD3"></a>TD3</h3><p>TD3 = Twin Delayed DDPG：三点改进：</p>
+<h4 id="改进１"><a href="#改进１" class="headerlink" title="改进１"></a>改进１</h4><p><strong>Twin:</strong>有两个Q值预测网络，使用输出Q值较小的那个用作计算TD error的目标值；</p>
+<p>Double DQN:</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/图片2.png" alt=""></p>
+<p>Double q learning(Q值来自于神经网络):</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD2.png" alt=""></p>
+<p>Clipped Double Q-learning algorithm:</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD3.png" alt=""></p>
+<h4 id="改进２"><a href="#改进２" class="headerlink" title="改进２"></a>改进２</h4><p><strong>Delayed：</strong>更新策略的频率要小于更新Q值，即训练actor网络的次数要小于训练critic网络；</p>
+<p>在值网络估计不准确的情况下（TD error很大），更新策略会引发</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD4.png" alt=""></p>
+<p>在更新critic网络d次之后再更新actor网络</p>
+<h4 id="改进３"><a href="#改进３" class="headerlink" title="改进３"></a>改进３</h4><p><strong>目标策略平滑：</strong><br>Idea:相似的动作在同一个状态下的Q值也相似</p>
+<p>Trick:</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD5.png" alt=""></p>
+<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD6.png" alt=""></p>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD7.png" alt=""></p>
+<h3 id="TD3-vs-DDPG-参数设计"><a href="#TD3-vs-DDPG-参数设计" class="headerlink" title="TD3 vs DDPG 参数设计"></a>TD3 vs DDPG 参数设计</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD8.png" alt=""></p>
+<h3 id="PG"><a href="#PG" class="headerlink" title="PG"></a>PG</h3><p>一个特定的回合内，其生成的轨迹概率<br>轨迹:</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD9.png" alt=""></p>
+<p>概率：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD10.png" alt=""></p>
+<p>重要性采样比率:</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/选区_002.png" alt=""></p>
+<p>梯度公式：</p>
+<p>*<script type="math/tex">\nabla_{\theta}logP(\tau|\theta)=\nabla \sum_{t=0}^T  log\pi_{\theta}(a_t|s_t)</script></p>
+<p>带入求导：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/选区_003.png" alt=""></p>
+<p>又：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/选区_004.png" alt=""></p>
+<p>所以：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/选区_005.png" alt=""></p>
+<p>所以：</p>
+<p><em><script type="math/tex">\nabla_{\theta}J(\pi_\theta)=\nabla E_{\tau\sim\pi_\theta} [R(\tau)]</script></em></p>
+<p><em><script type="math/tex">=\nabla_\theta \int_{\tau\sim\pi_\theta} P(\tau|\theta)R(\tau)</script></em></p>
+<p><em><script type="math/tex">= \int_{\tau\sim\pi_\theta} \nabla_\theta P(\tau|\theta)R(\tau)</script></em></p>
+<p><em><script type="math/tex">= \int_{\tau\sim\pi_\theta} P(\tau|\theta)\nabla_\theta logP(\tau|\theta)R(\tau)</script></em></p>
+<p><em><script type="math/tex">= E_{\tau\sim\pi_\theta}[\nabla_\theta logP(\tau|\theta)R(\tau)]</script></em></p>
+<p><em><script type="math/tex">= E_{a_t\sim\pi_\theta}[\nabla_\theta \sum_{t=0}^T log\pi_\theta(a_t|s_t)R(\tau)]</script></em></p>
+<h4 id="过程-1"><a href="#过程-1" class="headerlink" title="过程"></a>过程</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD15.png" alt=""></p>
+<p>蒙特卡洛估计方差太大，见下图：<br>使用神经网络来估计Q值</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/图片5.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/图片6.png" alt=""></p>
+<p>从上图看出负的噪声影响很大，怎么办呢？</p>
+<p>可以增加一个b值补偿</p>
+<p>推导：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/QQ截图20190118034441.png" alt=""></p>
+<p>方差公式和梯度公式：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习TD/PG1.png" alt=""></p>
+<p>梯度公式带入方差公式：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD12.png" alt=""></p>
+<p>求导：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD13.png" alt=""></p>
+<p>所以：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/强化学习/TD14.png" alt=""></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PG/" rel="tag">✿✿✿ PG</a>
+          
+            <a href="/tags/TD3/" rel="tag">✿✿✿ TD3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/17/RNN理论/" rel="next" title="RNN理论">
+                <i class="fa fa-chevron-left"></i> RNN理论
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
-  
-  
-  
 
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
+
+    
+</div>
   
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -423,6 +595,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -445,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -531,6 +726,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TD3"><span class="nav-number">1.</span> <span class="nav-text">TD3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#改进１"><span class="nav-number">1.1.</span> <span class="nav-text">改进１</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进２"><span class="nav-number">1.2.</span> <span class="nav-text">改进２</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进３"><span class="nav-number">1.3.</span> <span class="nav-text">改进３</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程"><span class="nav-number">1.4.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效果"><span class="nav-number">1.5.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TD3-vs-DDPG-参数设计"><span class="nav-number">2.</span> <span class="nav-text">TD3 vs DDPG 参数设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PG"><span class="nav-number">3.</span> <span class="nav-text">PG</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#过程-1"><span class="nav-number">3.1.</span> <span class="nav-text">过程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -676,6 +887,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -693,6 +908,18 @@
       <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/18/PG和TD3/';
+          this.page.identifier = '2019/01/18/PG和TD3/';
+          this.page.title = 'PG和TD3';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

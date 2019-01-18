@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[PG和TD3]]></title>
+    <url>%2F2019%2F01%2F18%2FPG%E5%92%8CTD3%2F</url>
+    <content type="text"><![CDATA[TD3TD3 = Twin Delayed DDPG：三点改进： 改进１Twin:有两个Q值预测网络，使用输出Q值较小的那个用作计算TD error的目标值； Double DQN: Double q learning(Q值来自于神经网络): Clipped Double Q-learning algorithm: 改进２Delayed：更新策略的频率要小于更新Q值，即训练actor网络的次数要小于训练critic网络； 在值网络估计不准确的情况下（TD error很大），更新策略会引发 在更新critic网络d次之后再更新actor网络 改进３目标策略平滑：Idea:相似的动作在同一个状态下的Q值也相似 Trick: 过程 效果 TD3 vs DDPG 参数设计 PG一个特定的回合内，其生成的轨迹概率轨迹: 概率： 重要性采样比率: 梯度公式： *\nabla_{\theta}logP(\tau|\theta)=\nabla \sum_{t=0}^T log\pi_{\theta}(a_t|s_t) 带入求导： 又： 所以： 所以： \nabla_{\theta}J(\pi_\theta)=\nabla E_{\tau\sim\pi_\theta} [R(\tau)] =\nabla_\theta \int_{\tau\sim\pi_\theta} P(\tau|\theta)R(\tau) = \int_{\tau\sim\pi_\theta} \nabla_\theta P(\tau|\theta)R(\tau) = \int_{\tau\sim\pi_\theta} P(\tau|\theta)\nabla_\theta logP(\tau|\theta)R(\tau) = E_{\tau\sim\pi_\theta}[\nabla_\theta logP(\tau|\theta)R(\tau)] = E_{a_t\sim\pi_\theta}[\nabla_\theta \sum_{t=0}^T log\pi_\theta(a_t|s_t)R(\tau)] 过程 蒙特卡洛估计方差太大，见下图：使用神经网络来估计Q值 从上图看出负的噪声影响很大，怎么办呢？ 可以增加一个b值补偿 推导： 方差公式和梯度公式： 梯度公式带入方差公式： 求导： 所以：]]></content>
+      <categories>
+        <category>强化学习</category>
+      </categories>
+      <tags>
+        <tag>PG</tag>
+        <tag>TD3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[RNN理论]]></title>
     <url>%2F2019%2F01%2F17%2FRNN%E7%90%86%E8%AE%BA%2F</url>
     <content type="text"><![CDATA[循环神经网络（RNN）是一类神经网络，包括一层内的加权连接，与传统前馈神经网络相比，加权连接仅反馈到后续层。因为RNN包含循环，所以RNN就可以在处理输入信息的时候同时储存信息。这种记忆使得RNN非常适合处理必须考虑事先输入的任务（比如时序数据）。所以循环神经网络在自然语言处理领域非常适合。 传统神经网络（包含CNN），输入和输出都是互相独立的。RNN引入了“记忆”的概念 x：输入层的值U：输入层到隐层的权重参数s：隐层的值v：隐层到输出层的权重参数o：输出层的值W：递归神经网络的隐藏层的值s不仅仅取决于当前这次的输入x，还取决于上一次隐藏层的值s。权重参数W就是隐藏层上一次的值作为这一次的输入的权重。 关键点：$St$的值不仅仅取决于$X_t$，还取决于$S{t−1}$(就是上一状态的隐层的值) 循环神经网络的计算公式： O_t=f(V \cdot S_t) \quad (1)输出层的计算公式，由于输出层是一个全连接层，所以说它每个节点都和隐层的节点相连。V是输出层的权重参数，f是激活函数。 S_t=f(U \cdot X_t+W \cdot S_{t-1}) \quad (2)隐层的计算公式，它是一个循环层，U是输入x的权重参数，W是上一次的值$S_{t−1}$作为这一次输入的权重参数，f是激活函数。 总结：从上面的公式中，我们可以看出，循环层和全连接层的区别就是循环层多了一个权重参数w。 扩展：如果反复的把（1）式带入 （2）式： ${O}_t=f(V\cdot{S}_t)$ `= V \cdot f(U \cdot X_t + W \cdot S_{t-1}) `= V \cdot f(U \cdot X_t+W \cdot f(U \cdot X_{t-1}+W \cdot S_{t-2})) `= V \cdot f(U \cdot X_t+W \cdot f(U \cdot X_{t-1}+W \cdot f(U \cdot X_{t-2}+W \cdot S_{t-3}))) `= V \cdot f(U \cdot X_t+W \cdot f(U \cdot X_{t-1}+W \cdot f(U \cdot X_{t-2}+W \cdot f(U \cdot X_{t-3}+…)))) 总结：从上面可以看出，递归神经网络的输出值$ot$，是受前面几次输入值$X_t、X{t−1}、X{t−2}、X{t−3}…$影响的，这也就是为什么递归神经网络可以往前看任意多个输入值的原因。 双向递归神经网络 从上图可以看出，双向递归神经网络的隐层是需要保持两个值： A：参与正向计算 A′：参与反向计算 所以$y_2$的值就取决于$A_2$和$A′_2$。计算方法： y_2=f(V \cdot A_2+V’ \cdot A_2’)$A_2和A_2′$则分别计算： A_2 = f(W \cdot A_1+U \cdot X_2)A_2’=f(W’ \cdot A_3’+U’ \cdot X_2)总结： 正向计算时：隐层的值S_t和S_{t−1}有关。 反向计算时：隐层的值S′_t和S′_{t−1}有关。 最终的输出取决于正向和反向计算的和。 扩展：我们仿照（1）和（2）那种方式： O_t =f(V \cdot S_t+V’ \cdot S_t’)S_t =f(U \cdot X_t+W \cdot S_{t-1})S_t’=f(U’ \cdot X_t+W’ \cdot S_{t+1}’)注意：从上面三个公式我们可以看到，正向计算和反向计算不共享权重，也就是说U和U’、W和W’、V和V’都是不同的权重矩阵。 深度递归神经网络 我们把第ii个隐层的值表示为$S_t^{(i)}、S_t’^{(i)}$ ,则深度递归神经网络的计算方式就可以表示为： {O}_t=f \cdot (V^{(i)} \cdot S_t^{(i)}+V’^{(i)} \cdot S_t’^{(i)})S_t^{(i)}=f(U^{(i)}\cdot S_t^{(i-1)}+W^{(i)}\cdot S_{t-1})S_t’^{(i)}=f(U’^{(i)}\cdot S_t’^{(i-1)}+W’^{(i)}\cdot S_{t+1}’)···S_t^{(1)}=f(U^{(1)} \cdot X_t+W^{(1)}\cdot S_{t-1})S_t’^{(1)}=f(U’^{(1)}\cdot X_t+W’^{(1)}\cdot S_{t+1}’)总结 从上图我们可以总结出： one to one：一个输入（单一标签）对应一个输出（单一标签） one to many：一个输入对应多个输出，即这个架构多用于图片的对象识别，即输入一个图片，输出一个文本序列。 many to one： 多个输入对应一个输出，多用于文本分类或视频分类，即输入一段文本或视频片段，输出类别。 many to many：这种结构广泛的用于机器翻译，输入一个文本，输出另一种语言的文本。 many to many：这种广泛的用于序列标注。 在众多的深度学习网络中，RNN由于能够接收序列输入，也能得到序列输出，在自然语言处理中取得了巨大的成功，并得到广泛的应用。]]></content>
