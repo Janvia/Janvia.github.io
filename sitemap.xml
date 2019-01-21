@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janvia.github.io/2019/01/21/DCGAN/</loc>
+    
+    <lastmod>2019-01-21T07:19:44.270Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janvia.github.io/2019/01/21/LSTM/</loc>
     
     <lastmod>2019-01-21T07:11:58.977Z</lastmod>

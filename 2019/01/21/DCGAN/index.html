@@ -98,7 +98,7 @@
 
 
 
-  <meta name="keywords" content="图床,">
+  <meta name="keywords" content="GAN,DCGAN,">
 
 
 
@@ -111,18 +111,25 @@
 
 
 
-<meta name="description" content="安装picgo下载地址: https://github.com/Molunerfinn/PicGo/releases  linux下载AppImage文件  右键属性，将权限设为允许为启动程序   配置以阿里云为例：  点击右上角头像，找到accessKeyId和accessKeySecret  创建对象存储，类型设为公共，记住存储空间名和地域（比如华南为oss-cn-shenzhen）  右键点">
-<meta name="keywords" content="图床">
+<meta name="description" content="简介DCGAN即使用卷积网络的对抗网络，其原理和GAN一样，只是把CNN的卷积技术用于GAN模式的网络里，G（生成器）网在生成数据时，使用反卷积的重构技术来重构原始图片。D（判别器）网用卷积技术来识别图片特征，进而作出判别。 https://arxiv.org/abs/1511.06434 架构 判别器 生成器在DCGAN中，生成式模型G(z)使用一个比较特殊的深度卷积网络来实现，如下图所示：">
+<meta name="keywords" content="GAN,DCGAN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图床">
-<meta property="og:url" content="https://janvia.github.io/2019/01/14/图床/index.html">
+<meta property="og:title" content="DCGAN">
+<meta property="og:url" content="https://janvia.github.io/2019/01/21/DCGAN/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="安装picgo下载地址: https://github.com/Molunerfinn/PicGo/releases  linux下载AppImage文件  右键属性，将权限设为允许为启动程序   配置以阿里云为例：  点击右上角头像，找到accessKeyId和accessKeySecret  创建对象存储，类型设为公共，记住存储空间名和地域（比如华南为oss-cn-shenzhen）  右键点">
+<meta property="og:description" content="简介DCGAN即使用卷积网络的对抗网络，其原理和GAN一样，只是把CNN的卷积技术用于GAN模式的网络里，G（生成器）网在生成数据时，使用反卷积的重构技术来重构原始图片。D（判别器）网用卷积技术来识别图片特征，进而作出判别。 https://arxiv.org/abs/1511.06434 架构 判别器 生成器在DCGAN中，生成式模型G(z)使用一个比较特殊的深度卷积网络来实现，如下图所示：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-14T08:27:17.857Z">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN1.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN2.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN3.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN4.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN5.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN6.png">
+<meta property="og:updated_time" content="2019-01-21T07:19:44.270Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图床">
-<meta name="twitter:description" content="安装picgo下载地址: https://github.com/Molunerfinn/PicGo/releases  linux下载AppImage文件  右键属性，将权限设为允许为启动程序   配置以阿里云为例：  点击右上角头像，找到accessKeyId和accessKeySecret  创建对象存储，类型设为公共，记住存储空间名和地域（比如华南为oss-cn-shenzhen）  右键点">
+<meta name="twitter:title" content="DCGAN">
+<meta name="twitter:description" content="简介DCGAN即使用卷积网络的对抗网络，其原理和GAN一样，只是把CNN的卷积技术用于GAN模式的网络里，G（生成器）网在生成数据时，使用反卷积的重构技术来重构原始图片。D（判别器）网用卷积技术来识别图片特征，进而作出判别。 https://arxiv.org/abs/1511.06434 架构 判别器 生成器在DCGAN中，生成式模型G(z)使用一个比较特殊的深度卷积网络来实现，如下图所示：">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN1.png">
 
 
 
@@ -152,14 +159,14 @@
 
 
 
-  <link rel="canonical" href="https://janvia.github.io/2019/01/14/图床/">
+  <link rel="canonical" href="https://janvia.github.io/2019/01/21/DCGAN/">
 
 
 
 
 
 
-  <title>图床 | sylvia</title>
+  <title>DCGAN | sylvia</title>
   
 
 
@@ -308,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/14/图床/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/21/DCGAN/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -325,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">图床</h1>
+          <h1 class="post-title" itemprop="name headline">DCGAN</h1>
         
 
         <div class="post-meta">
@@ -337,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-14T16:11:01+08:00">
-                2019-01-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T08:13:02+08:00">
+                2019-01-21
               </time>
             
 
@@ -360,8 +367,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -378,8 +385,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/14/图床/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/14/图床/" itemprop="commentCount"></span>
+                <a href="/2019/01/21/DCGAN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/21/DCGAN/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -401,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  112
+                  1.3k
                 </span>
               
 
@@ -417,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -438,22 +445,40 @@
       
 
       
-        <h2 id="安装picgo"><a href="#安装picgo" class="headerlink" title="安装picgo"></a>安装picgo</h2><p>下载地址: <a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener">https://github.com/Molunerfinn/PicGo/releases</a></p>
-<ul>
-<li><p>linux下载AppImage文件</p>
-</li>
-<li><p>右键属性，将权限设为允许为启动程序</p>
-</li>
-</ul>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>以阿里云为例：</p>
-<ul>
-<li><p>点击右上角头像，找到accessKeyId和accessKeySecret</p>
-</li>
-<li><p>创建对象存储，类型设为公共，记住存储空间名和地域（比如华南为oss-cn-shenzhen）</p>
-</li>
-<li><p>右键点击picgo，选择主窗口；将以上对应信息配置到图床配置，保存并应用</p>
-</li>
-</ul>
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>DCGAN即使用卷积网络的对抗网络，其原理和GAN一样，只是把CNN的卷积技术用于GAN模式的网络里，G（生成器）网在生成数据时，使用反卷积的重构技术来重构原始图片。D（判别器）网用卷积技术来识别图片特征，进而作出判别。</p>
+<p><a href="https://arxiv.org/abs/1511.06434" target="_blank" rel="noopener">https://arxiv.org/abs/1511.06434</a></p>
+<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN1.png" alt=""></p>
+<h3 id="判别器"><a href="#判别器" class="headerlink" title="判别器"></a>判别器</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN2.png" alt=""></p>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><p>在DCGAN中，生成式模型G(z)使用一个比较特殊的深度卷积网络来实现，如下图所示：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN3.png" alt=""></p>
+<h3 id="反卷积"><a href="#反卷积" class="headerlink" title="反卷积"></a>反卷积</h3><p>从前面两幅图中可以看出，DCGAN的生成式模型G(z)中出现了上采样（upsampling）。</p>
+<p>卷积神经网络的下采样很好理解，加入pooling层即可，然而这里的上采样要如何实现呢？</p>
+<p>这里，DCGAN通过“微步幅卷积”（fractionally-strided convolution）进行上采样。</p>
+<p>假设有一个3×3的输入，希望输出的尺寸比这要大，那么可以把这个3×3的输入通过在像素之间插入0的方式来进行扩展，如下图所示。当扩展到7×7的尺寸后，再进行卷积，就可以得到尺寸比原来大的输出。</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN4.png" alt=""></p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN5.png" alt=""></p>
+<h3 id="调优"><a href="#调优" class="headerlink" title="调优"></a>调优</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/DCGAN6.png" alt=""></p>
+<p><a href="https://github.com/hindupuravinash/the-gan-" target="_blank" rel="noopener">https://github.com/hindupuravinash/the-gan-</a></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>深度卷积神经网络生成Mnist手写数据集—-DCGAN</p>
+<p>导入环境</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorflow as tf</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from tensorflow.examples.tutorials.mnist import input_data</span><br></pre></td></tr></table></figure>
+<p>数据准备与超参数设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mnist = input_data.read_data_sets(&apos;data&apos;)</span><br><span class="line"># 定义参数</span><br><span class="line">batch_size = 64</span><br><span class="line">noise_size = 100</span><br><span class="line">epochs = 5</span><br><span class="line">n_samples = 25</span><br><span class="line">learning_rate = 0.001</span><br></pre></td></tr></table></figure>
+<p>数据处理</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_inputs(noise_dim, image_height, image_width, image_depth):</span><br><span class="line">    # 真实数据</span><br><span class="line">    inputs_real = tf.placeholder(tf.float32, [None, image_height, image_width, image_depth], name=&apos;inputs_real&apos;)</span><br><span class="line">    # 噪声数据</span><br><span class="line">    inputs_noise = tf.placeholder(tf.float32, [None, noise_dim], name=&apos;inputs_noise&apos;)</span><br><span class="line"></span><br><span class="line">    return inputs_real, inputs_noise</span><br></pre></td></tr></table></figure>
+<p>构建DCGAN网络结构</p>
+<p>生成器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_generator(noise_img, output_dim, is_train=True, alpha=0.01):</span><br><span class="line">    with tf.variable_scope(&quot;generator&quot;, reuse=(not is_train)):</span><br><span class="line">        # 100 x 1 to 4 x 4 x 512</span><br><span class="line">        # 全连接层</span><br><span class="line">        layer1 = tf.layers.dense(noise_img, 4 * 4 * 512)</span><br><span class="line">        layer1 = tf.reshape(layer1, [-1, 4, 4, 512])</span><br><span class="line">        # batch normalization</span><br><span class="line">        layer1 = tf.layers.batch_normalization(layer1, training=is_train)</span><br><span class="line">        # Leaky ReLU</span><br><span class="line">        layer1 = tf.maximum(alpha * layer1, layer1)</span><br><span class="line">        # dropout</span><br><span class="line">        layer1 = tf.nn.dropout(layer1, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 4 x 4 x 512 to 7 x 7 x 256</span><br><span class="line">        layer2 = tf.layers.conv2d_transpose(layer1, 256, 4, strides=1, padding=&apos;valid&apos;)</span><br><span class="line">        layer2 = tf.layers.batch_normalization(layer2, training=is_train)</span><br><span class="line">        layer2 = tf.maximum(alpha * layer2, layer2)</span><br><span class="line">        layer2 = tf.nn.dropout(layer2, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 7 x 7 256 to 14 x 14 x 128</span><br><span class="line">        layer3 = tf.layers.conv2d_transpose(layer2, 128, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        layer3 = tf.layers.batch_normalization(layer3, training=is_train)</span><br><span class="line">        layer3 = tf.maximum(alpha * layer3, layer3)</span><br><span class="line">        layer3 = tf.nn.dropout(layer3, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 14 x 14 x 128 to 28 x 28 x 1</span><br><span class="line">        logits = tf.layers.conv2d_transpose(layer3, output_dim, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        # MNIST原始数据集的像素范围在0-1，这里的生成图片范围为(-1,1)</span><br><span class="line">        # 因此在训练时，记住要把MNIST像素范围进行resize</span><br><span class="line">        outputs = tf.tanh(logits)</span><br><span class="line"></span><br><span class="line">        return outputs</span><br></pre></td></tr></table></figure>
+<p>判别器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_discriminator(inputs_img, reuse=False, alpha=0.01):</span><br><span class="line">    with tf.variable_scope(&quot;discriminator&quot;, reuse=reuse):</span><br><span class="line">        # 28 x 28 x 1 to 14 x 14 x 128</span><br><span class="line">        # 第一层不加入BN</span><br><span class="line">        layer1 = tf.layers.conv2d(inputs_img, 128, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        layer1 = tf.maximum(alpha * layer1, layer1)</span><br><span class="line">        layer1 = tf.nn.dropout(layer1, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 14 x 14 x 128 to 7 x 7 x 256</span><br><span class="line">        layer2 = tf.layers.conv2d(layer1, 256, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        layer2 = tf.layers.batch_normalization(layer2, training=True)</span><br><span class="line">        layer2 = tf.maximum(alpha * layer2, layer2)</span><br><span class="line">        layer2 = tf.nn.dropout(layer2, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 7 x 7 x 256 to 4 x 4 x 512</span><br><span class="line">        layer3 = tf.layers.conv2d(layer2, 512, 3, strides=2, padding=&apos;same&apos;)</span><br><span class="line">        layer3 = tf.layers.batch_normalization(layer3, training=True)</span><br><span class="line">        layer3 = tf.maximum(alpha * layer3, layer3)</span><br><span class="line">        layer3 = tf.nn.dropout(layer3, keep_prob=0.8)</span><br><span class="line"></span><br><span class="line">        # 4 x 4 x 512 to 4*4*512 x 1</span><br><span class="line">        flatten = tf.reshape(layer3, (-1, 4 * 4 * 512))</span><br><span class="line">        logits = tf.layers.dense(flatten, 1)</span><br><span class="line">        outputs = tf.sigmoid(logits)</span><br><span class="line"></span><br><span class="line">        return logits, outputs</span><br></pre></td></tr></table></figure>
+<p>计算损失值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_loss(inputs_real, inputs_noise, image_depth, smooth=0.1):</span><br><span class="line">    g_outputs = get_generator(inputs_noise, image_depth, is_train=True)</span><br><span class="line">    d_logits_real, d_outputs_real = get_discriminator(inputs_real)</span><br><span class="line">    d_logits_fake, d_outputs_fake = get_discriminator(g_outputs, reuse=True)</span><br><span class="line"></span><br><span class="line">    # 计算Loss</span><br><span class="line">    g_loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=d_logits_fake,</span><br><span class="line">                                                                    labels=tf.ones_like(d_outputs_fake) * (1 - smooth)))</span><br><span class="line"></span><br><span class="line">    d_loss_real = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=d_logits_real,</span><br><span class="line">                                                                         labels=tf.ones_like(d_outputs_real) * (</span><br><span class="line">                                                                                     1 - smooth)))</span><br><span class="line">    d_loss_fake = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=d_logits_fake,</span><br><span class="line">                                                                         labels=tf.zeros_like(d_outputs_fake)))</span><br><span class="line">    d_loss = tf.add(d_loss_real, d_loss_fake)</span><br><span class="line"></span><br><span class="line">    return g_loss, d_loss</span><br></pre></td></tr></table></figure>
+<p>初始化优化器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def get_optimizer(g_loss, d_loss, learning_rate=0.001):</span><br><span class="line">    train_vars = tf.trainable_variables()</span><br><span class="line"></span><br><span class="line">    g_vars = [var for var in train_vars if var.name.startswith(&quot;generator&quot;)]</span><br><span class="line">    d_vars = [var for var in train_vars if var.name.startswith(&quot;discriminator&quot;)]</span><br><span class="line"></span><br><span class="line">    # Optimizer</span><br><span class="line">    with tf.control_dependencies(tf.get_collection(tf.GraphKeys.UPDATE_OPS)):</span><br><span class="line">        g_opt = tf.train.AdamOptimizer(learning_rate).minimize(g_loss, var_list=g_vars)</span><br><span class="line">        d_opt = tf.train.AdamOptimizer(learning_rate).minimize(d_loss, var_list=d_vars)</span><br><span class="line"></span><br><span class="line">    return g_opt, d_opt</span><br></pre></td></tr></table></figure>
+<p>显示图片</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def plot_images(samples):</span><br><span class="line">    fig, axes = plt.subplots(nrows=5, ncols=5, sharex=True, sharey=True, figsize=(7, 7))</span><br><span class="line">    for img, ax in zip(samples, axes.flatten()):</span><br><span class="line">        ax.imshow(img.reshape((28, 28)), cmap=&apos;Greys_r&apos;)</span><br><span class="line">        ax.get_xaxis().set_visible(False)</span><br><span class="line">        ax.get_yaxis().set_visible(False)</span><br><span class="line">    fig.tight_layout(pad=0)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">def show_generator_output(sess, n_images, inputs_noise, output_dim):</span><br><span class="line">    noise_shape = inputs_noise.get_shape().as_list()[-1]</span><br><span class="line">    # 生成噪声图片</span><br><span class="line">    examples_noise = np.random.uniform(-1, 1, size=[n_images, noise_shape])</span><br><span class="line"></span><br><span class="line">    samples = sess.run(get_generator(inputs_noise, output_dim, False),</span><br><span class="line">                       feed_dict=&#123;inputs_noise: examples_noise&#125;)</span><br><span class="line"></span><br><span class="line">    result = np.squeeze(samples, -1)</span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
+<p>开始训练</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def train(noise_size, data_shape, batch_size, n_samples):</span><br><span class="line">    # 存储loss</span><br><span class="line">    losses = []</span><br><span class="line">    steps = 0</span><br><span class="line"></span><br><span class="line">    inputs_real, inputs_noise = get_inputs(noise_size, data_shape[1], data_shape[2], data_shape[3])</span><br><span class="line">    g_loss, d_loss = get_loss(inputs_real, inputs_noise, data_shape[-1])</span><br><span class="line">    print(&quot;FUNCTION READY!!&quot;)</span><br><span class="line">    g_train_opt, d_train_opt = get_optimizer(g_loss, d_loss, learning_rate)</span><br><span class="line">    print(&quot;TRAINING....&quot;)</span><br><span class="line">    with tf.Session() as sess:</span><br><span class="line">        sess.run(tf.global_variables_initializer())</span><br><span class="line">        # 迭代epoch</span><br><span class="line">        for e in range(epochs):</span><br><span class="line">            for batch_i in range(mnist.train.num_examples // batch_size):</span><br><span class="line">                steps += 1</span><br><span class="line">                batch = mnist.train.next_batch(batch_size)</span><br><span class="line"></span><br><span class="line">                batch_images = batch[0].reshape((batch_size, data_shape[1], data_shape[2], data_shape[3]))</span><br><span class="line">                # scale to -1, 1</span><br><span class="line">                batch_images = batch_images * 2 - 1</span><br><span class="line"></span><br><span class="line">                # noise</span><br><span class="line">                batch_noise = np.random.uniform(-1, 1, size=(batch_size, noise_size))</span><br><span class="line"></span><br><span class="line">                # run optimizer</span><br><span class="line">                sess.run(g_train_opt, feed_dict=&#123;inputs_real: batch_images,</span><br><span class="line">                                                 inputs_noise: batch_noise&#125;)</span><br><span class="line">                sess.run(d_train_opt, feed_dict=&#123;inputs_real: batch_images,</span><br><span class="line">                                                 inputs_noise: batch_noise&#125;)</span><br><span class="line"></span><br><span class="line">                if steps % 101 == 0:</span><br><span class="line">                    train_loss_d = d_loss.eval(&#123;inputs_real: batch_images,</span><br><span class="line">                                                inputs_noise: batch_noise&#125;)</span><br><span class="line">                    train_loss_g = g_loss.eval(&#123;inputs_real: batch_images,</span><br><span class="line">                                                inputs_noise: batch_noise&#125;)</span><br><span class="line">                    losses.append((train_loss_d, train_loss_g))</span><br><span class="line">                    print(&quot;Epoch &#123;&#125;/&#123;&#125;....&quot;.format(e + 1, epochs),</span><br><span class="line">                          &quot;Discriminator Loss: &#123;:.4f&#125;....&quot;.format(train_loss_d),</span><br><span class="line">                          &quot;Generator Loss: &#123;:.4f&#125;....&quot;.format(train_loss_g))</span><br><span class="line"></span><br><span class="line">            if e % 1 == 0:</span><br><span class="line">                # 显示图片</span><br><span class="line">                samples = show_generator_output(sess, n_samples, inputs_noise, data_shape[-1])</span><br><span class="line">                plot_images(samples)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">with tf.Graph().as_default():</span><br><span class="line">    train(noise_size, [-1, 28, 28, 1], batch_size, n_samples)</span><br><span class="line">    print(&quot;OPTIMIZER END!!&quot;)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -471,7 +496,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图床/" rel="tag">✿✿✿ 图床</a>
+            <a href="/tags/GAN/" rel="tag">✿✿✿ GAN</a>
+          
+            <a href="/tags/DCGAN/" rel="tag">✿✿✿ DCGAN</a>
           
         </div>
       
@@ -484,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/14/感知器与激活函数/" rel="next" title="感知器与激活函数">
-                <i class="fa fa-chevron-left"></i> 感知器与激活函数
+              <a href="/2019/01/20/PG3和IRL/" rel="next" title="PG3 & IRL">
+                <i class="fa fa-chevron-left"></i> PG3 & IRL
               </a>
             
           </div>
@@ -494,8 +521,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/14/反向传播/" rel="prev" title="反向传播">
-                反向传播 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/21/LSTM/" rel="prev" title="LSTM">
+                LSTM <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -676,7 +703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装picgo"><span class="nav-number">1.</span> <span class="nav-text">安装picgo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#架构"><span class="nav-number">2.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判别器"><span class="nav-number">3.</span> <span class="nav-text">判别器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器"><span class="nav-number">4.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反卷积"><span class="nav-number">5.</span> <span class="nav-text">反卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">6.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调优"><span class="nav-number">7.</span> <span class="nav-text">调优</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">8.</span> <span class="nav-text">实现</span></a></li></ol></div>
             
 
           </div>
@@ -851,9 +878,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://janvia.github.io/2019/01/14/图床/';
-          this.page.identifier = '2019/01/14/图床/';
-          this.page.title = '图床';
+          this.page.url = 'https://janvia.github.io/2019/01/21/DCGAN/';
+          this.page.identifier = '2019/01/21/DCGAN/';
+          this.page.title = 'DCGAN';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://sylvia.disqus.com/embed.js';
