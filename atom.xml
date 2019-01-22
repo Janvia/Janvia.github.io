@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://janvia.github.io/"/>
-  <updated>2019-01-22T01:08:38.450Z</updated>
+  <updated>2019-01-22T03:48:09.861Z</updated>
   <id>https://janvia.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SVM</title>
+    <link href="https://janvia.github.io/2019/01/22/SVM/"/>
+    <id>https://janvia.github.io/2019/01/22/SVM/</id>
+    <published>2019-01-22T03:07:21.000Z</published>
+    <updated>2019-01-22T03:48:09.861Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM1.png" alt=""></p><h3 id="最大间隔分类器"><a href="#最大间隔分类器" class="headerlink" title="最大间隔分类器"></a>最大间隔分类器</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM2.png" alt=""></p><h3 id="距离的计算"><a href="#距离的计算" class="headerlink" title="距离的计算"></a>距离的计算</h3><p>在样本空间中，划分超平面可通过如下线性方程描述：</p><script type="math/tex; mode=display">w^Tx+b=0</script><p>样本空间中任意点x到超平面的距离可写为:</p><script type="math/tex; mode=display">r=\frac{\lvert w^Tx+b\rvert}{\lVert w\rVert}</script><h3 id="数据标签定义"><a href="#数据标签定义" class="headerlink" title="数据标签定义"></a>数据标签定义</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM3.png" alt=""></p><h3 id="优化的目标"><a href="#优化的目标" class="headerlink" title="优化的目标"></a>优化的目标</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM4.png" alt=""></p><h3 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM5.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM6.png" alt=""></p><h3 id="拉格朗日乘子法"><a href="#拉格朗日乘子法" class="headerlink" title="拉格朗日乘子法"></a>拉格朗日乘子法</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM7.png" alt=""></p><h3 id="SVM求解"><a href="#SVM求解" class="headerlink" title="SVM求解"></a>SVM求解</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM8.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM9.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM10.png" alt=""></p><h3 id="SVM求解实例"><a href="#SVM求解实例" class="headerlink" title="SVM求解实例"></a>SVM求解实例</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM11.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM12.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM13.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM14.png" alt=""></p><p>支持向量：真正发挥作用的数据点，ɑ值不为0的点</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM15.png" alt=""></p><h3 id="带松弛因子的SVM：C-SVM"><a href="#带松弛因子的SVM：C-SVM" class="headerlink" title="带松弛因子的SVM：C-SVM"></a>带松弛因子的SVM：C-SVM</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM16.png" alt=""></p><h3 id="soft-margin"><a href="#soft-margin" class="headerlink" title="soft-margin"></a>soft-margin</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM17.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM18.png" alt=""></p><h3 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM19.png" alt=""></p><h3 id="低维不可分问题"><a href="#低维不可分问题" class="headerlink" title="低维不可分问题"></a>低维不可分问题</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM20.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM21.png" alt=""></p><h3 id="常用核函数"><a href="#常用核函数" class="headerlink" title="常用核函数"></a>常用核函数</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM22.png" alt=""></p><h3 id="支持向量回归（SVR）"><a href="#支持向量回归（SVR）" class="headerlink" title="支持向量回归（SVR）"></a>支持向量回归（SVR）</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM23.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM24.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM25.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVR1.png" alt=""></p><h3 id="Scikit-learn-中的SVM实现"><a href="#Scikit-learn-中的SVM实现" class="headerlink" title="Scikit learn 中的SVM实现"></a>Scikit learn 中的SVM实现</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM26.png" alt=""></p><h3 id="Scikit-learn-中的SVC实现"><a href="#Scikit-learn-中的SVC实现" class="headerlink" title="Scikit learn 中的SVC实现"></a>Scikit learn 中的SVC实现</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM27.png" alt=""></p><h3 id="核函数kernel"><a href="#核函数kernel" class="headerlink" title="核函数kernel"></a>核函数kernel</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM28.png" alt=""></p><h3 id="RBF核的参数"><a href="#RBF核的参数" class="headerlink" title="RBF核的参数"></a>RBF核的参数</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM29.png" alt=""></p><h4 id="RBF核—核参数正好"><a href="#RBF核—核参数正好" class="headerlink" title="RBF核—核参数正好"></a>RBF核—核参数正好</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM30.png" alt=""></p><h4 id="RBF核—欠拟合"><a href="#RBF核—欠拟合" class="headerlink" title="RBF核—欠拟合"></a>RBF核—欠拟合</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM31.png" alt=""></p><h4 id="RBF核—过拟合"><a href="#RBF核—过拟合" class="headerlink" title="RBF核—过拟合"></a>RBF核—过拟合</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM32.png" alt=""></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>SVM的优点：<br>    – 在高维空间中行之有效<br>    – 当维数大于样本数时仍然可用（但性能不好）<br>    – 在决策函数中只使用训练点的一个子集（支持向量），大大节省了内存开    销<br>    – 用途广泛：决策函数中可使用不同的核函数<br>• 劣势： </p><p>​    – SVM不直接提供概率估计<br>​    – 可通过交叉验证计算，代价比较高<br>• Scikit-learn中的支持向量机同时支持密集样本向量（numpy.ndarray和可通过numpy.asarray转化的数据类型）和稀疏样本向量（任何scipy.sparse对象）。但如果想用SVM对稀疏数据进行预测，则必须先在这些数据上拟合。为了优化性能，应该使用C阶（C-Ordered）numpy.ndarray（密集的）或scipy.sparse.csr_matrix（稀疏的），并指定dtype=float64</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVM1.png&quot; 
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://janvia.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="SVM" scheme="https://janvia.github.io/tags/SVM/"/>
+    
+  </entry>
   
   <entry>
     <title>SVD分解</title>
@@ -508,31 +533,6 @@
     
     
       <category term="强化学习" scheme="https://janvia.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>卷积神经网络理论</title>
-    <link href="https://janvia.github.io/2019/01/15/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/"/>
-    <id>https://janvia.github.io/2019/01/15/卷积神经网络理论/</id>
-    <published>2019-01-15T01:38:55.000Z</published>
-    <updated>2019-01-15T05:45:22.287Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h3><h4 id="任务：对输入的图像进行特征提取"><a href="#任务：对输入的图像进行特征提取" class="headerlink" title="任务：对输入的图像进行特征提取"></a><code>任务</code>：对输入的图像进行特征提取</h4><ul><li><p>用一个小的权重矩阵去覆盖输入数据，对应位置元素加权相乘，其和作为结果的一个像素点。</p></li><li><p>这个权重在输入数据上滑动，形成一张新的矩阵</p></li><li><p>这个权重矩阵就被称为<code>卷积核</code>（convolution kernel）</p></li><li><p>其覆盖的位置称为<code>感受野</code>（receptive fileld ）</p></li><li><p>生成的新矩阵叫做<code>特征图</code>（feature map）</p></li></ul><p>如下图所示：</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/卷积神经网络/卷积1.png" alt=""></p><p>步长（stride）：</p><ul><li><p>步长为1，表示跳过1个像素</p></li><li><p>步长为2，就表示跳过2个像素</p></li></ul><p>补齐（padding）方式:</p><ul><li><p>valid方式</p></li><li><p>same方式（会在图像的边缘用0补齐）</p></li></ul><p>输出维度计算公式：</p><ul><li><p>VALID:  W-F+1/S</p></li><li><p>SAME: W/S</p></li></ul><p>注意：彩色图像的卷积核是三阶的，所有的通道的结果要做累加。</p><p>实例：</p><p>padding=same；步长设置为2</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/卷积神经网络/卷积2.png" alt=""></p><h3 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h3><p>｀任务`：对特征进行采样，即用一个数值替代一块区域，主要是为了降低网络训练参数及模型的过拟合程度。以及降低计算量。</p><p>池化/采样的方式通常有以下两种：</p><ol><li>最大池化（Max Pooling: 选择Pooling窗口中的最大值作为采样值；</li><li>均值池化（Mean Pooling）: 将Pooling窗口中的所有值相加取平均，以平均值作为采样值</li><li>高斯池化：借鉴高斯模糊的方法。不常用。</li><li>可训练池化：使用一个训练函数y=f(x)y=f(x)。不常用。</li></ol><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/卷积神经网络/卷积4.png" alt=""></p><h3 id="全链接层"><a href="#全链接层" class="headerlink" title="全链接层"></a>全链接层</h3><p>任务：全连接层的每一个结点都与上一层的所有结点相连，用来把前边提取到的特征综合起来。<br>由于其全相连的特性，一般全连接层的参数也是最多的。</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/卷积神经网络/反向传播7.png" alt=""></p><h3 id="dropout层"><a href="#dropout层" class="headerlink" title="dropout层"></a>dropout层</h3><p><code>任务</code>：在模型训练时随机让网络某些隐含层节点的权重不工作，不工作的那些节点可以暂时认为不是网络结构的一部分，但是它的权重得保留下来（只是暂时不更新而已），因为下次样本输入时它可能又得工作了。主要是为了<strong>防止过拟合</strong>。</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/卷积神经网络/反向传播6.png" alt=""></p><h3 id="激活层"><a href="#激活层" class="headerlink" title="激活层"></a>激活层</h3><p><code>任务</code>：卷积后的结果压缩到某一个固定的范围做非线性映射，这样可以一直保持一层一层下去的数值范围是可控的。</p><h4 id="激活函数："><a href="#激活函数：" class="headerlink" title="激活函数："></a>激活函数：</h4><ul><li><code>Sigmoid</code></li><li><code>Tanh</code>（双曲正切）</li><li><code>ReLU</code></li><li><code>Leaky ReLU</code></li><li><code>ELU</code></li><li><code>Maxout</code></li></ul><p>卷积神经网络一般采用的激活函数是ReLU(The Rectified Linear Unit/修正线性单元)，它的特点是收敛快，求梯度简单，但较脆弱，图像如下：</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/感知器/relu.png" alt=""></p><h4 id="激活层的实践经验："><a href="#激活层的实践经验：" class="headerlink" title="激活层的实践经验： 　　"></a>激活层的实践经验： 　　</h4><ul><li>不要用sigmoid！不要用sigmoid！不要用sigmoid！ 　　</li><li>首先试RELU，因为快，但要小心点 　　、</li><li>如果2失效，请用Leaky ReLU或者Maxout 　　</li><li>某些情况下tanh倒是有不错的结果，但是很少</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;卷积层&quot;&gt;&lt;a href=&quot;#卷积层&quot; class=&quot;headerlink&quot; title=&quot;卷积层&quot;&gt;&lt;/a&gt;卷积层&lt;/h3&gt;&lt;h4 id=&quot;任务：对输入的图像进行特征提取&quot;&gt;&lt;a href=&quot;#任务：对输入的图像进行特征提取&quot; class=&quot;headerlink
-      
-    
-    </summary>
-    
-      <category term="深度学习" scheme="https://janvia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="卷积神经网络" scheme="https://janvia.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   

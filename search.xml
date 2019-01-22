@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SVM]]></title>
+    <url>%2F2019%2F01%2F22%2FSVM%2F</url>
+    <content type="text"><![CDATA[背景 最大间隔分类器 距离的计算在样本空间中，划分超平面可通过如下线性方程描述： w^Tx+b=0样本空间中任意点x到超平面的距离可写为: r=\frac{\lvert w^Tx+b\rvert}{\lVert w\rVert}数据标签定义 优化的目标 目标函数 拉格朗日乘子法 SVM求解 SVM求解实例 支持向量：真正发挥作用的数据点，ɑ值不为0的点 带松弛因子的SVM：C-SVM soft-margin 核方法 低维不可分问题 常用核函数 支持向量回归（SVR） Scikit learn 中的SVM实现 Scikit learn 中的SVC实现 核函数kernel RBF核的参数 RBF核—核参数正好 RBF核—欠拟合 RBF核—过拟合 总结SVM的优点： – 在高维空间中行之有效 – 当维数大于样本数时仍然可用（但性能不好） – 在决策函数中只使用训练点的一个子集（支持向量），大大节省了内存开 销 – 用途广泛：决策函数中可使用不同的核函数• 劣势： ​ – SVM不直接提供概率估计​ – 可通过交叉验证计算，代价比较高• Scikit-learn中的支持向量机同时支持密集样本向量（numpy.ndarray和可通过numpy.asarray转化的数据类型）和稀疏样本向量（任何scipy.sparse对象）。但如果想用SVM对稀疏数据进行预测，则必须先在这些数据上拟合。为了优化性能，应该使用C阶（C-Ordered）numpy.ndarray（密集的）或scipy.sparse.csr_matrix（稀疏的），并指定dtype=float64]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>SVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SVD分解]]></title>
     <url>%2F2019%2F01%2F22%2FSVD%E5%88%86%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[奇异值分解(SVD)原理奇异值分解(Singular Value Decomposition，以下简称SVD)是在机器学习领域广泛应用的算法，它不光可以用于降维算法中的特征分解，还可以用于推荐系统，以及自然语言处理等领域。是很多机器学习算法的基石。 特征值和特征向量 注意到要进行特征分解，矩阵A必须为方阵。那么如果A不是方阵，即行和列不相同时，我们还可以对矩阵进行分解吗？ 答案是可以，此时我们的SVD登场了。 SVD的定义 SVD计算举例 SVD性质 由于这个重要的性质，SVD可以用于PCA降维，来做数据压缩和去噪。也可以用于推荐算法，将用户和喜好对应的矩阵做特征分解，进而得到隐含的用户需求来做推荐。同时也可以用于NLP中的算法，比如潜在语义索引（LSI）。下面我们就对SVD用于PCA降维做一个介绍。 SVD用于PCA在主成分分析（PCA）中，我们讲到要用PCA降维，需要找到样本协方差矩阵 $XX^T$ 的最大的d个特征向量，然后用这最大的d个特征向量张成的矩阵来做低维投影降维。可以看出，在这个过程中需要先求出协方差矩阵 $XX^T$ ，当样本数多样本特征数也多的时候，这个计算量是很大的。 注意到我们的SVD也可以得到协方差矩阵 $XX^T$ 最大的d个特征向量张成的矩阵，但是SVD有个好处，有一些SVD的实现算法可以不先求出协方差矩阵 $XX^T$ ，也能求出我们的右奇异矩阵V。也就是说，我们的PCA算法可以不用做特征分解，而是做SVD来完成。这个方法在样本量很大的时候很有效。实际上，scikit-learn的PCA算法的背后真正的实现就是用的SVD，而不是我们我们认为的暴力特征分解。 另一方面，注意到PCA仅仅使用了我们SVD的右奇异矩阵，没有使用左奇异矩阵，那么左奇异矩阵有什么用呢？ 假设我们的样本是m×n的矩阵X，如果我们通过SVD找到了矩阵 $XX^T$ 最大的d个特征向量张成的m×d维矩阵U，则我们如果进行如下处理： X'_{d\times n}=U_{d\times m}^TX_{m\times n}可以得到一个d×n的矩阵X‘,这个矩阵和我们原来的m×n维样本矩阵X相比，行数从m减到了d，可见对行数进行了压缩。也就是说，左奇异矩阵可以用于行数的压缩。相对的，右奇异矩阵可以用于列数即特征维度的压缩，也就是我们的PCA降维。 Numpy求解SVDimport numpy as npdata = np.array( [[1, 1, 1, 0, 0], [2, 2, 2, 0, 0], [3, 3, 3, 0, 0], [5, 5, 3, 2, 2], [0, 0, 0, 3, 3], [0, 0, 0, 6, 6]])u, sigma, vt = np.linalg.svd(data) #SVD分解print(u.shape, sigma.shape, vt.shape) SVD小结SVD作为一个很基本的算法，在很多机器学习算法中都有它的身影，特别是在现在的大数据时代，由于SVD可以实现并行化，因此更是大展身手。SVD的原理不难，只要有基本的线性代数知识就可以理解，实现也很简单因此值得仔细的研究。当然，SVD的缺点是分解出的矩阵解释性往往不强，有点黑盒子的味道，不过这不影响它的使用。]]></content>
