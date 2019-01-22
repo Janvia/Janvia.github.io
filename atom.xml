@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://janvia.github.io/"/>
-  <updated>2019-01-21T09:22:53.916Z</updated>
+  <updated>2019-01-22T01:08:38.450Z</updated>
   <id>https://janvia.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SVD分解</title>
+    <link href="https://janvia.github.io/2019/01/22/SVD%E5%88%86%E8%A7%A3/"/>
+    <id>https://janvia.github.io/2019/01/22/SVD分解/</id>
+    <published>2019-01-22T00:13:44.000Z</published>
+    <updated>2019-01-22T01:08:38.450Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="奇异值分解-SVD-原理"><a href="#奇异值分解-SVD-原理" class="headerlink" title="奇异值分解(SVD)原理"></a>奇异值分解(SVD)原理</h2><p>奇异值分解(Singular Value Decomposition，以下简称SVD)是在机器学习领域广泛应用的算法，它不光可以用于降维算法中的特征分解，还可以用于推荐系统，以及自然语言处理等领域。是很多机器学习算法的基石。</p><h3 id="特征值和特征向量"><a href="#特征值和特征向量" class="headerlink" title="特征值和特征向量"></a>特征值和特征向量</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD1.png" alt=""></p><p>注意到要进行特征分解，矩阵A必须为方阵。那么如果A不是方阵，即行和列不相同时，我们还可以对矩阵进行分解吗？</p><p>答案是可以，此时我们的SVD登场了。</p><h3 id="SVD的定义"><a href="#SVD的定义" class="headerlink" title="SVD的定义"></a>SVD的定义</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD2.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD3.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD4.png" alt=""></p><h2 id="SVD计算举例"><a href="#SVD计算举例" class="headerlink" title="SVD计算举例"></a>SVD计算举例</h2><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD5.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD6.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD7.png" alt=""></p><h2 id="SVD性质"><a href="#SVD性质" class="headerlink" title="SVD性质"></a>SVD性质</h2><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD8.png" alt=""></p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/SVD/SVD9.png" alt=""></p><p>由于这个重要的性质，SVD可以用于<strong>PCA降维</strong>，来做<strong>数据压缩</strong>和<strong>去噪</strong>。也可以用于推荐算法，将用户和喜好对应的矩阵做特征分解，进而得到隐含的用户需求来做推荐。同时也可以用于NLP中的算法，比如潜在语义索引（LSI）。下面我们就对SVD用于PCA降维做一个介绍。</p><h2 id="SVD用于PCA"><a href="#SVD用于PCA" class="headerlink" title="SVD用于PCA"></a>SVD用于PCA</h2><p>在主成分分析（PCA）中，我们讲到要用PCA降维，需要找到样本协方差矩阵 $XX^T$ 的最大的d个特征向量，然后用这最大的d个特征向量张成的矩阵来做低维投影降维。可以看出，在这个过程中需要先求出协方差矩阵 $XX^T$ ，当样本数多样本特征数也多的时候，这个计算量是很大的。</p><p>注意到我们的SVD也可以得到协方差矩阵 $XX^T$ 最大的d个特征向量张成的矩阵，但是SVD有个好处，有一些SVD的实现算法可以不先求出协方差矩阵 $XX^T$ ，也能求出我们的右奇异矩阵V。也就是说，我们的PCA算法可以不用做特征分解，而是做SVD来完成。这个方法在样本量很大的时候很有效。实际上，scikit-learn的PCA算法的背后真正的实现就是用的SVD，而不是我们我们认为的暴力特征分解。</p><p>另一方面，注意到PCA仅仅使用了我们SVD的右奇异矩阵，没有使用左奇异矩阵，那么左奇异矩阵有什么用呢？</p><p>假设我们的样本是m×n的矩阵X，如果我们通过SVD找到了矩阵 $XX^T$ 最大的d个特征向量张成的m×d维矩阵U，则我们如果进行如下处理：</p><script type="math/tex; mode=display">X'_{d\times n}=U_{d\times m}^TX_{m\times n}</script><p>可以得到一个d×n的矩阵X‘,这个矩阵和我们原来的m×n维样本矩阵X相比，行数从m减到了d，可见对行数进行了压缩。也就是说，左奇异矩阵可以用于行数的压缩。相对的，右奇异矩阵可以用于列数即特征维度的压缩，也就是我们的PCA降维。</p><h2 id="Numpy求解SVD"><a href="#Numpy求解SVD" class="headerlink" title="Numpy求解SVD"></a>Numpy求解SVD</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">data = np.array( </span><br><span class="line">[[1, 1, 1, 0, 0], </span><br><span class="line">[2, 2, 2, 0, 0], </span><br><span class="line">[3, 3, 3, 0, 0], </span><br><span class="line">[5, 5, 3, 2, 2], </span><br><span class="line">[0, 0, 0, 3, 3], </span><br><span class="line">[0, 0, 0, 6, 6]])</span><br><span class="line">u, sigma, vt = np.linalg.svd(data)   #SVD分解</span><br><span class="line">print(u.shape, sigma.shape, vt.shape)</span><br></pre></td></tr></table></figure><h2 id="SVD小结"><a href="#SVD小结" class="headerlink" title="SVD小结"></a>SVD小结</h2><p>SVD作为一个很基本的算法，在很多机器学习算法中都有它的身影，特别是在现在的大数据时代，由于SVD可以实现并行化，因此更是大展身手。SVD的原理不难，只要有基本的线性代数知识就可以理解，实现也很简单因此值得仔细的研究。当然，SVD的缺点是分解出的矩阵解释性往往不强，有点黑盒子的味道，不过这不影响它的使用。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;奇异值分解-SVD-原理&quot;&gt;&lt;a href=&quot;#奇异值分解-SVD-原理&quot; class=&quot;headerlink&quot; title=&quot;奇异值分解(SVD)原理&quot;&gt;&lt;/a&gt;奇异值分解(SVD)原理&lt;/h2&gt;&lt;p&gt;奇异值分解(Singular Value Decomposi
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://janvia.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="SVD" scheme="https://janvia.github.io/tags/SVD/"/>
+    
+  </entry>
   
   <entry>
     <title>点击预估</title>
@@ -508,36 +533,6 @@
     
     
       <category term="卷积神经网络" scheme="https://janvia.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>经典卷积神经网络</title>
-    <link href="https://janvia.github.io/2019/01/15/%E7%BB%8F%E5%85%B8%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
-    <id>https://janvia.github.io/2019/01/15/经典神经网络/</id>
-    <published>2019-01-15T01:10:59.000Z</published>
-    <updated>2019-01-15T01:27:26.008Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="LeNet"><a href="#LeNet" class="headerlink" title="LeNet"></a>LeNet</h3><p>这是最早用于数字识别的CNN </p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/卷积神经网络/LeNet.png" alt=""></p><p>LeNet5特征能够总结为如下几点：</p><p>1）卷积神经网络使用三个层作为一个系列： 卷积，池化，非线性</p><p>2） 使用卷积提取空间特征</p><p>3）使用映射到空间均值下采样（subsample）</p><p>4）双曲线（tanh）或S型（sigmoid）形式的非线性</p><p>5）多层神经网络（MLP）作为最后的分类器</p><p>6）层与层之间的稀疏连接矩阵避免大的计算成本</p><h3 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h3><p>2012 ILSVRC比赛远超第2名的CNN，比 LeNet更深，用多层小卷积层叠加替换单大卷积层。</p><p>AlexNet的结构模型如下：</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/卷积神经网络/AlexNet.png" alt=""></p><h3 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h3><p>2014 ILSVRC比赛中的模型，图像识别略差于GoogLeNet，但是在很多图像转化学习问题(比如object detection)上效果奇好</p><p>VGG各版本结构如下：</p><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/卷积神经网络/VGG.png" alt=""></p><h3 id="经典卷积网络实现"><a href="#经典卷积网络实现" class="headerlink" title="经典卷积网络实现"></a>经典卷积网络实现</h3><p>详见：<a href="https://jiangvia.cn/2019/01/13/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" target="_blank" rel="noopener">卷积神经网络实现</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;LeNet&quot;&gt;&lt;a href=&quot;#LeNet&quot; class=&quot;headerlink&quot; title=&quot;LeNet&quot;&gt;&lt;/a&gt;LeNet&lt;/h3&gt;&lt;p&gt;这是最早用于数字识别的CNN &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://jiangvia.oss-cn-s
-      
-    
-    </summary>
-    
-      <category term="深度学习" scheme="https://janvia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="VGG" scheme="https://janvia.github.io/tags/VGG/"/>
-    
-      <category term="LeNet" scheme="https://janvia.github.io/tags/LeNet/"/>
-    
-      <category term="AlexNet" scheme="https://janvia.github.io/tags/AlexNet/"/>
     
   </entry>
   
