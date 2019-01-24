@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://janvia.github.io/2019/01/23/numpy/</loc>
+    <lastmod>2019-01-24</lastmod>
+  </url>  <url>
+    <loc>https://janvia.github.io/2019/01/20/21%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2019-01-24</lastmod>
+  </url>  <url>
+    <loc>https://janvia.github.io/2019/01/23/%E8%81%9A%E7%B1%BB/</loc>
+    <lastmod>2019-01-23</lastmod>
+  </url>  <url>
+    <loc>https://janvia.github.io/2019/01/23/%E5%86%B3%E7%AD%96%E6%A0%91%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/</loc>
+    <lastmod>2019-01-23</lastmod>
+  </url>  <url>
     <loc>https://janvia.github.io/2019/01/22/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</loc>
     <lastmod>2019-01-22</lastmod>
   </url>  <url>
@@ -35,9 +47,6 @@
     <lastmod>2019-01-20</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/11/20%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95/</loc>
-    <lastmod>2019-01-20</lastmod>
-  </url>  <url>
-    <loc>https://janvia.github.io/2019/01/20/21%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95/</loc>
     <lastmod>2019-01-20</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/09/markdown/</loc>
