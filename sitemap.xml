@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janvia.github.io/2019/01/25/pandas/</loc>
+    
+    <lastmod>2019-01-25T05:56:08.474Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janvia.github.io/2019/01/24/matplotlib/</loc>
     
     <lastmod>2019-01-24T08:27:10.154Z</lastmod>
