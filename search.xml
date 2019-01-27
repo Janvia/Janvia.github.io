@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[21单元语法]]></title>
+    <url>%2F2019%2F01%2F27%2F22%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[たら&lt;假定条件&gt;条件从句～たら表示动作或者事物存在的假定条件。主句所陈述的是在该条件下进行的动作行为或发生的情况。 接续： Ｖたら A詞干+かったら Na/N+だったら ✿汉语：如果～就～、如果～的话～ 1.もし分からないことがあったら、調べてください。(2010年题)2.近所の人に会ったら、挨拶しましょう。(2009年真题)3.元気だったら、またいつか会えるね。 Ｖてみる＜尝试性动作＞ 表示尝试着进行某动作或做某事。 ✿汉语：～一下，试着~，~一看 1.友達が怪我で入院したと聞き、慌てて病院に行ってみると思っていたよりも元気で安心した。(2013年真题)2.私が最も行ってみたい寺は京都にある。 (2012年真题)3.旅行のことはもう一度皆さんと相談してみる。 ~そうだ&lt;间接引语&gt;表示间接引语，主要用于说话人转述从其他地方获得的信息。有时用Nによると来明确指示信息的来源。接续：简体句子+そうだ ✿汉语：听说~，据说~★：否定形式：「～ないそうだ」。 1.来週、うちの近くでお祭りがあるそうだ。2.友達によると、去年の試験は簡単だったそうだ。3.天気予報によると、明日は雨だそうだ。 って＜引用＞1、表示引用 ，口语 同～と（言う/思う） 接续：句子って 1.彼はすぐ来るって言ってるよ 。2.めんどくさいって思うときどうする? 2、ＮってＮ 叫…的… 同という これ、夏目漱石って作家の書いた本です。 3、Ｎ/A/Vって 主题 （提出话题，下定义） 1.ワールドカップ って何のことですか。2.若いっていいですね。3.反対するって、勇気のいることです。 ~なんて&lt;主题&gt;表示意外或惊讶，有时还带有轻蔑的口气。接续：句子简体/名词 1.初めて買った人が一等に当たったなんて、すごいですね。2.あんな人が社長なんて信じられない。 人物名词を対象に（して） &lt;动作对象&gt;表示以该人物为对象实施某一行为。 ✿汉语：以…为对象 1.大学生を対象に英語を教える。2.中国にいる日本人を対象にして生活調査を実施した。 Nを中心に（して）＜核心内容＞ ✿以…为中心，以…为主（进行某动作）★：还有其他形式：～を中心とする ～を中心とした 1.この作者の作品は、若い女性を中心に読まれている。(2003年真题)2.日本語を中心にして、様々な授業を受けている。 ～と考えられる/思われる れる、られる自动态。自动态表示这些心理活动是自然而然产生的人类感情。并非所有动词都有相对的自动态，一般仅限于表示思想思考、感觉等心理活动的词。★： 思う－思われる 案じる－案じられる ～するー～される 1.来年は国の経済が回復すると思われます。2.この問題は子供には難しいと思われる。]]></content>
+      <categories>
+        <category>日语</category>
+      </categories>
+      <tags>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[语义分割]]></title>
     <url>%2F2019%2F01%2F25%2F%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2%2F</url>
     <content type="text"><![CDATA[语义分割 semantic segmentationPascal VOC CityScapes DatasetPascal VOC 2012： http://host.robots.ox.ac.uk/pascal/VOC/voc2012/ https://www.dropbox.com/s/oeu149j8qtbs1x0/SegmentationClassAug.zip?dl=0 Paper： https://arxiv.org/pdf/1706.05587.pdfSource Code： https://github.com/NanqingD/DeepLabV3-Tensorflow 基础Convolution CNN Image Source: https://skymind.ai/wiki/convolutional-network TensorFlowGraph and Session： Tensorflow separates definition of computations from their execution DeepLabAtrous Convolution Residual Unit Network ​ Softmax Loss Function H(y,p)=-\sum_iy_ilog(p_i)​ Data Preprocessing​ Train/Evaluation​ Finetuning]]></content>
@@ -153,8 +164,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>DCGAN</tag>
         <tag>GAN</tag>
+        <tag>DCGAN</tag>
       </tags>
   </entry>
   <entry>
