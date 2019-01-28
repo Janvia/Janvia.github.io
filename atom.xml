@@ -473,9 +473,9 @@
       <category term="深度学习" scheme="https://janvia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="DCGAN" scheme="https://janvia.github.io/tags/DCGAN/"/>
-    
       <category term="GAN" scheme="https://janvia.github.io/tags/GAN/"/>
+    
+      <category term="DCGAN" scheme="https://janvia.github.io/tags/DCGAN/"/>
     
   </entry>
   
