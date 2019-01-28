@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="列表推导式,迭代器,生成器,模块,包,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="sylvia" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="推导表达式得到一个元素为1到10的列表，可以怎么做？ 列表循环添加方法一： x = list(range(1,11))xOut[3]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 方法二： li = []for i in range(1,11):    li.append(i) liOut[3]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 这是我们前面所总">
+<meta name="keywords" content="列表推导式,迭代器,生成器,模块,包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="列表推导式、迭代器、生成器、模块和包">
+<meta property="og:url" content="https://janvia.github.io/2019/01/28/列表推导式、迭代器生成器，模块和包/index.html">
+<meta property="og:site_name" content="sylvia">
+<meta property="og:description" content="推导表达式得到一个元素为1到10的列表，可以怎么做？ 列表循环添加方法一： x = list(range(1,11))xOut[3]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 方法二： li = []for i in range(1,11):    li.append(i) liOut[3]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 这是我们前面所总">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/python6.jpg">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/python7.jpg">
+<meta property="og:updated_time" content="2019-01-28T07:17:56.831Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="列表推导式、迭代器、生成器、模块和包">
+<meta name="twitter:description" content="推导表达式得到一个元素为1到10的列表，可以怎么做？ 列表循环添加方法一： x = list(range(1,11))xOut[3]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 方法二： li = []for i in range(1,11):    li.append(i) liOut[3]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 这是我们前面所总">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/python6.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9CNLK347LC',
+      apiKey: '5d000d330392ce1b44b614961e14f53e',
+      indexName: 'dev_janviablog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://janvia.github.io/2019/01/28/列表推导式、迭代器生成器，模块和包/">
+
+
+
+
+
+
+  <title>列表推导式、迭代器、生成器、模块和包 | sylvia</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sylvia</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Viva La Vida</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/28/列表推导式、迭代器生成器，模块和包/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">列表推导式、迭代器、生成器、模块和包</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-28T14:43:55+08:00">
+                2019-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/28/列表推导式、迭代器生成器，模块和包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/28/列表推导式、迭代器生成器，模块和包/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="推导表达式"><a href="#推导表达式" class="headerlink" title="推导表达式"></a>推导表达式</h3><p>得到一个元素为1到10的列表，可以怎么做？</p>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><h5 id="循环添加"><a href="#循环添加" class="headerlink" title="循环添加"></a><strong>循环添加</strong></h5><p><strong>方法一：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = list(range(<span class="number">1</span>,<span class="number">11</span>))</span><br><span class="line">x</span><br><span class="line">Out[<span class="number">3</span>]: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>方法二：</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">li = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>):</span><br><span class="line">    li.append(i)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">li</span><br><span class="line">Out[3]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+<p>这是我们前面所总结过的生成一个列表的方法。</p>
+<h5 id="列表推导"><a href="#列表推导" class="headerlink" title="列表推导"></a><strong>列表推导</strong></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">li = [i for i in range(1,11)]</span><br><span class="line">li</span><br><span class="line">Out[3]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+<p>通过列表推导，精简了代码。</p>
+<h5 id="运行时间对比"><a href="#运行时间对比" class="headerlink" title="运行时间对比"></a>运行时间对比</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">s = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">    x = list(range(<span class="number">1</span>,<span class="number">11</span>))</span><br><span class="line">e = time.time()</span><br><span class="line">print(<span class="string">'list: '</span>, e-s)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">    li = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>):</span><br><span class="line">        li.append(i)</span><br><span class="line">end = time.time()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'append: '</span>, end-f)</span><br><span class="line"></span><br><span class="line">ff = time.time()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">    li = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">end1 = time.time()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'[]: '</span>, end1-ff)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list:  0.7910020351409912</span><br><span class="line">append:  2.110013246536255</span><br><span class="line">[]:  1.0232622623443604</span><br></pre></td></tr></table></figure>
+<p>可以看出列表推导的方式是比append方法更高效的，而list强制转换的是可能出现问题，所以总的来说就是推荐使用列表推导的方法。</p>
+<h4 id="列表推导-条件判断"><a href="#列表推导-条件判断" class="headerlink" title="列表推导+条件判断"></a><strong>列表推导+条件判断</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l2 = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>) <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line">l2</span><br><span class="line">Out[<span class="number">4</span>]: [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<p>单独的if条件判断只能放在后面</p>
+<h4 id="列表推导-三目运算"><a href="#列表推导-三目运算" class="headerlink" title="列表推导+三目运算"></a><strong>列表推导+三目运算</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l2 = [i <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">l2</span><br><span class="line">Out[<span class="number">3</span>]: [<span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<p>如果是if+else的判断条件，就需要放前面。</p>
+<h4 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">se = &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)&#125;</span><br><span class="line">se</span><br><span class="line">Out[<span class="number">4</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">li = list(range(<span class="number">1</span>,<span class="number">11</span>))</span><br><span class="line">di = &#123;i:j <span class="keyword">for</span> i,j <span class="keyword">in</span> enumerate(li)&#125;</span><br><span class="line">di</span><br><span class="line">Out[<span class="number">3</span>]: &#123;<span class="number">0</span>: <span class="number">1</span>, <span class="number">1</span>: <span class="number">2</span>, <span class="number">2</span>: <span class="number">3</span>, <span class="number">3</span>: <span class="number">4</span>, <span class="number">4</span>: <span class="number">5</span>, <span class="number">5</span>: <span class="number">6</span>, <span class="number">6</span>: <span class="number">7</span>, <span class="number">7</span>: <span class="number">8</span>, <span class="number">8</span>: <span class="number">9</span>, <span class="number">9</span>: <span class="number">10</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
+<p>推导表达式相对于for循环来处理数据，要更加的方便。</p>
+<p>列表推导表达式使用更加的广泛。</p>
+</blockquote>
+<h3 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h3><h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>列表推导是往列表中一个一个地放入数据，那如果一个一个地取出数据呢？</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">li = list(range(<span class="number">1</span>, <span class="number">11</span>))</span><br><span class="line">it = iter(li)</span><br><span class="line">it2 = li.__iter__()</span><br><span class="line">it</span><br><span class="line">Out[<span class="number">3</span>]: &lt;list_iterator at <span class="number">0x14c69f4b208</span>&gt;</span><br><span class="line">it2</span><br><span class="line">Out[<span class="number">4</span>]: &lt;list_iterator at <span class="number">0x14c69f4b6a0</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>生成迭代器</p>
+<h5 id="迭代器对象"><a href="#迭代器对象" class="headerlink" title="迭代器对象"></a>迭代器对象</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dir(list)</span><br><span class="line">sir(str)</span><br><span class="line">dir(tuple)</span><br></pre></td></tr></table></figure>
+<p>迭代器对象本身需要支持以下两种方法，它们一起构成迭代器协议：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iterator.__iter__()</span><br><span class="line">iterator.__next__()</span><br></pre></td></tr></table></figure>
+<h5 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">next(it)</span><br><span class="line">Out[<span class="number">12</span>]: <span class="number">1</span></span><br><span class="line">next(it)</span><br><span class="line">Out[<span class="number">13</span>]: <span class="number">2</span></span><br><span class="line">next(it)</span><br><span class="line">Out[<span class="number">14</span>]: <span class="number">3</span></span><br><span class="line">it.__next__()</span><br><span class="line">Out[<span class="number">15</span>]: <span class="number">4</span></span><br><span class="line">it.__next__()</span><br><span class="line">Out[<span class="number">16</span>]: <span class="number">5</span></span><br><span class="line">it.__next__()</span><br><span class="line">Out[<span class="number">17</span>]: <span class="number">6</span></span><br><span class="line"></span><br><span class="line">next(it)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"C:\Program Files\Python36\lib\site-packages\IPython\core\interactiveshell.py"</span>, line <span class="number">3265</span>, <span class="keyword">in</span> run_code</span><br><span class="line">    exec(code_obj, self.user_global_ns, self.user_ns)</span><br><span class="line">  File <span class="string">"&lt;ipython-input-13-bc1ab118995a&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    next(it)</span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过</p>
+<p>next(iterator)</p>
+<p>iterator.<strong>next</strong>()</p>
+<p>来进行取值</p>
+<p>注意：如果迭代器值取完之后，会返回 StopIteration 错误</p>
+</blockquote>
+<h5 id="自定义迭代器"><a href="#自定义迭代器" class="headerlink" title="自定义迭代器"></a>自定义迭代器</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TupleIter</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, li)</span>:</span></span><br><span class="line">        self.li = li</span><br><span class="line">        self._index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self._index &lt; len(self.li):</span><br><span class="line">            index = self.li[self._index]</span><br><span class="line">            self._index += <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> index</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t1 = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">a = TupleIter(t1)</span><br><span class="line">a</span><br><span class="line">Out[<span class="number">3</span>]: &lt;__main__.TupleIter at <span class="number">0x1376ba4b358</span>&gt;</span><br><span class="line">next(a)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="number">1</span></span><br><span class="line">a.__next__()</span><br><span class="line">Out[<span class="number">5</span>]: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>可以自己定义iter和next方法来自定义迭代器。</p>
+<h4 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(n)</span>:</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; n:</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = func(<span class="number">10</span>)</span><br><span class="line">s</span><br><span class="line">Out[<span class="number">3</span>]: &lt;generator object func at <span class="number">0x000001442E4FE990</span>&gt;</span><br><span class="line">[i <span class="keyword">for</span> i <span class="keyword">in</span> s]</span><br><span class="line">Out[<span class="number">4</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+<p>迭代器提供了一个实现迭代器协议的简便方法</p>
+<p>yield 表达式只能在函数中使用,在函数体中使用 yield 表达式可以使函数成为一个生成器</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(end)</span>:</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; end:</span><br><span class="line">        <span class="keyword">yield</span> b</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">g = func(<span class="number">10</span>)</span><br><span class="line">g</span><br><span class="line">Out[<span class="number">3</span>]: &lt;generator object func at <span class="number">0x00000238904BD990</span>&gt;</span><br><span class="line">[i <span class="keyword">for</span> i <span class="keyword">in</span> g]</span><br><span class="line">Out[<span class="number">4</span>]: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">13</span>, <span class="number">21</span>, <span class="number">34</span>, <span class="number">55</span>]</span><br></pre></td></tr></table></figure>
+<p>通过生成器就生成了一个迭代器，通过dir(g)就能查出iter和next的方法。就比我们自定义迭代器更简单。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(end)</span>:</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; end:</span><br><span class="line">        print(<span class="string">'*'</span>*<span class="number">5</span>, a, b)</span><br><span class="line">        <span class="keyword">yield</span> b</span><br><span class="line">        print(<span class="string">'-'</span> * <span class="number">5</span>, a, b)</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        n += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">g = func(<span class="number">10</span>)</span><br><span class="line">next(g)</span><br><span class="line">***** <span class="number">0</span> <span class="number">1</span></span><br><span class="line">Out[<span class="number">3</span>]: <span class="number">1</span></span><br><span class="line">next(g)</span><br><span class="line">----- <span class="number">0</span> <span class="number">1</span></span><br><span class="line">***** <span class="number">1</span> <span class="number">1</span></span><br><span class="line">Out[<span class="number">4</span>]: <span class="number">1</span></span><br><span class="line">next(g)</span><br><span class="line">----- <span class="number">1</span> <span class="number">1</span></span><br><span class="line">***** <span class="number">1</span> <span class="number">2</span></span><br><span class="line">Out[<span class="number">5</span>]: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>yield 可以返回表达式结果，并且暂定函数执行</p>
+<p>通过迭代器去生成斐波拉契数列要比直接得到更加节省内存。</p>
+<p>总结：yield只能在函数里面使用。</p>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><p>在另一个py文件中的对象如何导入到当前的py文件中呢？</p>
+<h4 id="模块-1"><a href="#模块-1" class="headerlink" title="模块"></a>模块</h4><p>在python中，模块就是一个py文件，可以使用下面两种方法导入</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> XX</span><br><span class="line"><span class="keyword">from</span> XX <span class="keyword">import</span> XX </span><br><span class="line"><span class="keyword">from</span> XX <span class="keyword">import</span> XX <span class="keyword">as</span> XX</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime (<span class="keyword">as</span> this_datetime)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在同一目录下，可直接使用上面两种方法去导入；在不同目录下，需要使用 sys.path 添加路径</p>
+<p>sys.path.append(‘path’)</p>
+</blockquote>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/python6.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from pages import a</span><br><span class="line">a.demo()</span><br></pre></td></tr></table></figure>
+<p>不同的文件夹导入模块可以用这个两种方式。</p>
+<p>在python3中导入后，会在当前路径下生成一个<strong>pycache</strong> 文件夹</p>
+<h4 id="sys模块"><a href="#sys模块" class="headerlink" title="sys模块"></a>sys模块</h4><p>sys 模块提供了与python解释器交互的函数，在python中它是始终可以导入使用的.</p>
+<h5 id="sys-argv"><a href="#sys-argv" class="headerlink" title="sys.argv"></a><a href="https://docs.python.org/3/library/sys.html" target="_blank" rel="noopener">sys.argv</a></h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">print(sys.argv)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$ python b.py <span class="number">123</span> <span class="number">456</span></span><br><span class="line">[<span class="string">'b.py'</span>, <span class="string">'123'</span>, <span class="string">'456'</span>]</span><br></pre></td></tr></table></figure>
+<p>获取终端命令行输入</p>
+<h5 id="sys-path"><a href="#sys-path" class="headerlink" title="sys.path"></a><a href="https://docs.python.org/3/library/sys.html" target="_blank" rel="noopener">sys.path</a></h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">print(sys.path)</span><br></pre></td></tr></table></figure>
+<p>解释器模块导入查找路径</p>
+<h4 id="if-name-‘-main’"><a href="#if-name-‘-main’" class="headerlink" title="if  name == ‘  main’:"></a>if <strong> name</strong> == ‘ <strong> main</strong>’:</h4><h5 id="name"><a href="#name" class="headerlink" title="name"></a><a href="https://docs.python.org/3/reference/import.html?highlight=__name__" target="_blank" rel="noopener"><strong>name</strong></a></h5><p>python会自动的给模块加上这个属性</p>
+<p>如果模块是被直接调用的，则 <strong>name</strong> 的值是 <strong>main</strong>否则就是该模块的模块名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pages.a a</span><br><span class="line">__main__ b</span><br></pre></td></tr></table></figure>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>if <strong> name</strong> == ‘<strong> main</strong>’: 该语句可以控制代码在被其他模块导入时不被执行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">__main__ b</span><br></pre></td></tr></table></figure>
+<h3 id="包和包管理"><a href="#包和包管理" class="headerlink" title="包和包管理"></a>包和包管理</h3><p>如果模块太多了，怎么方便的去管理呢？</p>
+<h4 id="包概念"><a href="#包概念" class="headerlink" title="包概念"></a>包概念</h4><blockquote>
+<p>把很多模块放到一个文件夹里面，就可以形成一个包.</p>
+</blockquote>
+<h4 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h4><blockquote>
+<p>当把很多模块放在文件中时，为了方便引用包中的模块，引入了包管理</p>
+</blockquote>
+<h4 id="init-py"><a href="#init-py" class="headerlink" title="init.py"></a><strong>init</strong>.py</h4><blockquote>
+<p>在包管理中，加入此模块，则包名可以直接通过属性访问的方式，访问此模块内的对象，此模块不加上可能不会报错，但是规范是要加上，文件内容可以为空</p>
+</blockquote>
+<h4 id="相对路径导入"><a href="#相对路径导入" class="headerlink" title="相对路径导入"></a>相对路径导入</h4><blockquote>
+<p>在包管理中，可以通过. (一个点) 和 .. (两个点)分别来导入同层和上一层的模块</p>
+</blockquote>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/python7.jpg" alt=""></p>
+<h5 id="引入作用"><a href="#引入作用" class="headerlink" title="引入作用"></a>引入作用</h5><blockquote>
+<p>在包中，如果包中模块要导入同一包中的其他模块，就必须使用此方法导入.</p>
+</blockquote>
+<h5 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from  .module(..module)  import obj   (as  new_name)</span><br></pre></td></tr></table></figure>
+<h5 id="引入之后的影响"><a href="#引入之后的影响" class="headerlink" title="引入之后的影响"></a>引入之后的影响</h5><blockquote>
+<p>当一个模块中出现此导入方式，则该模块不能被直接运行，只能被导入</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/列表推导式/" rel="tag">✿✿✿ 列表推导式</a>
+          
+            <a href="/tags/迭代器/" rel="tag">✿✿✿ 迭代器</a>
+          
+            <a href="/tags/生成器/" rel="tag">✿✿✿ 生成器</a>
+          
+            <a href="/tags/模块/" rel="tag">✿✿✿ 模块</a>
+          
+            <a href="/tags/包/" rel="tag">✿✿✿ 包</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/28/正则/" rel="next" title="正则">
+                <i class="fa fa-chevron-left"></i> 正则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/28/异常/" rel="prev" title="异常">
+                异常 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
+
+    
+</div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="sylvia">
+            
+              <p class="site-author-name" itemprop="name">sylvia</p>
+              <p class="site-description motion-element" itemprop="description">君がいるだから、今の僕は幸せです。今日もありがとう。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:836753560@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:live:836753560?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#推导表达式"><span class="nav-number">1.</span> <span class="nav-text">推导表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表"><span class="nav-number">1.1.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#循环添加"><span class="nav-number">1.1.1.</span> <span class="nav-text">循环添加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列表推导"><span class="nav-number">1.1.2.</span> <span class="nav-text">列表推导</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行时间对比"><span class="nav-number">1.1.3.</span> <span class="nav-text">运行时间对比</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表推导-条件判断"><span class="nav-number">1.2.</span> <span class="nav-text">列表推导+条件判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表推导-三目运算"><span class="nav-number">1.3.</span> <span class="nav-text">列表推导+三目运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集合"><span class="nav-number">1.4.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典"><span class="nav-number">1.5.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">2.</span> <span class="nav-text">迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器"><span class="nav-number">2.1.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#迭代器对象"><span class="nav-number">2.1.1.</span> <span class="nav-text">迭代器对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#取值"><span class="nav-number">2.1.2.</span> <span class="nav-text">取值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义迭代器"><span class="nav-number">2.1.3.</span> <span class="nav-text">自定义迭代器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器"><span class="nav-number">2.2.</span> <span class="nav-text">生成器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块"><span class="nav-number">3.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模块-1"><span class="nav-number">3.1.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sys模块"><span class="nav-number">3.2.</span> <span class="nav-text">sys模块</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sys-argv"><span class="nav-number">3.2.1.</span> <span class="nav-text">sys.argv</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sys-path"><span class="nav-number">3.2.2.</span> <span class="nav-text">sys.path</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if-name-‘-main’"><span class="nav-number">3.3.</span> <span class="nav-text">if  name == ‘  main’:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#name"><span class="nav-number">3.3.1.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意"><span class="nav-number">3.3.2.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包和包管理"><span class="nav-number">4.</span> <span class="nav-text">包和包管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#包概念"><span class="nav-number">4.1.</span> <span class="nav-text">包概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包管理"><span class="nav-number">4.2.</span> <span class="nav-text">包管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#init-py"><span class="nav-number">4.3.</span> <span class="nav-text">init.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对路径导入"><span class="nav-number">4.4.</span> <span class="nav-text">相对路径导入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#引入作用"><span class="nav-number">4.4.1.</span> <span class="nav-text">引入作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方法"><span class="nav-number">4.4.2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引入之后的影响"><span class="nav-number">4.4.3.</span> <span class="nav-text">引入之后的影响</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sylvia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">92.4k</span>
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/28/列表推导式、迭代器生成器，模块和包/';
+          this.page.identifier = '2019/01/28/列表推导式、迭代器生成器，模块和包/';
+          this.page.title = '列表推导式、迭代器、生成器、模块和包';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tsumiki.model.json"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>
