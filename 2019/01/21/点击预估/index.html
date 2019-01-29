@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="点击预估,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="sylvia" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="目标广告显示：只显示相关的广告 背景： ​    – 用户喜欢相关的广告​    – 只有用户点击时，广告平台才能收到广告费  所以预测一个广告是否会被点击很关键 方式：    – 预估点击率 (predict Click Through Rate, pCTR) 推荐系统 vs. 点击率预估 CTR的挑战• 用最少的资源在大量的数据上训练大量的模型  上亿的特征数目（模型系数的数目） 每天有上亿的">
+<meta name="keywords" content="点击预估">
+<meta property="og:type" content="article">
+<meta property="og:title" content="点击预估">
+<meta property="og:url" content="https://janvia.github.io/2019/01/21/点击预估/index.html">
+<meta property="og:site_name" content="sylvia">
+<meta property="og:description" content="目标广告显示：只显示相关的广告 背景： ​    – 用户喜欢相关的广告​    – 只有用户点击时，广告平台才能收到广告费  所以预测一个广告是否会被点击很关键 方式：    – 预估点击率 (predict Click Through Rate, pCTR) 推荐系统 vs. 点击率预估 CTR的挑战• 用最少的资源在大量的数据上训练大量的模型  上亿的特征数目（模型系数的数目） 每天有上亿的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT1.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT2.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT3.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT4.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT6.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT5.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT7.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT8.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT9.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT10.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT11.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT12.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT13.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT14.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT15.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT16.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT17.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT18.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT19.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT20.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT21.png">
+<meta property="og:updated_time" content="2019-01-21T09:22:53.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="点击预估">
+<meta name="twitter:description" content="目标广告显示：只显示相关的广告 背景： ​    – 用户喜欢相关的广告​    – 只有用户点击时，广告平台才能收到广告费  所以预测一个广告是否会被点击很关键 方式：    – 预估点击率 (predict Click Through Rate, pCTR) 推荐系统 vs. 点击率预估 CTR的挑战• 用最少的资源在大量的数据上训练大量的模型  上亿的特征数目（模型系数的数目） 每天有上亿的">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9CNLK347LC',
+      apiKey: '5d000d330392ce1b44b614961e14f53e',
+      indexName: 'dev_janviablog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://janvia.github.io/2019/01/21/点击预估/">
+
+
+
+
+
+
+  <title>点击预估 | sylvia</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sylvia</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Viva La Vida</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/21/点击预估/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">点击预估</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T15:26:02+08:00">
+                2019-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/21/点击预估/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/21/点击预估/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>广告显示：只显示相关的广告</p>
+<p>背景：</p>
+<p>​    – 用户喜欢相关的广告<br>​    – 只有用户点击时，广告平台才能收到广告费</p>
+<p> 所以预测一个广告是否会被点击很关键</p>
+<p>方式：<br>    – 预估点击率 (predict Click Through Rate, pCTR)</p>
+<h3 id="推荐系统-vs-点击率预估"><a href="#推荐系统-vs-点击率预估" class="headerlink" title="推荐系统 vs. 点击率预估"></a>推荐系统 vs. 点击率预估</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT1.png" alt=""></p>
+<h3 id="CTR的挑战"><a href="#CTR的挑战" class="headerlink" title="CTR的挑战"></a>CTR的挑战</h3><p>• 用最少的资源在大量的数据上训练大量的模型</p>
+<blockquote>
+<p>上亿的特征数目（模型系数的数目）</p>
+<p>每天有上亿的流量（提供上亿次预测服务）</p>
+<p>上亿的训练样本数目</p>
+</blockquote>
+<p>• 其他</p>
+<blockquote>
+<p>正负样本数目不均衡</p>
+<blockquote>
+<p>面向稀有事件的 Logistic Regression 模型校准</p>
+</blockquote>
+<p>特征稀疏（OneHot编码）</p>
+</blockquote>
+<p><a href="https://vividfree.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2015/12/15/model-calibration-for-logistic-regression-in-rare-events-data" target="_blank" rel="noopener">https://vividfree.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2015/12/15/model-calibration-for-logistic-regression-in-rare-events-data</a></p>
+<h3 id="CTR预估"><a href="#CTR预估" class="headerlink" title="CTR预估"></a>CTR预估</h3><p>• 预测模型：预估广告是否被点击，是一个两类分类问题</p>
+<p>• 特征：用户、广告、场景、媒体</p>
+<p>• 性能评估：准确率/召回率、AUC</p>
+<h3 id="基础特征"><a href="#基础特征" class="headerlink" title="基础特征"></a>基础特征</h3><p>展示广告：在某场景下，通过某媒体向用户展示广告<br>– 场景：当时场景，如何时何地，使用何种设备，使用什么浏览器等<br>– 广告 - 广告主特征、广告自身的特征如campaign、创意、类型，是否重定向等<br>– 媒体 - 媒体（网页、app等）的特征、广告位的特征等<br>– 用户 - 用户画像、用户浏览历史、检索关键词等</p>
+<h3 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h3><p>• 特征离散化<br>• 特征交叉<br>    FM/FFM： 类别型    特征<br>    OneHot编码后再组合<br>    GBDT：用树的叶子节点索引作为样本特征<br>    特征组合并特征离散化<br>• 特征选择：嵌入到模型</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT2.png" alt=""></p>
+<h3 id="预测模型"><a href="#预测模型" class="headerlink" title="预测模型"></a>预测模型</h3><p>• Logistic回归（LR）：<br>    – 特征工程很重要<br>    – LR-FTRL： Google在2010年提出了一些理论基础，2013年给出了Paper，并且带有FTRL的实现伪代码。在此之后，FTRL才大规模应用在工业界。<br>• FM(Factorization Machines)<br>    – Steffen Rendle于2010年提出Factorization Machines（FM），并发布开源工具libFM。凭借这单个模型，他在KDD Cup 2012上，取得Track1的第2名和Track2的第3名。本质上可看作是：高效特征交叉 + LR。<br>• 深度学习DNN<br>    – 特征工程工作量少，但10^11 级别的原始广告特征、以及特征的稀疏性对DNN还是巨大挑战</p>
+<h3 id="CTR模型评估"><a href="#CTR模型评估" class="headerlink" title="CTR模型评估"></a>CTR模型评估</h3><p>• 原则上分类性能评价指标均可用于CTR模型评估<br>    – Logloss、PR、…<br>• 最常用的评估指标：ROC曲线下的面积（Area Under Curve， AUC ）<br>    – 随机分类模型AUC为0.5<br>    – 越接近1模型的效果越好<br>当随机挑选一个正样本以及一个负样本，当前的分类算法根据计算得到的Score值将这个正样本排在负样本前面的概率就是AUC值。</p>
+<h3 id="AUC"><a href="#AUC" class="headerlink" title="AUC"></a>AUC</h3><p>• 当测试集中的正负样本的分布变化的时候，ROC曲线能够保持不变 ,AUC不变<br>• CTR场景下，测试数据中的正负样本的分布可能随着时间变化而变化</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT3.png" alt=""></p>
+<h3 id="CTR预估-Logistic回归（LR）"><a href="#CTR预估-Logistic回归（LR）" class="headerlink" title="CTR预估-Logistic回归（LR）"></a>CTR预估-Logistic回归（LR）</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT4.png" alt=""></p>
+<h3 id="Logistic回归-L1正则"><a href="#Logistic回归-L1正则" class="headerlink" title="Logistic回归 + L1正则"></a>Logistic回归 + L1正则</h3><p>由于CTR预估中特征维数非常高，我们希望得到稀疏解，利用L1正则，目标函数为</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT6.png" alt=""></p>
+<h3 id="Google-Large-scale-LR-model"><a href="#Google-Large-scale-LR-model" class="headerlink" title="Google: Large scale LR model"></a>Google: Large scale LR model</h3><p>• Ad Click Prediction A view from the trenches<br>– Google FTRL模型在点击率预估任务上的应用<br>• FTRL是L1正则的LR，但对模型训练进行了优化：<br>– 在线学习（Online Learning）<br>– 模型稀疏<br>• 很重要，因为CTR问题中通常特征维数很高（上亿）<br>• 很稀疏（离散特征＋OneHot 编码）</p>
+<h3 id="FTRL-Follow-The-Regulized-Leader"><a href="#FTRL-Follow-The-Regulized-Leader" class="headerlink" title="FTRL (Follow The Regulized Leader)"></a>FTRL (Follow The Regulized Leader)</h3><p>• 在批处理模式下，L1正则化通常产生稀疏模型<br>• 但Online中，每次权重向量的更新并不是沿着全局梯度进行下降，而是沿着某个样本的产生的梯度方向进行下降，整个寻优过程变得像是一个随机查找的过程，这样Online最优化求解即使采用L1正则化的方式，也很难产生稀疏解。<br>• 在线稀疏模：FTRL<br>    – FTRL 综合了RDA和FOBOS，在L1范数或者其他非光滑的正则项下，能高效地得到稀疏解</p>
+<h3 id="FTRL"><a href="#FTRL" class="headerlink" title="FTRL"></a>FTRL</h3><p>• FTRL和SGD是等价的。</p>
+<p>• FTRL工程实现技巧（如节省内存等）请见原始论文。</p>
+<p>• Tensorflow支持FRTL：FtrlOptimizer</p>
+<p>性能：</p>
+<p> L1-FOBOS、L1-RDA和L1-FTRL在一个小规模数据集（10^6 ）上的性能</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT5.png" alt=""></p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] Convex function. <a href="http://en.wikipedia.org/wiki/Convex_function" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Convex_function</a><br>[2] Lagrange multiplier. <a href="http://en.wikipedia.org/wiki/Lagrange_multiplier" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Lagrange_multiplier</a><br>[3] Karush–Kuhn–Tucker conditions. <a href="http://en.wikipedia.org/wiki/Karush-Kuhn-Tucker_conditions" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Karush-Kuhn-Tucker_conditions</a><br>[4] 冯扬. 并行逻辑回归 . <a href="http://blog.sina.com.cn/s/blog_6cb8e53d0101oetv.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_6cb8e53d0101oetv.html</a><br>[5] Gradient. <a href="http://sv.wikipedia.org/wiki/Gradient" target="_blank" rel="noopener">http://sv.wikipedia.org/wiki/Gradient</a><br>[6] Subgradient. <a href="http://sv.wikipedia.org/wiki/Subgradient" target="_blank" rel="noopener">http://sv.wikipedia.org/wiki/Subgradient</a><br>[7] Andrew Ng. CS229 Lecture notes. <a href="http://cs229.stanford.edu/notes/cs229-notes1.pdf" target="_blank" rel="noopener">http://cs229.stanford.edu/notes/cs229-notes1.pdf</a><br>[8] Stochastic Gradient Descent. <a href="http://en.wikipedia.org/wiki/Stochastic_gradient_descent" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Stochastic_gradient_descent</a><br>[9] T. Hastie, R. Tibshirani &amp; J. Friedman. The Elements of Statistical Learning, Second Edition: Data Mining,Inference, and Prediction. Springer Series in Statistics. Springer, 2009</p>
+<p>[10] John Langford, Lihong Li &amp; Tong Zhang. Sparse Online Learning via Truncated Gradient. Journal of Machine Learning Research, 2009<br>[11] John Duchi &amp; Yoram Singer. Efficient Online and Batch Learning using Forward Backward Splitting. Journal of<br>Machine Learning Research, 2009<br>[12] Lin Xiao. Dual Averaging Methods for Regularized Stochastic Learning and Online Optimization. Journal of Machine Learning Research, 2010<br>[13] Convex Set. <a href="http://en.wikipedia.org/wiki/Convex_set" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Convex_set</a><br>[14] H. Brendan McMahan &amp; M Streter. Adaptive Bound Optimization for Online Convex Optimization. In COLT,2010<br>[15] H. Brendan McMahan. Follow-the-Regularized-Leader and Mirror Descent: Equivalence Theorems and L1 Regularization. In AISTATS, 2011</p>
+<p>[16] H. Brendan McMahan, Gary Holt, D. Sculley, Michael Young, Dietmar Ebner, Julian Grady, Lan Nie, Todd Phillips, Eugene Davydov, Daniel Golovin, Sharat Chikkerur, Dan Liu, Martin Wattenberg, Arnar Mar Hrafnkelsson, Tom Boulos, Jeremy Kubica, Ad Click Prediction: a View from the Trenches. In ACM SIGKDD, 2013<br>[17] Martin A. Zinkevich, Markus Weimer, Alex Smola &amp; Lihong Li. Parallelized Stochastic Gradient Descent. In NIPS 2010</p>
+<h3 id="Facebook-GBDT-LR"><a href="#Facebook-GBDT-LR" class="headerlink" title="Facebook : GBDT+LR"></a>Facebook : GBDT+LR</h3><p>• Practical Lessons from Predicting Clicks on Ads at Facebook [1]<br>• 用GBDT编码特征，然后再用LR做分类<br>– GBDT可替代FM做特征编码<br>– LR可用FTRL代替</p>
+<p>[1] Xinran He et al. Practical Lessons from Predicting Clicks on Ads at Facebook, 2014.</p>
+<p><a href="https://cloud.tencent.com/developer/article/1005052" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1005052</a></p>
+<h3 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h3><p>• 用LR做CTR预估时，需做大量的特征工程 （非线性特征）<br>– 连续特征离散化（+ One-Hot编码）<br>– 特征进行二阶或者三阶的特征组合<br>• 问题：<br>– 连续变量切分点如何选取？<br>– 离散化为多少份合理？<br>– 选择哪些特征交叉？<br>– 多少阶交叉，二阶，三阶或更多？<br>• GBDT：一举解决了上面的问题<br>– 确定切分点和切分数目不在是凭主观经验，而是根据信息增益/Gini指标<br>– 每棵决策树从根节点到叶节点的路径，会经过不同的特征，此路径就是特征组合，而且包含了二阶，三阶甚至更多（所以GBDT提取特征时层数不用太深）</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT7.png" alt=""></p>
+<p>如上图所示：</p>
+<p>GBDT训练得到：<br>第一棵树有3个叶子结点<br>第二棵树有2个叶子节点</p>
+<p>GBDT编码：对于一个输入样本点x，如果它在第一棵树最后落在其中的第3个叶子结点，在第二棵树里最后落在第1个叶子结点，则通过GBDT获得的新特征向量为[0, 0, 1, 1,0]，向量中的前三位对应第一棵树的3个叶子结点，后两位对应第二棵树的２个叶子结点</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>• xgboost：predict函数<br>– predict(data, output_margin=False, ntree_limit=0, pred_leaf=False, pred_contribs=False, approx_contribs=False)<br>• lightGBM: predict函数<br>– predict(data, output_margin=False, ntree_limit=0, pred_leaf=False, pred_contribs=False, approx_contribs=False)</p>
+<p>xgb_feature = xgb.predict(dtv, pred_leaf = True)</p>
+<h3 id="GBDT-FM"><a href="#GBDT-FM" class="headerlink" title="GBDT+FM"></a>GBDT+FM</h3><p>• Kaggle 2014年竞赛：Criteo Display Advertising Challenge<br>– <a href="https://www.kaggle.com/c/criteo-display-ad-challenge" target="_blank" rel="noopener">https://www.kaggle.com/c/criteo-display-ad-challenge</a><br>• Rank1解决方案：3 idiot’s FM （FFM的发明者）</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT8.png" alt=""></p>
+<p>• Kaggle 2015年竞赛： Click-Through Rate Prediction<br> – <a href="https://www.kaggle.com/c/avazu-ctr-prediction" target="_blank" rel="noopener">https://www.kaggle.com/c/avazu-ctr-prediction</a><br>• Rank2解决方案：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT9.png" alt=""></p>
+<p>为什么不直接用GBDT？</p>
+<p>• 因为GBDT在线预测比较困难，而且训练时间复杂度高于LR。</p>
+<p>• 所以实际中，可以离线训练GBDT，然后将该模型作为在线ETL的一部分。</p>
+<h3 id="Factorization-Machines（FM）"><a href="#Factorization-Machines（FM）" class="headerlink" title="Factorization Machines（FM）"></a>Factorization Machines（FM）</h3><p>• Steffen Rendle于2010年提出Factorization Machines[1]，并发布开源工具libFM</p>
+<p>（<a href="http://www.libfm.org/" target="_blank" rel="noopener">http://www.libfm.org/</a> ）。<br>– 凭借这单个模型，他在KDD Cup 2012上，取得Track1的第2名和Track2的第3名。<br>• FM旨在解决稀疏数据的特征组合问题<br>– Recall：LR为线性模型，需要输入足够强的特征（特征组合）</p>
+<p>[1] Steffen Rendle, Factorization Machines, Proceedings of the 10th IEEE International Conference on Data Mining (ICDM 2010), Sydney, Australia</p>
+<h3 id="数据稀疏"><a href="#数据稀疏" class="headerlink" title="数据稀疏"></a>数据稀疏</h3><p>• CTR预估中很多类别型特征：例国家、节日<br>– 国家和节日为类别型特征 ，需要One Hot 编码</p>
+<p>原始特征：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT10.png" alt=""></p>
+<p>OneHot编码：</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT11.png" alt=""></p>
+<h3 id="特征组合"><a href="#特征组合" class="headerlink" title="特征组合"></a>特征组合</h3><p>某些特征经过关联之后，与label之间的相关性就会提高<br>例：将国家于假日组合：</p>
+<ul>
+<li><p>“ USA”与“Thanksgiving”</p>
+</li>
+<li><p>“China”与“Chinese New Year”</p>
+</li>
+</ul>
+<p>这样的关联特征，对用户的点击有着正向的影响<br>来自“China”的用户很可能会在“Chinese New Year”有大量的浏览、购买行为，在“Thanksgiving”却不会有特别的消费行为。<br>更多示例：<br>• “化妆品”类商品与“女”性<br>• “球类运动配件”的商品与“男”性</p>
+<h3 id="二阶多项式模型"><a href="#二阶多项式模型" class="headerlink" title="二阶多项式模型"></a>二阶多项式模型</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT12.png" alt=""></p>
+<h3 id="FM"><a href="#FM" class="headerlink" title="FM"></a>FM</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT13.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT14.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT15.png" alt=""></p>
+<h3 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT16.png" alt=""></p>
+<h3 id="Field-aware-Factorization-Machines（FFM）"><a href="#Field-aware-Factorization-Machines（FFM）" class="headerlink" title="Field-aware Factorization Machines（ＦＦＭ）"></a>Field-aware Factorization Machines（ＦＦＭ）</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT17.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT18.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT19.png" alt=""></p>
+<h3 id="FFM的二次交叉项"><a href="#FFM的二次交叉项" class="headerlink" title="FFM的二次交叉项"></a>FFM的二次交叉项</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT20.png" alt=""></p>
+<h3 id="FFM实现"><a href="#FFM实现" class="headerlink" title="FFM实现"></a>FFM实现</h3><p>• 作者提供C++版本实现： libffm<br>– <a href="https://github.com/guestwalk/libffm" target="_blank" rel="noopener">https://github.com/guestwalk/libffm</a></p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/CRT/CRT21.png" alt=""></p>
+<h3 id="DNN-for-CTR"><a href="#DNN-for-CTR" class="headerlink" title="DNN for CTR"></a>DNN for CTR</h3><p>• Google: Deep wide DNN – Wide &amp; Deep Learning for Recommender Systems<br>• FNN:– Deep Learning over Multi - field Categorical Data – A Case Study on User Response<br>Prediction<br>• PNN:– Product - based Neural Networks for User Response Prediction<br>• NFM– Neural Factorization Machines for Sparse Predictive Analytics<br>• Alibaba display ads: Deep interest network<br>– Deep Interest Network for Click - Through Rate Prediction<br>– Use attention - like network structure to model local activation of user interest to candidate<br>ad.</p>
+<h3 id="参考文献-1"><a href="#参考文献-1" class="headerlink" title="参考文献"></a>参考文献</h3><p>1、<a href="http://blog.csdn.net/lilyth_lilyth/article/details/48032119" target="_blank" rel="noopener">http://blog.csdn.net/lilyth_lilyth/article/details/48032119</a><br>2、<a href="http://www.cnblogs.com/Matrix_Yao/p/4773221.html" target="_blank" rel="noopener">http://www.cnblogs.com/Matrix_Yao/p/4773221.html</a><br>3、<a href="http://www.herbrich.me/papers/adclicksfacebook.pdf" target="_blank" rel="noopener">http://www.herbrich.me/papers/adclicksfacebook.pdf</a><br>4、<a href="https://www.kaggle.com/c/criteo-display-ad-challenge" target="_blank" rel="noopener">https://www.kaggle.com/c/criteo-display-ad-challenge</a><br>5、<a href="https://www.kaggle.com/c/avazu-ctr-prediction" target="_blank" rel="noopener">https://www.kaggle.com/c/avazu-ctr-prediction</a><br>6、<a href="https://en.wikipedia.org/wiki/Demand-side_platform" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Demand-side_platform</a><br>7、<a href="http://www.algo.uni-konstanz.de/members/rendle/pdf/Rendle2010FM.pdf" target="_blank" rel="noopener">http://www.algo.uni-konstanz.de/members/rendle/pdf/Rendle2010FM.pdf</a><br>8、<a href="http://www.cs.cmu.edu/~wcohen/10-605/2015-guest-lecture/FM.pdf" target="_blank" rel="noopener">http://www.cs.cmu.edu/~wcohen/10-605/2015-guest-lecture/FM.pdf</a><br>9、<a href="http://www.csie.ntu.edu.tw/~r01922136/slides/ffm.pdf" target="_blank" rel="noopener">http://www.csie.ntu.edu.tw/~r01922136/slides/ffm.pdf</a><br>10、<a href="https://github.com/guestwalk/libffm" target="_blank" rel="noopener">https://github.com/guestwalk/libffm</a><br>11、<a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent#AdaGrad" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Stochastic_gradient_descent#AdaGrad</a><br>12、<a href="http://openmp.org/wp/openmp-specifications/" target="_blank" rel="noopener">http://openmp.org/wp/openmp-specifications/</a><br>13、<a href="http://blog.csdn.net/gengshenghong/article/details/7008704" target="_blank" rel="noopener">http://blog.csdn.net/gengshenghong/article/details/7008704</a><br>14、<a href="https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf" target="_blank" rel="noopener">https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/点击预估/" rel="tag">✿✿✿ 点击预估</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/21/LSTM/" rel="next" title="LSTM">
+                <i class="fa fa-chevron-left"></i> LSTM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/22/SVD分解/" rel="prev" title="SVD分解">
+                SVD分解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
+
+    
+</div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="sylvia">
+            
+              <p class="site-author-name" itemprop="name">sylvia</p>
+              <p class="site-description motion-element" itemprop="description">君がいるだから、今の僕は幸せです。今日もありがとう。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:836753560@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:live:836753560?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐系统-vs-点击率预估"><span class="nav-number">2.</span> <span class="nav-text">推荐系统 vs. 点击率预估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CTR的挑战"><span class="nav-number">3.</span> <span class="nav-text">CTR的挑战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CTR预估"><span class="nav-number">4.</span> <span class="nav-text">CTR预估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础特征"><span class="nav-number">5.</span> <span class="nav-text">基础特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征工程"><span class="nav-number">6.</span> <span class="nav-text">特征工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预测模型"><span class="nav-number">7.</span> <span class="nav-text">预测模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CTR模型评估"><span class="nav-number">8.</span> <span class="nav-text">CTR模型评估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AUC"><span class="nav-number">9.</span> <span class="nav-text">AUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CTR预估-Logistic回归（LR）"><span class="nav-number">10.</span> <span class="nav-text">CTR预估-Logistic回归（LR）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic回归-L1正则"><span class="nav-number">11.</span> <span class="nav-text">Logistic回归 + L1正则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Large-scale-LR-model"><span class="nav-number">12.</span> <span class="nav-text">Google: Large scale LR model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTRL-Follow-The-Regulized-Leader"><span class="nav-number">13.</span> <span class="nav-text">FTRL (Follow The Regulized Leader)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FTRL"><span class="nav-number">14.</span> <span class="nav-text">FTRL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number">15.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Facebook-GBDT-LR"><span class="nav-number">16.</span> <span class="nav-text">Facebook : GBDT+LR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动机"><span class="nav-number">17.</span> <span class="nav-text">动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">18.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GBDT-FM"><span class="nav-number">19.</span> <span class="nav-text">GBDT+FM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Factorization-Machines（FM）"><span class="nav-number">20.</span> <span class="nav-text">Factorization Machines（FM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据稀疏"><span class="nav-number">21.</span> <span class="nav-text">数据稀疏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征组合"><span class="nav-number">22.</span> <span class="nav-text">特征组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二阶多项式模型"><span class="nav-number">23.</span> <span class="nav-text">二阶多项式模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FM"><span class="nav-number">24.</span> <span class="nav-text">FM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型训练"><span class="nav-number">25.</span> <span class="nav-text">模型训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Field-aware-Factorization-Machines（FFM）"><span class="nav-number">26.</span> <span class="nav-text">Field-aware Factorization Machines（ＦＦＭ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FFM的二次交叉项"><span class="nav-number">27.</span> <span class="nav-text">FFM的二次交叉项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FFM实现"><span class="nav-number">28.</span> <span class="nav-text">FFM实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验结果"><span class="nav-number">29.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNN-for-CTR"><span class="nav-number">30.</span> <span class="nav-text">DNN for CTR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献-1"><span class="nav-number">31.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sylvia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">96.6k</span>
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/21/点击预估/';
+          this.page.identifier = '2019/01/21/点击预估/';
+          this.page.title = '点击预估';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tsumiki.model.json"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>
