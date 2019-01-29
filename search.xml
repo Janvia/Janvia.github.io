@@ -235,8 +235,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>LSTM</tag>
         <tag>RNN</tag>
+        <tag>LSTM</tag>
       </tags>
   </entry>
   <entry>
@@ -247,8 +247,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>DCGAN</tag>
         <tag>GAN</tag>
+        <tag>DCGAN</tag>
       </tags>
   </entry>
   <entry>
