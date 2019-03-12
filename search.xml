@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[hexo系统重装恢复]]></title>
     <url>%2F2019%2F03%2F12%2Fhexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D%2F</url>
-    <content type="text"><![CDATA[安装node.js和npmsudo apt install nodejssudo apt install npm 安装Hexo`sudo npm install -g hexo-cli` 安装gitsudo apt install git 配置github-gitgit config --global user.name &quot;your github name&quot;git config --global user.email &quot;example@email.com&quot; 填写github账户名和注册邮箱 创建公钥ssh-keygen -t rsa -C &quot;example@email.com&quot; -f ~/.ssh/github_name 将在~/.ssh/文件夹下生成github_name 和 github_name.pub两个文件，打开github登录，点击头像setting -&gt; SSH and GPG keys，将.pub 文件内容复制到 SSH keys中]]></content>
+    <content type="text"><![CDATA[安装node.js和npmsudo apt install nodejssudo apt install npm 安装Hexo`sudo npm install -g hexo-cli` 安装gitsudo apt install git 配置github-gitgit config --global user.name &quot;your github name&quot;git config --global user.email &quot;example@email.com&quot; 填写github账户名和注册邮箱 创建公钥ssh-keygen -t rsa -C &quot;example@email.com&quot; -f ~/.ssh/github_name 将在~/.ssh/文件夹下生成github_name 和 github_name.pub两个文件， gedit github_name.pub 打开github登录，点击头像setting -&gt; SSH and GPG keys，将.pub 文件内容复制到 SSH keys中]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -291,8 +291,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>LSTM</tag>
         <tag>RNN</tag>
+        <tag>LSTM</tag>
       </tags>
   </entry>
   <entry>
