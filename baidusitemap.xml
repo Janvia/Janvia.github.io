@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://janvia.github.io/2019/03/12/hexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D/</loc>
-    <lastmod>2019-03-12</lastmod>
+    <loc>https://janvia.github.io/2019/03/13/24%E5%8D%95%E5%85%83/</loc>
+    <lastmod>2019-03-13</lastmod>
+  </url>  <url>
+    <loc>https://janvia.github.io/2018/12/31/%E6%97%A5%E8%AF%AD%E5%8F%98%E5%BD%A2/</loc>
+    <lastmod>2019-03-13</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/02/27/23%E5%8D%95%E5%85%83/</loc>
-    <lastmod>2019-02-27</lastmod>
+    <lastmod>2019-03-13</lastmod>
+  </url>  <url>
+    <loc>https://janvia.github.io/2019/03/12/hexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D/</loc>
+    <lastmod>2019-03-12</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/27/22%E5%8D%95%E5%85%83%E8%AF%AD%E6%B3%95/</loc>
     <lastmod>2019-02-22</lastmod>
@@ -158,9 +164,6 @@
     <lastmod>2019-01-14</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/09/opencv%E5%9B%BE%E5%83%8F%E7%BE%8E%E5%8C%96/</loc>
-    <lastmod>2019-01-14</lastmod>
-  </url>  <url>
-    <loc>https://janvia.github.io/2018/12/31/%E6%97%A5%E8%AF%AD%E5%8F%98%E5%BD%A2/</loc>
     <lastmod>2019-01-14</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/11/opencv-%E5%9B%BE%E7%89%87%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2/</loc>
