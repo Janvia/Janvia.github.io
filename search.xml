@@ -357,8 +357,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>RNN</tag>
         <tag>LSTM</tag>
+        <tag>RNN</tag>
       </tags>
   </entry>
   <entry>
@@ -867,7 +867,7 @@
   <entry>
     <title><![CDATA[Anconda常用命令总结]]></title>
     <url>%2F2019%2F01%2F02%2FAnconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[anaconda是python发行的包的管理工具，其中自带python的版本，还带很多python的包.安装它比起安装python可以省掉再安装python包的时间。并且利用 Python 进行科学计算，就需要一一安装所需的模块， 而这些模块可能又依赖于其它的软件包或库，安装和使用起来相对麻烦但是用Anaconda只需直接输入conda install &lt;包名&gt;，所有依赖的包和库会自动安装好。 下载地址官网：https://www.anaconda.com/最新版本下载地址：https://www.anaconda.com/download/历史版本：https://repo.anaconda.com/archive/ Anaconda的安装进入文件所在路径bash Anaconda3-4.4.0-Linux-x86_64.sh (下载的对应的文件名) conda的环境管理比如创建名为tensorflow的tensorflow-gpu版的python环境conda create --name tensorflow python=3.6 tensorflow-gpu 激活tensorflow环境source activate tensorflow 测试环境python --version 退出虚拟环境source deactivate tensorflow 删除虚拟环境conda remove --name tensorflow --all Conda的包管理安装包conda install -n tensorflow sklearn注：如果不用-n指定环境名称，则被安装在当前活跃环境 删除包conda remove -n tensorflow numpy 在当前环境下安装anaconda包集合conda install anaconda 添加Anaconda的TUNA镜像conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ pip换源： cdmkdir .pipcd .pip/nano pip.conf#粘贴以下内容[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simple jupter notebook添加conda环境首先安装：conda install ipykernel 激活对应的conda环境source activate 环境名称 将环境写入notebook的kernel中python -m ipykernel install --user --name 环境名称 --display-name &quot;Python (环境名称)&quot;]]></content>
+    <content type="text"><![CDATA[anaconda是python发行的包的管理工具，其中自带python的版本，还带很多python的包.安装它比起安装python可以省掉再安装python包的时间。并且利用 Python 进行科学计算，就需要一一安装所需的模块， 而这些模块可能又依赖于其它的软件包或库，安装和使用起来相对麻烦但是用Anaconda只需直接输入conda install &lt;包名&gt;，所有依赖的包和库会自动安装好。 下载地址官网：https://www.anaconda.com/最新版本下载地址：https://www.anaconda.com/download/历史版本：https://repo.anaconda.com/archive/ Anaconda的安装进入文件所在路径bash Anaconda3-4.4.0-Linux-x86_64.sh (下载的对应的文件名) conda的环境管理比如创建名为tensorflow的tensorflow-gpu版的python环境conda create --name tensorflow python=3.6 tensorflow-gpu 激活tensorflow环境source activate tensorflow 测试环境python --version 退出虚拟环境source deactivate tensorflow 删除虚拟环境conda remove --name tensorflow --all Conda的包管理安装包conda install -n tensorflow sklearn注：如果不用-n指定环境名称，则被安装在当前活跃环境 删除包conda remove -n tensorflow numpy 在当前环境下安装anaconda包集合conda install anaconda 添加Anaconda的TUNA镜像conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ pip换源： cdmkdir .pipcd .pip/nano pip.conf#粘贴以下内容[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simple jupter notebook添加conda环境首先安装：conda install ipykernel 激活对应的conda环境source activate 环境名称 将环境写入notebook的kernel中python -m ipykernel install --user --name 环境名称 --display-name &quot;Python (环境名称)&quot; 安装pytorch 添加Pytorch镜像 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/# for legacy win-64conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/peterjc123/ 安装 conda install pytorch torchvision cudatoolkit=9.0]]></content>
       <categories>
         <category>工具</category>
       </categories>
