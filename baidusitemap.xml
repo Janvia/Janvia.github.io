@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://janvia.github.io/2019/06/03/jni/</loc>
+    <lastmod>2019-06-03</lastmod>
+  </url>  <url>
+    <loc>https://janvia.github.io/2019/01/07/linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2019-05-22</lastmod>
+  </url>  <url>
     <loc>https://janvia.github.io/2019/05/12/30%E5%8D%95%E5%85%83/</loc>
     <lastmod>2019-05-12</lastmod>
   </url>  <url>
@@ -243,9 +249,6 @@
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/05/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2019-01-09</lastmod>
-  </url>  <url>
-    <loc>https://janvia.github.io/2019/01/07/linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2019-01-07</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/02/%E6%97%A5%E8%AF%AD%E5%8A%A9%E8%AF%8D/</loc>
     <lastmod>2019-01-02</lastmod>
