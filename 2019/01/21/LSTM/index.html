@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="LSTM,RNN,">
+  <meta name="keywords" content="RNN,LSTM,">
 
 
 
@@ -93,7 +93,7 @@
 
 
 <meta name="description" content="ＬＳＴＭ模型LSTM（Long Short-Term Memory）是长短期记忆网络，是一种时间递归神经网络，适合于处理和预测时间序列中间隔和延迟相对较长的重要事件。就是所谓的该记得会一直传递，不该记得就被“忘记”。  “记忆细胞”变得稍微复杂了一点  细胞状态细胞状态类似于传送带。直接在整个链上运行，只有一些少量的线性交互。信息在上面流传会很容易保持不变。  LSTM控制“细胞状态”的方式：">
-<meta name="keywords" content="LSTM,RNN">
+<meta name="keywords" content="RNN,LSTM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LSTM">
 <meta property="og:url" content="https://janvia.github.io/2019/01/21/LSTM/index.html">
@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/LSTM11.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/LSTM13.png">
 <meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/LSTM14.png">
-<meta property="og:updated_time" content="2019-01-21T07:11:58.000Z">
+<meta property="og:updated_time" content="2022-04-08T16:11:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM">
 <meta name="twitter:description" content="ＬＳＴＭ模型LSTM（Long Short-Term Memory）是长短期记忆网络，是一种时间递归神经网络，适合于处理和预测时间序列中间隔和延迟相对较长的重要事件。就是所谓的该记得会一直传递，不该记得就被“忘记”。  “记忆细胞”变得稍微复杂了一点  细胞状态细胞状态类似于传送带。直接在整个链上运行，只有一些少量的线性交互。信息在上面流传会很容易保持不变。  LSTM控制“细胞状态”的方式：">
@@ -450,8 +450,7 @@
 <p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/LSTM5.png" alt=""></p>
 <p>图中输入的有上一序列的隐藏状态<script type="math/tex">h_{t−1}</script>和本序列数据<script type="math/tex">x_t</script>，通过一个激活函数，一般情况下是<code>SIGMOD</code>，得到遗忘门的输出$f_t$。由于SIGMOD的输出$f_t$在[0,1]之间，因此这里的输出$f_t$代表了遗忘上一层隐藏细胞的概率。</p>
 <p><strong>数学表达式</strong>：</p>
-<p>$f(t)=\sigma(W<em>f h</em>{t-1}+U_f x_t+b_f)$</p>
-<p>其中：$W_f、U_f、b_f$为线性关系的权重项和偏置项，σ为SIGMOD激活函数。</p>
+<script type="math/tex; mode=display">f(t)=\sigma(W_f h_{t-1}+U_f x_t+b_f)</script><p>其中：$W_f、U_f、b_f$为线性关系的权重项和偏置项，σ为SIGMOD激活函数。</p>
 <h3 id="输入门"><a href="#输入门" class="headerlink" title="输入门"></a>输入门</h3><p>输入门（input gate）负责处理当前序列位置的输入，它的子结构如下图：</p>
 <p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/GAN/LSTM6.png" alt=""></p>
 <p>从图中可以看到输入门由两部分组成，第一部分使用了sigmoid激活函数，输出为<script type="math/tex">i_{(t)}</script>,第二部分使用了tanh激活函数，输出为<script type="math/tex">c_{(t)}</script>, 两者的结果后面会相乘再去更新细胞状态。</p>
@@ -521,9 +520,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LSTM/" rel="tag">✿✿✿ LSTM</a>
-          
             <a href="/tags/RNN/" rel="tag">✿✿✿ RNN</a>
+          
+            <a href="/tags/LSTM/" rel="tag">✿✿✿ LSTM</a>
           
         </div>
       
@@ -650,7 +649,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,7 +660,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -672,7 +671,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -762,7 +761,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">101.3k</span>
+    <span title="Site words total count">115.7k</span>
   
 </div>
 
@@ -1300,5 +1299,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tsumiki.model.json"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tsumiki"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
 </html>
