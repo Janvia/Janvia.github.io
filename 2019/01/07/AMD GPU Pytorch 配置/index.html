@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-06-13T06:25:14.000Z">
+<meta property="og:updated_time" content="2023-08-02T08:55:28.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="amd配置">
 <meta name="twitter:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdg">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  538
+                  582
                 </span>
               
 
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -445,6 +445,8 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export ROCM_PATH=/opt/rocm-5.4.2</span><br><span class="line">rm -rf /tmp/*</span><br></pre></td></tr></table></figure>
 <p>解决找不到cmath.h</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install libstdc++-12-dev</span><br></pre></td></tr></table></figure>
+<h4 id="torch等rocm相关包手动安装"><a href="#torch等rocm相关包手动安装" class="headerlink" title="torch等rocm相关包手动安装"></a>torch等rocm相关包手动安装</h4><p>安装依赖<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install rock-dkms rocm-dev rocm-libs miopen-hip miopengemm hipsparse rccl rocthrust hipcub roctracer-dev</span><br></pre></td></tr></table></figure></p>
+<p>安装torchaudio<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/pytorch/audio.git</span><br><span class="line">cd audio</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -475,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/07/docker安装/" rel="next" title="docker安装">
-                <i class="fa fa-chevron-left"></i> docker安装
+              <a href="/2019/01/07/docker-ldap-mysql/" rel="next" title="docker-ldap-mysql">
+                <i class="fa fa-chevron-left"></i> docker-ldap-mysql
               </a>
             
           </div>
@@ -667,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-GPU-Pytorch-配置"><span class="nav-number">1.</span> <span class="nav-text">AMD GPU Pytorch 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装AMD显卡驱动"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装AMD显卡驱动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置torch"><span class="nav-number">1.0.2.</span> <span class="nav-text">配置torch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-配置"><span class="nav-number">1.1.</span> <span class="nav-text">docker 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置ssh-登录（可选）"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置ssh 登录（可选）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch2-0-依赖安装（可选）"><span class="nav-number">1.2.</span> <span class="nav-text">torch2.0 依赖安装（可选）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-GPU-Pytorch-配置"><span class="nav-number">1.</span> <span class="nav-text">AMD GPU Pytorch 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装AMD显卡驱动"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装AMD显卡驱动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置torch"><span class="nav-number">1.0.2.</span> <span class="nav-text">配置torch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-配置"><span class="nav-number">1.1.</span> <span class="nav-text">docker 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置ssh-登录（可选）"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置ssh 登录（可选）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch2-0-依赖安装（可选）"><span class="nav-number">1.2.</span> <span class="nav-text">torch2.0 依赖安装（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch等rocm相关包手动安装"><span class="nav-number">1.3.</span> <span class="nav-text">torch等rocm相关包手动安装</span></a></li></ol></div>
             
 
           </div>
