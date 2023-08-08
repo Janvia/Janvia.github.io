@@ -117,32 +117,6 @@
   </entry>
   
   <entry>
-    <title>linux系统代理</title>
-    <link href="https://janvia.github.io/2022/08/18/linux%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86/"/>
-    <id>https://janvia.github.io/2022/08/18/linux系统代理/</id>
-    <published>2022-08-18T08:44:41.000Z</published>
-    <updated>2022-08-19T15:19:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><h3 id="linux系统代理"><a href="#linux系统代理" class="headerlink" title="linux系统代理"></a>linux系统代理</h3><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install proxychains4</span><br></pre></td></tr></table></figure><h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ProxyList]</span><br><span class="line"># add proxy here ...</span><br><span class="line"># meanwile</span><br><span class="line"># defaults set to &quot;tor&quot;</span><br><span class="line">#socks4    127.0.0.1 9050</span><br><span class="line"></span><br><span class="line"># example</span><br><span class="line">socks5  127.0.0.1 8888</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;linux系统代理&quot;&gt;&lt;a href=&quot;#linux系统代理&quot; class=&quot;headerlink&quot; title=&quot;linux系统代理&quot;&gt;&lt;/a&gt;linux系统代理&lt;/h3&gt;&lt;h5 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; c
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="代理" scheme="https://janvia.github.io/tags/%E4%BB%A3%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>matplotlib补充</title>
     <link href="https://janvia.github.io/2022/08/18/matplotlib%E8%A1%A5%E5%85%85/"/>
     <id>https://janvia.github.io/2022/08/18/matplotlib补充/</id>
@@ -165,6 +139,32 @@
     
     
       <category term="matplotlib" scheme="https://janvia.github.io/tags/matplotlib/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux系统代理</title>
+    <link href="https://janvia.github.io/2022/08/18/linux%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86/"/>
+    <id>https://janvia.github.io/2022/08/18/linux系统代理/</id>
+    <published>2022-08-18T08:44:41.000Z</published>
+    <updated>2022-08-19T15:19:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h3 id="linux系统代理"><a href="#linux系统代理" class="headerlink" title="linux系统代理"></a>linux系统代理</h3><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install proxychains4</span><br></pre></td></tr></table></figure><h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ProxyList]</span><br><span class="line"># add proxy here ...</span><br><span class="line"># meanwile</span><br><span class="line"># defaults set to &quot;tor&quot;</span><br><span class="line">#socks4    127.0.0.1 9050</span><br><span class="line"></span><br><span class="line"># example</span><br><span class="line">socks5  127.0.0.1 8888</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;linux系统代理&quot;&gt;&lt;a href=&quot;#linux系统代理&quot; class=&quot;headerlink&quot; title=&quot;linux系统代理&quot;&gt;&lt;/a&gt;linux系统代理&lt;/h3&gt;&lt;h5 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; c
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="代理" scheme="https://janvia.github.io/tags/%E4%BB%A3%E7%90%86/"/>
     
   </entry>
   
