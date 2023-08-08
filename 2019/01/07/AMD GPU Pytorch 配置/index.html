@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-08-08T01:51:18.008Z">
+<meta property="og:updated_time" content="2023-08-08T08:10:21.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="amd配置">
 <meta name="twitter:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdg">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  639
+                  657
                 </span>
               
 
@@ -449,7 +449,7 @@
 <p>安装rocm-dkms可以安装上rocm-clang</p>
 <p>安装torchaudio<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/pytorch/audio.git</span><br><span class="line">cd audio</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure></p>
 <h4 id="版本依赖解决"><a href="#版本依赖解决" class="headerlink" title="版本依赖解决"></a>版本依赖解决</h4><p>指定版本如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install rocm-dev5.2.4</span><br><span class="line">sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms --rocmrelease=5.2.4</span><br></pre></td></tr></table></figure></p>
-<p>依赖问题dpkg faild to overwrite ….</p>
+<p>最好不要手动指定，amdgpu-install已经包含了版本信息<br>依赖问题dpkg faild to overwrite ….</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo dpkg -P xxx</span><br></pre></td></tr></table></figure>
 
       
@@ -481,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/07/docker安装/" rel="next" title="docker安装">
-                <i class="fa fa-chevron-left"></i> docker安装
+              <a href="/2019/01/07/cuda 手动配置/" rel="next" title="cuda配置">
+                <i class="fa fa-chevron-left"></i> cuda配置
               </a>
             
           </div>

@@ -39,17 +39,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[matplotlib补充]]></title>
-    <url>%2F2022%2F08%2F18%2Fmatplotlib%E8%A1%A5%E5%85%85%2F</url>
-    <content type="text"><![CDATA[防止中文乱码import matplotlib as mplmpl.rcParams[&apos;font.sans-serif&apos;] = [u&apos;simHei&apos;]mpl.rcParams[&apos;axes.unicode_minus&apos;] = False 调整子图布局plt.tight_layout() 设置坐标轴axis(‘off’)#：关闭轴线和标签。axis(‘equal’)#：使x轴与y轴保持与屏幕一致的高宽比（横纵比）。axis(‘tight’)#：使x轴与y轴限制在有数据的区域。axis(‘square’)#：使x轴与y轴坐标一致。]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>matplotlib</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[linux系统代理]]></title>
     <url>%2F2022%2F08%2F18%2Flinux%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%2F</url>
     <content type="text"><![CDATA[linux系统代理安装sudo apt install proxychains4 配置sudo vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 8888]]></content>
@@ -58,6 +47,17 @@
       </categories>
       <tags>
         <tag>代理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[matplotlib补充]]></title>
+    <url>%2F2022%2F08%2F18%2Fmatplotlib%E8%A1%A5%E5%85%85%2F</url>
+    <content type="text"><![CDATA[防止中文乱码import matplotlib as mplmpl.rcParams[&apos;font.sans-serif&apos;] = [u&apos;simHei&apos;]mpl.rcParams[&apos;axes.unicode_minus&apos;] = False 调整子图布局plt.tight_layout() 设置坐标轴axis(‘off’)#：关闭轴线和标签。axis(‘equal’)#：使x轴与y轴保持与屏幕一致的高宽比（横纵比）。axis(‘tight’)#：使x轴与y轴限制在有数据的区域。axis(‘square’)#：使x轴与y轴坐标一致。]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>matplotlib</tag>
       </tags>
   </entry>
   <entry>
@@ -472,8 +472,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>RNN</tag>
         <tag>LSTM</tag>
+        <tag>RNN</tag>
       </tags>
   </entry>
   <entry>
@@ -872,12 +872,23 @@
   <entry>
     <title><![CDATA[amd配置]]></title>
     <url>%2F2019%2F01%2F07%2FAMD%20GPU%20Pytorch%20%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdgpu-install_5.4.50402-1_all.deb# 然后安装单个用例sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms# 添加用户至render组sudo usermod -a -G video,render $LOGNAME#下载miopen内核,用于减少启动时间sudo apt-cache search miopenkernels-gfx908sudo apt-get install miopenkernels-gfx908-120kdb 配置环境 # 需要额外加一行参数export HSA_OVERRIDE_GFX_VERSION=9.0.8 重启然后验证 reboot# 显示gpu信息rocm-smi# 两项都显示gpu信息/opt/rocm/bin/rocminfo/opt/rocm/opencl/bin/clinfo 配置torchconda create -n py39 python=3.9pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm5.2 测试 import torchtorch.cuda.is_available()# output = True 即可以调用gpu 测试速度 import torchimport torch.nn as nnimport numpy as npimport timex = torch.randn([1024,1024],device=torch.device(&apos;cuda:0&apos;))start = time.time()r = x @ xend = time.time()print(end - start)x2 = x.cpu()start = time.time()for i in range(10): r2 = x2 @ x2end = time.time()print(end - start)x3 = x2.to(torch.device(&apos;cuda:0&apos;))start = time.time()for i in range(10): r3 = x3 @ x3end = time.time()print(end - start)# 似乎第一次需要初始化，耗时较长，3.0左右 第二次耗时在0.0002左右 docker 配置由于 pip 安装的backward慢，且docker中 apex、deepspeed库更容易安装，所以使用docker安装 docker pull rocm/pytorch:latestdocker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add video --ipc=host --shm-size 8G --name amd_torch_jiangwei -p 6606:22 --mount type=bind,source=/ganzhi/ssd/data,target=/data6 rocm/pytorch:latest 配置ssh 登录（可选）配置参考docker/docker ssh远程连接篇 重新启动 docker run -d --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add video --ipc=host --shm-size 32G --name torch20_ssh -p 6606:22 --mount type=bind,source=/ganzhi/ssd/data,target=/data6 pytorch2-0:ssh /usr/sbin/sshd -D torch2.0 依赖安装（可选）先在/etc/apt/source.list加入以下内容 deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 maindeb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main 然后执行以下shell命令 sudo apt updatesudo apt install clang-13 解决torch.compile报错 SystemError: &lt;built-in function load_binary&gt; returned NULL without setting an exception export ROCM_PATH=/opt/rocm-5.4.2rm -rf /tmp/* 解决找不到cmath.h sudo apt install libstdc++-12-dev torch等rocm相关包手动安装安装依赖 , 安装apex必备sudo apt install rocm-dkms rocm-dev rocm-libs miopen-hip miopengemm hipsparse rccl rocthrust hipcub roctracer-dev 安装rocm-dkms可以安装上rocm-clang 安装torchaudiogit clone https://github.com/pytorch/audio.gitcd audiopython setup.py install 版本依赖解决指定版本如：sudo apt install rocm-dev5.2.4sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms --rocmrelease=5.2.4 依赖问题dpkg faild to overwrite …. sudo dpkg -P xxx]]></content>
+    <content type="text"><![CDATA[AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdgpu-install_5.4.50402-1_all.deb# 然后安装单个用例sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms# 添加用户至render组sudo usermod -a -G video,render $LOGNAME#下载miopen内核,用于减少启动时间sudo apt-cache search miopenkernels-gfx908sudo apt-get install miopenkernels-gfx908-120kdb 配置环境 # 需要额外加一行参数export HSA_OVERRIDE_GFX_VERSION=9.0.8 重启然后验证 reboot# 显示gpu信息rocm-smi# 两项都显示gpu信息/opt/rocm/bin/rocminfo/opt/rocm/opencl/bin/clinfo 配置torchconda create -n py39 python=3.9pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm5.2 测试 import torchtorch.cuda.is_available()# output = True 即可以调用gpu 测试速度 import torchimport torch.nn as nnimport numpy as npimport timex = torch.randn([1024,1024],device=torch.device(&apos;cuda:0&apos;))start = time.time()r = x @ xend = time.time()print(end - start)x2 = x.cpu()start = time.time()for i in range(10): r2 = x2 @ x2end = time.time()print(end - start)x3 = x2.to(torch.device(&apos;cuda:0&apos;))start = time.time()for i in range(10): r3 = x3 @ x3end = time.time()print(end - start)# 似乎第一次需要初始化，耗时较长，3.0左右 第二次耗时在0.0002左右 docker 配置由于 pip 安装的backward慢，且docker中 apex、deepspeed库更容易安装，所以使用docker安装 docker pull rocm/pytorch:latestdocker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add video --ipc=host --shm-size 8G --name amd_torch_jiangwei -p 6606:22 --mount type=bind,source=/ganzhi/ssd/data,target=/data6 rocm/pytorch:latest 配置ssh 登录（可选）配置参考docker/docker ssh远程连接篇 重新启动 docker run -d --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add video --ipc=host --shm-size 32G --name torch20_ssh -p 6606:22 --mount type=bind,source=/ganzhi/ssd/data,target=/data6 pytorch2-0:ssh /usr/sbin/sshd -D torch2.0 依赖安装（可选）先在/etc/apt/source.list加入以下内容 deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 maindeb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main 然后执行以下shell命令 sudo apt updatesudo apt install clang-13 解决torch.compile报错 SystemError: &lt;built-in function load_binary&gt; returned NULL without setting an exception export ROCM_PATH=/opt/rocm-5.4.2rm -rf /tmp/* 解决找不到cmath.h sudo apt install libstdc++-12-dev torch等rocm相关包手动安装安装依赖 , 安装apex必备sudo apt install rocm-dkms rocm-dev rocm-libs miopen-hip miopengemm hipsparse rccl rocthrust hipcub roctracer-dev 安装rocm-dkms可以安装上rocm-clang 安装torchaudiogit clone https://github.com/pytorch/audio.gitcd audiopython setup.py install 版本依赖解决指定版本如：sudo apt install rocm-dev5.2.4sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms --rocmrelease=5.2.4 最好不要手动指定，amdgpu-install已经包含了版本信息依赖问题dpkg faild to overwrite …. sudo dpkg -P xxx]]></content>
       <categories>
         <category>linux</category>
       </categories>
       <tags>
         <tag>amd配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[cuda配置]]></title>
+    <url>%2F2019%2F01%2F07%2Fcuda%20%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.runsudo sh cuda_11.7.1_515.65.01_linux.run cudnnwget https://developer.nvidia.com/compute/cudnn/secure/8.5.0/local_installers/11.7/cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xztar -xvf cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xzcd cudnn-linux-x86_64-8.5.0.96_cuda11-archivesudo cp include/cudnn.h /usr/local/cuda/include/ sudo cp lib/libcudnn* /usr/local/cuda/lib64/ sudo chmod a+r /usr/local/cuda/include/cudnn.h sudo chmod a+r /usr/local/cuda/lib64/libcudnn* 配置环境export PATH=/usr/local/cuda-11.7/bin:$PATHexport LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>cuda配置</tag>
       </tags>
   </entry>
   <entry>
@@ -911,17 +922,6 @@
       </categories>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[cuda配置]]></title>
-    <url>%2F2019%2F01%2F07%2Fcuda%20%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.runsudo sh cuda_11.7.1_515.65.01_linux.run cudnnwget https://developer.nvidia.com/compute/cudnn/secure/8.5.0/local_installers/11.7/cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xztar -xvf cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xzcd cudnn-linux-x86_64-8.5.0.96_cuda11-archivesudo cp include/cudnn.h /usr/local/cuda/include/ sudo cp lib/libcudnn* /usr/local/cuda/lib64/ sudo chmod a+r /usr/local/cuda/include/cudnn.h sudo chmod a+r /usr/local/cuda/lib64/libcudnn* 配置环境export PATH=/usr/local/cuda-11.7/bin:$PATHexport LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>cuda配置</tag>
       </tags>
   </entry>
   <entry>
