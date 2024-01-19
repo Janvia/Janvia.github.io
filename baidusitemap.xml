@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://janvia.github.io/2022/08/20/wsl/</loc>
+    <lastmod>2024-01-19</lastmod>
+  </url>  <url>
     <loc>https://janvia.github.io/2019/01/07/github%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81/</loc>
     <lastmod>2024-01-16</lastmod>
   </url>  <url>
@@ -33,9 +36,6 @@
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/07/docker-ldap-mysql/</loc>
     <lastmod>2023-04-03</lastmod>
-  </url>  <url>
-    <loc>https://janvia.github.io/2022/08/20/wsl/</loc>
-    <lastmod>2022-08-28</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/07/docker%E5%AE%B9%E5%99%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</loc>
     <lastmod>2022-08-28</lastmod>
