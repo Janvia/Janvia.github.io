@@ -288,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/ssh 远程连接docker/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/AMD GPU Pytorch 配置/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -307,7 +307,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/07/ssh 远程连接docker/" itemprop="url">ssh 远程连接docker</a></h1>
+                <a class="post-title-link" href="/2019/01/07/AMD GPU Pytorch 配置/" itemprop="url">amd配置</a></h1>
         
 
         <div class="post-meta">
@@ -342,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -360,8 +360,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/07/ssh 远程连接docker/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/ssh 远程连接docker/" itemprop="commentCount"></span>
+                <a href="/2019/01/07/AMD GPU Pytorch 配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/AMD GPU Pytorch 配置/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  235
+                  657
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -422,18 +422,11 @@
       
         
           
-          ssh 远程连接docker
-先拉一个ubuntu镜像
-
-docker pull nvidia/cuda:10.0-base-ubuntu18.04
-
-启动一个容器，并将50003端口映射到容器的22端口上
-
-docker run --name jhag --gpus all -it -p 5000
+          AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-inst
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/07/ssh 远程连接docker/#more" rel="contents">
+            <a class="btn" href="/2019/01/07/AMD GPU Pytorch 配置/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
