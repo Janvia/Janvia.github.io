@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="1. 安装 Oh My Zsh安装 Zsh安装:sudo apt install zsh 将 Zsh 设置为默认 Shellchsh -s /bin/zsh 安装 Oh My Zshwget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 2. 配置 Oh My Zsh下载字体git">
+<meta name="description" content="1. 安装 Oh My Zsh安装 Zsh安装:sudo apt install zsh 将 Zsh 设置为默认 Shellchsh -s /bin/zsh 安装 Oh My Zshwget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 通过镜像安装wget https://gite">
 <meta name="keywords" content="zsh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="on_my_zsh">
 <meta property="og:url" content="https://janvia.github.io/2019/01/03/on-my-zsh/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="1. 安装 Oh My Zsh安装 Zsh安装:sudo apt install zsh 将 Zsh 设置为默认 Shellchsh -s /bin/zsh 安装 Oh My Zshwget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 2. 配置 Oh My Zsh下载字体git">
+<meta property="og:description" content="1. 安装 Oh My Zsh安装 Zsh安装:sudo apt install zsh 将 Zsh 设置为默认 Shellchsh -s /bin/zsh 安装 Oh My Zshwget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 通过镜像安装wget https://gite">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-08-20T06:31:03.000Z">
+<meta property="og:updated_time" content="2024-02-03T02:47:00.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="on_my_zsh">
-<meta name="twitter:description" content="1. 安装 Oh My Zsh安装 Zsh安装:sudo apt install zsh 将 Zsh 设置为默认 Shellchsh -s /bin/zsh 安装 Oh My Zshwget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 2. 配置 Oh My Zsh下载字体git">
+<meta name="twitter:description" content="1. 安装 Oh My Zsh安装 Zsh安装:sudo apt install zsh 将 Zsh 设置为默认 Shellchsh -s /bin/zsh 安装 Oh My Zshwget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 通过镜像安装wget https://gite">
 
 
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  560
+                  581
                 </span>
               
 
@@ -423,6 +423,7 @@
 <h2 id="1-安装-Oh-My-Zsh"><a href="#1-安装-Oh-My-Zsh" class="headerlink" title="1. 安装 Oh My Zsh"></a>1. 安装 Oh My Zsh</h2><h3 id="安装-Zsh"><a href="#安装-Zsh" class="headerlink" title="安装 Zsh"></a>安装 Zsh</h3><p>安装:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install zsh</span><br></pre></td></tr></table></figure></p>
 <p>将 Zsh 设置为默认 Shell<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure></p>
 <h3 id="安装-Oh-My-Zsh"><a href="#安装-Oh-My-Zsh" class="headerlink" title="安装 Oh My Zsh"></a>安装 Oh My Zsh</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure>
+<p>通过镜像安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure></p>
 <h2 id="2-配置-Oh-My-Zsh"><a href="#2-配置-Oh-My-Zsh" class="headerlink" title="2. 配置 Oh My Zsh"></a>2. 配置 Oh My Zsh</h2><h3 id="下载字体"><a href="#下载字体" class="headerlink" title="下载字体"></a>下载字体</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line">cd fonts</span><br><span class="line">.\install.ps1</span><br></pre></td></tr></table></figure>
 <h3 id="配置字体"><a href="#配置字体" class="headerlink" title="配置字体"></a>配置字体</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k</span><br><span class="line">git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git $&#123;ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom&#125;/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
 <h3 id="autojump"><a href="#autojump" class="headerlink" title="autojump"></a>autojump</h3><p>更快地切换目录，不受当前所在目录的限制。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install autojump</span><br><span class="line"># 跳转到目录</span><br><span class="line">j dir</span><br><span class="line"># 可以通过GUI文件管理器打开指定目录，执行命令:</span><br><span class="line">jo dir</span><br></pre></td></tr></table></figure></p>
@@ -692,7 +693,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.1k</span>
+    <span title="Site words total count">118.2k</span>
   
 </div>
 
