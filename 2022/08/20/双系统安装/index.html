@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="需要的软件启动盘和分区软件只需要任选其一 启动盘制作软件1.rufushttps://github.com/pbatard/rufus/releases 2.软碟通UltralSOhttps://cn.ultraiso.net/uiso9_cn.exe 3.大白菜启动盘制作百度大白菜进入官网下载 分区软件1.DiskGeniushttps://www.diskgenius.cn/download">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-02-02T23:20:23.659Z">
+<meta property="og:updated_time" content="2024-02-03T00:00:57.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双系统安装">
 <meta name="twitter:description" content="需要的软件启动盘和分区软件只需要任选其一 启动盘制作软件1.rufushttps://github.com/pbatard/rufus/releases 2.软碟通UltralSOhttps://cn.ultraiso.net/uiso9_cn.exe 3.大白菜启动盘制作百度大白菜进入官网下载 分区软件1.DiskGeniushttps://www.diskgenius.cn/download">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  686
+                  838
                 </span>
               
 
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -433,6 +433,25 @@
 <h3 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h3><h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><p>1.重启电脑，按F9（暗影精灵） ，其他电脑可能是其他按钮F9-F12 ，选择U盘启动<br>2.选择try or install ubuntu<br>3.进入Ubuntu安装引导程序，选择中文，点击继续<br>4.选择chinese，点击继续<br>5.选择不连接网络，点击继续<br>6.选择最小安装，点击继续<br>7.选择自定义安装<br>8.选择创建出的空间的128G的那个分区，右键点击，选择新建分区，挂载点填写<code>/</code>,表示根目录，点击确定，点击继续<br>9.后面一路继续，填写用户信息，安装<br>10.安装完成后，重启，根据提示，拔掉U盘</p>
 <h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><p>1.todesk无法连接，提示没有X11<br>点击左下角，选择软件和更新，选择附加驱动，选择安装nvidia最新驱动软件，安装完成重启<br>如果仍然不行，安装lightdm</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install lightdm</span><br></pre></td></tr></table></figure>
+<h3 id="常用软件安装"><a href="#常用软件安装" class="headerlink" title="常用软件安装"></a>常用软件安装</h3><h4 id="miniconda"><a href="#miniconda" class="headerlink" title="miniconda"></a>miniconda</h4><p>官网</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://docs.conda.io/projects/miniconda/en/latest/</span><br></pre></td></tr></table></figure>
+<p>安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/miniconda3</span><br><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh</span><br><span class="line">bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3</span><br><span class="line">rm -rf ~/miniconda3/miniconda.sh</span><br></pre></td></tr></table></figure></p>
+<p>环境配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~/miniconda3/bin/conda init bash</span><br><span class="line">~/miniconda3/bin/conda init zsh</span><br></pre></td></tr></table></figure>
+<h4 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h4><p>官网</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://code.visualstudio.com/</span><br></pre></td></tr></table></figure>
+<p>安装常用插件</p>
+<ul>
+<li>python</li>
+<li>c/c++</li>
+<li>Cmake</li>
+<li>Cmake Tools</li>
+<li>Code Runner </li>
+</ul>
+<h4 id="pycharm"><a href="#pycharm" class="headerlink" title="pycharm"></a>pycharm</h4><p>官网</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://www.jetbrains.com/pycharm/</span><br></pre></td></tr></table></figure>
+<h3 id="typora编辑器"><a href="#typora编辑器" class="headerlink" title="typora编辑器"></a>typora编辑器</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#for Linux</span><br><span class="line"># or run:</span><br><span class="line"># sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line">wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -</span><br><span class="line"># add Typora&apos;s repository</span><br><span class="line">sudo add-apt-repository &apos;deb https://typora.io/linux ./&apos;</span><br><span class="line">sudo apt-get update</span><br><span class="line"># install typora</span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+<h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><p><a href="https://janvia.github.io/2019/01/07/%E6%8D%A2%E6%BA%90/">换源链接</a></p>
 
       
     </div>
@@ -655,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#需要的软件"><span class="nav-number">1.</span> <span class="nav-text">需要的软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动盘制作软件"><span class="nav-number">1.1.</span> <span class="nav-text">启动盘制作软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分区软件"><span class="nav-number">1.2.</span> <span class="nav-text">分区软件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装示例"><span class="nav-number">2.</span> <span class="nav-text">安装示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载ubuntu"><span class="nav-number">2.1.</span> <span class="nav-text">下载ubuntu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#制作启动盘"><span class="nav-number">2.2.</span> <span class="nav-text">制作启动盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分区"><span class="nav-number">2.3.</span> <span class="nav-text">分区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统安装"><span class="nav-number">3.</span> <span class="nav-text">系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装步骤"><span class="nav-number">3.1.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题解决"><span class="nav-number">3.2.</span> <span class="nav-text">问题解决</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#需要的软件"><span class="nav-number">1.</span> <span class="nav-text">需要的软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动盘制作软件"><span class="nav-number">1.1.</span> <span class="nav-text">启动盘制作软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分区软件"><span class="nav-number">1.2.</span> <span class="nav-text">分区软件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装示例"><span class="nav-number">2.</span> <span class="nav-text">安装示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载ubuntu"><span class="nav-number">2.1.</span> <span class="nav-text">下载ubuntu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#制作启动盘"><span class="nav-number">2.2.</span> <span class="nav-text">制作启动盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分区"><span class="nav-number">2.3.</span> <span class="nav-text">分区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统安装"><span class="nav-number">3.</span> <span class="nav-text">系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装步骤"><span class="nav-number">3.1.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题解决"><span class="nav-number">3.2.</span> <span class="nav-text">问题解决</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用软件安装"><span class="nav-number">4.</span> <span class="nav-text">常用软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#miniconda"><span class="nav-number">4.1.</span> <span class="nav-text">miniconda</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode"><span class="nav-number">4.2.</span> <span class="nav-text">vscode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pycharm"><span class="nav-number">4.3.</span> <span class="nav-text">pycharm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typora编辑器"><span class="nav-number">5.</span> <span class="nav-text">typora编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#换源"><span class="nav-number">6.</span> <span class="nav-text">换源</span></a></li></ol></div>
             
 
           </div>
@@ -689,7 +708,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">117.6k</span>
+    <span title="Site words total count">117.7k</span>
   
 </div>
 
