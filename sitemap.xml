@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janvia.github.io/2022/08/20/wsl/</loc>
+    
+    <lastmod>2024-02-04T02:20:54.884Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janvia.github.io/2019/03/12/hexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D/</loc>
     
     <lastmod>2024-02-04T01:56:42.026Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://janvia.github.io/2019/01/03/on-my-zsh/</loc>
     
     <lastmod>2024-02-03T02:47:00.449Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2022/08/20/wsl/</loc>
-    
-    <lastmod>2024-01-19T08:28:49.592Z</lastmod>
     
   </url>
   
