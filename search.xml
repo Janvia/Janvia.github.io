@@ -483,8 +483,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>RNN</tag>
         <tag>LSTM</tag>
+        <tag>RNN</tag>
       </tags>
   </entry>
   <entry>
@@ -894,12 +894,23 @@
   <entry>
     <title><![CDATA[cuda配置]]></title>
     <url>%2F2019%2F01%2F07%2Fcuda%20%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.runsudo sh cuda_11.7.1_515.65.01_linux.run cudnnwget https://developer.nvidia.com/compute/cudnn/secure/8.5.0/local_installers/11.7/cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xztar -xvf cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xzcd cudnn-linux-x86_64-8.5.0.96_cuda11-archivesudo cp include/cudnn.h /usr/local/cuda/include/ sudo cp lib/libcudnn* /usr/local/cuda/lib64/ sudo chmod a+r /usr/local/cuda/include/cudnn.h sudo chmod a+r /usr/local/cuda/lib64/libcudnn* 配置环境export PATH=/usr/local/cuda-11.7/bin:$PATHexport LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH]]></content>
+    <content type="text"><![CDATA[下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.runsudo sh cuda_11.7.1_515.65.01_linux.run cudnn注意：由于cudnn需要登录，所以最好手动下载，wget下载的文件有问题wget https://developer.nvidia.com/compute/cudnn/secure/8.5.0/local_installers/11.7/cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xz（替换为手动下载）tar -xvf cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xzcd cudnn-linux-x86_64-8.5.0.96_cuda11-archivesudo cp include/cudnn.h /usr/local/cuda/include/ sudo cp lib/libcudnn* /usr/local/cuda/lib64/ sudo chmod a+r /usr/local/cuda/include/cudnn.h sudo chmod a+r /usr/local/cuda/lib64/libcudnn* 配置环境export PATH=/usr/local/cuda-11.7/bin:$PATHexport LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH]]></content>
       <categories>
         <category>linux</category>
       </categories>
       <tags>
         <tag>cuda配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[docker容器挂载硬盘]]></title>
+    <url>%2F2019%2F01%2F07%2Fdocker%E5%AE%B9%E5%99%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98%2F</url>
+    <content type="text"><![CDATA[容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service 2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json ‘其中就是你想让哪个docker容器挂载硬盘空间，如果想要多个容器共享一个挂载硬盘，那就得挨个打开每个容器的config.v2.json文件’ 3.更换config.v2.json中MountPoints在config.v2.json查找MountPoints部分，通常来说，要是在创建容器的时候没有选择挂载硬盘，那么在这种情况下是空的：“MountPoints”:{}。接下来用这样的东西替换内容。 &quot;MountPoints&quot;: &#123; &quot;/mnt&quot;: &#123; &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #这个路径就是你要挂载的路径，比如说我的挂载路径为:/media/zz/newdir &quot;Destination&quot;: &quot;/mnt&quot;, #这个路径就是挂载路径映射到你在容器里面的路径，这里我就简单设置为/mnt &quot;RW&quot;: true, &quot;Name&quot;: &quot;&quot;, &quot;Driver&quot;: &quot;&quot;, &quot;Type&quot;: &quot;bind&quot;, &quot;Propagation&quot;: &quot;rprivate&quot;, &quot;Spec&quot;: &#123; &quot;Type&quot;: &quot;bind&quot;, &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #同上Source &quot;Target&quot;: &quot;/mnt&quot; #同上Destination &#125;, &quot;SkipMountpointCreation&quot;: false &#125; &#125; 上述内容只需要修改”Source”、“Destination”、”Target”这些路径就可以了，其他的直接复制下来就可以了。然后，保存退出vim。 4.重启docker服务systemctl start docker.service 5.重启docker容器docker start &lt;container-name/ID&gt;]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -925,28 +936,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[docker容器挂载硬盘]]></title>
-    <url>%2F2019%2F01%2F07%2Fdocker%E5%AE%B9%E5%99%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98%2F</url>
-    <content type="text"><![CDATA[容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service 2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json ‘其中就是你想让哪个docker容器挂载硬盘空间，如果想要多个容器共享一个挂载硬盘，那就得挨个打开每个容器的config.v2.json文件’ 3.更换config.v2.json中MountPoints在config.v2.json查找MountPoints部分，通常来说，要是在创建容器的时候没有选择挂载硬盘，那么在这种情况下是空的：“MountPoints”:{}。接下来用这样的东西替换内容。 &quot;MountPoints&quot;: &#123; &quot;/mnt&quot;: &#123; &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #这个路径就是你要挂载的路径，比如说我的挂载路径为:/media/zz/newdir &quot;Destination&quot;: &quot;/mnt&quot;, #这个路径就是挂载路径映射到你在容器里面的路径，这里我就简单设置为/mnt &quot;RW&quot;: true, &quot;Name&quot;: &quot;&quot;, &quot;Driver&quot;: &quot;&quot;, &quot;Type&quot;: &quot;bind&quot;, &quot;Propagation&quot;: &quot;rprivate&quot;, &quot;Spec&quot;: &#123; &quot;Type&quot;: &quot;bind&quot;, &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #同上Source &quot;Target&quot;: &quot;/mnt&quot; #同上Destination &#125;, &quot;SkipMountpointCreation&quot;: false &#125; &#125; 上述内容只需要修改”Source”、“Destination”、”Target”这些路径就可以了，其他的直接复制下来就可以了。然后，保存退出vim。 4.重启docker服务systemctl start docker.service 5.重启docker容器docker start &lt;container-name/ID&gt;]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[github上传代码]]></title>
-    <url>%2F2019%2F01%2F07%2Fgithub%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%2F</url>
-    <content type="text"><![CDATA[初次上传 clash换个窗口echo &quot;# demo&quot; &gt;&gt; README.mdgit initgit add README.mdgit commit -m &quot;first commit&quot;git branch -M maingit remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main 第二次上传 git add .git commit -m &quot;second commit&quot;git branch -M main#git remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main#图片路径直接复制上传图片的网页地址]]></content>
-      <categories>
-        <category>dxz</category>
-      </categories>
-      <tags>
-        <tag>github上传代码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[kaldi安装]]></title>
     <url>%2F2019%2F01%2F07%2Fkaldi%20%E5%AE%89%E8%A3%85%2F</url>
     <content type="text"><![CDATA[kaldi 安装下载git clone https://github.com/kaldi-asr/kaldi.git 安装toolscd toolsextras/check_dependencies.sh 保证OK之后进行make make -j4 如果check inter mkl失败,需要安装 extras/install_mkl.sh 如果安装失败，可以手动安装 cd /tmpwget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBapt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBsudo apt-get install intel-mkl-64bit-2020.2#source 可选source /opt/intel/compilers_and_libraries_2020/linux/mkl/bin/mklvars.sh intel64 ilp64 make 中出现gzip failed,多半是因为文件下载中出错，找到大小为0的压缩文件删除后重新make All done OK. 表示安装成功 安装src./configure --sharedmake depend -j 8make -j 8]]></content>
@@ -966,6 +955,17 @@
       </categories>
       <tags>
         <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github上传代码]]></title>
+    <url>%2F2019%2F01%2F07%2Fgithub%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[初次上传 clash换个窗口echo &quot;# demo&quot; &gt;&gt; README.mdgit initgit add README.mdgit commit -m &quot;first commit&quot;git branch -M maingit remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main 第二次上传 git add .git commit -m &quot;second commit&quot;git branch -M main#git remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main#图片路径直接复制上传图片的网页地址]]></content>
+      <categories>
+        <category>dxz</category>
+      </categories>
+      <tags>
+        <tag>github上传代码</tag>
       </tags>
   </entry>
   <entry>
