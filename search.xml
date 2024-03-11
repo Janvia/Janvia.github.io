@@ -30,7 +30,7 @@
   <entry>
     <title><![CDATA[双系统安装]]></title>
     <url>%2F2022%2F08%2F20%2F%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"><![CDATA[需要的软件启动盘和分区软件只需要任选其一 启动盘制作软件1.rufushttps://github.com/pbatard/rufus/releases 2.软碟通UltralSOhttps://cn.ultraiso.net/uiso9_cn.exe 3.大白菜启动盘制作百度大白菜进入官网下载 分区软件1.DiskGeniushttps://www.diskgenius.cn/download.php 2.系统自带(win11为例)右键我的电脑选择属性然后选择系统-&gt; 存储 -&gt; 磁盘和卷 安装示例以软碟通和DiskGenius为例 下载ubuntuhttps://cn.ubuntu.com/desktop 制作启动盘1.插入U盘，提前备份U盘内的数据，U盘大小要足够容纳ISO文件。2.打开UltralSO，同时找到自己电脑中刚刚下好的ISO文件，直接拖拽文件到UltralSO工具中。3.双击刚刚拖拽进来的iso文件，弹出选项卡，选择“是”，就打开ISO文件了。4.单击工具栏上的“启动”-&gt;“写入硬盘映像”“，系统可能会询问管理员权限，选择“是”。然后选择硬盘驱动器为指定U盘，写入方式为USB-HDD+。5.选择“写入”，一定要确保U盘里面的重要数据都备份了！！弹出警告也会提醒你，你确定的话就选择“是”。下面软件就会进行写入操作了，写入成功。 分区1.打开DIskGenius，右键自己想要开辟分区的磁盘，选择“建立新分区”，然后输入自己想要开辟的分区大小，这里我开辟128G大小。2.选择“开始”，这时候可以软件就开始工作了，我们等待它完成就好。3.创建好分区后，将新建的分区删除，右键该盘块，选择“删除当前分区”，这样就会出现一个128G的空闲区域。 系统安装安装步骤1.重启电脑，按F9（暗影精灵） ，其他电脑可能是其他按钮F9-F12 ，选择U盘启动2.选择try or install ubuntu3.进入Ubuntu安装引导程序，选择中文，点击继续4.选择chinese，点击继续5.选择不连接网络，点击继续6.选择最小安装，点击继续7.选择自定义安装8.选择创建出的空间的128G的那个分区，右键点击，选择新建分区，挂载点填写/,表示根目录，点击确定，点击继续9.后面一路继续，填写用户信息，安装10.安装完成后，重启，根据提示，拔掉U盘 问题解决1.todesk无法连接，提示没有X11点击左下角，选择软件和更新，选择附加驱动，选择安装nvidia最新驱动软件，安装完成重启如果仍然不行，安装lightdm sudo apt updatesudo apt install lightdm 2.安装nvidia驱动后，出现没有wifi原因nvidia驱动的内核版本较新，只需要更新内核版本更新方法： 重启 选择第二项optional ubuntu 选择老版本内核版本的ubuntu进入，进入后有wifi 点击左下角，软件更新器，点击全部更新 重启 常用软件安装miniconda官网 https://docs.conda.io/projects/miniconda/en/latest/ 安装mkdir -p ~/miniconda3wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.shbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3rm -rf ~/miniconda3/miniconda.sh 环境配置 ~/miniconda3/bin/conda init bash~/miniconda3/bin/conda init zsh vscode官网 https://code.visualstudio.com/ 安装常用插件 python c/c++ Cmake Cmake Tools Code Runner pycharm官网 https://www.jetbrains.com/pycharm/ typora编辑器#for Linux# or run:# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAEwget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -# add Typora&apos;s repositorysudo add-apt-repository &apos;deb https://typora.io/linux ./&apos;sudo apt-get update# install typorasudo apt-get install typora goodle浏览器安装 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.debsudo apt install ./google-chrome-stable_current_amd64.deb 在安装 Google 浏览器的过程中，可能会遇到以下常见问题： 1, 依赖关系未满足 如果出现“依赖关系未满足”的错误，可以尝试在终端中输入以下命令以安装缺失的依赖包： sudo apt install libgtk-3-engines libgtk-3-bin 2, 安装失败 如果出现“安装失败”的错误，可以尝试重新下载安装包，或者使用以下命令卸载旧版本 Google 浏览器： sudo dpkg -r google-chrome-stable 搜狗拼音1，安装 fcitx sudo apt install fcitx-binsudo apt-get install fcitx-table 2，下载搜狗官方安装包 http://pinyin.sogou.com/linux/ 3，安装依赖（这步很关键，否则安装完成后，无法输入中文） sudo apt install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2sudo apt install libgsettings-qt1 4，安装刚才下载的搜狗输入法 cd ~/Downloads/sudo dpkg -i sogoupinyin_4.0.1.2800_x86_64.deb 5, 配置开机启动 sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/ 6, 卸载ibus sudo apt purge ibus 7，切换 fcitx 在系统设置中选择“区域与语言”，点击“管理已安装的语言 切换成“fcitx”，然后应用到整个系统 重启 点击右上角的小键盘图标，选择“配置当前输入法” 在配置界面，点击加号，选择“搜狗拼音输入法”即可 clash安装sudo apt install curl wget jqwget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.debsudo dpkg -i clash-verge_1.3.8_amd64.deb 请将配置文件复制到 ~/.config/clash/config.yaml 换源换源链接 zsh配置oh-my-zsh]]></content>
+    <content type="text"><![CDATA[需要的软件启动盘和分区软件只需要任选其一 启动盘制作软件1.rufushttps://github.com/pbatard/rufus/releases 2.软碟通UltralSOhttps://cn.ultraiso.net/uiso9_cn.exe 3.大白菜启动盘制作百度大白菜进入官网下载 分区软件1.DiskGeniushttps://www.diskgenius.cn/download.php 2.系统自带(win11为例)右键我的电脑选择属性然后选择系统-&gt; 存储 -&gt; 磁盘和卷 安装示例以软碟通和DiskGenius为例 下载ubuntuhttps://cn.ubuntu.com/desktop 制作启动盘1.插入U盘，提前备份U盘内的数据，U盘大小要足够容纳ISO文件。2.打开UltralSO，同时找到自己电脑中刚刚下好的ISO文件，直接拖拽文件到UltralSO工具中。3.双击刚刚拖拽进来的iso文件，弹出选项卡，选择“是”，就打开ISO文件了。4.单击工具栏上的“启动”-&gt;“写入硬盘映像”“，系统可能会询问管理员权限，选择“是”。然后选择硬盘驱动器为指定U盘，写入方式为USB-HDD+。5.选择“写入”，一定要确保U盘里面的重要数据都备份了！！弹出警告也会提醒你，你确定的话就选择“是”。下面软件就会进行写入操作了，写入成功。 分区1.打开DIskGenius，右键自己想要开辟分区的磁盘，选择“建立新分区”，然后输入自己想要开辟的分区大小，这里我开辟128G大小。2.选择“开始”，这时候可以软件就开始工作了，我们等待它完成就好。3.创建好分区后，将新建的分区删除，右键该盘块，选择“删除当前分区”，这样就会出现一个128G的空闲区域。4.点击保存更改，退出软件。 系统安装安装步骤1.重启电脑，按F9（暗影精灵） ，其他电脑可能是其他按钮F9-F12 ，选择U盘启动2.选择try or install ubuntu3.进入Ubuntu安装引导程序，选择中文，点击继续4.选择chinese，点击继续5.选择不连接网络，点击继续6.选择最小安装，点击继续7.选择自定义安装8.选择创建出的空间的128G的那个分区，右键点击，选择新建分区，挂载点填写/,表示根目录，点击确定，点击继续9.后面一路继续，填写用户信息，安装10.安装完成后，重启，根据提示，拔掉U盘 问题解决1.todesk无法连接，提示没有X11点击左下角，选择软件和更新，选择附加驱动，选择安装nvidia最新驱动软件，安装完成重启如果仍然不行，安装lightdm sudo apt updatesudo apt install lightdm 2.安装nvidia驱动后，出现没有wifi原因nvidia驱动的内核版本较新，只需要更新内核版本更新方法： 重启 选择第二项optional ubuntu 选择老版本内核版本的ubuntu进入，进入后有wifi 点击左下角，软件更新器，点击全部更新 重启 常用软件安装miniconda官网 https://docs.conda.io/projects/miniconda/en/latest/ 安装mkdir -p ~/miniconda3wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.shbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3rm -rf ~/miniconda3/miniconda.sh 环境配置 ~/miniconda3/bin/conda init bash~/miniconda3/bin/conda init zsh vscode官网 https://code.visualstudio.com/ 安装常用插件 python c/c++ Cmake Cmake Tools Code Runner pycharm官网 https://www.jetbrains.com/pycharm/ typora编辑器#for Linux# or run:# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAEwget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -# add Typora&apos;s repositorysudo add-apt-repository &apos;deb https://typora.io/linux ./&apos;sudo apt-get update# install typorasudo apt-get install typora goodle浏览器安装 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.debsudo apt install ./google-chrome-stable_current_amd64.deb 在安装 Google 浏览器的过程中，可能会遇到以下常见问题： 1, 依赖关系未满足 如果出现“依赖关系未满足”的错误，可以尝试在终端中输入以下命令以安装缺失的依赖包： sudo apt install libgtk-3-engines libgtk-3-bin 2, 安装失败 如果出现“安装失败”的错误，可以尝试重新下载安装包，或者使用以下命令卸载旧版本 Google 浏览器： sudo dpkg -r google-chrome-stable 搜狗拼音1，安装 fcitx sudo apt install fcitx-binsudo apt-get install fcitx-table 2，下载搜狗官方安装包 http://pinyin.sogou.com/linux/ 3，安装依赖（这步很关键，否则安装完成后，无法输入中文） sudo apt install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2sudo apt install libgsettings-qt1 4，安装刚才下载的搜狗输入法 cd ~/Downloads/sudo dpkg -i sogoupinyin_4.0.1.2800_x86_64.deb 5, 配置开机启动 sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/ 6, 卸载ibus sudo apt purge ibus 7，切换 fcitx 在系统设置中选择“区域与语言”，点击“管理已安装的语言 切换成“fcitx”，然后应用到整个系统 重启 点击右上角的小键盘图标，选择“配置当前输入法” 在配置界面，点击加号，选择“搜狗拼音输入法”即可 clash安装sudo apt install curl wget jqwget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.debsudo dpkg -i clash-verge_1.3.8_amd64.deb 请将配置文件复制到 ~/.config/clash/config.yaml 换源换源链接 zsh配置oh-my-zsh]]></content>
       <categories>
         <category>linux</category>
       </categories>
@@ -483,8 +483,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>LSTM</tag>
         <tag>RNN</tag>
+        <tag>LSTM</tag>
       </tags>
   </entry>
   <entry>
@@ -495,8 +495,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>DCGAN</tag>
         <tag>GAN</tag>
+        <tag>DCGAN</tag>
       </tags>
   </entry>
   <entry>
@@ -892,28 +892,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[cuda配置]]></title>
-    <url>%2F2019%2F01%2F07%2Fcuda%20%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.runsudo sh cuda_11.7.1_515.65.01_linux.run cudnn注意：由于cudnn需要登录，所以最好手动下载，wget下载的文件有问题wget https://developer.nvidia.com/compute/cudnn/secure/8.5.0/local_installers/11.7/cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xz（替换为手动下载）tar -xvf cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xzcd cudnn-linux-x86_64-8.5.0.96_cuda11-archivesudo cp include/cudnn.h /usr/local/cuda/include/ sudo cp lib/libcudnn* /usr/local/cuda/lib64/ sudo chmod a+r /usr/local/cuda/include/cudnn.h sudo chmod a+r /usr/local/cuda/lib64/libcudnn* 配置环境export PATH=/usr/local/cuda-11.7/bin:$PATHexport LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>cuda配置</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[docker容器挂载硬盘]]></title>
-    <url>%2F2019%2F01%2F07%2Fdocker%E5%AE%B9%E5%99%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98%2F</url>
-    <content type="text"><![CDATA[容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service 2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json ‘其中就是你想让哪个docker容器挂载硬盘空间，如果想要多个容器共享一个挂载硬盘，那就得挨个打开每个容器的config.v2.json文件’ 3.更换config.v2.json中MountPoints在config.v2.json查找MountPoints部分，通常来说，要是在创建容器的时候没有选择挂载硬盘，那么在这种情况下是空的：“MountPoints”:{}。接下来用这样的东西替换内容。 &quot;MountPoints&quot;: &#123; &quot;/mnt&quot;: &#123; &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #这个路径就是你要挂载的路径，比如说我的挂载路径为:/media/zz/newdir &quot;Destination&quot;: &quot;/mnt&quot;, #这个路径就是挂载路径映射到你在容器里面的路径，这里我就简单设置为/mnt &quot;RW&quot;: true, &quot;Name&quot;: &quot;&quot;, &quot;Driver&quot;: &quot;&quot;, &quot;Type&quot;: &quot;bind&quot;, &quot;Propagation&quot;: &quot;rprivate&quot;, &quot;Spec&quot;: &#123; &quot;Type&quot;: &quot;bind&quot;, &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #同上Source &quot;Target&quot;: &quot;/mnt&quot; #同上Destination &#125;, &quot;SkipMountpointCreation&quot;: false &#125; &#125; 上述内容只需要修改”Source”、“Destination”、”Target”这些路径就可以了，其他的直接复制下来就可以了。然后，保存退出vim。 4.重启docker服务systemctl start docker.service 5.重启docker容器docker start &lt;container-name/ID&gt;]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[docker-ldap-mysql]]></title>
     <url>%2F2019%2F01%2F07%2Fdocker-ldap-mysql%2F</url>
     <content type="text"><![CDATA[yml创建ldap-mysql1.编写ymlversion: &apos;2&apos;services: db: image: mysql:latest volumes: - &quot;./.data/db:/var/lib/mysql&quot; - &quot;./conf/mysql:/etc/mysql/conf.d&quot; restart: always ports: - 3306:3306 environment: MYSQL_ROOT_PASSWORD: ldap MYSQL_DATABASE: ldap MYSQL_USER: vives MYSQL_PASSWORD: ldap ldap-client: image: osixia/phpldapadmin:latest hostname: vivesdata domainname: ldap.vives.be depends_on: - db - ldap links: - db - ldap:ldap.vives.be ports: - 6443:443 restart: always environment: LDAP_DB_HOST: db:3306 LDAP_DB_PASSWORD: ldap LDAP_DB_USER: vives LDAP_DB_NAME: ldap PHPLDAPADMIN_LDAP_HOSTS: ldap.vives.be PHPLDAPADMIN_LDAP_CLIENT_TLS: &quot;false&quot; ldap: depends_on: - db image: osixia/openldap:latest hostname: vivesdata domainname: ldap.vives.be ports: - &quot;389:389&quot; volumes: - &quot;./.data/var/lib/ldap:/var/lib/ldap&quot; - &quot;./.data/etc/ldap/slapd.d:/etc/ldap/slapd.d&quot; links: - db restart: always environment: LDAP_DB_HOST: db:3306 LDAP_DB_PASSWORD: ldap LDAP_DB_USER: vives LDAP_DB_NAME: ldap LDAP_ORGANISATION: Vives LDAP_DOMAIN: ldap.vives.be LDAP_ADMIN_PASSWORD: ldap LDAP_TLS: &quot;false&quot; ldapbackup: depends_on: - db - ldap image: osixia/openldap-backup:latest hostname: vivesdata domainname: ldap.vives.be #volumes: # - &quot;./.data/openldap/backup:/data/backup&quot; # - &quot;./.data/etc/ldap/slapd.d:/etc/ldap/slapd.d&quot; links: - db - ldap:ldap.vives.be restart: always environment: LDAP_DB_HOST: db:3306 LDAP_DB_PASSWORD: ldap LDAP_DB_USER: vives LDAP_DB_NAME: ldap LDAP_ORGANISATION: Vives LDAP_DOMAIN: ldap.vives.be LDAP_ADMIN_PASSWORD: ldap LDAP_BACKUP_CONFIG_CRON_EXP: &quot;0 5 * * *&quot; LDAP_BACKUP_DATA_CRON_EXP: &quot;0 5 * * *&quot; 2.运行Containers runnen:docker-compose up Terminal krijgen op ldap container:docker-compose exec ldap /bin/bash Users zoeken in ldap directory:ldapsearch -x -h localhost -b dc=ldap,dc=vives,dc=be -D &quot;cn=admin,dc=ldap,dc=vives,dc=be&quot; -w ldap # extended LDIF## LDAPv3# base with scope subtree# filter: (objectclass=*)# requesting: ALL#[...]# numResponses: 3# numEntries: 2 PhpLdapAdmin in webbrowser openen op host:https://localhost:6443login: cn=admin,dc=ldap,dc=vives,dc=be psw: ldap 允许远程mysql连接2.进入mysql容器docker exec -it my_db /bin/bash 2.进入mysqlmysql -uroot -puse ladp; 2.修改权限ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;123456&apos;; ### 123456 mysql的登录密码flush privileges; dokerfile 创建ldap-mysql1.拉取镜像sudo docker pull ubuntu:18.04 2.下载ODBC驱动https://dev.mysql.com/downloads/connector/odbc/ 需要下载ubuntu18.04对应的版本，比如8.0.19.tar.gz x86_64 3.写ODBC配置文件vim odbcinst.ini 内容为[MySQL]Description = MySQL driverDriver = /usr/local/lib/libmyodbc8a.soSetup = /usr/local/lib/libmyodbc8S.so vim odbc.ini 内容为[my_db]Driver = MySQLDescription = MySQLServer = my_dbPort = 3306User = rootPassword = secretDatabase = testdb 4.写openldap配置文件vim slapd_my.conf 内容为# $OpenLDAP$## See slapd.conf(5) for details on configuration options.# This file should NOT be world readable.#include /usr/local/etc/openldap/schema/core.schemainclude /usr/local/etc/openldap/schema/cosine.schemainclude /usr/local/etc/openldap/schema/inetorgperson.schema# Define global ACLs to disable default read access.# Do not enable referrals until AFTER you have a working directory# service AND an understanding of referrals.#referral ldap://root.openldap.orgpidfile /usr/local/var/slapd.pidargsfile /usr/local/var/slapd.args######################################################################## sql database definitions#######################################################################database sqlsuffix &quot;dc=example,dc=com&quot;rootdn &quot;cn=root,dc=example,dc=com&quot;rootpw secretdbname my_dbdbuser admindbpasswd secret#insentry_stmt &quot;insert into ldap_entries (id,dn,oc_map_id,parent,keyval) values ((select max(id)+1 from ldap_entries),?,?,?,?)&quot;insentry_stmt &quot;INSERT INTO ldap_entries (dn,oc_map_id,parent,keyval) VALUES (?,?,?,?)&quot;subtree_cond &quot;ldap_entries.dn LIKE CONCAT(&apos;%&apos;,?)&quot;has_ldapinfo_dn_ru no 5.编写dockerfilevim Dockerfile 内容为FROM ubuntu:18.04EXPOSE 389ADD [&quot;mysql-connector-odbc-8.0.19-linux-ubuntu18.04-x86-64bit.tar.gz&quot;, &quot;/&quot;]RUN apt-get update &amp;&amp; \ apt-get install -y unixodbc &amp;&amp; \ cp -r /mysql-connector-odbc-8.0.19-linux-ubuntu18.04-x86-64bit/lib/* /usr/local/lib/ &amp;&amp; \ apt-get install -y unixodbc-dev curl make groff-base unzip &amp;&amp; \ curl -L ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.44.tgz | \ tar xzf - &amp;&amp; \ cd openldap-2.4.44 &amp;&amp; \ export CFLAGS=&apos;-O2 -mtune=sandybridge -pipe -s&apos; &amp;&amp; \ ./configure --enable-modules --enable-sql --enable-bdb=no --enable-hdb=no --enable-memberof --enable-dyngroup --enable-ppolicy &amp;&amp; \ make depend &amp;&amp; \ make -j &amp;&amp; \ make install &amp;&amp; \ cd contrib/slapd-modules/passwd &amp;&amp; \ curl -LO https://github.com/wclarie/openldap-bcrypt/archive/master.zip &amp;&amp; \ unzip master.zip &amp;&amp; \ cd openldap-bcrypt-master &amp;&amp; \ make &amp;&amp; \ make install &amp;&amp; \ cd / &amp;&amp; \ rm -r /openldap-2.4.44 &amp;&amp; \ apt-get remove -y --purge unixodbc-dev curl make groff-base unzip &amp;&amp; \ apt-get autoremove -y --purge &amp;&amp; \ apt-get clean &amp;&amp; \ rm -rf /var/lib/apt/lists/*ADD [&quot;odbc.ini&quot;, &quot;/etc/&quot;]ADD [&quot;odbcinst.ini&quot;, &quot;/etc/&quot;]ADD [&quot;slapd_my.conf&quot;, &quot;/usr/local/etc/openldap/&quot;]CMD [&quot;/usr/local/libexec/slapd&quot;, &quot;-f&quot;, &quot;/usr/local/etc/openldap/slapd_my.conf&quot;, &quot;-d&quot;, &quot;257&quot;] 6.测试ODBC驱动是否正常(可选)isql -v my_db //my_db 为database 5.自动化脚本#!/bin/shset -eecho &quot;Creating MySQL and PostgreSQL database ...&quot;docker run -d --name my_db -p 3306:3306 -e MYSQL_DATABASE=testdb -e MYSQL_USER=admin -e MYSQL_PASSWORD=secret -e MYSQL_ROOT_PASSWORD=secret mysql#echo &quot;Building OpenLDAP image ...&quot;docker build -t ldap-sql .sleep 15 # DB needs time until upecho &quot;Loading data into databases ...&quot;docker exec -i my_db mysql -h127.0.0.1 -uadmin -psecret testdb &lt; my_dump.sqlecho &quot;Trying with MySQL, works ...&quot;docker run -d -p 389:389 --link my_db --name ldap-sql ldap-sql /usr/local/libexec/slapd -f /usr/local/etc/openldap/slapd_my.conf -d 257sleep 10docker exec ldap-sql ldapsearch -x -h localhost -b &quot;dc=example,dc=com&quot; &quot;(objectClass=*)&quot;#echo &quot;Deleting all Docker images ...&quot;#docker rm -vf ldap-sql my_db]]></content>
@@ -936,22 +914,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[kaldi安装]]></title>
-    <url>%2F2019%2F01%2F07%2Fkaldi%20%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"><![CDATA[kaldi 安装下载git clone https://github.com/kaldi-asr/kaldi.git 安装toolscd toolsextras/check_dependencies.sh 保证OK之后进行make make -j4 如果check inter mkl失败,需要安装 extras/install_mkl.sh 如果安装失败，可以手动安装 cd /tmpwget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBapt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBsudo apt-get install intel-mkl-64bit-2020.2#source 可选source /opt/intel/compilers_and_libraries_2020/linux/mkl/bin/mklvars.sh intel64 ilp64 make 中出现gzip failed,多半是因为文件下载中出错，找到大小为0的压缩文件删除后重新make All done OK. 表示安装成功 安装src./configure --sharedmake depend -j 8make -j 8]]></content>
+    <title><![CDATA[docker容器挂载硬盘]]></title>
+    <url>%2F2019%2F01%2F07%2Fdocker%E5%AE%B9%E5%99%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98%2F</url>
+    <content type="text"><![CDATA[容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service 2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json ‘其中就是你想让哪个docker容器挂载硬盘空间，如果想要多个容器共享一个挂载硬盘，那就得挨个打开每个容器的config.v2.json文件’ 3.更换config.v2.json中MountPoints在config.v2.json查找MountPoints部分，通常来说，要是在创建容器的时候没有选择挂载硬盘，那么在这种情况下是空的：“MountPoints”:{}。接下来用这样的东西替换内容。 &quot;MountPoints&quot;: &#123; &quot;/mnt&quot;: &#123; &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #这个路径就是你要挂载的路径，比如说我的挂载路径为:/media/zz/newdir &quot;Destination&quot;: &quot;/mnt&quot;, #这个路径就是挂载路径映射到你在容器里面的路径，这里我就简单设置为/mnt &quot;RW&quot;: true, &quot;Name&quot;: &quot;&quot;, &quot;Driver&quot;: &quot;&quot;, &quot;Type&quot;: &quot;bind&quot;, &quot;Propagation&quot;: &quot;rprivate&quot;, &quot;Spec&quot;: &#123; &quot;Type&quot;: &quot;bind&quot;, &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #同上Source &quot;Target&quot;: &quot;/mnt&quot; #同上Destination &#125;, &quot;SkipMountpointCreation&quot;: false &#125; &#125; 上述内容只需要修改”Source”、“Destination”、”Target”这些路径就可以了，其他的直接复制下来就可以了。然后，保存退出vim。 4.重启docker服务systemctl start docker.service 5.重启docker容器docker start &lt;container-name/ID&gt;]]></content>
       <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>kaldi</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[linux常用工具]]></title>
-    <url>%2F2019%2F01%2F07%2Flinux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%2F</url>
-    <content type="text"><![CDATA[换源ubantu换源阿里源sudo python3 -c &quot;d=&apos;mirrors.aliyun.com&apos;;import re;from pathlib import Path;p=Path(&apos;/etc/apt/sources.list&apos;);s=p.read_text();bak=p.with_name(p.name+&apos;.bak&apos;);bak.exists() or bak.write_text(s);p.write_text(re.sub(r&apos;(cn.archive|security|archive)\.ubuntu\.com&apos;, d, s))&quot; pip换源修改或创建 ~/.pip/pip.conf ：[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simple conda 换源channels: - defaultsshow_channel_urls: truedefault_channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/rcustom_channels: conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud pip导出环境pip freeze &gt; requirements.txt 解压.tar格式# 打包 tar -cvf 文件名.tar # 要打包的文件# 解包 tar -xvf 文件名.tar#查看包里的内容tar -tvf 包的文件名.tar .gz格式tar -zcvf xxx.tar.gz 文件 # 压缩tar -zxvf xxx.tar.gz 文件 # 解压# 解压到指定目录 tar -zxvf xxx.tar.gz -C dirname .bz2格式tar -jcvf xxx.tar.bz2 文件 # 压缩tar -jxvf xxx.tar.bz2 # 解压 .zip格式安装sudo apt-get install zip 使用压缩文件 zip 压缩文件 源文件解压 unzip 压缩文件-d 解压到指定目录 如果目录不存在 会自动创建新目录 并压缩进去unzip test.zip -d filename 压缩文件拆分与合并拆分 split train-clean-100.tar.gz -b 1G -d train.tar.gz 合并 cat train.tar.gz* &gt;&gt;train.tar.gz vim编辑器工作模式：命令模式、输入模式、末行模式 模式切换当打开一个文件时处于命令模式在命令模式下，按 i 进入输入模式在输入模式，按ESC回到命令模式。在命令模式下，按shift+; ，末行出现:冒号，则进入末行模式 进入与退出进入 vim filename退出 :wq 末行模式，wq 保存退出 :q 末行模式，q 直接退出 :q! 末行模式，q! 强制退出，不保存 复制与粘贴复制和粘贴 yy 复制整行内容 3yy 复制3行内容 yw 复制当前光标到单词尾内容 p 粘贴 删除删除 dd 删除光标所在行 dw 删除一个单词 x 删除光标所在字符 u 撤销上一次操作 s 替换 ctrl + r 撤销 查找查找 / 命令模式下输入：/ 向前搜索 不能空格 ? 命令模式下输入：? 向后搜索# / 方式 n 向下查找 N 向上查找# ? 方式 n 向上查找 N 向下查找]]></content>
-      <categories>
-        <category>linux</category>
+        <category>docker</category>
       </categories>
       <tags>
         <tag>工具</tag>
@@ -969,6 +936,39 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[kaldi安装]]></title>
+    <url>%2F2019%2F01%2F07%2Fkaldi%20%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[kaldi 安装下载git clone https://github.com/kaldi-asr/kaldi.git 安装toolscd toolsextras/check_dependencies.sh 保证OK之后进行make make -j4 如果check inter mkl失败,需要安装 extras/install_mkl.sh 如果安装失败，可以手动安装 cd /tmpwget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBapt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBsudo apt-get install intel-mkl-64bit-2020.2#source 可选source /opt/intel/compilers_and_libraries_2020/linux/mkl/bin/mklvars.sh intel64 ilp64 make 中出现gzip failed,多半是因为文件下载中出错，找到大小为0的压缩文件删除后重新make All done OK. 表示安装成功 安装src./configure --sharedmake depend -j 8make -j 8]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>kaldi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[cuda配置]]></title>
+    <url>%2F2019%2F01%2F07%2Fcuda%20%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.runsudo sh cuda_11.7.1_515.65.01_linux.run cudnn注意：由于cudnn需要登录，所以最好手动下载，wget下载的文件有问题wget https://developer.nvidia.com/compute/cudnn/secure/8.5.0/local_installers/11.7/cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xz（替换为手动下载）tar -xvf cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xzcd cudnn-linux-x86_64-8.5.0.96_cuda11-archivesudo cp include/cudnn.h /usr/local/cuda/include/ sudo cp lib/libcudnn* /usr/local/cuda/lib64/ sudo chmod a+r /usr/local/cuda/include/cudnn.h sudo chmod a+r /usr/local/cuda/lib64/libcudnn* 配置环境export PATH=/usr/local/cuda-11.7/bin:$PATHexport LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>cuda配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux常用工具]]></title>
+    <url>%2F2019%2F01%2F07%2Flinux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%2F</url>
+    <content type="text"><![CDATA[换源ubantu换源阿里源sudo python3 -c &quot;d=&apos;mirrors.aliyun.com&apos;;import re;from pathlib import Path;p=Path(&apos;/etc/apt/sources.list&apos;);s=p.read_text();bak=p.with_name(p.name+&apos;.bak&apos;);bak.exists() or bak.write_text(s);p.write_text(re.sub(r&apos;(cn.archive|security|archive)\.ubuntu\.com&apos;, d, s))&quot; pip换源修改或创建 ~/.pip/pip.conf ：[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simple conda 换源channels: - defaultsshow_channel_urls: truedefault_channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/rcustom_channels: conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud pip导出环境pip freeze &gt; requirements.txt 解压.tar格式# 打包 tar -cvf 文件名.tar # 要打包的文件# 解包 tar -xvf 文件名.tar#查看包里的内容tar -tvf 包的文件名.tar .gz格式tar -zcvf xxx.tar.gz 文件 # 压缩tar -zxvf xxx.tar.gz 文件 # 解压# 解压到指定目录 tar -zxvf xxx.tar.gz -C dirname .bz2格式tar -jcvf xxx.tar.bz2 文件 # 压缩tar -jxvf xxx.tar.bz2 # 解压 .zip格式安装sudo apt-get install zip 使用压缩文件 zip 压缩文件 源文件解压 unzip 压缩文件-d 解压到指定目录 如果目录不存在 会自动创建新目录 并压缩进去unzip test.zip -d filename 压缩文件拆分与合并拆分 split train-clean-100.tar.gz -b 1G -d train.tar.gz 合并 cat train.tar.gz* &gt;&gt;train.tar.gz vim编辑器工作模式：命令模式、输入模式、末行模式 模式切换当打开一个文件时处于命令模式在命令模式下，按 i 进入输入模式在输入模式，按ESC回到命令模式。在命令模式下，按shift+; ，末行出现:冒号，则进入末行模式 进入与退出进入 vim filename退出 :wq 末行模式，wq 保存退出 :q 末行模式，q 直接退出 :q! 末行模式，q! 强制退出，不保存 复制与粘贴复制和粘贴 yy 复制整行内容 3yy 复制3行内容 yw 复制当前光标到单词尾内容 p 粘贴 删除删除 dd 删除光标所在行 dw 删除一个单词 x 删除光标所在字符 u 撤销上一次操作 s 替换 ctrl + r 撤销 查找查找 / 命令模式下输入：/ 向前搜索 不能空格 ? 命令模式下输入：? 向后搜索# / 方式 n 向下查找 N 向上查找# ? 方式 n 向上查找 N 向下查找]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ssh 远程连接docker]]></title>
     <url>%2F2019%2F01%2F07%2Fssh%20%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5docker%2F</url>
     <content type="text"><![CDATA[ssh 远程连接docker 先拉一个ubuntu镜像 docker pull nvidia/cuda:10.0-base-ubuntu18.04 启动一个容器，并将50003端口映射到容器的22端口上 docker run --name jhag --gpus all -it -p 50003:22 nvidia/cuda:10.0-base-ubuntu18.04 进入容器 docker exec -it jhang /bin/bash 设置容器密码 root@576e4ca3aa7b:~$ sudo passwd rootChanging password for user root.New password:Retype new password:passwd: all authentication tokens updated successfully. 安装 ssh 服务 sudo apt-get update &amp;&amp; apt-get install openssl openssh-server 修改配置，获取远程ROOT权限 sudo vim /etc/ssh/sshd_config，PubkeyAuthentication yes #启用公钥私钥配对认证方式PermitRootLogin yes #root能使用ssh登录port=22 #开启22端口 开启 ssh 服务 service ssh restart 登录测试 ssh root@10.1.1.2 -p 50003 保存容器 sudo docker commit 容器id pytorch2-0:ssh 重新运行 docker run -d -p 50003:22 pytorch2-0:ssh /usr/sbin/sshd -D 关掉该容器 在宿主机通过 docker stop 容器id 即可关闭 启动容器 docker start 容器id]]></content>
@@ -980,17 +980,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[conda常用命令]]></title>
-    <url>%2F2019%2F01%2F07%2F%E5%AF%BC%E5%87%BA%2F</url>
-    <content type="text"><![CDATA[导出conda env export &gt; plome.yaml 导入conda env create -f environment.yaml 示例结果name: demucschannels: - pytorch - conda-forgedependencies: - python&gt;=3.7,&lt;3.10 - ffmpeg&gt;=4.2 - pytorch&gt;=1.8.1 - torchaudio&gt;=0.8 - tqdm&gt;=4.36 - pip - pip: - diffq&gt;=0.2 - dora-search - hydra-colorlog&gt;=1.1 - hydra-core&gt;=1.1 - julius&gt;=0.2.3 - lameenc&gt;=1.2 - openunmix - musdb&gt;=0.4.0 - museval&gt;=0.4.0 - soundfile - submitit - treetable&gt;=0.2.3]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>conda常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[换源]]></title>
     <url>%2F2019%2F01%2F07%2F%E6%8D%A2%E6%BA%90%2F</url>
     <content type="text"><![CDATA[换源apt 换源sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak sudo bash -c &quot;cat &lt;&lt; EOF &gt; /etc/apt/sources.list &amp;&amp; apt update deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverseEOF&quot; pip换源修改或创建 ~/.pip/pip.conf ： [global]index-url = https://pypi.tuna.tsinghua.edu.cn/simple 或者输入命令pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple conda换源修改~/.condarc channels: - defaultsshow_channel_urls: truedefault_channels: - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/rcustom_channels: conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud 对于WSL,命令行输入conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/mainconda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/rconda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forgeconda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/biocondaconda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpoconda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorchconda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/simpleitk docker换源#使用阿里云镜像加速器mkdir -p /etc/dockertee /etc/docker/daemon.json &lt;&lt;-&apos;EOF&apos;&#123; &quot;registry-mirrors&quot;: [ &quot;https://hub-mirror.c.163.com&quot;, &quot;https://ghcr.io&quot;, &quot;https://mirror.baidubce.com&quot;]&#125;EOFsystemctl daemon-reloadsystemctl restart docker]]></content>
@@ -999,6 +988,17 @@
       </categories>
       <tags>
         <tag>换源</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[conda常用命令]]></title>
+    <url>%2F2019%2F01%2F07%2F%E5%AF%BC%E5%87%BA%2F</url>
+    <content type="text"><![CDATA[导出conda env export &gt; plome.yaml 导入conda env create -f environment.yaml 示例结果name: demucschannels: - pytorch - conda-forgedependencies: - python&gt;=3.7,&lt;3.10 - ffmpeg&gt;=4.2 - pytorch&gt;=1.8.1 - torchaudio&gt;=0.8 - tqdm&gt;=4.36 - pip - pip: - diffq&gt;=0.2 - dora-search - hydra-colorlog&gt;=1.1 - hydra-core&gt;=1.1 - julius&gt;=0.2.3 - lameenc&gt;=1.2 - openunmix - musdb&gt;=0.4.0 - museval&gt;=0.4.0 - soundfile - submitit - treetable&gt;=0.2.3]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>conda常用命令</tag>
       </tags>
   </entry>
   <entry>

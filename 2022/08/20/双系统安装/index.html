@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="需要的软件启动盘和分区软件只需要任选其一 启动盘制作软件1.rufushttps://github.com/pbatard/rufus/releases 2.软碟通UltralSOhttps://cn.ultraiso.net/uiso9_cn.exe 3.大白菜启动盘制作百度大白菜进入官网下载 分区软件1.DiskGeniushttps://www.diskgenius.cn/download">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-02-03T13:37:33.506Z">
+<meta property="og:updated_time" content="2024-03-11T13:10:52.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双系统安装">
 <meta name="twitter:description" content="需要的软件启动盘和分区软件只需要任选其一 启动盘制作软件1.rufushttps://github.com/pbatard/rufus/releases 2.软碟通UltralSOhttps://cn.ultraiso.net/uiso9_cn.exe 3.大白菜启动盘制作百度大白菜进入官网下载 分区软件1.DiskGeniushttps://www.diskgenius.cn/download">
@@ -429,7 +429,7 @@
 <h3 id="安装示例"><a href="#安装示例" class="headerlink" title="安装示例"></a>安装示例</h3><p>以软碟通和DiskGenius为例</p>
 <h4 id="下载ubuntu"><a href="#下载ubuntu" class="headerlink" title="下载ubuntu"></a>下载ubuntu</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://cn.ubuntu.com/desktop</span><br></pre></td></tr></table></figure>
 <h4 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h4><p>1.插入U盘，提前备份U盘内的数据，U盘大小要足够容纳ISO文件。<br>2.打开UltralSO，同时找到自己电脑中刚刚下好的ISO文件，直接拖拽文件到UltralSO工具中。<br>3.双击刚刚拖拽进来的iso文件，弹出选项卡，选择“是”，就打开ISO文件了。<br>4.单击工具栏上的“启动”-&gt;“写入硬盘映像”“，系统可能会询问管理员权限，选择“是”。然后选择硬盘驱动器为指定U盘，写入方式为USB-HDD+。<br>5.选择“写入”，一定要确保U盘里面的重要数据都备份了！！弹出警告也会提醒你，你确定的话就选择“是”。下面软件就会进行写入操作了，写入成功。</p>
-<h4 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h4><p>1.打开DIskGenius，右键自己想要开辟分区的磁盘，选择“建立新分区”，然后输入自己想要开辟的分区大小，这里我开辟128G大小。<br>2.选择“开始”，这时候可以软件就开始工作了，我们等待它完成就好。<br>3.创建好分区后，将新建的分区删除，右键该盘块，选择“删除当前分区”，这样就会出现一个128G的空闲区域。</p>
+<h4 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h4><p>1.打开DIskGenius，右键自己想要开辟分区的磁盘，选择“建立新分区”，然后输入自己想要开辟的分区大小，这里我开辟128G大小。<br>2.选择“开始”，这时候可以软件就开始工作了，我们等待它完成就好。<br>3.创建好分区后，将新建的分区删除，右键该盘块，选择“删除当前分区”，这样就会出现一个128G的空闲区域。<br>4.点击保存更改，退出软件。</p>
 <h3 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h3><h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><p>1.重启电脑，按F9（暗影精灵） ，其他电脑可能是其他按钮F9-F12 ，选择U盘启动<br>2.选择try or install ubuntu<br>3.进入Ubuntu安装引导程序，选择中文，点击继续<br>4.选择chinese，点击继续<br>5.选择不连接网络，点击继续<br>6.选择最小安装，点击继续<br>7.选择自定义安装<br>8.选择创建出的空间的128G的那个分区，右键点击，选择新建分区，挂载点填写<code>/</code>,表示根目录，点击确定，点击继续<br>9.后面一路继续，填写用户信息，安装<br>10.安装完成后，重启，根据提示，拔掉U盘</p>
 <h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><p>1.todesk无法连接，提示没有X11<br>点击左下角，选择软件和更新，选择附加驱动，选择安装nvidia最新驱动软件，安装完成重启<br>如果仍然不行，安装lightdm</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install lightdm</span><br></pre></td></tr></table></figure>
@@ -748,7 +748,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">118.6k</span>
   
 </div>
 
