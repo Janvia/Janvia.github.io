@@ -476,6 +476,31 @@
   </entry>
   
   <entry>
+    <title>hexo加速</title>
+    <link href="https://janvia.github.io/2019/03/12/hexo%E5%8A%A0%E9%80%9F/"/>
+    <id>https://janvia.github.io/2019/03/12/hexo加速/</id>
+    <published>2019-03-12T09:13:01.000Z</published>
+    <updated>2024-03-20T06:03:09.822Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h4><p>以阿里云域名为例，可选择10块以内的<br>网址为：<br><a href="https://wanwang.aliyun.com/?spm=5176.28508143.J_4VYgf18xNlTAyFFbOuOQe.308.62eb154a0Ec27i&amp;scm=20140722.X_data-f6e54ce8c5180a496ee6._.V_1" target="_blank" rel="noopener">https://wanwang.aliyun.com/?spm=5176.28508143.J_4VYgf18xNlTAyFFbOuOQe.308.62eb154a0Ec27i&amp;scm=20140722.X_data-f6e54ce8c5180a496ee6._.V_1</a></p><p>注意：域名可能需要备案，不过阿里云目前需要购买服务器才能备案，由于我只个人使用，不需要被百度到，所以猜测占时不用备案</p><h4 id="使用CLOUD的DNS服务"><a href="#使用CLOUD的DNS服务" class="headerlink" title="使用CLOUD的DNS服务"></a>使用CLOUD的DNS服务</h4><p>网址为：<a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">https://dash.cloudflare.com/</a><br>登录后选择： Workers &amp; Pages -&gt; overview -&gt; create application ,创建个人博客 （可能可以不创建，我没找到直接设置DNS的入口）<br>点击：websites -&gt; add a site -&gt; 填写自己的域名 -&gt; 添加DNS配置</p><p>A       janvia.fun    76.223.126.88                Proxied    Auto<br>CNAME   www           cname-china.vercel-dns.com   DNS only   Auto</p><p>配置完成后可以看到分配给自己的DNS服务器，记录下来，然后在阿里云上修改<br>guss.ns.cloudflare.com<br>monika.ns.cloudflare.com</p><h4 id="修改DNS服务器"><a href="#修改DNS服务器" class="headerlink" title="修改DNS服务器"></a>修改DNS服务器</h4><p>在阿里云网页左上角<br>点击： 域名 -&gt; 域名列表 -&gt; janvia.fun(自己的域名) -&gt; 基本信息 -&gt; 修改DNS<br>将阿里云提供的DNS服务器更改为CLOUD提供的服务器，即：<br>dns13.hichina.com<br>dns14.hichina.com<br>修改为<br>guss.ns.cloudflare.com<br>monika.ns.cloudflare.com<br>修改完成后，可以通过点击：左上角 -&gt; 云解析DNS -&gt; DNS服务器地址 ，进行查看<br>修改成功则显示为：<br>当前DNS                         云解析系统分配DNS<br>monika.ns.cloudflare.com     dns13.hichina.com<br>guss.ns.cloudflare.com         dns14.hichina.com</p><h4 id="在牛河上添加自定义域名"><a href="#在牛河上添加自定义域名" class="headerlink" title="在牛河上添加自定义域名"></a>在牛河上添加自定义域名</h4><p>打开博客项目 -&gt; domain -&gt; add<br>填入买的域名 janvia.fun</p><h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>hexo项目下的CNAME中填入买的域名：janvia.fun</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;购买域名&quot;&gt;&lt;a href=&quot;#购买域名&quot; class=&quot;headerlink&quot; title=&quot;购买域名&quot;&gt;&lt;/a&gt;购买域名&lt;/h4&gt;&lt;p&gt;以阿里云域名为例，可选择10块以内的&lt;br&gt;网址为：&lt;br&gt;&lt;a href=&quot;https://wanwang.aliyun.
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="hexo" scheme="https://janvia.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo系统重装恢复</title>
     <link href="https://janvia.github.io/2019/03/12/hexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D/"/>
     <id>https://janvia.github.io/2019/03/12/hexo系统重装恢复/</id>
@@ -497,32 +522,6 @@
     
     
       <category term="hexo" scheme="https://janvia.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>23单元</title>
-    <link href="https://janvia.github.io/2019/02/27/23%E5%8D%95%E5%85%83/"/>
-    <id>https://janvia.github.io/2019/02/27/23单元/</id>
-    <published>2019-02-27T09:01:33.000Z</published>
-    <updated>2019-03-13T05:54:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="自动词、他动词"><a href="#自动词、他动词" class="headerlink" title="自动词、他动词"></a>自动词、他动词</h3><p>自动词：表示状态，能力，现象的动词集合，不涉及人为的影响。</p><p>他动词：表示具有意志性的、指向某对象物体的行为动词集合。</p><p>1）以す结尾的动词，都是五段他动词，与它对应的动词是自动词；<br>     　　鳴らすー鳴る　　倒すー倒れる<br>2）大多数下一段动词（不含れる）是他动词，与它对应的五段动词是自动词；<br>如：　　始めるー始まる　　かけるーかかる　つけるーつく　<br>3）可能动词及表示能力的动词，都是自动词；<br>　　如：書ける、見える、聞こえる　できる　　<br>4）大多「れる」结尾的下一段动词是自动词，与它相对的是他动词，「れる」结尾的下一段动词，其对应的动词70%以上是以「す」结尾的他动词　　　<br>　　崩れる—崩す　離れるー離す　、倒れる—倒す<br>只有自动词没有他动词的动词<br> 居る、ある、咲く、行く、来る、寝る、眠る、泣く<br>只有他动词没有自动词的动词<br>買う、売る、書く　打つ、殺す、聞く､話す、読む、見る、思う、考える</p><h3 id="Vておく-lt-动作结果的存续-gt"><a href="#Vておく-lt-动作结果的存续-gt" class="headerlink" title="Vておく&lt;动作结果的存续&gt;"></a>Vておく&lt;动作结果的存续&gt;</h3><p> 口语形式：～とく<br> 表示采取某种行为，<br> A、为后面要做的事情，事先做好某种准备。<br>Ｂ、将其结果状态保持下去。<br>Ｃ、有时表示一种临时的措施。<br>汉语：预先~；先~</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.後で捨てるから、ゴミを集めておいてください。(2006年真题)</span><br><span class="line">2.先生が来るからテーブルの上にお皿を並べておく(2004年真题)</span><br><span class="line">3.教室のドア、開けておきましょう。</span><br></pre></td></tr></table></figure><h3 id="V（他动词）てある-lt-客体存续的状态-gt"><a href="#V（他动词）てある-lt-客体存续的状态-gt" class="headerlink" title="V（他动词）てある&lt;客体存续的状态&gt;"></a>V（他动词）てある&lt;客体存续的状态&gt;</h3><p>表示主体有意图的动作行为完成之后的结果存在的状态。<br>★因为是表示存续的状态，句中主语为动作的客体，动词多使用自主的他动词，他动词的“を格” 要换成“が格”形式。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.教室に試験の時間割が貼ってある。(2010年真题)</span><br><span class="line">2.起きてみると、朝ご飯がもう作ってあった。</span><br><span class="line">3.部屋に花が飾ってある。</span><br></pre></td></tr></table></figure><p>窓が開けてある（窗户打开着）<br>       动作者不出现在句子中，但是能让人感受到动作者的存在</p><p>窓が開いている（窗户开着）<br>        使人感受不到动作者的存在。</p><p>a　会議の資料はコピーしておいた。<br>b　会議の資料はコピーしてあった。</p><p>1二者着重点不同。<br>「ておく」叙述者多为动作执行者，着重于动作本身；<br>「てある」着重动作完成后的结果状态。</p><p>2「ておく」和前面的动词结合，表示某项行为，而不是某种结果，<br>     所以可以表示意志「～ておこう」，命令「～ておきなさい」，<br>   「てある」则没有这样的用法。<br>    電気を消さないで、朝までつけておこう。</p><p>3「ておく」作为一种“事先准备”， 用“非过去时”，表示动作将要着手；用“过去时”，表示准备动作已经完成，其动作的结果保存了下来。；<br>  「てある」则表示动作完成后达到的结果，即其动作对象所处的一种状态。因此其“现在时”和“过去时”的差别并不太大。</p><p>   「てある」表示这种准备已经做好的状态<br>　「ておく」表示作为准备采取了某种行为</p><h3 id="Vてよかった-lt-积极评价-gt"><a href="#Vてよかった-lt-积极评价-gt" class="headerlink" title="Ｖてよかった&lt;积极评价&gt;"></a>Ｖてよかった&lt;积极评价&gt;</h3><p>说明：表示对已经发生的事情的积极评价，含有两种意思:<br>一是“独自庆幸”，<br>二是“感激+庆幸”。都是说现在的心情。<br>汉语：幸好…、…真好</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">１.とてもいい映画で、見てよかったと思う。</span><br><span class="line">２.王さんがいてくれてよかった。</span><br></pre></td></tr></table></figure><h3 id="Vばよかった-lt-后悔、遗憾-gt"><a href="#Vばよかった-lt-后悔、遗憾-gt" class="headerlink" title="Vばよかった&lt;后悔、遗憾&gt;"></a>Vばよかった&lt;后悔、遗憾&gt;</h3><p>表示对实际未能发生的事情或期待落空时的遗憾心情，既可以是说话人自身的后悔，也可以是对对方的遗憾或责难。<br>汉语：如果~~就好了<br>★：常和「のに」搭配使用。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.私も行けばよかったと後悔している。</span><br><span class="line">2.旅行は楽しかったよ。高橋さんも来ればよかったのに。</span><br><span class="line">3.あなたに会わなければよかったのに。</span><br></pre></td></tr></table></figure><h3 id="Nをはじめ-lt-代表性事物-gt"><a href="#Nをはじめ-lt-代表性事物-gt" class="headerlink" title="Ｎをはじめ&lt;代表性事物&gt;"></a>Ｎをはじめ&lt;代表性事物&gt;</h3><p>提出具有代表性或典型的人或物，表明该人或物是同类事物中最为重要，具有代表性。<br>汉语：以~为首<br>★：常用形式：Ｎをはじめとして<br>　　　　　　　Ｎをはじめとする</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.日本滞在中は北川先生をはじめ多くの方々にお世話になり、　本当にありがとうございました。(2013年真题)</span><br><span class="line">2.私たちの町にはこのお寺をはじめ、いろいろな古い建物がある。(2005年真题)</span><br></pre></td></tr></table></figure><h3 id="V-ることになる-lt-事态发展的结果-gt"><a href="#V-ることになる-lt-事态发展的结果-gt" class="headerlink" title="V-ることになる&lt;事态发展的结果&gt;"></a>V-ることになる&lt;事态发展的结果&gt;</h3><p>表客观存在的规定（由于某种外在的原因导致形成了某种决定）或事态自然发展、变化所产生的结果。</p><p>接续：V-る/Ｖ－ない<br>            决定~~</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.明日は停電なので、会社は休むことになった。</span><br><span class="line">2.来年帰国することになると思う。</span><br><span class="line">3.わたしたち、結婚することになりました。</span><br></pre></td></tr></table></figure><h3 id="V-ることにする-lt-决定-gt"><a href="#V-ることにする-lt-决定-gt" class="headerlink" title="V-ることにする&lt;决定&gt;"></a>V-ることにする&lt;决定&gt;</h3><p>表示动作主体决定或下决心做（或不做）某事。</p><p>接续：V-る/Ｖ－ない</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.王さんはダイエットすることにした。</span><br><span class="line">2.私は今日からタバコをやめることにした。</span><br></pre></td></tr></table></figure><h3 id="Nをもとに-して-lt-题材，话题-gt"><a href="#Nをもとに-して-lt-题材，话题-gt" class="headerlink" title="Ｎをもとに(して)&lt;题材，话题&gt;"></a>Ｎをもとに(して)&lt;题材，话题&gt;</h3><p>表示以某一事物为题材或话题进行言语行为或创作活动。</p><p>汉语：以…为基础、根据</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.昨日見たドラマは、実際にあった話をもとに作られたそうだ。(2008年真题)</span><br><span class="line">2.漢字をもとにして仮名が作り出された。</span><br><span class="line">3.日本語のクラスは、テストの点数と今までの学習期間をもとに決定される。(2003年真题)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;自动词、他动词&quot;&gt;&lt;a href=&quot;#自动词、他动词&quot; class=&quot;headerlink&quot; title=&quot;自动词、他动词&quot;&gt;&lt;/a&gt;自动词、他动词&lt;/h3&gt;&lt;p&gt;自动词：表示状态，能力，现象的动词集合，不涉及人为的影响。&lt;/p&gt;
-&lt;p&gt;他动词：表示具有意志性的、
-      
-    
-    </summary>
-    
-      <category term="日语" scheme="https://janvia.github.io/categories/%E6%97%A5%E8%AF%AD/"/>
-    
-    
-      <category term="语法" scheme="https://janvia.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
