@@ -148,7 +148,7 @@
     <link href="https://janvia.github.io/2022/08/18/linux%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86/"/>
     <id>https://janvia.github.io/2022/08/18/linux系统代理/</id>
     <published>2022-08-18T08:44:41.000Z</published>
-    <updated>2022-08-19T15:19:54.000Z</updated>
+    <updated>2024-03-23T08:20:27.751Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a><h3 id="linux系统代理"><a href="#linux系统代理" class="headerlink" title="linux系统代理"></a>linux系统代理</h3><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install proxychains4</span><br></pre></td></tr></table></figure><h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ProxyList]</span><br><span class="line"># add proxy here ...</span><br><span class="line"># meanwile</span><br><span class="line"># defaults set to &quot;tor&quot;</span><br><span class="line">#socks4    127.0.0.1 9050</span><br><span class="line"></span><br><span class="line"># example</span><br><span class="line">socks5  127.0.0.1 8888</span><br></pre></td></tr></table></figure>]]></content>
     
