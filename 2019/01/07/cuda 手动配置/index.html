@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cu">
+<meta name="description" content="查看torch需要的cuda版本： conda list | grep cu 下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/">
 <meta name="keywords" content="cuda配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cuda配置">
 <meta property="og:url" content="https://janvia.github.io/2019/01/07/cuda 手动配置/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cu">
+<meta property="og:description" content="查看torch需要的cuda版本： conda list | grep cu 下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-03-08T02:01:46.498Z">
+<meta property="og:updated_time" content="2024-03-24T07:19:31.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cuda配置">
-<meta name="twitter:description" content="下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cu">
+<meta name="twitter:description" content="查看torch需要的cuda版本： conda list | grep cu 下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/">
 
 
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  180
+                  214
                 </span>
               
 
@@ -419,11 +419,16 @@
       
 
       
-        <h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>cuda:<br><a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
+        <p>查看torch需要的cuda版本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda list | grep cu</span><br></pre></td></tr></table></figure>
+<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p>cuda:<br><a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
 <p>cudnn:<br><a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-archive</a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>cuda<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.run</span><br><span class="line"></span><br><span class="line">sudo sh cuda_11.7.1_515.65.01_linux.run</span><br></pre></td></tr></table></figure></p>
 <p>cudnn<br>注意：由于cudnn需要登录，所以最好手动下载，wget下载的文件有问题<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://developer.nvidia.com/compute/cudnn/secure/8.5.0/local_installers/11.7/cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xz（替换为手动下载）</span><br><span class="line">tar -xvf cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xz</span><br><span class="line"></span><br><span class="line">cd cudnn-linux-x86_64-8.5.0.96_cuda11-archive</span><br><span class="line"></span><br><span class="line">sudo cp include/cudnn.h /usr/local/cuda/include/</span><br><span class="line"> </span><br><span class="line">sudo cp lib/libcudnn* /usr/local/cuda/lib64/</span><br><span class="line"> </span><br><span class="line">sudo chmod a+r /usr/local/cuda/include/cudnn.h</span><br><span class="line"> </span><br><span class="line">sudo chmod a+r /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH=/usr/local/cuda-11.7/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>编译bashrc或者zshrc,以zshrc为例</p>
+<p>打开zshrc:<code>vi ~/.zshrc</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH=/usr/local/cuda-11.7/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<p>更新环境变量<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -454,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/07/docker安装/" rel="next" title="docker安装">
-                <i class="fa fa-chevron-left"></i> docker安装
+              <a href="/2019/01/07/docker代理/" rel="next" title="docker代理">
+                <i class="fa fa-chevron-left"></i> docker代理
               </a>
             
           </div>
