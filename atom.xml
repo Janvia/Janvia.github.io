@@ -144,32 +144,6 @@
   </entry>
   
   <entry>
-    <title>linux系统代理</title>
-    <link href="https://janvia.github.io/2022/08/18/linux%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86/"/>
-    <id>https://janvia.github.io/2022/08/18/linux系统代理/</id>
-    <published>2022-08-18T08:44:41.000Z</published>
-    <updated>2024-03-23T08:20:27.751Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><h3 id="linux系统代理"><a href="#linux系统代理" class="headerlink" title="linux系统代理"></a>linux系统代理</h3><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install proxychains4</span><br></pre></td></tr></table></figure><h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ProxyList]</span><br><span class="line"># add proxy here ...</span><br><span class="line"># meanwile</span><br><span class="line"># defaults set to &quot;tor&quot;</span><br><span class="line">#socks4    127.0.0.1 9050</span><br><span class="line"></span><br><span class="line"># example</span><br><span class="line">socks5  127.0.0.1 8888</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;linux系统代理&quot;&gt;&lt;a href=&quot;#linux系统代理&quot; class=&quot;headerlink&quot; title=&quot;linux系统代理&quot;&gt;&lt;/a&gt;linux系统代理&lt;/h3&gt;&lt;h5 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; c
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="代理" scheme="https://janvia.github.io/tags/%E4%BB%A3%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>matplotlib补充</title>
     <link href="https://janvia.github.io/2022/08/18/matplotlib%E8%A1%A5%E5%85%85/"/>
     <id>https://janvia.github.io/2022/08/18/matplotlib补充/</id>
@@ -192,6 +166,32 @@
     
     
       <category term="matplotlib" scheme="https://janvia.github.io/tags/matplotlib/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux系统代理</title>
+    <link href="https://janvia.github.io/2022/08/18/linux%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86/"/>
+    <id>https://janvia.github.io/2022/08/18/linux系统代理/</id>
+    <published>2022-08-18T08:44:41.000Z</published>
+    <updated>2024-03-23T08:20:27.751Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h3 id="linux系统代理"><a href="#linux系统代理" class="headerlink" title="linux系统代理"></a>linux系统代理</h3><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install proxychains4</span><br></pre></td></tr></table></figure><h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/proxychains4.conf</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ProxyList]</span><br><span class="line"># add proxy here ...</span><br><span class="line"># meanwile</span><br><span class="line"># defaults set to &quot;tor&quot;</span><br><span class="line">#socks4    127.0.0.1 9050</span><br><span class="line"></span><br><span class="line"># example</span><br><span class="line">socks5  127.0.0.1 8888</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;linux系统代理&quot;&gt;&lt;a href=&quot;#linux系统代理&quot; class=&quot;headerlink&quot; title=&quot;linux系统代理&quot;&gt;&lt;/a&gt;linux系统代理&lt;/h3&gt;&lt;h5 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; c
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="代理" scheme="https://janvia.github.io/tags/%E4%BB%A3%E7%90%86/"/>
     
   </entry>
   
@@ -476,6 +476,31 @@
   </entry>
   
   <entry>
+    <title>hexo系统重装恢复</title>
+    <link href="https://janvia.github.io/2019/03/12/hexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D/"/>
+    <id>https://janvia.github.io/2019/03/12/hexo系统重装恢复/</id>
+    <published>2019-03-12T09:13:01.000Z</published>
+    <updated>2024-02-04T01:56:42.026Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="安装node-js和npm"><a href="#安装node-js和npm" class="headerlink" title="安装node.js和npm"></a>安装node.js和npm</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install nodejs</span><br><span class="line">sudo apt install npm</span><br></pre></td></tr></table></figure><p>新版本安装(hexo不支持)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure></p><p>nvm指定版本安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">proxychains4 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | proxychains4 bash</span><br><span class="line">source ~/.zshrc</span><br><span class="line">export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/</span><br><span class="line">export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojs</span><br><span class="line">nvm install 12.16.2</span><br><span class="line">nvm use 12.16.2</span><br></pre></td></tr></table></figure></p><p>换源<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install -g nrm</span><br><span class="line">nrm ls</span><br><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure></p><h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">`sudo npm install -g hexo-cli`</span><br></pre></td></tr></table></figure><h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure><h4 id="配置github-git"><a href="#配置github-git" class="headerlink" title="配置github-git"></a>配置github-git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;your github name&quot;</span><br><span class="line">git config --global user.email &quot;example@email.com&quot;</span><br></pre></td></tr></table></figure><p>填写github账户名和注册邮箱</p><h4 id="创建公钥"><a href="#创建公钥" class="headerlink" title="创建公钥"></a>创建公钥</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;example@email.com&quot;</span><br></pre></td></tr></table></figure><p>将在~/.ssh/文件夹下生成github_name 和 github_name.pub两个文件，</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gedit github_name.pub</span><br></pre></td></tr></table></figure><p>打开github登录，点击头像setting -&gt; SSH and GPG keys，将.pub 文件内容复制到 SSH keys中</p><p>测试是否设置成功<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure></p><h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><p>测试是否成功</p><h4 id="加速"><a href="#加速" class="headerlink" title="加速"></a>加速</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i hexo-offline-popup --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;安装node-js和npm&quot;&gt;&lt;a href=&quot;#安装node-js和npm&quot; class=&quot;headerlink&quot; title=&quot;安装node.js和npm&quot;&gt;&lt;/a&gt;安装node.js和npm&lt;/h4&gt;&lt;figure class=&quot;highlight plai
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="hexo" scheme="https://janvia.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo加速</title>
     <link href="https://janvia.github.io/2019/03/12/hexo%E5%8A%A0%E9%80%9F/"/>
     <id>https://janvia.github.io/2019/03/12/hexo加速/</id>
@@ -490,31 +515,6 @@
       
         &lt;h4 id=&quot;购买域名&quot;&gt;&lt;a href=&quot;#购买域名&quot; class=&quot;headerlink&quot; title=&quot;购买域名&quot;&gt;&lt;/a&gt;购买域名&lt;/h4&gt;&lt;p&gt;以阿里云域名为例，可选择10块以内的&lt;br&gt;网址为：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://wanwang.ali
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="hexo" scheme="https://janvia.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo系统重装恢复</title>
-    <link href="https://janvia.github.io/2019/03/12/hexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D/"/>
-    <id>https://janvia.github.io/2019/03/12/hexo系统重装恢复/</id>
-    <published>2019-03-12T09:13:01.000Z</published>
-    <updated>2024-02-04T01:56:42.026Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="安装node-js和npm"><a href="#安装node-js和npm" class="headerlink" title="安装node.js和npm"></a>安装node.js和npm</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install nodejs</span><br><span class="line">sudo apt install npm</span><br></pre></td></tr></table></figure><p>新版本安装(hexo不支持)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure></p><p>nvm指定版本安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">proxychains4 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | proxychains4 bash</span><br><span class="line">source ~/.zshrc</span><br><span class="line">export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/</span><br><span class="line">export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojs</span><br><span class="line">nvm install 12.16.2</span><br><span class="line">nvm use 12.16.2</span><br></pre></td></tr></table></figure></p><p>换源<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install -g nrm</span><br><span class="line">nrm ls</span><br><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure></p><h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">`sudo npm install -g hexo-cli`</span><br></pre></td></tr></table></figure><h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure><h4 id="配置github-git"><a href="#配置github-git" class="headerlink" title="配置github-git"></a>配置github-git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;your github name&quot;</span><br><span class="line">git config --global user.email &quot;example@email.com&quot;</span><br></pre></td></tr></table></figure><p>填写github账户名和注册邮箱</p><h4 id="创建公钥"><a href="#创建公钥" class="headerlink" title="创建公钥"></a>创建公钥</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;example@email.com&quot;</span><br></pre></td></tr></table></figure><p>将在~/.ssh/文件夹下生成github_name 和 github_name.pub两个文件，</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gedit github_name.pub</span><br></pre></td></tr></table></figure><p>打开github登录，点击头像setting -&gt; SSH and GPG keys，将.pub 文件内容复制到 SSH keys中</p><p>测试是否设置成功<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure></p><h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><p>测试是否成功</p><h4 id="加速"><a href="#加速" class="headerlink" title="加速"></a>加速</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i hexo-offline-popup --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;安装node-js和npm&quot;&gt;&lt;a href=&quot;#安装node-js和npm&quot; class=&quot;headerlink&quot; title=&quot;安装node.js和npm&quot;&gt;&lt;/a&gt;安装node.js和npm&lt;/h4&gt;&lt;figure class=&quot;highlight plai
       
     
     </summary>
