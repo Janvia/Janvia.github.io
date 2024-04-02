@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="换源aliyun1.卸载老版本sudo apt-get remove docker docker-engine docker-ce docker.io 2.添加秘钥curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - 3.设置存储库sudo add-apt-repository &amp;q">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-03-23T08:56:24.791Z">
+<meta property="og:updated_time" content="2024-03-25T09:36:45.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker安装">
 <meta name="twitter:description" content="换源aliyun1.卸载老版本sudo apt-get remove docker docker-engine docker-ce docker.io 2.添加秘钥curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - 3.设置存储库sudo add-apt-repository &amp;q">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  258
+                  377
                 </span>
               
 
@@ -435,6 +435,21 @@
 <h4 id="2-解决连接问题"><a href="#2-解决连接问题" class="headerlink" title="2.解决连接问题"></a>2.解决连接问题</h4><p>ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running?</p>
 <p>If it’s at a non-standard location, specify the URL with the DOCKER_HOST environment variable.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo gpasswd -a $&#123;USER&#125; docker</span><br><span class="line">sudo su</span><br><span class="line">su sylvia</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<h3 id="docker-on-WSL"><a href="#docker-on-WSL" class="headerlink" title="docker on WSL"></a>docker on WSL</h3><ol>
+<li>下载并安装docker</li>
+</ol>
+<p>下载地址为： <a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?_gl=1*e92jj4*_ga*MTk3MTMyMzk5My4xNzExMzU3NDYx*_ga_XJWPQMJYHQ*MTcxMTM1NzQ2MS4xLjEuMTcxMTM1NzQ2Ni41NS4wLjA." target="_blank" rel="noopener">docker</a></p>
+<p>一路默认安装</p>
+<ol>
+<li>配置docker</li>
+</ol>
+<p>通过搜索或者开始键，打开docker，点击设置</p>
+<p>点击resource,将对应的wsl的环境打开</p>
+<ol>
+<li>验证</li>
+</ol>
+<p>若要确认已安装 Docker，请打开 WSL 发行版（例如 Ubuntu），并通过输入 <code>docker --version</code> 来显示版本和内部版本号</p>
+<p>通过使用 <code>docker run hello-world</code> 运行简单的内置 Docker 映像，测试安装是否正常工作</p>
 
       
     </div>
@@ -465,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/07/docker-ldap-mysql/" rel="next" title="docker-ldap-mysql">
-                <i class="fa fa-chevron-left"></i> docker-ldap-mysql
+              <a href="/2019/01/07/docker容器挂载硬盘/" rel="next" title="docker容器挂载硬盘">
+                <i class="fa fa-chevron-left"></i> docker容器挂载硬盘
               </a>
             
           </div>
@@ -657,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#换源aliyun"><span class="nav-number">1.</span> <span class="nav-text">换源aliyun</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-卸载老版本"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.卸载老版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-添加秘钥"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.添加秘钥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-设置存储库"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.设置存储库</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安装"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-查看版本"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.查看版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-查看状态"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.查看状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动docker"><span class="nav-number">2.0.4.</span> <span class="nav-text">4.启动docker</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-设置开机启动"><span class="nav-number">2.0.5.</span> <span class="nav-text">5.设置开机启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-demo验证"><span class="nav-number">2.0.6.</span> <span class="nav-text">6.demo验证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-进入容器"><span class="nav-number">2.0.7.</span> <span class="nav-text">7.进入容器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-清空"><span class="nav-number">2.1.</span> <span class="nav-text">8.清空</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-换源"><span class="nav-number">2.2.</span> <span class="nav-text">9.换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doker-compose"><span class="nav-number">3.</span> <span class="nav-text">doker-compose</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装-1"><span class="nav-number">3.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-解决连接问题"><span class="nav-number">3.2.</span> <span class="nav-text">2.解决连接问题</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#换源aliyun"><span class="nav-number">1.</span> <span class="nav-text">换源aliyun</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-卸载老版本"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.卸载老版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-添加秘钥"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.添加秘钥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-设置存储库"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.设置存储库</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安装"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-查看版本"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.查看版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-查看状态"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.查看状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-启动docker"><span class="nav-number">2.0.4.</span> <span class="nav-text">4.启动docker</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-设置开机启动"><span class="nav-number">2.0.5.</span> <span class="nav-text">5.设置开机启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-demo验证"><span class="nav-number">2.0.6.</span> <span class="nav-text">6.demo验证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-进入容器"><span class="nav-number">2.0.7.</span> <span class="nav-text">7.进入容器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-清空"><span class="nav-number">2.1.</span> <span class="nav-text">8.清空</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-换源"><span class="nav-number">2.2.</span> <span class="nav-text">9.换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doker-compose"><span class="nav-number">3.</span> <span class="nav-text">doker-compose</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装-1"><span class="nav-number">3.1.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-解决连接问题"><span class="nav-number">3.2.</span> <span class="nav-text">2.解决连接问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-on-WSL"><span class="nav-number">4.</span> <span class="nav-text">docker on WSL</span></a></li></div>
             
 
           </div>
@@ -691,7 +706,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">119.6k</span>
+    <span title="Site words total count">119.7k</span>
   
 </div>
 

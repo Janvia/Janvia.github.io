@@ -1261,7 +1261,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/docker容器挂载硬盘/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/docker-ldap-mysql/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -1280,7 +1280,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/07/docker容器挂载硬盘/" itemprop="url">docker容器挂载硬盘</a></h1>
+                <a class="post-title-link" href="/2019/01/07/docker-ldap-mysql/" itemprop="url">docker-ldap-mysql</a></h1>
         
 
         <div class="post-meta">
@@ -1333,8 +1333,8 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/07/docker容器挂载硬盘/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/docker容器挂载硬盘/" itemprop="commentCount"></span>
+                <a href="/2019/01/07/docker-ldap-mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/docker-ldap-mysql/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1356,7 +1356,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  353
+                  1.1k
                 </span>
               
 
@@ -1372,7 +1372,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -1395,13 +1395,12 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
       
         
           
-          容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service
-2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json
-‘其中就是你想让哪个docke
+          yml创建ldap-mysql1.编写yml创建 compose.ymlvim one_dir/compose.yml
+填入以下内容version: &apos;2&apos;services:   db:    image: mysql:latest    volumes:      - &quo
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/07/docker容器挂载硬盘/#more" rel="contents">
+            <a class="btn" href="/2019/01/07/docker-ldap-mysql/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1745,7 +1744,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  258
+                  377
                 </span>
               
 
@@ -1844,7 +1843,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/docker-ldap-mysql/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/docker容器挂载硬盘/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -1863,7 +1862,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/07/docker-ldap-mysql/" itemprop="url">docker-ldap-mysql</a></h1>
+                <a class="post-title-link" href="/2019/01/07/docker容器挂载硬盘/" itemprop="url">docker容器挂载硬盘</a></h1>
         
 
         <div class="post-meta">
@@ -1916,8 +1915,8 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/07/docker-ldap-mysql/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/docker-ldap-mysql/" itemprop="commentCount"></span>
+                <a href="/2019/01/07/docker容器挂载硬盘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/docker容器挂载硬盘/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1939,7 +1938,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  353
                 </span>
               
 
@@ -1955,7 +1954,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  1
                 </span>
               
             </div>
@@ -1978,11 +1977,13 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
       
         
           
-          yml创建ldap-mysql1.编写ymlversion: &apos;2&apos;services:   db:    image: mysql:latest    volumes:      - &quot;./.data/db:/var/lib/mysql&quot;      - &qu
+          容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service
+2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json
+‘其中就是你想让哪个docke
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/07/docker-ldap-mysql/#more" rel="contents">
+            <a class="btn" href="/2019/01/07/docker容器挂载硬盘/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2368,7 +2369,7 @@ clash换个窗口echo &quot;# demo&quot; &gt;&gt; README.mdgit initgit add READM
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">119.6k</span>
+    <span title="Site words total count">119.7k</span>
   
 </div>
 
