@@ -288,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/kaldi 安装/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/docker-ldap-mysql/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -307,7 +307,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/07/kaldi 安装/" itemprop="url">kaldi安装</a></h1>
+                <a class="post-title-link" href="/2019/01/07/docker-ldap-mysql/" itemprop="url">docker-ldap-mysql</a></h1>
         
 
         <div class="post-meta">
@@ -342,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -360,8 +360,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/07/kaldi 安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/kaldi 安装/" itemprop="commentCount"></span>
+                <a href="/2019/01/07/docker-ldap-mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/docker-ldap-mysql/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  158
+                  1.1k
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -422,16 +422,12 @@
       
         
           
-          kaldi 安装下载git clone https://github.com/kaldi-asr/kaldi.git
-安装toolscd toolsextras/check_dependencies.sh
-保证OK之后进行make
-make -j4
-如果check inter mkl失败,需要安装
-
+          yml创建ldap-mysql1.编写yml创建 compose.ymlvim one_dir/compose.yml
+填入以下内容version: &apos;2&apos;services:   db:    image: mysql:latest    volumes:      - &quo
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/07/kaldi 安装/#more" rel="contents">
+            <a class="btn" href="/2019/01/07/docker-ldap-mysql/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2379,7 +2375,7 @@ sudo bash -c &quot;cat &lt;&lt; EOF &gt; /etc/apt/sources.list &amp;&amp; apt up
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">119.7k</span>
+    <span title="Site words total count">119.8k</span>
   
 </div>
 
