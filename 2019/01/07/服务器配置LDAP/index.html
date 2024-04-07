@@ -100,13 +100,13 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="服务器配置LDAP显示mysql数据库数据通过MobaXterm进入服务器，安装docker卸载老版本sudo apt-get remove docker docker-engine docker-ce docker.io 添加秘钥curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="c:/Users/WIN/AppData/Roaming/Typora/typora-user-images/image-20240404184134799.png">
-<meta property="og:image" content="c:/Users/WIN/AppData/Roaming/Typora/typora-user-images/image-20240404183949911.png">
-<meta property="og:updated_time" content="2024-04-06T07:31:42.522Z">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dxz/ldap.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dxz/nvicat.png">
+<meta property="og:updated_time" content="2024-04-07T08:39:03.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="服务器配置LDAP">
 <meta name="twitter:description" content="服务器配置LDAP显示mysql数据库数据通过MobaXterm进入服务器，安装docker卸载老版本sudo apt-get remove docker docker-engine docker-ce docker.io 添加秘钥curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -">
-<meta name="twitter:image" content="c:/Users/WIN/AppData/Roaming/Typora/typora-user-images/image-20240404184134799.png">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dxz/ldap.png">
 
 
 
@@ -476,8 +476,8 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">use ladp;</span><br></pre></td></tr></table></figure>
 <h4 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h4><p>此处不用修改代码</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;123456&apos;;  ### 123456 mysql的登录密码flush privileges;</span><br></pre></td></tr></table></figure>
-<h3 id="连接软件LDAP-Admin"><a href="#连接软件LDAP-Admin" class="headerlink" title="连接软件LDAP Admin"></a>连接软件LDAP Admin</h3><p><img src="C:\Users\WIN\AppData\Roaming\Typora\typora-user-images\image-20240404184134799.png" alt="image-20240404184134799"></p>
-<h3 id="连接软件Navicat"><a href="#连接软件Navicat" class="headerlink" title="连接软件Navicat"></a>连接软件Navicat</h3><p><img src="C:\Users\WIN\AppData\Roaming\Typora\typora-user-images\image-20240404183949911.png" alt="image-20240404183949911"></p>
+<h3 id="连接软件LDAP-Admin"><a href="#连接软件LDAP-Admin" class="headerlink" title="连接软件LDAP Admin"></a>连接软件LDAP Admin</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dxz/ldap.png" alt=""></p>
+<h3 id="连接软件Navicat"><a href="#连接软件Navicat" class="headerlink" title="连接软件Navicat"></a>连接软件Navicat</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dxz/nvicat.png" alt=""></p>
 <h2 id="给LDAP导入自定义的schema"><a href="#给LDAP导入自定义的schema" class="headerlink" title="给LDAP导入自定义的schema"></a>给LDAP导入自定义的schema</h2><p>因为ldap中只有部分属性名，不满足我们自己数据多样化需求，所以需要针对我们自己的数据创建新的属性名导入。</p>
 <h3 id="修改mysql数据库文件"><a href="#修改mysql数据库文件" class="headerlink" title="修改mysql数据库文件"></a>修改mysql数据库文件</h3><p>ldap中属性名不支持下划线，而且需要唯一标识，所以先将我们从navicat导出的txt文件进行修改，py文件代码如下,其中路径需要对应修改</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line"># Path to the directory where the txt files are stored</span><br><span class="line">dir_path = &apos;/home/win/16t1/ldap/ldap_txt&apos;</span><br><span class="line">new_dir_path = &apos;/home/win/16t1/ldap/new_txt&apos;</span><br><span class="line"># Read each txt file and process column names</span><br><span class="line">for j,filename in enumerate(os.listdir(dir_path)):</span><br><span class="line">    if filename.endswith(&quot;.txt&quot;):</span><br><span class="line">        file_path = os.path.join(dir_path, filename)</span><br><span class="line">        with open(file_path, &apos;r&apos;) as file:</span><br><span class="line">            # Read the lines of the file</span><br><span class="line">            lines = file.readlines()</span><br><span class="line">        </span><br><span class="line">        # Assume the first line contains the column names</span><br><span class="line">        columns = lines[0].strip().split(&apos;\t&apos;)  # Assuming tab-delimited file</span><br><span class="line">        </span><br><span class="line">        # Process column names</span><br><span class="line">        processed_columns = []</span><br><span class="line">        for i, col in enumerate(columns):</span><br><span class="line">            # Remove underscores and capitalize the first letter of each word</span><br><span class="line">            new_col = &apos;&apos;.join(word.capitalize() for word in col.replace(&apos;_&apos;, &apos; &apos;).split())</span><br><span class="line">            # Add the table number to the column name</span><br><span class="line">            processed_columns.append(f&apos;&#123;new_col[:-1]&#125;&#123;j&#125;&quot;&apos;)</span><br><span class="line">        </span><br><span class="line">        # Join the processed columns back into a string</span><br><span class="line">        lines[0] = &apos;\t&apos;.join(processed_columns) + &apos;\n&apos;</span><br><span class="line"></span><br><span class="line">        new_filename =&apos;&apos;.join(word.capitalize() for word in filename.replace(&apos;_&apos;, &apos; &apos;).split()) # filename.replace(&apos;_&apos;,&apos;&apos;)</span><br><span class="line">        new_file_path = os.path.join(new_dir_path, new_filename)</span><br><span class="line">        # Write the modified content back to the file</span><br><span class="line">        with open(new_file_path, &apos;w&apos;) as file:</span><br><span class="line">            file.writelines(lines)</span><br><span class="line"></span><br><span class="line"># Output a message when done</span><br><span class="line">print(&quot;Column names processed and files updated.&quot;)</span><br></pre></td></tr></table></figure>
@@ -553,8 +553,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/07/导出/" rel="prev" title="conda常用命令">
-                conda常用命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/07/换源/" rel="prev" title="换源">
+                换源 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -769,7 +769,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">122.7k</span>
+    <span title="Site words total count">122.8k</span>
   
 </div>
 
