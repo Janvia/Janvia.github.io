@@ -6,17 +6,6 @@
     <content type="text"><![CDATA[计算机视觉 Stanford Vision Lab - http://vision.stanford.edu CS 131 Computer Vision: Foundations and Applications - http://vision.stanford.edu/teaching/cs131_fall1617/index.html CS231n: Convolutional Neural Networks for Visual Recognition - http://cs231n.stanford.edu CS231A: Computer Vision, From 3D Reconstruction to Recognition - http://web.stanford.edu/class/cs231a/ Computer Vision: A Modern Approach - http://cmuems.com/excap/readings/forsyth-ponce-computer-vision-a-modern-approach.pdf Computer Vision: Algorithms and Applications - http://szeliski.org/Book/drafts/SzeliskiBook_20100903_draft.pdf Computer Vision: Models, Learning, and Inference - http://www.computervisionmodels.com/ 自然语言处理 CS224n: Natural Language Processing with Deep Learning - http://web.stanford.edu/class/cs224n/ Natural Language Processing with Python - http://www.nltk.org/book/（视频：https://www.youtube.com/playlist?list=PLQVvvaa0QuDf2JswnfiGkliBInZnIC4HL） 《自然语言处理综论》英文版 - https://web.stanford.edu/~jurafsky/slp3/ 《统计自然语言处理》 《Python 自然语言处理》]]></content>
   </entry>
   <entry>
-    <title><![CDATA[sacred]]></title>
-    <url>%2F2022%2F08%2F20%2Fsacred%2F</url>
-    <content type="text"><![CDATA[Sacred 安装 # 主角pip install sacred# 用于数据库连接pip install numpy pymongo MongoDB 安装MongoDB 是一个数据库管理系统，这里用作 Sacred 的存储后端。 在 ubuntu 上的 MongoDB 安装可以参考 Install MongoDB Community Edition on Ubuntu，其他系统也可以在该网站上找到对应的安装方式。 mongoDB 常用命令# 启动sudo service mongod start# 停止sudo service mongod stop# 重启sudo service mongod restart# 进入MongoDBmongosh 创建一个名为 sacred 的数据库，用作 sacred 工具的后端存储： # 进入MongoDBmongosh# 创建sacred数据库。use命令切换数据库，没有该数据就会自动创建一个use sacred Omniboard安装在 Ubuntu 机器上安装版本≥v8 的 Node.js，系统默认 apt 安装的版本不够，需要手动安装 安装node.js和npmsudo apt install nodejssudo apt install npm 新版本安装(hexo不支持) curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\sudo apt-get install -y nodejs nvm指定版本安装 proxychains4 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | proxychains4 bashsource ~/.zshrcexport NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojsnvm install 12.16.2nvm use 12.16.2 换源 sudo npm install -g nrmnrm lsnrm use taobao # 4. 测试安装版本信息node -vnpm versionnpx -v 第二步，npm 安装 omniboard npm install -g omniboard 第三步，开启 omniboard 服务。平时也是用该命令开启 omniboard 可视化前端 # 开启用法omniboard -m hostname:port:database# 默认情况下如下，其中27017是MongoDB的端口omniboard -m localhost:27017:sacred 第四步，打开 http://localhost:9000 来查看前端，并进行管理。 添加远程查看 ssh -L 9000:127.0.0.1:9000 -p 10102 root@192.168.25.110 使用案例使用 yunjey 的一个 pytorch 教程作为演示，代码是演示用 pytorch 实现基于 CNN 的 MINIST 手写数字识别。 根据 Sacred 文档稍作修改，就可以演示如何进行实验的记录。 更多用法请去看 Sacred 文档：Welcome to Sacred’s documentation!。内容超丰富，功能超级多。 代码： from sacred import Experimentfrom sacred.observers import MongoObserverfrom sacred.utils import apply_backspaces_and_linefeedsimport torchimport torch.nn as nnimport torchvisionimport torchvision.transforms as transformsex = Experiment(&quot;mnist_cnn&quot;)ex.observers.append(MongoObserver.create(url=&apos;localhost:27017&apos;, db_name=&apos;sacred&apos;))ex.captured_out_filter = apply_backspaces_and_linefeeds# 超参数设置@ex.configdef myconfig(): # Device configuration device = torch.device(&apos;cuda:0&apos; if torch.cuda.is_available() else &apos;cpu&apos;) # Hyper parameters num_epochs = 5 num_classes = 10 batch_size = 100 learning_rate = 0.001# Convolutional neural network (two convolutional layers)class ConvNet(nn.Module): def __init__(self, num_classes=10): super(ConvNet, self).__init__() self.layer1 = nn.Sequential( nn.Conv2d(1, 16, kernel_size=5, stride=1, padding=2), nn.BatchNorm2d(16), nn.ReLU(), nn.MaxPool2d(kernel_size=2, stride=2)) self.layer2 = nn.Sequential( nn.Conv2d(16, 32, kernel_size=5, stride=1, padding=2), nn.BatchNorm2d(32), nn.ReLU(), nn.MaxPool2d(kernel_size=2, stride=2)) self.fc = nn.Linear(7 * 7 * 32, num_classes) def forward(self, x): out = self.layer1(x) out = self.layer2(out) out = out.reshape(out.size(0), -1) out = self.fc(out) return out# notice how we can access the message here by taking it as an argument@ex.automaindef main(device,num_epochs,num_classes,batch_size,learning_rate ): # MNIST dataset train_dataset = torchvision.datasets.MNIST(root=&apos;/home/ubuntu/Datasets/MINIST/&apos;, train=True, transform=transforms.ToTensor(), download=True) test_dataset = torchvision.datasets.MNIST(root=&apos;/home/ubuntu/Datasets/MINIST/&apos;, train=False, transform=transforms.ToTensor()) # Data loader train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True) test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False) model = ConvNet(num_classes).to(device) # Loss and optimizer criterion = nn.CrossEntropyLoss() optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate) # Train the model total_step = len(train_loader) for epoch in range(num_epochs): for i, (images, labels) in enumerate(train_loader): images = images.to(device) labels = labels.to(device) # Forward pass outputs = model(images) loss = criterion(outputs, labels) # Backward and optimize optimizer.zero_grad() loss.backward() optimizer.step() if (i + 1) % 100 == 0: print(&apos;Epoch [&#123;&#125;/&#123;&#125;], Step [&#123;&#125;/&#123;&#125;], Loss: &#123;:.4f&#125;&apos; .format(epoch + 1, num_epochs, i + 1, total_step, loss.item())) # Test the model model.eval() # eval mode (batchnorm uses moving mean/variance instead of mini-batch mean/variance) with torch.no_grad(): correct = 0 total = 0 for images, labels in test_loader: images = images.to(device) labels = labels.to(device) outputs = model(images) _, predicted = torch.max(outputs.data, 1) total += labels.size(0) correct += (predicted == labels).sum().item() print(&apos;Test Accuracy of the model on the 10000 test images: &#123;&#125; %&apos;.format(100 * correct / total)) # Save the model checkpoint torch.save(model.state_dict(), &apos;model.ckpt&apos;) 执行完该程序后，可以打开 omniboard 前端 http://localhost:9000]]></content>
-      <categories>
-        <category>深度学习环境配置</category>
-      </categories>
-      <tags>
-        <tag>sacred</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[wsl]]></title>
     <url>%2F2022%2F08%2F20%2Fwsl%2F</url>
     <content type="text"><![CDATA[wsl安装wsl -l -o #查看版本wsl --install -d Ubuntu-20.04wsl --install -d Ubuntu-18.04wsl --shutdownwsl --set-version Ubuntu-18.04 2wsl --set-version Ubuntu-20.04 1 代理1.设置防火墙 ,不勾选wsl 2.设置代理软件allow alan 3.安装配置proxychains4,见配置proxychains4 ​ 对于wsl2,配置的地址需要是ipconfig的地址172.xx.xx.1 迁移将wsl 安装在其他盘 wsl --export Ubuntu-20.04 d:\wsl-ubuntu20.04.tar #导出wsl --unregister Ubuntu-20.04 #注销#重新导入wsl --import Ubuntu-20.04 d:\wsl-ubuntu20.04 d:\wsl-ubuntu20.04.tar --version 2ubuntu2004 config --default-user USERNAME #设置usrdel d:\wsl-ubuntu20.04.tar#删除包 网络配置查看/etc/resolv.conf 如果出现网络错误,nameserver为红色 1.在/etc/wsl.conf中加入： [network]generateResolvConf = false 2.PowerShell重启WSL wsl --shutdown 3.修改/etc/resolv.conf,去掉发红的nameserver nameserver 223.5.5.5nameserver 223.6.6.6 网络故障修复wsl --shutdownnetsh winsock resetnetsh int ip reset allnetsh winhttp reset proxyipconfig /flushdns 然后重启 wsl gui更新wsl,在powershell 或者windows cmd运行 wsl --update google chrome安装 cd /tmpwget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.debsudo apt install --fix-missing ./google-chrome-stable_current_amd64.deb 启动：google-chrome Microsoft Edge安装## Setupcurl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor &gt; microsoft.gpgsudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/sudo sh -c &apos;echo &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main&quot; &gt; /etc/apt/sources.list.d/microsoft-edge-beta.list&apos;sudo rm microsoft.gpg## Installsudo apt updatesudo apt install microsoft-edge-beta 启动： microsoft-edge]]></content>
@@ -25,6 +14,17 @@
       </categories>
       <tags>
         <tag>wsl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sacred]]></title>
+    <url>%2F2022%2F08%2F20%2Fsacred%2F</url>
+    <content type="text"><![CDATA[Sacred 安装 # 主角pip install sacred# 用于数据库连接pip install numpy pymongo MongoDB 安装MongoDB 是一个数据库管理系统，这里用作 Sacred 的存储后端。 在 ubuntu 上的 MongoDB 安装可以参考 Install MongoDB Community Edition on Ubuntu，其他系统也可以在该网站上找到对应的安装方式。 mongoDB 常用命令# 启动sudo service mongod start# 停止sudo service mongod stop# 重启sudo service mongod restart# 进入MongoDBmongosh 创建一个名为 sacred 的数据库，用作 sacred 工具的后端存储： # 进入MongoDBmongosh# 创建sacred数据库。use命令切换数据库，没有该数据就会自动创建一个use sacred Omniboard安装在 Ubuntu 机器上安装版本≥v8 的 Node.js，系统默认 apt 安装的版本不够，需要手动安装 安装node.js和npmsudo apt install nodejssudo apt install npm 新版本安装(hexo不支持) curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\sudo apt-get install -y nodejs nvm指定版本安装 proxychains4 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | proxychains4 bashsource ~/.zshrcexport NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojsnvm install 12.16.2nvm use 12.16.2 换源 sudo npm install -g nrmnrm lsnrm use taobao # 4. 测试安装版本信息node -vnpm versionnpx -v 第二步，npm 安装 omniboard npm install -g omniboard 第三步，开启 omniboard 服务。平时也是用该命令开启 omniboard 可视化前端 # 开启用法omniboard -m hostname:port:database# 默认情况下如下，其中27017是MongoDB的端口omniboard -m localhost:27017:sacred 第四步，打开 http://localhost:9000 来查看前端，并进行管理。 添加远程查看 ssh -L 9000:127.0.0.1:9000 -p 10102 root@192.168.25.110 使用案例使用 yunjey 的一个 pytorch 教程作为演示，代码是演示用 pytorch 实现基于 CNN 的 MINIST 手写数字识别。 根据 Sacred 文档稍作修改，就可以演示如何进行实验的记录。 更多用法请去看 Sacred 文档：Welcome to Sacred’s documentation!。内容超丰富，功能超级多。 代码： from sacred import Experimentfrom sacred.observers import MongoObserverfrom sacred.utils import apply_backspaces_and_linefeedsimport torchimport torch.nn as nnimport torchvisionimport torchvision.transforms as transformsex = Experiment(&quot;mnist_cnn&quot;)ex.observers.append(MongoObserver.create(url=&apos;localhost:27017&apos;, db_name=&apos;sacred&apos;))ex.captured_out_filter = apply_backspaces_and_linefeeds# 超参数设置@ex.configdef myconfig(): # Device configuration device = torch.device(&apos;cuda:0&apos; if torch.cuda.is_available() else &apos;cpu&apos;) # Hyper parameters num_epochs = 5 num_classes = 10 batch_size = 100 learning_rate = 0.001# Convolutional neural network (two convolutional layers)class ConvNet(nn.Module): def __init__(self, num_classes=10): super(ConvNet, self).__init__() self.layer1 = nn.Sequential( nn.Conv2d(1, 16, kernel_size=5, stride=1, padding=2), nn.BatchNorm2d(16), nn.ReLU(), nn.MaxPool2d(kernel_size=2, stride=2)) self.layer2 = nn.Sequential( nn.Conv2d(16, 32, kernel_size=5, stride=1, padding=2), nn.BatchNorm2d(32), nn.ReLU(), nn.MaxPool2d(kernel_size=2, stride=2)) self.fc = nn.Linear(7 * 7 * 32, num_classes) def forward(self, x): out = self.layer1(x) out = self.layer2(out) out = out.reshape(out.size(0), -1) out = self.fc(out) return out# notice how we can access the message here by taking it as an argument@ex.automaindef main(device,num_epochs,num_classes,batch_size,learning_rate ): # MNIST dataset train_dataset = torchvision.datasets.MNIST(root=&apos;/home/ubuntu/Datasets/MINIST/&apos;, train=True, transform=transforms.ToTensor(), download=True) test_dataset = torchvision.datasets.MNIST(root=&apos;/home/ubuntu/Datasets/MINIST/&apos;, train=False, transform=transforms.ToTensor()) # Data loader train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True) test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False) model = ConvNet(num_classes).to(device) # Loss and optimizer criterion = nn.CrossEntropyLoss() optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate) # Train the model total_step = len(train_loader) for epoch in range(num_epochs): for i, (images, labels) in enumerate(train_loader): images = images.to(device) labels = labels.to(device) # Forward pass outputs = model(images) loss = criterion(outputs, labels) # Backward and optimize optimizer.zero_grad() loss.backward() optimizer.step() if (i + 1) % 100 == 0: print(&apos;Epoch [&#123;&#125;/&#123;&#125;], Step [&#123;&#125;/&#123;&#125;], Loss: &#123;:.4f&#125;&apos; .format(epoch + 1, num_epochs, i + 1, total_step, loss.item())) # Test the model model.eval() # eval mode (batchnorm uses moving mean/variance instead of mini-batch mean/variance) with torch.no_grad(): correct = 0 total = 0 for images, labels in test_loader: images = images.to(device) labels = labels.to(device) outputs = model(images) _, predicted = torch.max(outputs.data, 1) total += labels.size(0) correct += (predicted == labels).sum().item() print(&apos;Test Accuracy of the model on the 10000 test images: &#123;&#125; %&apos;.format(100 * correct / total)) # Save the model checkpoint torch.save(model.state_dict(), &apos;model.ckpt&apos;) 执行完该程序后，可以打开 omniboard 前端 http://localhost:9000]]></content>
+      <categories>
+        <category>深度学习环境配置</category>
+      </categories>
+      <tags>
+        <tag>sacred</tag>
       </tags>
   </entry>
   <entry>
@@ -494,8 +494,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>LSTM</tag>
         <tag>RNN</tag>
+        <tag>LSTM</tag>
       </tags>
   </entry>
   <entry>
@@ -506,8 +506,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>DCGAN</tag>
         <tag>GAN</tag>
+        <tag>DCGAN</tag>
       </tags>
   </entry>
   <entry>
@@ -925,14 +925,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[docker安装]]></title>
-    <url>%2F2019%2F01%2F07%2Fdocker%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"><![CDATA[换源aliyun1.卸载老版本sudo apt-get remove docker docker-engine docker-ce docker.io 2.添加秘钥curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - 3.设置存储库sudo add-apt-repository &quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot; 安装1.安装sudo apt-get updatesudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin 2.查看版本docker version 3.查看状态systemctl status docker 4.启动dockersudo systemctl start docker 5.设置开机启动sudo systemctl enable docker 6.demo验证sudo docker run hello-world 7.进入容器docker run -it ubuntu bash 8.清空docker system prune 9.换源#使用阿里云镜像加速器mkdir -p /etc/dockertee /etc/docker/daemon.json &lt;&lt;-&apos;EOF&apos;&#123; &quot;registry-mirrors&quot;: [ &quot;https://hub-mirror.c.163.com&quot;, &quot;https://ghcr.io&quot;, &quot;https://mirror.baidubce.com&quot;]&#125;EOFsystemctl daemon-reloadsystemctl restart docker doker-compose1.安装sudo apt install docker-compose 2.解决连接问题ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running? If it’s at a non-standard location, specify the URL with the DOCKER_HOST environment variable. sudo gpasswd -a $&#123;USER&#125; dockersudo susu sylviadocker-compose up -d docker on WSL 下载并安装docker 下载地址为： docker 一路默认安装 配置docker 通过搜索或者开始键，打开docker，点击设置 点击resource,将对应的wsl的环境打开 验证 若要确认已安装 Docker，请打开 WSL 发行版（例如 Ubuntu），并通过输入 docker --version 来显示版本和内部版本号 通过使用 docker run hello-world 运行简单的内置 Docker 映像，测试安装是否正常工作]]></content>
+    <title><![CDATA[docker代理]]></title>
+    <url>%2F2019%2F01%2F07%2Fdocker%E4%BB%A3%E7%90%86%2F</url>
+    <content type="text"><![CDATA[本地代理clash 与clashverge任选一个安装 安装clashsudo apt install curl wget jqcd /tmp \&amp;&amp; rm -f clash* || true \&amp;&amp; wget https://github.com/Kuingsmile/clash-core/releases/download/1.18/clash-linux-amd64-v1.18.0.gz || true \&amp;&amp; gzip -d clash* \&amp;&amp; mv clash* clash \&amp;&amp; chmod +x clash \&amp;&amp; sudo mv clash /usr/local/bin 注：如果您的设备无法下载地域库文件，请 点击此处 从备用地址下载，自行放置于 ~/.config/clash/Country.mmdb 启动和配置请将配置文件复制到 ~/.config/clash/config.yaml启动命令为clash 安装clashverge安装sudo apt install curl wget jqwget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.debsudo dpkg -i clash-verge_1.3.8_amd64.deb 请将配置文件复制到 ~/.config/clash/config.yaml 安装proxychains安装sudo apt install proxychains4 配置sudo vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 7890 docker代理配置docker在本地电脑配置docker mkdir ~/.dockervim ~/.docker/config.json 输入一下内容&#123;&quot;proxies&quot;:&#123; &quot;default&quot;: &#123; &quot;httpProxy&quot;: &quot;http://127.0.0.1:7890&quot;, &quot;httpsProxy&quot;: &quot;http://127.0.0.1:7890&quot;, &quot;noProxy&quot;: &quot;localhost&quot; &#125;&#125;&#125; 重启dockersystemctl daemon-reloadsystemctl restart docker 启动docker启动docker时，添加—net host,示例如下sudo docker run --gpus all -it --rm -v /home/win/16t2/study/deep_learning/gene/project/Megatron-LM:/workspace/megatron -v /home/win/4T/GeneDL/OSDrought_GCNAT_Link/data/Geneformer_token/CRR_sc_token/megatron_data:/workspace/dataset -v /home/win/16t2/study/deep_learning/gene/project/Megatron-LM/checkpoints:/workspace/checkpoints -p 552:22 --net host nvcr.io/nvidia/pytorch:23.03-py3 安装proxychains安装apt updateapt install proxychains4 配置vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 7890 查看是否成功proxychains4 curl www.google.com]]></content>
       <categories>
         <category>docker</category>
       </categories>
       <tags>
-        <tag>docker安装</tag>
+        <tag>docker代理</tag>
       </tags>
   </entry>
   <entry>
@@ -947,28 +947,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[docker容器挂载硬盘]]></title>
-    <url>%2F2019%2F01%2F07%2Fdocker%E5%AE%B9%E5%99%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98%2F</url>
-    <content type="text"><![CDATA[容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service 2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json ‘其中就是你想让哪个docker容器挂载硬盘空间，如果想要多个容器共享一个挂载硬盘，那就得挨个打开每个容器的config.v2.json文件’ 3.更换config.v2.json中MountPoints在config.v2.json查找MountPoints部分，通常来说，要是在创建容器的时候没有选择挂载硬盘，那么在这种情况下是空的：“MountPoints”:{}。接下来用这样的东西替换内容。 &quot;MountPoints&quot;: &#123; &quot;/mnt&quot;: &#123; &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #这个路径就是你要挂载的路径，比如说我的挂载路径为:/media/zz/newdir &quot;Destination&quot;: &quot;/mnt&quot;, #这个路径就是挂载路径映射到你在容器里面的路径，这里我就简单设置为/mnt &quot;RW&quot;: true, &quot;Name&quot;: &quot;&quot;, &quot;Driver&quot;: &quot;&quot;, &quot;Type&quot;: &quot;bind&quot;, &quot;Propagation&quot;: &quot;rprivate&quot;, &quot;Spec&quot;: &#123; &quot;Type&quot;: &quot;bind&quot;, &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #同上Source &quot;Target&quot;: &quot;/mnt&quot; #同上Destination &#125;, &quot;SkipMountpointCreation&quot;: false &#125; &#125; 上述内容只需要修改”Source”、“Destination”、”Target”这些路径就可以了，其他的直接复制下来就可以了。然后，保存退出vim。 4.重启docker服务systemctl start docker.service 5.重启docker容器docker start &lt;container-name/ID&gt;]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker容器挂载硬盘</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[docker代理]]></title>
-    <url>%2F2019%2F01%2F07%2Fdocker%E4%BB%A3%E7%90%86%2F</url>
-    <content type="text"><![CDATA[本地代理clash 与clashverge任选一个安装 安装clashsudo apt install curl wget jqcd /tmp \&amp;&amp; rm -f clash* || true \&amp;&amp; wget https://github.com/Kuingsmile/clash-core/releases/download/1.18/clash-linux-amd64-v1.18.0.gz || true \&amp;&amp; gzip -d clash* \&amp;&amp; mv clash* clash \&amp;&amp; chmod +x clash \&amp;&amp; sudo mv clash /usr/local/bin 注：如果您的设备无法下载地域库文件，请 点击此处 从备用地址下载，自行放置于 ~/.config/clash/Country.mmdb 启动和配置请将配置文件复制到 ~/.config/clash/config.yaml启动命令为clash 安装clashverge安装sudo apt install curl wget jqwget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.debsudo dpkg -i clash-verge_1.3.8_amd64.deb 请将配置文件复制到 ~/.config/clash/config.yaml 安装proxychains安装sudo apt install proxychains4 配置sudo vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 7890 docker代理配置docker在本地电脑配置docker mkdir ~/.dockervim ~/.docker/config.json 输入一下内容&#123;&quot;proxies&quot;:&#123; &quot;default&quot;: &#123; &quot;httpProxy&quot;: &quot;http://127.0.0.1:7890&quot;, &quot;httpsProxy&quot;: &quot;http://127.0.0.1:7890&quot;, &quot;noProxy&quot;: &quot;localhost&quot; &#125;&#125;&#125; 重启dockersystemctl daemon-reloadsystemctl restart docker 启动docker启动docker时，添加—net host,示例如下sudo docker run --gpus all -it --rm -v /home/win/16t2/study/deep_learning/gene/project/Megatron-LM:/workspace/megatron -v /home/win/4T/GeneDL/OSDrought_GCNAT_Link/data/Geneformer_token/CRR_sc_token/megatron_data:/workspace/dataset -v /home/win/16t2/study/deep_learning/gene/project/Megatron-LM/checkpoints:/workspace/checkpoints -p 552:22 --net host nvcr.io/nvidia/pytorch:23.03-py3 安装proxychains安装apt updateapt install proxychains4 配置vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 7890 查看是否成功proxychains4 curl www.google.com]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker代理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[github上传代码]]></title>
     <url>%2F2019%2F01%2F07%2Fgithub%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%2F</url>
     <content type="text"><![CDATA[初次上传 clash换个窗口echo &quot;# demo&quot; &gt;&gt; README.mdgit initgit add README.mdgit commit -m &quot;first commit&quot;git branch -M maingit remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main 第二次上传 git add .git commit -m &quot;second commit&quot;git branch -M main#git remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main#图片路径直接复制上传图片的网页地址]]></content>
@@ -980,14 +958,25 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[kaldi安装]]></title>
-    <url>%2F2019%2F01%2F07%2Fkaldi%20%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"><![CDATA[kaldi 安装下载git clone https://github.com/kaldi-asr/kaldi.git 安装toolscd toolsextras/check_dependencies.sh 保证OK之后进行make make -j4 如果check inter mkl失败,需要安装 extras/install_mkl.sh 如果安装失败，可以手动安装 cd /tmpwget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBapt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBsudo apt-get install intel-mkl-64bit-2020.2#source 可选source /opt/intel/compilers_and_libraries_2020/linux/mkl/bin/mklvars.sh intel64 ilp64 make 中出现gzip failed,多半是因为文件下载中出错，找到大小为0的压缩文件删除后重新make All done OK. 表示安装成功 安装src./configure --sharedmake depend -j 8make -j 8]]></content>
+    <title><![CDATA[docker安装]]></title>
+    <url>%2F2019%2F01%2F07%2Fdocker%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[换源aliyun1.卸载老版本sudo apt-get remove docker docker-engine docker-ce docker.io 2.添加秘钥curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - 3.设置存储库sudo add-apt-repository &quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot; 安装1.安装sudo apt-get updatesudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin 2.查看版本docker version 3.查看状态systemctl status docker 4.启动dockersudo systemctl start docker 5.设置开机启动sudo systemctl enable docker 6.demo验证sudo docker run hello-world 7.进入容器docker run -it ubuntu bash 8.清空docker system prune 9.换源#使用阿里云镜像加速器mkdir -p /etc/dockertee /etc/docker/daemon.json &lt;&lt;-&apos;EOF&apos;&#123; &quot;registry-mirrors&quot;: [ &quot;https://hub-mirror.c.163.com&quot;, &quot;https://ghcr.io&quot;, &quot;https://mirror.baidubce.com&quot;]&#125;EOFsystemctl daemon-reloadsystemctl restart docker doker-compose1.安装sudo apt install docker-compose 2.解决连接问题ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running? If it’s at a non-standard location, specify the URL with the DOCKER_HOST environment variable. sudo gpasswd -a $&#123;USER&#125; dockersudo susu sylviadocker-compose up -d docker on WSL 下载并安装docker 下载地址为： docker 一路默认安装 配置docker 通过搜索或者开始键，打开docker，点击设置 点击resource,将对应的wsl的环境打开 验证 若要确认已安装 Docker，请打开 WSL 发行版（例如 Ubuntu），并通过输入 docker --version 来显示版本和内部版本号 通过使用 docker run hello-world 运行简单的内置 Docker 映像，测试安装是否正常工作]]></content>
       <categories>
-        <category>深度学习环境配置</category>
+        <category>docker</category>
       </categories>
       <tags>
-        <tag>kaldi</tag>
+        <tag>docker安装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[docker容器挂载硬盘]]></title>
+    <url>%2F2019%2F01%2F07%2Fdocker%E5%AE%B9%E5%99%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98%2F</url>
+    <content type="text"><![CDATA[容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service 2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json ‘其中就是你想让哪个docker容器挂载硬盘空间，如果想要多个容器共享一个挂载硬盘，那就得挨个打开每个容器的config.v2.json文件’ 3.更换config.v2.json中MountPoints在config.v2.json查找MountPoints部分，通常来说，要是在创建容器的时候没有选择挂载硬盘，那么在这种情况下是空的：“MountPoints”:{}。接下来用这样的东西替换内容。 &quot;MountPoints&quot;: &#123; &quot;/mnt&quot;: &#123; &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #这个路径就是你要挂载的路径，比如说我的挂载路径为:/media/zz/newdir &quot;Destination&quot;: &quot;/mnt&quot;, #这个路径就是挂载路径映射到你在容器里面的路径，这里我就简单设置为/mnt &quot;RW&quot;: true, &quot;Name&quot;: &quot;&quot;, &quot;Driver&quot;: &quot;&quot;, &quot;Type&quot;: &quot;bind&quot;, &quot;Propagation&quot;: &quot;rprivate&quot;, &quot;Spec&quot;: &#123; &quot;Type&quot;: &quot;bind&quot;, &quot;Source&quot;: &quot;/home/&lt;user-name&gt;&quot;, #同上Source &quot;Target&quot;: &quot;/mnt&quot; #同上Destination &#125;, &quot;SkipMountpointCreation&quot;: false &#125; &#125; 上述内容只需要修改”Source”、“Destination”、”Target”这些路径就可以了，其他的直接复制下来就可以了。然后，保存退出vim。 4.重启docker服务systemctl start docker.service 5.重启docker容器docker start &lt;container-name/ID&gt;]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker容器挂载硬盘</tag>
       </tags>
   </entry>
   <entry>
@@ -999,6 +988,17 @@
       </categories>
       <tags>
         <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kaldi安装]]></title>
+    <url>%2F2019%2F01%2F07%2Fkaldi%20%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[kaldi 安装下载git clone https://github.com/kaldi-asr/kaldi.git 安装toolscd toolsextras/check_dependencies.sh 保证OK之后进行make make -j4 如果check inter mkl失败,需要安装 extras/install_mkl.sh 如果安装失败，可以手动安装 cd /tmpwget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBapt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBsudo apt-get install intel-mkl-64bit-2020.2#source 可选source /opt/intel/compilers_and_libraries_2020/linux/mkl/bin/mklvars.sh intel64 ilp64 make 中出现gzip failed,多半是因为文件下载中出错，找到大小为0的压缩文件删除后重新make All done OK. 表示安装成功 安装src./configure --sharedmake depend -j 8make -j 8]]></content>
+      <categories>
+        <category>深度学习环境配置</category>
+      </categories>
+      <tags>
+        <tag>kaldi</tag>
       </tags>
   </entry>
   <entry>
@@ -1081,7 +1081,7 @@
   <entry>
     <title><![CDATA[torch和apex安装]]></title>
     <url>%2F2019%2F01%2F05%2Ftorch%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"><![CDATA[torch 安装官网地址：https://pytorch.org/ CPU版本pip3 install torch torchvision torchaudio —index-url https://download.pytorch.org/whl/cpu AMD版本pip3 install torch torchvision torchaudio —index-url https://download.pytorch.org/whl/rocm5.6 cuda版本pip3 install torch torchvision torchaudio —index-url https://download.pytorch.org/whl/cu121 指定版本安装pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 —index-url https://download.pytorch.org/whl/cu118 其他参考：https://pytorch.org/get-started/previous-versions/ apex 安装cuda版本需要对应torch版本和apex版本git clone https://github.com/NVIDIA/apex.gitpip install -v —disable-pip-version-check —no-cache-dir —no-build-isolation —config-settings “—build-option=—cpp_ext” —config-settings “—build-option=—cuda_ext” ./ amd版本下载 for torch lastgit clone https://github.com/ROCmSoftwarePlatform/apex.gitfor torch2.2git clone -b release/1.2.0 https://github.com/ROCmSoftwarePlatform/apex.gitfor torch2.1git clone -b release/1.1.0 https://github.com/ROCmSoftwarePlatform/apex.gitfor torch2.0 or oldergit clone -b release/1.0.0 https://github.com/ROCmSoftwarePlatform/apex.git 安装 pip install -v —disable-pip-version-check —no-cache-dir —no-build-isolation —config-settings “—build-option=—cpp_ext” —config-settings “—build-option=—cuda_ext” ./]]></content>
+    <content type="text"><![CDATA[torch 安装官网地址：https://pytorch.org/ CPU版本pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu AMD版本pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6 cuda版本pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 指定版本安装pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118 其他参考：https://pytorch.org/get-started/previous-versions/ apex 安装cuda版本需要对应torch版本和apex版本 git clone https://github.com/NVIDIA/apex.gitpip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings &quot;--build-option=--cpp_ext&quot; --config-settings &quot;--build-option=--cuda_ext&quot; ./ amd版本下载 for torch lastgit clone https://github.com/ROCmSoftwarePlatform/apex.git for torch2.2git clone -b release/1.2.0 https://github.com/ROCmSoftwarePlatform/apex.git for torch2.1git clone -b release/1.1.0 https://github.com/ROCmSoftwarePlatform/apex.git for torch2.0 or oldergit clone -b release/1.0.0 https://github.com/ROCmSoftwarePlatform/apex.git 安装 pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings &quot;--build-option=--cpp_ext&quot; --config-settings &quot;--build-option=--cuda_ext&quot; ./]]></content>
       <categories>
         <category>深度学习环境配置</category>
       </categories>

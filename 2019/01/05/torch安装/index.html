@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="torch 安装官网地址：https://pytorch.org/ CPU版本pip3 install torch torchvision torchaudio —index-url https://download.pytorch.org/whl/cpu AMD版本pip3 install torch torchvision torchaudio —index-url https://downl">
+<meta name="description" content="torch 安装官网地址：https://pytorch.org/ CPU版本pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu AMD版本pip3 install torch torchvision torchaudio --index-url https://dow">
 <meta name="keywords" content="torch和apex安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="torch和apex安装">
 <meta property="og:url" content="https://janvia.github.io/2019/01/05/torch安装/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="torch 安装官网地址：https://pytorch.org/ CPU版本pip3 install torch torchvision torchaudio —index-url https://download.pytorch.org/whl/cpu AMD版本pip3 install torch torchvision torchaudio —index-url https://downl">
+<meta property="og:description" content="torch 安装官网地址：https://pytorch.org/ CPU版本pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu AMD版本pip3 install torch torchvision torchaudio --index-url https://dow">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-04-25T06:28:09.434Z">
+<meta property="og:updated_time" content="2024-04-25T07:21:54.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="torch和apex安装">
-<meta name="twitter:description" content="torch 安装官网地址：https://pytorch.org/ CPU版本pip3 install torch torchvision torchaudio —index-url https://download.pytorch.org/whl/cpu AMD版本pip3 install torch torchvision torchaudio —index-url https://downl">
+<meta name="twitter:description" content="torch 安装官网地址：https://pytorch.org/ CPU版本pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu AMD版本pip3 install torch torchvision torchaudio --index-url https://dow">
 
 
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  223
+                  235
                 </span>
               
 
@@ -420,16 +420,20 @@
 
       
         <h3 id="torch-安装"><a href="#torch-安装" class="headerlink" title="torch 安装"></a>torch 安装</h3><p>官网地址：<a href="https://pytorch.org/" target="_blank" rel="noopener">https://pytorch.org/</a></p>
-<h4 id="CPU版本"><a href="#CPU版本" class="headerlink" title="CPU版本"></a>CPU版本</h4><p>pip3 install torch torchvision torchaudio —index-url <a href="https://download.pytorch.org/whl/cpu" target="_blank" rel="noopener">https://download.pytorch.org/whl/cpu</a></p>
-<h4 id="AMD版本"><a href="#AMD版本" class="headerlink" title="AMD版本"></a>AMD版本</h4><p>pip3 install torch torchvision torchaudio —index-url <a href="https://download.pytorch.org/whl/rocm5.6" target="_blank" rel="noopener">https://download.pytorch.org/whl/rocm5.6</a></p>
-<h4 id="cuda版本"><a href="#cuda版本" class="headerlink" title="cuda版本"></a>cuda版本</h4><p>pip3 install torch torchvision torchaudio —index-url <a href="https://download.pytorch.org/whl/cu121" target="_blank" rel="noopener">https://download.pytorch.org/whl/cu121</a></p>
-<h4 id="指定版本安装"><a href="#指定版本安装" class="headerlink" title="指定版本安装"></a>指定版本安装</h4><p>pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 —index-url <a href="https://download.pytorch.org/whl/cu118" target="_blank" rel="noopener">https://download.pytorch.org/whl/cu118</a></p>
+<h4 id="CPU版本"><a href="#CPU版本" class="headerlink" title="CPU版本"></a>CPU版本</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu</span><br></pre></td></tr></table></figure>
+<h4 id="AMD版本"><a href="#AMD版本" class="headerlink" title="AMD版本"></a>AMD版本</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6</span><br></pre></td></tr></table></figure>
+<h4 id="cuda版本"><a href="#cuda版本" class="headerlink" title="cuda版本"></a>cuda版本</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121</span><br></pre></td></tr></table></figure>
+<h4 id="指定版本安装"><a href="#指定版本安装" class="headerlink" title="指定版本安装"></a>指定版本安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118</span><br></pre></td></tr></table></figure>
 <p>其他参考：<a href="https://pytorch.org/get-started/previous-versions/" target="_blank" rel="noopener">https://pytorch.org/get-started/previous-versions/</a></p>
-<h3 id="apex-安装"><a href="#apex-安装" class="headerlink" title="apex 安装"></a>apex 安装</h3><h4 id="cuda版本-1"><a href="#cuda版本-1" class="headerlink" title="cuda版本"></a>cuda版本</h4><p>需要对应torch版本和apex版本<br>git clone <a href="https://github.com/NVIDIA/apex.git" target="_blank" rel="noopener">https://github.com/NVIDIA/apex.git</a><br>pip install -v —disable-pip-version-check —no-cache-dir —no-build-isolation —config-settings “—build-option=—cpp_ext” —config-settings “—build-option=—cuda_ext” ./</p>
+<h3 id="apex-安装"><a href="#apex-安装" class="headerlink" title="apex 安装"></a>apex 安装</h3><h4 id="cuda版本-1"><a href="#cuda版本-1" class="headerlink" title="cuda版本"></a>cuda版本</h4><p>需要对应torch版本和apex版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/NVIDIA/apex.git</span><br><span class="line">pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings &quot;--build-option=--cpp_ext&quot; --config-settings &quot;--build-option=--cuda_ext&quot; ./</span><br></pre></td></tr></table></figure>
 <h4 id="amd版本"><a href="#amd版本" class="headerlink" title="amd版本"></a>amd版本</h4><p>下载</p>
-<p>for torch last<br>git clone <a href="https://github.com/ROCmSoftwarePlatform/apex.git" target="_blank" rel="noopener">https://github.com/ROCmSoftwarePlatform/apex.git</a><br>for torch2.2<br>git clone -b release/1.2.0 <a href="https://github.com/ROCmSoftwarePlatform/apex.git" target="_blank" rel="noopener">https://github.com/ROCmSoftwarePlatform/apex.git</a><br>for torch2.1<br>git clone -b release/1.1.0 <a href="https://github.com/ROCmSoftwarePlatform/apex.git" target="_blank" rel="noopener">https://github.com/ROCmSoftwarePlatform/apex.git</a><br>for torch2.0 or older<br>git clone -b release/1.0.0 <a href="https://github.com/ROCmSoftwarePlatform/apex.git" target="_blank" rel="noopener">https://github.com/ROCmSoftwarePlatform/apex.git</a></p>
+<p>for torch last<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ROCmSoftwarePlatform/apex.git</span><br></pre></td></tr></table></figure></p>
+<p>for torch2.2<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone -b release/1.2.0 https://github.com/ROCmSoftwarePlatform/apex.git</span><br></pre></td></tr></table></figure></p>
+<p>for torch2.1<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone -b release/1.1.0 https://github.com/ROCmSoftwarePlatform/apex.git</span><br></pre></td></tr></table></figure></p>
+<p>for torch2.0 or older<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone -b release/1.0.0 https://github.com/ROCmSoftwarePlatform/apex.git</span><br></pre></td></tr></table></figure></p>
 <p>安装</p>
-<p>pip install -v —disable-pip-version-check —no-cache-dir —no-build-isolation —config-settings “—build-option=—cpp_ext” —config-settings “—build-option=—cuda_ext” ./</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings &quot;--build-option=--cpp_ext&quot; --config-settings &quot;--build-option=--cuda_ext&quot; ./</span><br></pre></td></tr></table></figure>
 
       
     </div>
