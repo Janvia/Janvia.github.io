@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="换源apt 换源sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak sudo bash -c &amp;quot;cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list &amp;amp;&amp;amp; apt update deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ ja">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-02-29T15:07:17.738Z">
+<meta property="og:updated_time" content="2024-04-25T08:07:27.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="换源">
 <meta name="twitter:description" content="换源apt 换源sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak sudo bash -c &amp;quot;cat &amp;lt;&amp;lt; EOF &amp;gt; /etc/apt/sources.list &amp;amp;&amp;amp; apt update deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ ja">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  464
+                  589
                 </span>
               
 
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -424,6 +424,21 @@
 <h4 id="pip换源"><a href="#pip换源" class="headerlink" title="pip换源"></a>pip换源</h4><p>修改或创建 ~/.pip/pip.conf ：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
 <p>或者输入命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></p>
+<p>其他常用源：</p>
+<ol>
+<li><p>中科大源（<a href="https://pypi.mirrors.ustc.edu.cn/simple/）" target="_blank" rel="noopener">https://pypi.mirrors.ustc.edu.cn/simple/）</a></p>
+<p>中科大源是中国科学技术大学提供的镜像源，速度快且稳定。</p>
+</li>
+<li><p>豆瓣源（<a href="https://pypi.douban.com/simple/）" target="_blank" rel="noopener">https://pypi.douban.com/simple/）</a></p>
+<p>豆瓣源是豆瓣提供的镜像源，速度也比较快。</p>
+</li>
+<li><p>清华源（<a href="https://pypi.tuna.tsinghua.edu.cn/simple/）" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/）</a></p>
+<p>清华源是清华大学提供的镜像源，速度较快。</p>
+</li>
+<li><p>阿里云源（<a href="http://mirrors.aliyun.com/pypi/simple/）" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/）</a></p>
+<p>阿里云源是阿里云提供的镜像源，速度也比较快。</p>
+</li>
+</ol>
 <h4 id="conda换源"><a href="#conda换源" class="headerlink" title="conda换源"></a>conda换源</h4><p>修改~/.condarc</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: true</span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br></pre></td></tr></table></figure>
 <p>对于WSL,命令行输入<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2 </span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/simpleitk</span><br></pre></td></tr></table></figure></p>
@@ -684,7 +699,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">123.9k</span>
+    <span title="Site words total count">124k</span>
   
 </div>
 
