@@ -193,9 +193,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[hexo系统重装恢复]]></title>
-    <url>%2F2019%2F03%2F12%2Fhexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D%2F</url>
-    <content type="text"><![CDATA[安装node.js和npmsudo apt install nodejssudo apt install npm 新版本安装(hexo不支持)curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\sudo apt-get install -y nodejs nvm指定版本安装proxychains4 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | proxychains4 bashsource ~/.zshrcexport NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojsnvm install 12.16.2nvm use 12.16.2 换源sudo npm install -g nrmnrm lsnrm use taobao 安装Hexo`sudo npm install -g hexo-cli` 安装gitsudo apt install git 配置github-gitgit config --global user.name &quot;your github name&quot;git config --global user.email &quot;example@email.com&quot; 填写github账户名和注册邮箱 创建公钥ssh-keygen -t rsa -C &quot;example@email.com&quot; 将在~/.ssh/文件夹下生成github_name 和 github_name.pub两个文件， gedit github_name.pub 打开github登录，点击头像setting -&gt; SSH and GPG keys，将.pub 文件内容复制到 SSH keys中 测试是否设置成功ssh git@github.com 验证npm install hexo-deployer-git --savehexo clean &amp;&amp; hexo g &amp;&amp; hexo d 测试是否成功 加速npm i hexo-offline-popup --savehexo clean &amp;&amp; hexo g &amp;&amp; hexo d]]></content>
+    <title><![CDATA[hexo加速]]></title>
+    <url>%2F2019%2F03%2F12%2Fhexo%E5%8A%A0%E9%80%9F%2F</url>
+    <content type="text"><![CDATA[购买域名以阿里云域名为例，可选择10块以内的网址为： https://wanwang.aliyun.com/?spm=5176.28508143.J_4VYgf18xNlTAyFFbOuOQe.308.62eb154a0Ec27i&amp;scm=20140722.X_data-f6e54ce8c5180a496ee6._.V_1 注意：域名可能需要备案，不过阿里云目前需要购买服务器才能备案，由于我只个人使用，不需要被百度到，所以猜测占时不用备案 使用CLOUD的DNS服务网址为：https://dash.cloudflare.com/ 登录后选择： Workers &amp; Pages -&gt; overview -&gt; create application ,创建个人博客 （可能可以不创建，我没找到直接设置DNS的入口） 点击：websites -&gt; add a site -&gt; 填写自己的域名 -&gt; 添加DNS配置 A janvia.fun 76.223.126.88 Proxied AutoCNAME www cname-china.vercel-dns.com DNS only Auto 配置完成后可以看到分配给自己的DNS服务器，记录下来，然后在阿里云上修改guss.ns.cloudflare.commonika.ns.cloudflare.com 修改DNS服务器在阿里云网页左上角点击： 域名 -&gt; 域名列表 -&gt; janvia.fun(自己的域名) -&gt; 基本信息 -&gt; 修改DNS 将阿里云提供的DNS服务器更改为CLOUD提供的服务器，即： dns13.hichina.comdns14.hichina.com 修改为 guss.ns.cloudflare.commonika.ns.cloudflare.com 修改完成后，可以通过点击：左上角 -&gt; 云解析DNS -&gt; DNS服务器地址 ，进行查看修改成功则显示为： 当前DNS 云解析系统分配DNSmonika.ns.cloudflare.com dns13.hichina.comguss.ns.cloudflare.com dns14.hichina.com 在牛河上添加自定义域名打开博客项目 -&gt; domain -&gt; add 填入买的域名 janvia.fun 选择第一个，将生成www.janvia.fun和janvia.fun,由于DNS配置已经配置了@和www，所以不需要在这里设置重定向，所以删除janvia.fun（实际测试，如果不删除，网址输入janvia.fun，将一直重定向而导致无法访问） hexo配置hexo项目下的CNAME中填入买的域名： janvia.funwww.janvia.fun 不设置重定向 cloudflare配置（可选）点击website,选择自己的域名 ，进入配置页面 SSL/TCL1.在overview页面 设置成full(strict) ,否则janvia.fun由于重定向过多无法访问 2.在Eage Certificates页面 打开Always use https Minimum TLS Version设置成1.1 Opportunistic Encryption 打开 3.在Origin Server页面 Authenticated Origin Pulls 打开 Speed/optimization1.在content optimization 页面 Brotli 打开 Rocket Loader 打开 Auto Minify ，全选 2.Other页面 AMP Real URL 打开]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -204,9 +204,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[hexo加速]]></title>
-    <url>%2F2019%2F03%2F12%2Fhexo%E5%8A%A0%E9%80%9F%2F</url>
-    <content type="text"><![CDATA[购买域名以阿里云域名为例，可选择10块以内的网址为： https://wanwang.aliyun.com/?spm=5176.28508143.J_4VYgf18xNlTAyFFbOuOQe.308.62eb154a0Ec27i&amp;scm=20140722.X_data-f6e54ce8c5180a496ee6._.V_1 注意：域名可能需要备案，不过阿里云目前需要购买服务器才能备案，由于我只个人使用，不需要被百度到，所以猜测占时不用备案 使用CLOUD的DNS服务网址为：https://dash.cloudflare.com/ 登录后选择： Workers &amp; Pages -&gt; overview -&gt; create application ,创建个人博客 （可能可以不创建，我没找到直接设置DNS的入口） 点击：websites -&gt; add a site -&gt; 填写自己的域名 -&gt; 添加DNS配置 A janvia.fun 76.223.126.88 Proxied AutoCNAME www cname-china.vercel-dns.com DNS only Auto 配置完成后可以看到分配给自己的DNS服务器，记录下来，然后在阿里云上修改guss.ns.cloudflare.commonika.ns.cloudflare.com 修改DNS服务器在阿里云网页左上角点击： 域名 -&gt; 域名列表 -&gt; janvia.fun(自己的域名) -&gt; 基本信息 -&gt; 修改DNS 将阿里云提供的DNS服务器更改为CLOUD提供的服务器，即： dns13.hichina.comdns14.hichina.com 修改为 guss.ns.cloudflare.commonika.ns.cloudflare.com 修改完成后，可以通过点击：左上角 -&gt; 云解析DNS -&gt; DNS服务器地址 ，进行查看修改成功则显示为： 当前DNS 云解析系统分配DNSmonika.ns.cloudflare.com dns13.hichina.comguss.ns.cloudflare.com dns14.hichina.com 在牛河上添加自定义域名打开博客项目 -&gt; domain -&gt; add 填入买的域名 janvia.fun 选择第一个，将生成www.janvia.fun和janvia.fun,由于DNS配置已经配置了@和www，所以不需要在这里设置重定向，所以删除janvia.fun（实际测试，如果不删除，网址输入janvia.fun，将一直重定向而导致无法访问） hexo配置hexo项目下的CNAME中填入买的域名： janvia.funwww.janvia.fun 不设置重定向 cloudflare配置（可选）点击website,选择自己的域名 ，进入配置页面 SSL/TCL1.在overview页面 设置成full(strict) ,否则janvia.fun由于重定向过多无法访问 2.在Eage Certificates页面 打开Always use https Minimum TLS Version设置成1.1 Opportunistic Encryption 打开 3.在Origin Server页面 Authenticated Origin Pulls 打开 Speed/optimization1.在content optimization 页面 Brotli 打开 Rocket Loader 打开 Auto Minify ，全选 2.Other页面 AMP Real URL 打开]]></content>
+    <title><![CDATA[hexo系统重装恢复]]></title>
+    <url>%2F2019%2F03%2F12%2Fhexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D%2F</url>
+    <content type="text"><![CDATA[安装node.js和npmsudo apt install nodejssudo apt install npm 新版本安装(hexo不支持)curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\sudo apt-get install -y nodejs nvm指定版本安装proxychains4 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | proxychains4 bashsource ~/.zshrcexport NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojsnvm install 12.16.2nvm use 12.16.2 换源sudo npm install -g nrmnrm lsnrm use taobao 安装Hexo`sudo npm install -g hexo-cli` 安装gitsudo apt install git 配置github-gitgit config --global user.name &quot;your github name&quot;git config --global user.email &quot;example@email.com&quot; 填写github账户名和注册邮箱 创建公钥ssh-keygen -t rsa -C &quot;example@email.com&quot; 将在~/.ssh/文件夹下生成github_name 和 github_name.pub两个文件， gedit github_name.pub 打开github登录，点击头像setting -&gt; SSH and GPG keys，将.pub 文件内容复制到 SSH keys中 测试是否设置成功ssh git@github.com 验证npm install hexo-deployer-git --savehexo clean &amp;&amp; hexo g &amp;&amp; hexo d 测试是否成功 加速npm i hexo-offline-popup --savehexo clean &amp;&amp; hexo g &amp;&amp; hexo d]]></content>
       <categories>
         <category>工具</category>
       </categories>
@@ -494,8 +494,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>LSTM</tag>
         <tag>RNN</tag>
+        <tag>LSTM</tag>
       </tags>
   </entry>
   <entry>
@@ -903,17 +903,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[docker代理]]></title>
-    <url>%2F2019%2F01%2F07%2Fdocker%E4%BB%A3%E7%90%86%2F</url>
-    <content type="text"><![CDATA[本地代理clash 与clashverge任选一个安装 安装clashsudo apt install curl wget jqcd /tmp \&amp;&amp; rm -f clash* || true \&amp;&amp; wget https://github.com/Kuingsmile/clash-core/releases/download/1.18/clash-linux-amd64-v1.18.0.gz || true \&amp;&amp; gzip -d clash* \&amp;&amp; mv clash* clash \&amp;&amp; chmod +x clash \&amp;&amp; sudo mv clash /usr/local/bin 注：如果您的设备无法下载地域库文件，请 点击此处 从备用地址下载，自行放置于 ~/.config/clash/Country.mmdb 启动和配置请将配置文件复制到 ~/.config/clash/config.yaml启动命令为clash 安装clashverge安装sudo apt install curl wget jqwget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.debsudo dpkg -i clash-verge_1.3.8_amd64.deb 请将配置文件复制到 ~/.config/clash/config.yaml 安装proxychains安装sudo apt install proxychains4 配置sudo vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 7890 docker代理配置docker在本地电脑配置docker mkdir ~/.dockervim ~/.docker/config.json 输入一下内容&#123;&quot;proxies&quot;:&#123; &quot;default&quot;: &#123; &quot;httpProxy&quot;: &quot;http://127.0.0.1:7890&quot;, &quot;httpsProxy&quot;: &quot;http://127.0.0.1:7890&quot;, &quot;noProxy&quot;: &quot;localhost&quot; &#125;&#125;&#125; 重启dockersystemctl daemon-reloadsystemctl restart docker 启动docker启动docker时，添加—net host,示例如下sudo docker run --gpus all -it --rm -v /home/win/16t2/study/deep_learning/gene/project/Megatron-LM:/workspace/megatron -v /home/win/4T/GeneDL/OSDrought_GCNAT_Link/data/Geneformer_token/CRR_sc_token/megatron_data:/workspace/dataset -v /home/win/16t2/study/deep_learning/gene/project/Megatron-LM/checkpoints:/workspace/checkpoints -p 552:22 --net host nvcr.io/nvidia/pytorch:23.03-py3 安装proxychains安装apt updateapt install proxychains4 配置vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 7890 查看是否成功proxychains4 curl www.google.com]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker代理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[cuda配置]]></title>
     <url>%2F2019%2F01%2F07%2Fcuda%20%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[查看torch需要的cuda版本： conda list | grep cu 下载地址cuda:https://developer.nvidia.com/cuda-toolkit-archive cudnn:https://developer.nvidia.com/rdp/cudnn-archive 安装cudawget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.runsudo sh cuda_11.7.1_515.65.01_linux.run cudnn注意：由于cudnn需要登录，所以最好手动下载，wget下载的文件有问题wget https://developer.nvidia.com/compute/cudnn/secure/8.5.0/local_installers/11.7/cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xz（替换为手动下载）tar -xvf cudnn-linux-x86_64-8.5.0.96_cuda11-archive.tar.xzcd cudnn-linux-x86_64-8.5.0.96_cuda11-archivesudo cp include/cudnn* /usr/local/cuda/include/ sudo cp lib/libcudnn* /usr/local/cuda/lib64/ sudo chmod a+r /usr/local/cuda/include/cudnn.h sudo chmod a+r /usr/local/cuda/lib64/libcudnn* 配置环境编译bashrc或者zshrc,以zshrc为例 打开zshrc:vi ~/.zshrc export PATH=/usr/local/cuda-11.7/bin:$PATHexport LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH 更新环境变量source ~/.zshrc]]></content>
@@ -936,14 +925,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[github上传代码]]></title>
-    <url>%2F2019%2F01%2F07%2Fgithub%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%2F</url>
-    <content type="text"><![CDATA[初次上传 clash换个窗口echo &quot;# demo&quot; &gt;&gt; README.mdgit initgit add README.mdgit commit -m &quot;first commit&quot;git branch -M maingit remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main 第二次上传 git add .git commit -m &quot;second commit&quot;git branch -M main#git remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main#图片路径直接复制上传图片的网页地址]]></content>
+    <title><![CDATA[docker代理]]></title>
+    <url>%2F2019%2F01%2F07%2Fdocker%E4%BB%A3%E7%90%86%2F</url>
+    <content type="text"><![CDATA[本地代理clash 与clashverge任选一个安装 安装clashsudo apt install curl wget jqcd /tmp \&amp;&amp; rm -f clash* || true \&amp;&amp; wget https://github.com/Kuingsmile/clash-core/releases/download/1.18/clash-linux-amd64-v1.18.0.gz || true \&amp;&amp; gzip -d clash* \&amp;&amp; mv clash* clash \&amp;&amp; chmod +x clash \&amp;&amp; sudo mv clash /usr/local/bin 注：如果您的设备无法下载地域库文件，请 点击此处 从备用地址下载，自行放置于 ~/.config/clash/Country.mmdb 启动和配置请将配置文件复制到 ~/.config/clash/config.yaml启动命令为clash 安装clashverge安装sudo apt install curl wget jqwget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.debsudo dpkg -i clash-verge_1.3.8_amd64.deb 请将配置文件复制到 ~/.config/clash/config.yaml 安装proxychains安装sudo apt install proxychains4 配置sudo vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 7890 docker代理配置docker在本地电脑配置docker mkdir ~/.dockervim ~/.docker/config.json 输入一下内容&#123;&quot;proxies&quot;:&#123; &quot;default&quot;: &#123; &quot;httpProxy&quot;: &quot;http://127.0.0.1:7890&quot;, &quot;httpsProxy&quot;: &quot;http://127.0.0.1:7890&quot;, &quot;noProxy&quot;: &quot;localhost&quot; &#125;&#125;&#125; 重启dockersystemctl daemon-reloadsystemctl restart docker 启动docker启动docker时，添加—net host,示例如下sudo docker run --gpus all -it --rm -v /home/win/16t2/study/deep_learning/gene/project/Megatron-LM:/workspace/megatron -v /home/win/4T/GeneDL/OSDrought_GCNAT_Link/data/Geneformer_token/CRR_sc_token/megatron_data:/workspace/dataset -v /home/win/16t2/study/deep_learning/gene/project/Megatron-LM/checkpoints:/workspace/checkpoints -p 552:22 --net host nvcr.io/nvidia/pytorch:23.03-py3 安装proxychains安装apt updateapt install proxychains4 配置vim /etc/proxychains4.conf [ProxyList]# add proxy here ...# meanwile# defaults set to &quot;tor&quot;#socks4 127.0.0.1 9050# examplesocks5 127.0.0.1 7890 查看是否成功proxychains4 curl www.google.com]]></content>
       <categories>
-        <category>dxz</category>
+        <category>docker</category>
       </categories>
       <tags>
-        <tag>github上传代码</tag>
+        <tag>docker代理</tag>
       </tags>
   </entry>
   <entry>
@@ -958,14 +947,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[kaldi安装]]></title>
-    <url>%2F2019%2F01%2F07%2Fkaldi%20%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"><![CDATA[kaldi 安装下载git clone https://github.com/kaldi-asr/kaldi.git 安装toolscd toolsextras/check_dependencies.sh 保证OK之后进行make make -j4 如果check inter mkl失败,需要安装 extras/install_mkl.sh 如果安装失败，可以手动安装 cd /tmpwget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBapt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBsudo apt-get install intel-mkl-64bit-2020.2#source 可选source /opt/intel/compilers_and_libraries_2020/linux/mkl/bin/mklvars.sh intel64 ilp64 make 中出现gzip failed,多半是因为文件下载中出错，找到大小为0的压缩文件删除后重新make All done OK. 表示安装成功 安装src./configure --sharedmake depend -j 8make -j 8]]></content>
+    <title><![CDATA[github上传代码]]></title>
+    <url>%2F2019%2F01%2F07%2Fgithub%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[初次上传 clash换个窗口echo &quot;# demo&quot; &gt;&gt; README.mdgit initgit add README.mdgit commit -m &quot;first commit&quot;git branch -M maingit remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main 第二次上传 git add .git commit -m &quot;second commit&quot;git branch -M main#git remote add origin https://github.com/ddxxz/demo.gitproxychains4 git push -u origin main#图片路径直接复制上传图片的网页地址]]></content>
       <categories>
-        <category>深度学习环境配置</category>
+        <category>dxz</category>
       </categories>
       <tags>
-        <tag>kaldi</tag>
+        <tag>github上传代码</tag>
       </tags>
   </entry>
   <entry>
@@ -988,6 +977,17 @@
       </categories>
       <tags>
         <tag>docker-ldap-mysql-arm64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[kaldi安装]]></title>
+    <url>%2F2019%2F01%2F07%2Fkaldi%20%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[kaldi 安装下载git clone https://github.com/kaldi-asr/kaldi.git 安装toolscd toolsextras/check_dependencies.sh 保证OK之后进行make make -j4 如果check inter mkl失败,需要安装 extras/install_mkl.sh 如果安装失败，可以手动安装 cd /tmpwget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBapt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUBsudo apt-get install intel-mkl-64bit-2020.2#source 可选source /opt/intel/compilers_and_libraries_2020/linux/mkl/bin/mklvars.sh intel64 ilp64 make 中出现gzip failed,多半是因为文件下载中出错，找到大小为0的压缩文件删除后重新make All done OK. 表示安装成功 安装src./configure --sharedmake depend -j 8make -j 8]]></content>
+      <categories>
+        <category>深度学习环境配置</category>
+      </categories>
+      <tags>
+        <tag>kaldi</tag>
       </tags>
   </entry>
   <entry>
@@ -1068,17 +1068,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[onnx2tflite]]></title>
-    <url>%2F2019%2F01%2F05%2Fonnx2tflite%2F</url>
-    <content type="text"><![CDATA[安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg /usr/share/keyringsecho &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8&quot; | sudo tee /etc/apt/sources.list.d/bazel.list 2.安装sudo apt update &amp;&amp; sudo apt install bazel=4.2.1 从源码安装1.安装依赖sudo apt install pkg-config zip g++ zlib1g-dev unzip python 2.下载源码git clone https://github.com/bazelbuild/bazel.gitcd bazel 3.编译./compile.sh 4.安装sudo cp output/bazel /usr/local/bin/bazel 下载预编译二进制安装下载地址： https://github.com/bazelbuild/bazel/releases运行方式chmod +x bazel-version-installer-linux-x86_64.sh./bazel-version-installer-linux-x86_64.sh --user 配置环境变量export PATH=&quot;$PATH:$HOME/bin&quot; 安装TensorFlow Lite官方教程： https://www.tensorflow.org/lite/guide/build_arm?hl=zh-cn 1.下载源码git clone https://github.com/tensorflow/tensorflow.gitcd tensorflow 或者下载指定版本git clone -b v2.5.0 https://github.com/tensorflow/tensorflow.git 手动下载wget https://github.com/tensorflow/tensorflow/archive/v2.8.0.zipunzip v2.8.0.zipcd tensorflow-2.8.0 通过bazel安装配置./configure 3.编译x86on wsl(18.04)bazel build --config=monolithic //tensorflow/lite:libtensorflowlite.so 4.编译arm64官方bazel build --config=elinux_aarch64 -c opt //tensorflow/lite:libtensorflowlite.so 经测试，报GLIB2.7错误，默认使用的是 GCC 8.3 ，构建的二进制文件需要 glibc 2.28 或更高版本。如果您的目标是较低版本的 glibc，则需要使用旧版 GCC 工具链。 bazel方式复制头文件和lib文件此方式不好挂代理和不好设置交叉编译工具链，可编译出动态库头文件cd tensorflow/tensorflowfind ./lite -name &quot;*.h&quot; | tar -cf headers.tar -T - lib文件tensorflow/bazel-bin/tensorflow/lite/libtensorflowlite.so flatbuffertensorflow/bazel-bin/external/flatbuffers/libflatbuffers.a tensorflow/tensorflow/lite/tools/make下执行download_dependencies.sh，或者直接下载flatbuffers压缩包，然后取出include的内容放置到cpp_tflite/include中即可。 通过cmake方式安装官网地址: https://www.tensorflow.org/lite/guide/build_cmake_arm?hl=zh-cn 下载工具链wget https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-linux-gnu/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xztar xvJf gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xzmv gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu $DIR/export PATH=&quot;$PATH:$DIR/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin&quot; 配置ARMCC_PREFIX=$&#123;HOME&#125;/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-ARMCC_FLAGS=&quot;-funsafe-math-optimizations&quot;cmake -DCMAKE_C_COMPILER=$&#123;ARMCC_PREFIX&#125;gcc \ -DCMAKE_CXX_COMPILER=$&#123;ARMCC_PREFIX&#125;g++ \ -DCMAKE_C_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \ -DCMAKE_CXX_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \ -DCMAKE_SYSTEM_NAME=Linux \ -DCMAKE_SYSTEM_PROCESSOR=aarch64 \ ../tensorflow/lite/ makemake -j8 或者？cmake --build . -j 注意： 此方式复制.a文件无法运行 cmake方式直接集成到项目在Cmakelists.txt中添加代码set(TENSORFLOW_SOURCE_DIR &quot;&quot; CACHE PATH &quot;Directory that contains the TensorFlow project&quot;)if(NOT TENSORFLOW_SOURCE_DIR) get_filename_component(TENSORFLOW_SOURCE_DIR &quot;$&#123;CMAKE_CURRENT_LIST_DIR&#125;/../../../../&quot; ABSOLUTE )endif()add_subdirectory( &quot;$&#123;TENSORFLOW_SOURCE_DIR&#125;/tensorflow/lite&quot; &quot;$&#123;CMAKE_CURRENT_BINARY_DIR&#125;/tensorflow-lite&quot; EXCLUDE_FROM_ALL)set(CMAKE_CXX_STANDARD 11) 设置 TENSORFLOW_SOURCE_DIR 为自己的tensorflow路径然后直接编译mkdir build cd buildcmake ..make -j8 交叉编译export cross_compile_toolchain=/home/jw/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnumkdir -p build_arm &amp;&amp; cd build_armcmake .. \ -DCMAKE_SYSTEM_NAME=Linux \ -DCMAKE_SYSTEM_VERSION=1 \ -DCMAKE_SYSTEM_PROCESSOR=aarch64 \ -DCMAKE_C_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-gcc \ -DCMAKE_CXX_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-g++ \ -DCMAKE_BUILD_TYPE=releasemake -j4]]></content>
-      <categories>
-        <category>深度学习移植</category>
-      </categories>
-      <tags>
-        <tag>onnx2tflite</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[linux基础命令]]></title>
     <url>%2F2019%2F01%2F05%2Flinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[电源管理shutdown now # 关机shutdown -h 30 # 30分钟后关机 shutdown -r now # 重启shutdown -r 05:30 # 于05:30重启shutdown -c # 取消关机 目录结构/bin： bin是Binary的缩写, 这个目录存放着最经常使用的命令。 /boot： 这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。 /dev ： dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。 /etc： 这个目录用来存放所有的系统管理所需要的配置文件和子目录。 /home： 用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。 /lib： 这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。 /lost+found： 这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。 /media： linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。 /mnt： 系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。 /opt： 这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。 /proc： 这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。 这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all /root： 该目录为系统管理员，也称作超级权限者的用户主目录。 /sbin： s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。 /selinux： 这个目录是Redhat/CentOS所特有的目录，Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。 /srv： 该目录存放一些服务启动之后需要提取的数据。 /sys： 这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。 sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统 针对设备的devfs文件系统 针对伪终端的devpts文件系统。/tmp： 这个目录是用来存放一些临时文件的。/usr： 这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。/usr/bin： 系统用户使用的应用程序。/usr/sbin： 超级用户使用的比较高级的管理程序和系统守护程序。/usr/src：内核源代码默认的放置目录。/var： 这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。 显示文件目录ls-a 列出隐藏文件，文件中以“.”开头的均为隐藏文件，如：~/.bashrc-l 列出文件的详细信息-R 连同子目录中的内容一起列出 文件权限-rwx-rwx-rwx # 第一个代表文件类型# 代表所有者的权限 # 代表所属组的权限# 代表其他人的权限 改变权限r 读取权限 如果没有r 就不能 ls 查看里面的内容 对应数字 4w 写权限 如果没有w 就不能在目录下创建新的文件 对应数字 2x 执行权限 如果没有x 就不能cd进入这个目录 对应数字 1- 没权限 对应数字 0chmod 777 filenamerwx-rwx-rwx 切换文件夹cd filename # 进入文件-filename：文件名cd - # 返回上一次进入的目录cd ~ # 进入根目录cd .. # 返回上级目录 查看当前路径pwd 创建目录mkdir filename # 创建一个filename的文件 删除空目录rmdir filename # 删除一个空的filename的文件 复制复制文件或目录cp file1 file2cp file1 dir/cp file1 ../ 拷贝目录cp dir1 dir2 -rcp dir1 ~/ -r 删除文件或目录rm -r # 递归删除文件rm -rf # 强制删除文件***** 查看文件从第一行开始；“-b”显示行号cat file # 一次查看所有的文件cat file1 file2 # 一次查看两个命令 从最后一行开始tac filename 显示的时候，顺道输出行号！nl filename 一页一页的显示文件内容more filename 按Space键：显示文本的下一屏内容。 按Enier键：只显示文本的下一行内容。 按斜线符/：接着输入一个模式，可以在文本中寻找下一个相匹配的模式。 按H键：显示帮助屏，该屏上有相关的帮助信息。 按B键：显示上一屏内容。 按Q键：退出more命令。 查找命令which command # 查看 -二进制文件whereis 可执行文件 # 二进制文件 、man手册帮助文档： 1.man手册 ，帮助文档 man ls 2.--help , ls --help 查找文件find 路径 参数# 常用参数 -name # 按照名字-size # 按照大小find ./ -size +100k -size -10M # 在当前目录下找大于100k 小于 10的文件 文本搜索grep &apos;content&apos; filename# 常用参数-v 显示不包含匹配文本的所有‘行’ (求反)-n 显示匹配行及行号-i 忽略大小写# 内容参数^wu 行首 搜索以wu开头的行wh$ 行尾 索以wh结束的行 创建链接文件ln file hardlink # 硬链接ln -s file softlink # 软链接 软链接: 相当于 window上的快捷方式 源文件删除则软链接失效 硬链接: 硬链接只能连接普通的文件 不能连接目录 注意 如果软链接文件和源文件不在同一个目录 源文件要使用绝对路径 不能使用相对路径 创建别名alias # 查看所有别名 alias c4=&apos;cat 4.txt&apos;unalias # 删除别名 注意 这种定义别名的方式 只在当前登录有效 如果要永久定义生效 可以通过修改~/.bashrc文件 这个修改要下次登录才能生效 想要立即生效 可以输入source ~/.bashrc]]></content>
@@ -1087,6 +1076,17 @@
       </categories>
       <tags>
         <tag>linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[onnx2tflite]]></title>
+    <url>%2F2019%2F01%2F05%2Fonnx2tflite%2F</url>
+    <content type="text"><![CDATA[安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg /usr/share/keyringsecho &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8&quot; | sudo tee /etc/apt/sources.list.d/bazel.list 2.安装sudo apt update &amp;&amp; sudo apt install bazel=4.2.1 从源码安装1.安装依赖sudo apt install pkg-config zip g++ zlib1g-dev unzip python 2.下载源码git clone https://github.com/bazelbuild/bazel.gitcd bazel 3.编译./compile.sh 4.安装sudo cp output/bazel /usr/local/bin/bazel 下载预编译二进制安装下载地址： https://github.com/bazelbuild/bazel/releases运行方式chmod +x bazel-version-installer-linux-x86_64.sh./bazel-version-installer-linux-x86_64.sh --user 配置环境变量export PATH=&quot;$PATH:$HOME/bin&quot; 安装TensorFlow Lite官方教程： https://www.tensorflow.org/lite/guide/build_arm?hl=zh-cn 1.下载源码git clone https://github.com/tensorflow/tensorflow.gitcd tensorflow 或者下载指定版本git clone -b v2.5.0 https://github.com/tensorflow/tensorflow.git 手动下载wget https://github.com/tensorflow/tensorflow/archive/v2.8.0.zipunzip v2.8.0.zipcd tensorflow-2.8.0 通过bazel安装配置./configure 3.编译x86on wsl(18.04)bazel build --config=monolithic //tensorflow/lite:libtensorflowlite.so 4.编译arm64官方bazel build --config=elinux_aarch64 -c opt //tensorflow/lite:libtensorflowlite.so 经测试，报GLIB2.7错误，默认使用的是 GCC 8.3 ，构建的二进制文件需要 glibc 2.28 或更高版本。如果您的目标是较低版本的 glibc，则需要使用旧版 GCC 工具链。 bazel方式复制头文件和lib文件此方式不好挂代理和不好设置交叉编译工具链，可编译出动态库头文件cd tensorflow/tensorflowfind ./lite -name &quot;*.h&quot; | tar -cf headers.tar -T - lib文件tensorflow/bazel-bin/tensorflow/lite/libtensorflowlite.so flatbuffertensorflow/bazel-bin/external/flatbuffers/libflatbuffers.a tensorflow/tensorflow/lite/tools/make下执行download_dependencies.sh，或者直接下载flatbuffers压缩包，然后取出include的内容放置到cpp_tflite/include中即可。 通过cmake方式安装官网地址: https://www.tensorflow.org/lite/guide/build_cmake_arm?hl=zh-cn 下载工具链wget https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-linux-gnu/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xztar xvJf gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xzmv gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu $DIR/export PATH=&quot;$PATH:$DIR/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin&quot; 配置ARMCC_PREFIX=$&#123;HOME&#125;/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-ARMCC_FLAGS=&quot;-funsafe-math-optimizations&quot;cmake -DCMAKE_C_COMPILER=$&#123;ARMCC_PREFIX&#125;gcc \ -DCMAKE_CXX_COMPILER=$&#123;ARMCC_PREFIX&#125;g++ \ -DCMAKE_C_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \ -DCMAKE_CXX_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \ -DCMAKE_SYSTEM_NAME=Linux \ -DCMAKE_SYSTEM_PROCESSOR=aarch64 \ ../tensorflow/lite/ makemake -j8 或者？cmake --build . -j 注意： 此方式复制.a文件无法运行 cmake方式直接集成到项目在Cmakelists.txt中添加代码set(TENSORFLOW_SOURCE_DIR &quot;&quot; CACHE PATH &quot;Directory that contains the TensorFlow project&quot;)if(NOT TENSORFLOW_SOURCE_DIR) get_filename_component(TENSORFLOW_SOURCE_DIR &quot;$&#123;CMAKE_CURRENT_LIST_DIR&#125;/../../../../&quot; ABSOLUTE )endif()add_subdirectory( &quot;$&#123;TENSORFLOW_SOURCE_DIR&#125;/tensorflow/lite&quot; &quot;$&#123;CMAKE_CURRENT_BINARY_DIR&#125;/tensorflow-lite&quot; EXCLUDE_FROM_ALL)set(CMAKE_CXX_STANDARD 11) 设置 TENSORFLOW_SOURCE_DIR 为自己的tensorflow路径然后直接编译mkdir build cd buildcmake ..make -j8 交叉编译export cross_compile_toolchain=/home/jw/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnumkdir -p build_arm &amp;&amp; cd build_armcmake .. \ -DCMAKE_SYSTEM_NAME=Linux \ -DCMAKE_SYSTEM_VERSION=1 \ -DCMAKE_SYSTEM_PROCESSOR=aarch64 \ -DCMAKE_C_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-gcc \ -DCMAKE_CXX_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-g++ \ -DCMAKE_BUILD_TYPE=releasemake -j4]]></content>
+      <categories>
+        <category>深度学习移植</category>
+      </categories>
+      <tags>
+        <tag>onnx2tflite</tag>
       </tags>
   </entry>
   <entry>
