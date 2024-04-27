@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janvia.github.io/2019/01/05/mamba/</loc>
+    
+    <lastmod>2024-04-27T13:44:35.516Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janvia.github.io/2019/01/05/onnx2tflite/</loc>
     
     <lastmod>2024-04-27T10:24:56.186Z</lastmod>
