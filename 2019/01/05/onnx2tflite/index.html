@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-04-26T13:24:54.016Z">
+<meta property="og:updated_time" content="2024-04-27T10:24:56.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="onnx2tflite">
 <meta name="twitter:description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  767
+                  812
                 </span>
               
 
@@ -448,6 +448,7 @@
 <h4 id="cmake方式直接集成到项目"><a href="#cmake方式直接集成到项目" class="headerlink" title="cmake方式直接集成到项目"></a>cmake方式直接集成到项目</h4><p>在Cmakelists.txt中添加代码<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set(TENSORFLOW_SOURCE_DIR &quot;&quot; CACHE PATH</span><br><span class="line">  &quot;Directory that contains the TensorFlow project&quot;</span><br><span class="line">)</span><br><span class="line">if(NOT TENSORFLOW_SOURCE_DIR)</span><br><span class="line">  get_filename_component(TENSORFLOW_SOURCE_DIR</span><br><span class="line">    &quot;$&#123;CMAKE_CURRENT_LIST_DIR&#125;/../../../../&quot;</span><br><span class="line">    ABSOLUTE</span><br><span class="line">  )</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">add_subdirectory(</span><br><span class="line">  &quot;$&#123;TENSORFLOW_SOURCE_DIR&#125;/tensorflow/lite&quot;</span><br><span class="line">  &quot;$&#123;CMAKE_CURRENT_BINARY_DIR&#125;/tensorflow-lite&quot;</span><br><span class="line">  EXCLUDE_FROM_ALL</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">set(CMAKE_CXX_STANDARD 11)</span><br></pre></td></tr></table></figure></p>
 <p>设置 TENSORFLOW_SOURCE_DIR 为自己的tensorflow路径<br>然后直接编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir build </span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br></pre></td></tr></table></figure></p>
 <p>交叉编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export cross_compile_toolchain=/home/jw/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu</span><br><span class="line"></span><br><span class="line">mkdir -p build_arm &amp;&amp; cd  build_arm</span><br><span class="line"></span><br><span class="line">cmake .. \</span><br><span class="line"> -DCMAKE_SYSTEM_NAME=Linux \</span><br><span class="line"> -DCMAKE_SYSTEM_VERSION=1 \</span><br><span class="line"> -DCMAKE_SYSTEM_PROCESSOR=aarch64 \</span><br><span class="line"> -DCMAKE_C_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-gcc \</span><br><span class="line"> -DCMAKE_CXX_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-g++ \</span><br><span class="line"> -DCMAKE_BUILD_TYPE=release</span><br><span class="line"></span><br><span class="line">make -j4</span><br></pre></td></tr></table></figure></p>
+<p>测试发现如果程序有静态库，会自动生成静态库,将静态库保存到lib文件夹内<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find ./build -name &quot;*.so*&quot; -exec cp &#123;&#125; /path/to/save/directory/ \;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -478,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/05/torch安装/" rel="next" title="torch和apex安装">
-                <i class="fa fa-chevron-left"></i> torch和apex安装
+              <a href="/2019/01/05/linux常用命令/" rel="next" title="linux基础命令">
+                <i class="fa fa-chevron-left"></i> linux基础命令
               </a>
             
           </div>
@@ -488,8 +489,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/05/linux常用命令/" rel="prev" title="linux基础命令">
-                linux基础命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/06/敬语/" rel="prev" title="敬语">
+                敬语 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
