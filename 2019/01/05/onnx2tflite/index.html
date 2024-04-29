@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-04-27T10:24:56.186Z">
+<meta property="og:updated_time" content="2024-04-29T10:00:45.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="onnx2tflite">
 <meta name="twitter:description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  812
+                  969
                 </span>
               
 
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -449,6 +449,8 @@
 <p>设置 TENSORFLOW_SOURCE_DIR 为自己的tensorflow路径<br>然后直接编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir build </span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br></pre></td></tr></table></figure></p>
 <p>交叉编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export cross_compile_toolchain=/home/jw/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu</span><br><span class="line"></span><br><span class="line">mkdir -p build_arm &amp;&amp; cd  build_arm</span><br><span class="line"></span><br><span class="line">cmake .. \</span><br><span class="line"> -DCMAKE_SYSTEM_NAME=Linux \</span><br><span class="line"> -DCMAKE_SYSTEM_VERSION=1 \</span><br><span class="line"> -DCMAKE_SYSTEM_PROCESSOR=aarch64 \</span><br><span class="line"> -DCMAKE_C_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-gcc \</span><br><span class="line"> -DCMAKE_CXX_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-g++ \</span><br><span class="line"> -DCMAKE_BUILD_TYPE=release</span><br><span class="line"></span><br><span class="line">make -j4</span><br></pre></td></tr></table></figure></p>
 <p>测试发现如果程序有静态库，会自动生成静态库,将静态库保存到lib文件夹内<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find ./build -name &quot;*.so*&quot; -exec cp &#123;&#125; /path/to/save/directory/ \;</span><br></pre></td></tr></table></figure></p>
+<h4 id="cmake-方式报错解决"><a href="#cmake-方式报错解决" class="headerlink" title="cmake 方式报错解决"></a>cmake 方式报错解决</h4><p>错误内容： cc1: error: invalid feature modifier in ‘-march=armv8.2-a+i8mm+fp16’<br>或者cc1: error: invalid feature modifier in ‘-march=armv8.2-a+bf16’<br>由于目标板子不支持i8mm,fp16,bf16，所以编译时去掉选项<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ARMCC_PREFIX=$&#123;HOME&#125;/toolchains/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-</span><br><span class="line">ARMCC_FLAGS=&quot;-funsafe-math-optimizations&quot;</span><br><span class="line">cmake -DCMAKE_C_COMPILER=$&#123;ARMCC_PREFIX&#125;gcc \</span><br><span class="line">  -DCMAKE_CXX_COMPILER=$&#123;ARMCC_PREFIX&#125;g++ \</span><br><span class="line">  -DCMAKE_C_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \</span><br><span class="line">  -DCMAKE_CXX_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \</span><br><span class="line">  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \</span><br><span class="line">  -DCMAKE_SYSTEM_NAME=Linux \</span><br><span class="line">  -DCMAKE_SYSTEM_PROCESSOR=aarch64 \</span><br><span class="line">  -DXNNPACK_ENABLE_ARM_BF16=OFF \</span><br><span class="line">  -DXNNPACK_ENABLE_ARM_I8MM=OFF \</span><br><span class="line">  ../tensorflow/lite</span><br></pre></td></tr></table></figure></p>
+<p>测试发现tensorflow2.16.1编译时无法去掉，将版本改为2.15.0，成功编译,也可以运行2.16.1转换的模型</p>
 
       
     </div>
@@ -479,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/05/mamba/" rel="next" title="mamba">
-                <i class="fa fa-chevron-left"></i> mamba
+              <a href="/2019/01/05/vscode/" rel="next" title="vscode">
+                <i class="fa fa-chevron-left"></i> vscode
               </a>
             
           </div>
@@ -489,8 +491,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/06/敬语/" rel="prev" title="敬语">
-                敬语 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/05/mamba/" rel="prev" title="mamba">
+                mamba <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -671,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装bazel"><span class="nav-number">1.</span> <span class="nav-text">安装bazel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从apt安装"><span class="nav-number">1.1.</span> <span class="nav-text">从apt安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从源码安装"><span class="nav-number">1.2.</span> <span class="nav-text">从源码安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载预编译二进制安装"><span class="nav-number">1.3.</span> <span class="nav-text">下载预编译二进制安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装TensorFlow-Lite"><span class="nav-number">2.</span> <span class="nav-text">安装TensorFlow Lite</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-下载源码"><span class="nav-number">2.1.</span> <span class="nav-text">1.下载源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过bazel安装"><span class="nav-number">2.2.</span> <span class="nav-text">通过bazel安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bazel方式复制头文件和lib文件"><span class="nav-number">2.3.</span> <span class="nav-text">bazel方式复制头文件和lib文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过cmake方式安装"><span class="nav-number">2.4.</span> <span class="nav-text">通过cmake方式安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmake方式直接集成到项目"><span class="nav-number">2.5.</span> <span class="nav-text">cmake方式直接集成到项目</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装bazel"><span class="nav-number">1.</span> <span class="nav-text">安装bazel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从apt安装"><span class="nav-number">1.1.</span> <span class="nav-text">从apt安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从源码安装"><span class="nav-number">1.2.</span> <span class="nav-text">从源码安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载预编译二进制安装"><span class="nav-number">1.3.</span> <span class="nav-text">下载预编译二进制安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装TensorFlow-Lite"><span class="nav-number">2.</span> <span class="nav-text">安装TensorFlow Lite</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-下载源码"><span class="nav-number">2.1.</span> <span class="nav-text">1.下载源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过bazel安装"><span class="nav-number">2.2.</span> <span class="nav-text">通过bazel安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bazel方式复制头文件和lib文件"><span class="nav-number">2.3.</span> <span class="nav-text">bazel方式复制头文件和lib文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过cmake方式安装"><span class="nav-number">2.4.</span> <span class="nav-text">通过cmake方式安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmake方式直接集成到项目"><span class="nav-number">2.5.</span> <span class="nav-text">cmake方式直接集成到项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmake-方式报错解决"><span class="nav-number">2.6.</span> <span class="nav-text">cmake 方式报错解决</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -705,7 +707,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">125k</span>
+    <span title="Site words total count">125.1k</span>
   
 </div>
 
