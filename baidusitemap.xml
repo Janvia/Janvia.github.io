@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://janvia.github.io/2019/01/05/onnx2tflite/</loc>
-    <lastmod>2024-05-09</lastmod>
+    <loc>https://janvia.github.io/2019/01/05/tflite%E8%BD%AC%E6%8D%A2/</loc>
+    <lastmod>2024-05-15</lastmod>
+  </url>  <url>
+    <loc>https://janvia.github.io/2019/01/05/tflite%E7%BC%96%E8%AF%91/</loc>
+    <lastmod>2024-05-15</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/05/vscode/</loc>
     <lastmod>2024-04-28</lastmod>
