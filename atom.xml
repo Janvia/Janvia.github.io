@@ -144,32 +144,6 @@
   </entry>
   
   <entry>
-    <title>matplotlib补充</title>
-    <link href="https://janvia.github.io/2022/08/18/matplotlib%E8%A1%A5%E5%85%85/"/>
-    <id>https://janvia.github.io/2022/08/18/matplotlib补充/</id>
-    <published>2022-08-18T08:44:41.000Z</published>
-    <updated>2022-08-19T15:21:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><h4 id="防止中文乱码"><a href="#防止中文乱码" class="headerlink" title="防止中文乱码"></a>防止中文乱码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import matplotlib as mpl</span><br><span class="line">mpl.rcParams[&apos;font.sans-serif&apos;] = [u&apos;simHei&apos;]</span><br><span class="line">mpl.rcParams[&apos;axes.unicode_minus&apos;] = False</span><br></pre></td></tr></table></figure><h4 id="调整子图布局"><a href="#调整子图布局" class="headerlink" title="调整子图布局"></a>调整子图布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plt.tight_layout()</span><br></pre></td></tr></table></figure><h4 id="设置坐标轴"><a href="#设置坐标轴" class="headerlink" title="设置坐标轴"></a>设置坐标轴</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">axis(‘off’)#：关闭轴线和标签。</span><br><span class="line">axis(‘equal’)#：使x轴与y轴保持与屏幕一致的高宽比（横纵比）。</span><br><span class="line">axis(‘tight’)#：使x轴与y轴限制在有数据的区域。</span><br><span class="line">axis(‘square’)#：使x轴与y轴坐标一致。</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h4 id=&quot;防止中文乱码&quot;&gt;&lt;a href=&quot;#防止中文乱码&quot; class=&quot;headerlink&quot; title=&quot;防止中文乱码&quot;&gt;&lt;/a&gt;防止中文乱码&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="matplotlib" scheme="https://janvia.github.io/tags/matplotlib/"/>
-    
-  </entry>
-  
-  <entry>
     <title>linux系统代理</title>
     <link href="https://janvia.github.io/2022/08/18/linux%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86/"/>
     <id>https://janvia.github.io/2022/08/18/linux系统代理/</id>
@@ -219,6 +193,32 @@
     
     
       <category term="linux命令" scheme="https://janvia.github.io/tags/linux%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>matplotlib补充</title>
+    <link href="https://janvia.github.io/2022/08/18/matplotlib%E8%A1%A5%E5%85%85/"/>
+    <id>https://janvia.github.io/2022/08/18/matplotlib补充/</id>
+    <published>2022-08-18T08:44:41.000Z</published>
+    <updated>2022-08-19T15:21:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h4 id="防止中文乱码"><a href="#防止中文乱码" class="headerlink" title="防止中文乱码"></a>防止中文乱码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import matplotlib as mpl</span><br><span class="line">mpl.rcParams[&apos;font.sans-serif&apos;] = [u&apos;simHei&apos;]</span><br><span class="line">mpl.rcParams[&apos;axes.unicode_minus&apos;] = False</span><br></pre></td></tr></table></figure><h4 id="调整子图布局"><a href="#调整子图布局" class="headerlink" title="调整子图布局"></a>调整子图布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plt.tight_layout()</span><br></pre></td></tr></table></figure><h4 id="设置坐标轴"><a href="#设置坐标轴" class="headerlink" title="设置坐标轴"></a>设置坐标轴</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">axis(‘off’)#：关闭轴线和标签。</span><br><span class="line">axis(‘equal’)#：使x轴与y轴保持与屏幕一致的高宽比（横纵比）。</span><br><span class="line">axis(‘tight’)#：使x轴与y轴限制在有数据的区域。</span><br><span class="line">axis(‘square’)#：使x轴与y轴坐标一致。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h4 id=&quot;防止中文乱码&quot;&gt;&lt;a href=&quot;#防止中文乱码&quot; class=&quot;headerlink&quot; title=&quot;防止中文乱码&quot;&gt;&lt;/a&gt;防止中文乱码&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="matplotlib" scheme="https://janvia.github.io/tags/matplotlib/"/>
     
   </entry>
   
