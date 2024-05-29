@@ -100,12 +100,12 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="RNASeq数据下载处理全流程最近需要重新跑一个物种的RNASeq数据处理，所以趁此机会记录一下。ssh win10@pcrent365.com -A 22522 一、下载数据首先在NCBI官网上选择SRA数据库，输入想要的数据关键词搜索“Zea mays drought”  点击发送结果到数据框，点击Metadata下载SraRunTable。 接着对数据条进行筛选，可手动可写代码，看个人需求。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="c:/Users/WIN/AppData/Roaming/Typora/typora-user-images/image-20240415210211959.png">
-<meta property="og:updated_time" content="2024-05-29T01:45:20.214Z">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dxz/RNAseq.png">
+<meta property="og:updated_time" content="2024-05-29T02:02:57.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RNASeq数据下载处理全流程">
 <meta name="twitter:description" content="RNASeq数据下载处理全流程最近需要重新跑一个物种的RNASeq数据处理，所以趁此机会记录一下。ssh win10@pcrent365.com -A 22522 一、下载数据首先在NCBI官网上选择SRA数据库，输入想要的数据关键词搜索“Zea mays drought”  点击发送结果到数据框，点击Metadata下载SraRunTable。 接着对数据条进行筛选，可手动可写代码，看个人需求。">
-<meta name="twitter:image" content="c:/Users/WIN/AppData/Roaming/Typora/typora-user-images/image-20240415210211959.png">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dxz/RNAseq.png">
 
 
 
@@ -423,7 +423,7 @@
       
         <h1 id="RNASeq数据下载处理全流程"><a href="#RNASeq数据下载处理全流程" class="headerlink" title="RNASeq数据下载处理全流程"></a>RNASeq数据下载处理全流程</h1><p>最近需要重新跑一个物种的RNASeq数据处理，所以趁此机会记录一下。ssh win10@pcrent365.com -A 22522</p>
 <h2 id="一、下载数据"><a href="#一、下载数据" class="headerlink" title="一、下载数据"></a>一、下载数据</h2><p>首先在NCBI官网上选择SRA数据库，输入想要的数据关键词搜索“Zea mays drought”</p>
-<p><img src="C:\Users\WIN\AppData\Roaming\Typora\typora-user-images\image-20240415210211959.png" alt="image-20240415210211959"></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/dxz/RNAseq.png" alt="image-20240415210211959"></p>
 <p>点击发送结果到数据框，点击Metadata下载SraRunTable。</p>
 <p>接着对数据条进行筛选，可手动可写代码，看个人需求。筛选 ‘Assay Type’ 列为 ‘RNA Seq’ 的行和‘LibraryLayout’为‘PAIRED’</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> icecream <span class="keyword">import</span> install,ic</span><br><span class="line">install()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">filter_rna_seq</span><span class="params">(input_file, output_file)</span>:</span></span><br><span class="line">    <span class="comment"># 读取输入文件</span></span><br><span class="line">    df = pd.read_csv(input_file)</span><br><span class="line">    ic(df.shape)</span><br><span class="line">    ic(df.columns)</span><br><span class="line">    <span class="comment"># 筛选 'Assay Type' 列为 'RNA Seq' 的行</span></span><br><span class="line">    ic(df[<span class="string">'Assay Type'</span>] == <span class="string">'RNA Seq'</span>)</span><br><span class="line">    filtered_df = df[df[<span class="string">'Assay Type'</span>] == <span class="string">'RNA-Seq'</span>]</span><br><span class="line">    ic(filtered_df.shape)</span><br><span class="line">    ic(filtered_df[<span class="string">'LibraryLayout'</span>].unique())</span><br><span class="line">    filtered_df = filtered_df[filtered_df[<span class="string">'LibraryLayout'</span>] == <span class="string">'PAIRED'</span>]</span><br><span class="line">    ic(filtered_df.shape)</span><br><span class="line">    <span class="comment"># 将筛选后的数据写入到输出文件</span></span><br><span class="line">    filtered_df.to_csv(output_file, index=<span class="keyword">False</span>, sep=<span class="string">','</span>, encoding=<span class="string">'utf-8'</span>)                    </span><br><span class="line">filter_rna_seq(<span class="string">'/home/win/16t2/study/deep_learning/gene/RNA_Seq/SRR_download_list/Zea_Mays_SraRunTable.txt'</span>, <span class="string">'/home/win/16t2/study/deep_learning/gene/RNA_Seq/SRR_download_list/Zea_Mays_filter_SraRunTable.csv'</span>)</span><br></pre></td></tr></table></figure>

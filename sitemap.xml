@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janvia.github.io/2019/01/14/%E5%9B%BE%E5%BA%8A/</loc>
+    
+    <lastmod>2024-05-29T02:04:29.674Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janvia.github.io/2019/01/07/RNASeq%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD%E5%A4%84%E7%90%86%E5%85%A8%E6%B5%81%E7%A8%8B/</loc>
     
-    <lastmod>2024-05-29T01:45:20.214Z</lastmod>
+    <lastmod>2024-05-29T02:02:57.434Z</lastmod>
     
   </url>
   
@@ -110,13 +117,6 @@
     <loc>https://janvia.github.io/2019/01/07/docker-ldap-mysql-arm64/</loc>
     
     <lastmod>2024-04-09T08:14:09.462Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/14/%E5%9B%BE%E5%BA%8A/</loc>
-    
-    <lastmod>2024-04-07T08:43:25.483Z</lastmod>
     
   </url>
   
