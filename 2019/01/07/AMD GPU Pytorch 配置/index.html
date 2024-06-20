@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdg">
+<meta name="description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2#查看系统版本lsb_release -a# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/jammy/amdgpu-install_5.4.50402-1_all.debsudo a">
 <meta name="keywords" content="amd配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="amd配置">
 <meta property="og:url" content="https://janvia.github.io/2019/01/07/AMD GPU Pytorch 配置/index.html">
 <meta property="og:site_name" content="sylvia">
-<meta property="og:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdg">
+<meta property="og:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2#查看系统版本lsb_release -a# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/jammy/amdgpu-install_5.4.50402-1_all.debsudo a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-04-25T06:29:12.607Z">
+<meta property="og:updated_time" content="2024-06-20T07:17:49.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="amd配置">
-<meta name="twitter:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.debsudo apt-get install ./amdg">
+<meta name="twitter:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2#查看系统版本lsb_release -a# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/jammy/amdgpu-install_5.4.50402-1_all.debsudo a">
 
 
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  657
+                  665
                 </span>
               
 
@@ -419,7 +419,7 @@
       
 
       
-        <h3 id="AMD-GPU-Pytorch-配置"><a href="#AMD-GPU-Pytorch-配置" class="headerlink" title="AMD GPU Pytorch 配置"></a>AMD GPU Pytorch 配置</h3><h5 id="安装AMD显卡驱动"><a href="#安装AMD显卡驱动" class="headerlink" title="安装AMD显卡驱动"></a>安装AMD显卡驱动</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install wget gnupg2</span><br><span class="line"># 安装驱动</span><br><span class="line">wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/focal/amdgpu-install_5.4.50402-1_all.deb</span><br><span class="line">sudo apt-get install ./amdgpu-install_5.4.50402-1_all.deb</span><br><span class="line"># 然后安装单个用例</span><br><span class="line">sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms</span><br><span class="line"># 添加用户至render组</span><br><span class="line">sudo usermod -a -G video,render $LOGNAME</span><br><span class="line">#下载miopen内核,用于减少启动时间</span><br><span class="line">sudo apt-cache search miopenkernels-gfx908</span><br><span class="line">sudo apt-get install miopenkernels-gfx908-120kdb</span><br></pre></td></tr></table></figure>
+        <h3 id="AMD-GPU-Pytorch-配置"><a href="#AMD-GPU-Pytorch-配置" class="headerlink" title="AMD GPU Pytorch 配置"></a>AMD GPU Pytorch 配置</h3><h5 id="安装AMD显卡驱动"><a href="#安装AMD显卡驱动" class="headerlink" title="安装AMD显卡驱动"></a>安装AMD显卡驱动</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install wget gnupg2</span><br><span class="line">#查看系统版本</span><br><span class="line">lsb_release -a</span><br><span class="line"># 安装驱动</span><br><span class="line">wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/jammy/amdgpu-install_5.4.50402-1_all.deb</span><br><span class="line">sudo apt-get install ./amdgpu-install_5.4.50402-1_all.deb</span><br><span class="line"># 然后安装单个用例</span><br><span class="line">sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms</span><br><span class="line"># 添加用户至render组</span><br><span class="line">sudo usermod -a -G video,render $LOGNAME</span><br><span class="line">#下载miopen内核,用于减少启动时间</span><br><span class="line">sudo apt-cache search miopenkernels-gfx908</span><br><span class="line">sudo apt-get install miopenkernels-gfx908-120kdb</span><br></pre></td></tr></table></figure>
 <p>配置环境</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 需要额外加一行参数</span><br><span class="line">export HSA_OVERRIDE_GFX_VERSION=9.0.8</span><br></pre></td></tr></table></figure>
 <p>重启然后验证</p>
@@ -481,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/07/ssh 远程连接docker/" rel="next" title="ssh 远程连接docker">
-                <i class="fa fa-chevron-left"></i> ssh 远程连接docker
+              <a href="/2019/01/07/cuda 手动配置/" rel="next" title="cuda配置">
+                <i class="fa fa-chevron-left"></i> cuda配置
               </a>
             
           </div>
@@ -491,8 +491,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/07/linux常用工具/" rel="prev" title="linux常用工具">
-                linux常用工具 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/09/opencv图像美化/" rel="prev" title="opencv图像美化">
+                opencv图像美化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

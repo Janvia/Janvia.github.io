@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janvia.github.io/2019/01/07/AMD%20GPU%20Pytorch%20%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2024-06-20T07:17:49.136Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janvia.github.io/2019/01/14/%E5%9B%BE%E5%BA%8A/</loc>
     
     <lastmod>2024-05-29T02:04:29.674Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>https://janvia.github.io/2022/08/20/sacred/</loc>
     
     <lastmod>2024-04-25T06:29:32.647Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janvia.github.io/2019/01/07/AMD%20GPU%20Pytorch%20%E9%85%8D%E7%BD%AE/</loc>
-    
-    <lastmod>2024-04-25T06:29:12.607Z</lastmod>
     
   </url>
   
