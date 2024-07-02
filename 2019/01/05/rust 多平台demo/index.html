@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="rust 多平台demo,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="sylvia" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="rust 多平台demorust 安装官网：https://rustup.rs/ curl --proto &amp;apos;=https&amp;apos; --tlsv1.2 -sSf https://sh.rustup.rs | sh 换源编辑$HOME/.cargo/config.toml [source.crates-io]replace-with = &amp;quot;ustc&amp;quot;[source.">
+<meta name="keywords" content="rust 多平台demo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rust 多平台demo">
+<meta property="og:url" content="https://janvia.github.io/2019/01/05/rust 多平台demo/index.html">
+<meta property="og:site_name" content="sylvia">
+<meta property="og:description" content="rust 多平台demorust 安装官网：https://rustup.rs/ curl --proto &amp;apos;=https&amp;apos; --tlsv1.2 -sSf https://sh.rustup.rs | sh 换源编辑$HOME/.cargo/config.toml [source.crates-io]replace-with = &amp;quot;ustc&amp;quot;[source.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-07-02T06:59:55.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rust 多平台demo">
+<meta name="twitter:description" content="rust 多平台demorust 安装官网：https://rustup.rs/ curl --proto &amp;apos;=https&amp;apos; --tlsv1.2 -sSf https://sh.rustup.rs | sh 换源编辑$HOME/.cargo/config.toml [source.crates-io]replace-with = &amp;quot;ustc&amp;quot;[source.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9CNLK347LC',
+      apiKey: '5d000d330392ce1b44b614961e14f53e',
+      indexName: 'dev_janviablog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://janvia.github.io/2019/01/05/rust 多平台demo/">
+
+
+
+
+
+
+  <title>rust 多平台demo | sylvia</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sylvia</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Viva La Vida</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/05/rust 多平台demo/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">rust 多平台demo</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-05T17:16:43+08:00">
+                2019-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习移植/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习移植</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/05/rust 多平台demo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/05/rust 多平台demo/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="rust-多平台demo"><a href="#rust-多平台demo" class="headerlink" title="rust 多平台demo"></a>rust 多平台demo</h3><h4 id="rust-安装"><a href="#rust-安装" class="headerlink" title="rust 安装"></a>rust 安装</h4><p>官网：<a href="https://rustup.rs/" target="_blank" rel="noopener">https://rustup.rs/</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl --proto &apos;=https&apos; --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></table></figure>
+<h5 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h5><p>编辑<code>$HOME/.cargo/config.toml</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[source.crates-io]</span><br><span class="line">replace-with = &quot;ustc&quot;</span><br><span class="line"></span><br><span class="line">[source.ustc]</span><br><span class="line">registry = &quot;sparse+https://mirrors.ustc.edu.cn/crates.io-index/&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><h5 id="第一步：创建Rust库"><a href="#第一步：创建Rust库" class="headerlink" title="第一步：创建Rust库"></a>第一步：创建Rust库</h5><ol>
+<li><p><strong>新建Rust库项目</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cargo new rust_tokenizer --lib</span><br><span class="line">cd rust_tokenizer</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>编辑<code>Cargo.toml</code></strong>： 添加如下内容，以确保生成动态链接库：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[lib]</span><br><span class="line">name = &quot;rust_tokenizer&quot;</span><br><span class="line">crate-type = [&quot;cdylib&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>编写Rust代码</strong>： 在<code>src/lib.rs</code>中添加你的tokenizer逻辑，同时提供一个C兼容的接口。下面是一个简单的例子，使用Rust实现一个基础的tokenizer函数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use std::ffi::&#123;CString, CStr&#125;;</span><br><span class="line">use std::os::raw::c_char;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenize(text: *const c_char) -&gt; *mut c_char &#123;</span><br><span class="line">    let c_str = unsafe &#123;</span><br><span class="line">        assert!(!text.is_null());</span><br><span class="line">        CStr::from_ptr(text)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    let r_str = c_str.to_str().unwrap();</span><br><span class="line">    let tokenized = r_str.replace(&quot; &quot;, &quot;|&quot;);  // 简单的tokenization逻辑</span><br><span class="line"></span><br><span class="line">    CString::new(tokenized).unwrap().into_raw()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn free_string(s: *mut c_char) &#123;</span><br><span class="line">    unsafe &#123;</span><br><span class="line">        if s.is_null() &#123; return &#125;</span><br><span class="line">        CString::from_raw(s)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们定义了两个函数：<code>tokenize</code>用于处理字符串，<code>free_string</code>用于释放Rust分配的内存。</p>
+</li>
+<li><p><strong>编译Rust代码</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cargo build --release</span><br></pre></td></tr></table></figure>
+<p>编译后的<code>.so</code>文件位于<code>target/release</code>目录下。</p>
+</li>
+</ol>
+<h5 id="第二步：在C-中调用Rust函数"><a href="#第二步：在C-中调用Rust函数" class="headerlink" title="第二步：在C++中调用Rust函数"></a>第二步：在C++中调用Rust函数</h5><ol>
+<li><p><strong>编写C++代码</strong>： 在C++项目中，使用Rust编译出的<code>.so</code>库文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">extern &quot;C&quot; &#123;</span><br><span class="line">    char* tokenize(const char* text);</span><br><span class="line">    void free_string(char* s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    const char* text = &quot;Hello, world!&quot;;</span><br><span class="line">    char* result = tokenize(text);</span><br><span class="line">    std::cout &lt;&lt; &quot;Tokenized: &quot; &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    free_string(result);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>编译C++代码</strong>： 使用g++编译，并链接Rust生成的<code>.so</code>文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">g++ -o tokenizer_test main.cpp -L/path/to/target/release -lrust_tokenizer -ldl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>运行C++程序</strong>： 确保Rust生成的<code>.so</code>文件路径在LD_LIBRARY_PATH环境变量中，或者复制到合适的位置。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export LD_LIBRARY_PATH=/path/to/target/release:$LD_LIBRARY_PATH</span><br><span class="line">./tokenizer_test</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="C-交叉编译"><a href="#C-交叉编译" class="headerlink" title="C++ 交叉编译"></a>C++ 交叉编译</h4><h5 id="1-rust配置"><a href="#1-rust配置" class="headerlink" title="1.rust配置"></a>1.rust配置</h5><p>添加目标架构 <code>aarch64-unknown-linux-gnu</code>（适用于 ARM64 的 Linux）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rustup target add aarch64-unknown-linux-gnu</span><br></pre></td></tr></table></figure>
+<h5 id="2-安装交叉编译工具链"><a href="#2-安装交叉编译工具链" class="headerlink" title="2. 安装交叉编译工具链"></a>2. 安装交叉编译工具链</h5><p>需要一个交叉编译工具链来生成适用于 ARM64 架构的二进制文件。在 Debian/Ubuntu 上，可以安装以下工具：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gcc-aarch64-linux-gnu</span><br></pre></td></tr></table></figure>
+<h5 id="3-配置和编译"><a href="#3-配置和编译" class="headerlink" title="3. 配置和编译"></a>3. 配置和编译</h5><p>在项目的根目录下创建一个文件 <code>.cargo/config.toml</code>，以配置交叉编译工具链：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[target.aarch64-unknown-linux-gnu]</span><br><span class="line">ar = &quot;aarch64-linux-gnu-ar&quot;</span><br><span class="line">linker = &quot;aarch64-linux-gnu-gcc&quot;</span><br></pre></td></tr></table></figure>
+<p>接下来，运行以下命令进行编译：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cargo build --release --target=aarch64-unknown-linux-gnu</span><br></pre></td></tr></table></figure>
+<p>编译完成后， <code>.so</code> 文件将在 <code>target/aarch64-unknown-linux-gnu/release/</code> 目录下。</p>
+<h5 id="4-使用自定义工具链"><a href="#4-使用自定义工具链" class="headerlink" title="4.使用自定义工具链"></a>4.使用自定义工具链</h5><p>在项目的根目录下创建 <code>.cargo/config.toml</code> 文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[target.aarch64-unknown-linux-gnu]</span><br><span class="line">ar = &quot;/path/to/custom/toolchain/bin/aarch64-linux-gnu-ar&quot;</span><br><span class="line">linker = &quot;/path/to/custom/toolchain/bin/aarch64-linux-gnu-gcc&quot;</span><br></pre></td></tr></table></figure>
+<p>设置环境变量以指定工具链的 sysroot 和相关库路径：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=/path/to/custom/toolchain/bin/aarch64-linux-gnu-gcc</span><br><span class="line">export CC_aarch64_unknown_linux_gnu=/path/to/custom/toolchain/bin/aarch64-linux-gnu-gcc</span><br><span class="line">export AR_aarch64_unknown_linux_gnu=/path/to/custom/toolchain/bin/aarch64-linux-gnu-ar</span><br></pre></td></tr></table></figure>
+<h5 id="5-编译x64通用"><a href="#5-编译x64通用" class="headerlink" title="5.编译x64通用"></a>5.编译x64通用</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rustup target add x86_64-unknown-linux-gnu</span><br></pre></td></tr></table></figure>
+<p>在 Rust 项目中，创建一个适用于更广泛兼容性的 <code>.cargo/config.toml</code> 文件，确保使用的是一个较低版本的 glibc，并且静态链接标准库和其他依赖项：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[target.x86_64-unknown-linux-gnu]</span><br><span class="line">rustflags = [</span><br><span class="line">  &quot;-C&quot;, &quot;target-feature=+crt-static&quot;,</span><br><span class="line">  &quot;-C&quot;, &quot;link-args=-Wl,--no-as-needed -Wl,--as-needed&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>确保在编译时使用目标为 <code>x86_64-unknown-linux-gnu</code>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cargo build --release --target=x86_64-unknown-linux-gnu</span><br></pre></td></tr></table></figure>
+<h4 id="c-和python接口应用实例"><a href="#c-和python接口应用实例" class="headerlink" title="c++和python接口应用实例"></a>c++和python接口应用实例</h4><h5 id="1-配置-Cargo-toml"><a href="#1-配置-Cargo-toml" class="headerlink" title="1. 配置 Cargo.toml"></a>1. 配置 <code>Cargo.toml</code></h5><p>首先，在Rust 项目的 <code>Cargo.toml</code> 文件中添加 <code>pyo3</code> 和 <code>maturin</code> 依赖：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[package]</span><br><span class="line">name = &quot;tokenizers_wrapper&quot;</span><br><span class="line">version = &quot;0.1.0&quot;</span><br><span class="line">edition = &quot;2018&quot;</span><br><span class="line"></span><br><span class="line">[dependencies]</span><br><span class="line">pyo3 = &#123; version = &quot;0.15&quot;, features = [&quot;extension-module&quot;] &#125;</span><br><span class="line">serde_json = &quot;1.0&quot;</span><br><span class="line">tokenizers = &quot;0.13&quot;</span><br><span class="line"></span><br><span class="line">[lib]</span><br><span class="line">crate-type = [&quot;cdylib&quot;]</span><br><span class="line"></span><br><span class="line">[package.metadata.maturin]</span><br><span class="line">name = &quot;tokenizers_wrapper&quot;</span><br></pre></td></tr></table></figure>
+<p>pyo3和<code>maturin</code>用于python接口,cdylib用于c++接口</p>
+<h5 id="2-编写-Rust-代码"><a href="#2-编写-Rust-代码" class="headerlink" title="2. 编写 Rust 代码"></a>2. 编写 Rust 代码</h5><p>在 <code>src/lib.rs</code> 中编写 Rust 代码，将现有功能同时暴露给 Python 和 C++：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use pyo3::prelude::*;</span><br><span class="line">use serde_json::Value;</span><br><span class="line">use std::&#123;collections::HashMap, str::FromStr&#125;;</span><br><span class="line">use tokenizers::models::bpe::BPE;</span><br><span class="line">use tokenizers::pre_tokenizers::byte_level::ByteLevel;</span><br><span class="line">use tokenizers::tokenizer::Tokenizer;</span><br><span class="line"></span><br><span class="line">#[pyclass]</span><br><span class="line">pub struct TokenizerWrapper &#123;</span><br><span class="line">    tokenizer: Tokenizer,</span><br><span class="line">    decode_str: String,</span><br><span class="line">    id_to_token_result: String,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[pymethods]</span><br><span class="line">impl TokenizerWrapper &#123;</span><br><span class="line">    #[new]</span><br><span class="line">    pub fn from_str(json: &amp;str) -&gt; Self &#123;</span><br><span class="line">        TokenizerWrapper &#123;</span><br><span class="line">            tokenizer: Tokenizer::from_str(json).unwrap(),</span><br><span class="line">            decode_str: String::new(),</span><br><span class="line">            id_to_token_result: String::new(),</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #[staticmethod]</span><br><span class="line">    pub fn byte_level_bpe_from_str(vocab: &amp;str, merges: &amp;str, added_tokens: &amp;str) -&gt; Self &#123;</span><br><span class="line">        let vocab_json: Value = serde_json::from_str(vocab).unwrap();</span><br><span class="line">        let added_tokens_json: Value = serde_json::from_str(added_tokens).unwrap();</span><br><span class="line">        let mut vocab = HashMap::new();</span><br><span class="line"></span><br><span class="line">        match vocab_json &#123;</span><br><span class="line">            Value::Object(m) =&gt; &#123;</span><br><span class="line">                for (token, id) in m &#123;</span><br><span class="line">                    if let Value::Number(id) = id &#123;</span><br><span class="line">                        let id = id.as_u64().unwrap() as u32;</span><br><span class="line">                        vocab.insert(token, id);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            _ =&gt; panic!(&quot;Invalid vocab.json file.&quot;),</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        match added_tokens_json &#123;</span><br><span class="line">            Value::Object(m) =&gt; &#123;</span><br><span class="line">                for (token, id) in m &#123;</span><br><span class="line">                    if let Value::Number(id) = id &#123;</span><br><span class="line">                        let id = id.as_u64().unwrap() as u32;</span><br><span class="line">                        vocab.insert(token, id);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            _ =&gt; panic!(&quot;Invalid added_tokens.json file.&quot;),</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        let merges = merges</span><br><span class="line">            .lines()</span><br><span class="line">            .filter(|line| !line.starts_with(&quot;#version&quot;))</span><br><span class="line">            .map(|line| &#123;</span><br><span class="line">                let parts = line.split(&apos; &apos;).collect::&lt;Vec&lt;_&gt;&gt;();</span><br><span class="line">                if parts.len() != 2 &#123;</span><br><span class="line">                    panic!(&quot;Invalid merges.txt file.&quot;)</span><br><span class="line">                &#125;</span><br><span class="line">                (parts[0].to_string(), parts[1].to_string())</span><br><span class="line">            &#125;)</span><br><span class="line">            .collect::&lt;Vec&lt;(String, String)&gt;&gt;();</span><br><span class="line"></span><br><span class="line">        let byte_level = ByteLevel::new(</span><br><span class="line">            /*add_prefix_space=*/ false, /*trim_offsets=*/ false,</span><br><span class="line">            /*use_regex=*/ false,</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        let mut tokenizer = Tokenizer::new(BPE::new(vocab, merges));</span><br><span class="line">        tokenizer.with_pre_tokenizer(byte_level).with_decoder(byte_level);</span><br><span class="line"></span><br><span class="line">        TokenizerWrapper &#123;</span><br><span class="line">            tokenizer,</span><br><span class="line">            decode_str: String::new(),</span><br><span class="line">            id_to_token_result: String::new(),</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pub fn encode(&amp;mut self, text: &amp;str, add_special_tokens: bool) -&gt; Vec&lt;u32&gt; &#123;</span><br><span class="line">        let encoded = self.tokenizer.encode(text, add_special_tokens).unwrap();</span><br><span class="line">        encoded.get_ids().to_vec()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pub fn encode_batch(&amp;mut self, texts: Vec&lt;&amp;str&gt;, add_special_tokens: bool) -&gt; Vec&lt;Vec&lt;u32&gt;&gt; &#123;</span><br><span class="line">        self.tokenizer</span><br><span class="line">            .encode_batch(texts, add_special_tokens)</span><br><span class="line">            .unwrap()</span><br><span class="line">            .into_iter()</span><br><span class="line">            .map(|encoded| encoded.get_ids().to_vec())</span><br><span class="line">            .collect()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pub fn decode(&amp;mut self, ids: Vec&lt;u32&gt;, skip_special_tokens: bool) -&gt; String &#123;</span><br><span class="line">        self.tokenizer.decode(ids.as_slice(), skip_special_tokens).unwrap()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pub fn get_vocab_size(&amp;self) -&gt; usize &#123;</span><br><span class="line">        self.tokenizer.get_vocab_size(true)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pub fn id_to_token(&amp;mut self, id: u32) -&gt; String &#123;</span><br><span class="line">        match self.tokenizer.id_to_token(id) &#123;</span><br><span class="line">            Some(token) =&gt; token,</span><br><span class="line">            None =&gt; String::new(),</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pub fn token_to_id(&amp;self, token: &amp;str) -&gt; Option&lt;u32&gt; &#123;</span><br><span class="line">        self.tokenizer.token_to_id(token)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[pymodule]</span><br><span class="line">fn tokenizers_wrapper(_py: Python, m: &amp;PyModule) -&gt; PyResult&lt;()&gt; &#123;</span><br><span class="line">    m.add_class::&lt;TokenizerWrapper&gt;()?;</span><br><span class="line">    Ok(())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// C++ FFI functions</span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_new_from_str(input_cstr: *const u8, len: usize) -&gt; *mut TokenizerWrapper &#123;</span><br><span class="line">    let json = unsafe &#123; std::str::from_utf8(std::slice::from_raw_parts(input_cstr, len)).unwrap() &#125;;</span><br><span class="line">    Box::into_raw(Box::new(TokenizerWrapper::from_str(json)))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn byte_level_bpe_tokenizers_new_from_str(</span><br><span class="line">    input_vocab_str: *const u8,</span><br><span class="line">    len_vocab: usize,</span><br><span class="line">    input_merges_str: *const u8,</span><br><span class="line">    len_merges: usize,</span><br><span class="line">    input_added_tokens_str: *const u8,</span><br><span class="line">    len_added_tokens: usize,</span><br><span class="line">) -&gt; *mut TokenizerWrapper &#123;</span><br><span class="line">    let vocab = unsafe &#123; std::str::from_utf8(std::slice::from_raw_parts(input_vocab_str, len_vocab)).unwrap() &#125;;</span><br><span class="line">    let merges = unsafe &#123; std::str::from_utf8(std::slice::from_raw_parts(input_merges_str, len_merges)).unwrap() &#125;;</span><br><span class="line">    let added_tokens = unsafe &#123; std::str::from_utf8(std::slice::from_raw_parts(input_added_tokens_str, len_added_tokens)).unwrap() &#125;;</span><br><span class="line">    Box::into_raw(Box::new(TokenizerWrapper::byte_level_bpe_from_str(vocab, merges, added_tokens)))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_encode(</span><br><span class="line">    handle: *mut TokenizerWrapper,</span><br><span class="line">    input_cstr: *const u8,</span><br><span class="line">    len: usize,</span><br><span class="line">    add_special_tokens: i32,</span><br><span class="line">    out_result: *mut TokenizerEncodeResult,</span><br><span class="line">) &#123;</span><br><span class="line">    let input_data = unsafe &#123; std::str::from_utf8(std::slice::from_raw_parts(input_cstr, len)).unwrap() &#125;;</span><br><span class="line">    let encoded = unsafe &#123; &amp;mut *handle &#125;.encode(input_data, add_special_tokens != 0);</span><br><span class="line">    let len = encoded.len();</span><br><span class="line">    unsafe &#123;</span><br><span class="line">        *out_result = TokenizerEncodeResult &#123;</span><br><span class="line">            token_ids: Box::into_raw(encoded.into_boxed_slice()) as *mut u32,</span><br><span class="line">            len,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_encode_batch(</span><br><span class="line">    handle: *mut TokenizerWrapper,</span><br><span class="line">    input_cstr: *const *const u8,</span><br><span class="line">    input_len: *const usize,</span><br><span class="line">    num_seqs: usize,</span><br><span class="line">    add_special_tokens: i32,</span><br><span class="line">    out_result: *mut TokenizerEncodeResult,</span><br><span class="line">) &#123;</span><br><span class="line">    let input_data = (0..num_seqs)</span><br><span class="line">        .map(|i| &#123;</span><br><span class="line">            unsafe &#123;</span><br><span class="line">                std::str::from_utf8(std::slice::from_raw_parts(*input_cstr.offset(i as isize), *input_len.offset(i as isize))).unwrap()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .collect::&lt;Vec&lt;&amp;str&gt;&gt;();</span><br><span class="line">    let encoded_batch = unsafe &#123; &amp;mut *handle &#125;.encode_batch(input_data, add_special_tokens != 0);</span><br><span class="line">    for (i, encoded) in encoded_batch.into_iter().enumerate() &#123;</span><br><span class="line">        let len = encoded.len();</span><br><span class="line">        unsafe &#123;</span><br><span class="line">            *out_result.offset(i as isize) = TokenizerEncodeResult &#123;</span><br><span class="line">                token_ids: Box::into_raw(encoded.into_boxed_slice()) as *mut u32,</span><br><span class="line">                len,</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_free_encode_results(results: *mut TokenizerEncodeResult, num_seqs: usize) &#123;</span><br><span class="line">    let slice = unsafe &#123; std::slice::from_raw_parts_mut(results, num_seqs) &#125;;</span><br><span class="line">    for result in slice &#123;</span><br><span class="line">        unsafe &#123;</span><br><span class="line">            drop(Box::from_raw(std::slice::from_raw_parts_mut(result.token_ids, result.len)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_decode(</span><br><span class="line">    handle: *mut TokenizerWrapper,</span><br><span class="line">    input_ids: *const u32,</span><br><span class="line">    len: usize,</span><br><span class="line">    skip_special_tokens: i32,</span><br><span class="line">) &#123;</span><br><span class="line">    let input_data = unsafe &#123; std::slice::from_raw_parts(input_ids, len) &#125;;</span><br><span class="line">    unsafe &#123; &amp;mut *handle &#125;.decode(input_data.to_vec(), skip_special_tokens != 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_get_decode_str(</span><br><span class="line">    handle: *mut TokenizerWrapper,</span><br><span class="line">    out_cstr: *mut *mut u8,</span><br><span class="line">    out_len: *mut usize,</span><br><span class="line">) &#123;</span><br><span class="line">    let decode_str = unsafe &#123; &amp;mut *handle &#125;.decode_str.as_bytes();</span><br><span class="line">    unsafe &#123;</span><br><span class="line">        *out_cstr = decode_str.as_ptr() as *mut u8;</span><br><span class="line">        *out_len = decode_str.len();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_free(wrapper: *mut TokenizerWrapper) &#123;</span><br><span class="line">    unsafe &#123;</span><br><span class="line">        drop(Box::from_raw(wrapper));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_get_vocab_size(handle: *mut TokenizerWrapper, size: *mut usize) &#123;</span><br><span class="line">    unsafe &#123;</span><br><span class="line">        *size = (*handle).get_vocab_size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_id_to_token(</span><br><span class="line">    handle: *mut TokenizerWrapper,</span><br><span class="line">    id: u32,</span><br><span class="line">    out_cstr: *mut *mut u8,</span><br><span class="line">    out_len: *mut usize,</span><br><span class="line">) &#123;</span><br><span class="line">    let token = unsafe &#123; &amp;mut *handle &#125;.id_to_token(id).into_bytes();</span><br><span class="line">    unsafe &#123;</span><br><span class="line">        *out_cstr = token.as_ptr() as *mut u8;</span><br><span class="line">        *out_len = token.len();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[no_mangle]</span><br><span class="line">pub extern &quot;C&quot; fn tokenizers_token_to_id(</span><br><span class="line">    handle: *mut TokenizerWrapper,</span><br><span class="line">    token: *const u8,</span><br><span class="line">    len: usize,</span><br><span class="line">    out_id: *mut i32,</span><br><span class="line">) &#123;</span><br><span class="line">    let token_str = unsafe &#123; std::str::from_utf8(std::slice::from_raw_parts(token, len)).unwrap() &#125;;</span><br><span class="line">    let id = unsafe &#123; &amp;mut *handle &#125;.token_to_id(token_str);</span><br><span class="line">    unsafe &#123;</span><br><span class="line">        *out_id = match id &#123;</span><br><span class="line">            Some(id) =&gt; id as i32,</span><br><span class="line">            None =&gt; -1,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#[repr(C)]</span><br><span class="line">pub struct TokenizerEncodeResult &#123;</span><br><span class="line">    token_ids: *mut u32,</span><br><span class="line">    len: usize,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-构建和发布"><a href="#3-构建和发布" class="headerlink" title="3. 构建和发布"></a>3. 构建和发布</h5><p>使用 <code>maturin</code> 来构建和发布 Python 包。确保安装了 <code>maturin</code>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install maturin</span><br></pre></td></tr></table></figure>
+<p>在项目根目录下运行以下命令来构建 Python 包：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">maturin develop --release</span><br></pre></td></tr></table></figure>
+<p>这将构建并安装 Rust 扩展模块，使其可以在 Python 中导入和使用。</p>
+<p>错误解决：pkg_config 错误</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install pkg-config</span><br></pre></td></tr></table></figure>
+<p>错误解决：ssl 错误</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install libssl-dev</span><br></pre></td></tr></table></figure>
+<h5 id="4-编写-Python-接口"><a href="#4-编写-Python-接口" class="headerlink" title="4. 编写 Python 接口"></a>4. 编写 Python 接口</h5><p>现在，可以在 Python 中导入并使用这个包装器模块。以下是一个简单的 Python 接口示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import tokenizers_wrapper</span><br><span class="line"></span><br><span class="line"># 从字符串创建 TokenizerWrapper 实例</span><br><span class="line">json_str = &apos;...&apos;  # 你的 tokenizer JSON 字符串</span><br><span class="line">tokenizer = tokenizers_wrapper.TokenizerWrapper(json_str)</span><br><span class="line"></span><br><span class="line"># 使用 byte-level BPE 创建 TokenizerWrapper 实例</span><br><span class="line">vocab = &apos;...&apos;  # 你的 vocab.json 字符串</span><br><span class="line">merges = &apos;...&apos;  # 你的 merges.txt 字符串</span><br><span class="line">added_tokens = &apos;...&apos;  # 你的 added_tokens.json 字符串</span><br><span class="line">tokenizer = tokenizers_wrapper.TokenizerWrapper.byte_level_bpe_from_str(vocab, merges, added_tokens)</span><br><span class="line"></span><br><span class="line"># 编码单个文本</span><br><span class="line">text = &quot;Hello, world!&quot;</span><br><span class="line">token_ids = tokenizer.encode(text, add_special_tokens=True)</span><br><span class="line">print(token_ids)</span><br><span class="line"></span><br><span class="line"># 批量编码文本</span><br><span class="line">texts = [&quot;Hello, world!&quot;, &quot;Goodbye, world!&quot;]</span><br><span class="line">batch_token_ids = tokenizer.encode_batch(texts, add_special_tokens=True)</span><br><span class="line">print(batch_token_ids)</span><br><span class="line"></span><br><span class="line"># 解码 token IDs</span><br><span class="line">decoded_text = tokenizer.decode(token_ids, skip_special_tokens=True)</span><br><span class="line">print(decoded_text)</span><br><span class="line"></span><br><span class="line"># 获取词汇表大小</span><br><span class="line">vocab_size = tokenizer.get_vocab_size()</span><br><span class="line">print(vocab_size)</span><br><span class="line"></span><br><span class="line"># 从 token ID 获取 token</span><br><span class="line">token = tokenizer.id_to_token(0)</span><br><span class="line">print(token)</span><br><span class="line"></span><br><span class="line"># 从 token 获取 token ID</span><br><span class="line">token_id = tokenizer.token_to_id(&quot;Hello&quot;)</span><br><span class="line">print(token_id)</span><br></pre></td></tr></table></figure>
+<h5 id="5-编写-C-接口"><a href="#5-编写-C-接口" class="headerlink" title="5. 编写 C++ 接口"></a>5. 编写 C++ 接口</h5><p>创建一个简单的 C++ 项目来使用这个包装器模块：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &quot;tokenizers_wrapper.h&quot;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    const char* json_str = R&quot;(&#123;&quot;type&quot;: &quot;bpe&quot;, &quot;unk_token&quot;: &quot;[UNK]&quot;&#125;)&quot;;</span><br><span class="line">    TokenizerWrapper* tokenizer = tokenizers_new_from_str((const uint8_t*)json_str, strlen(json_str));</span><br><span class="line"></span><br><span class="line">    const char* text = &quot;Hello, world!&quot;;</span><br><span class="line">    TokenizerEncodeResult result;</span><br><span class="line">    tokenizers_encode(tokenizer, (const uint8_t*)text, strlen(text), 1, &amp;result);</span><br><span class="line"></span><br><span class="line">    std::vector&lt;uint32_t&gt; token_ids(result.token_ids, result.token_ids + result.len);</span><br><span class="line">    for (uint32_t id : token_ids) &#123;</span><br><span class="line">        std::cout &lt;&lt; id &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    tokenizers_free_encode_results(&amp;result, 1);</span><br><span class="line">    tokenizers_free(tokenizer);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="6-构建和运行-C-项目"><a href="#6-构建和运行-C-项目" class="headerlink" title="6. 构建和运行 C++ 项目"></a>6. 构建和运行 C++ 项目</h5><p>创建一个 <code>CMakeLists.txt</code> 文件来构建 C++ 项目：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.18)</span><br><span class="line">project(tokenizers_cpp CXX)</span><br><span class="line"></span><br><span class="line">set(CMAKE_CXX_STANDARD 17)</span><br><span class="line">set(CMAKE_CXX_STANDARD_REQUIRED ON)</span><br><span class="line"></span><br><span class="line">add_executable(tokenizers_demo main.cpp)</span><br><span class="line"></span><br><span class="line"># 设置 Tokenizers Wrapper 库的路径</span><br><span class="line">set(TOKENIZERS_WRAPPER_LIB_PATH &quot;/path/to/your/rust/library&quot;)</span><br><span class="line">include_directories($&#123;TOKENIZERS_WRAPPER_LIB_PATH&#125;/include)</span><br><span class="line">link_directories($&#123;TOKENIZERS_WRAPPER_LIB_PATH&#125;/lib)</span><br><span class="line"></span><br><span class="line"># 链接 Tokenizers Wrapper 库</span><br><span class="line">target_link_libraries(tokenizers_demo tokenizers_wrapper)</span><br></pre></td></tr></table></figure>
+<p>然后，使用 CMake 构建和运行项目：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">./tokenizers_demo</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rust-多平台demo/" rel="tag">✿✿✿ rust 多平台demo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/05/torch安装/" rel="next" title="torch和apex安装">
+                <i class="fa fa-chevron-left"></i> torch和apex安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/05/mamba/" rel="prev" title="mamba">
+                mamba <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
+
+    
+</div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="sylvia">
+            
+              <p class="site-author-name" itemprop="name">sylvia</p>
+              <p class="site-description motion-element" itemprop="description">君がいるだから、今の僕は幸せです。今日もありがとう。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:836753560@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:live:836753560?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#rust-多平台demo"><span class="nav-number">1.</span> <span class="nav-text">rust 多平台demo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rust-安装"><span class="nav-number">1.1.</span> <span class="nav-text">rust 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#换源"><span class="nav-number">1.1.1.</span> <span class="nav-text">换源</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C"><span class="nav-number">1.2.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一步：创建Rust库"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一步：创建Rust库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二步：在C-中调用Rust函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二步：在C++中调用Rust函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-交叉编译"><span class="nav-number">1.3.</span> <span class="nav-text">C++ 交叉编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-rust配置"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.rust配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-安装交叉编译工具链"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 安装交叉编译工具链</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-配置和编译"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 配置和编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-使用自定义工具链"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.使用自定义工具链</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-编译x64通用"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.编译x64通用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-和python接口应用实例"><span class="nav-number">1.4.</span> <span class="nav-text">c++和python接口应用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-配置-Cargo-toml"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 配置 Cargo.toml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-编写-Rust-代码"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 编写 Rust 代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-构建和发布"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 构建和发布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-编写-Python-接口"><span class="nav-number">1.4.4.</span> <span class="nav-text">4. 编写 Python 接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-编写-C-接口"><span class="nav-number">1.4.5.</span> <span class="nav-text">5. 编写 C++ 接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-构建和运行-C-项目"><span class="nav-number">1.4.6.</span> <span class="nav-text">6. 构建和运行 C++ 项目</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sylvia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">141.8k</span>
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/05/rust 多平台demo/';
+          this.page.identifier = '2019/01/05/rust 多平台demo/';
+          this.page.title = 'rust 多平台demo';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tsumiki"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

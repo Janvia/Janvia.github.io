@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://janvia.github.io/2019/01/05/rust%20%E5%A4%9A%E5%B9%B3%E5%8F%B0demo/</loc>
+    <lastmod>2024-07-02</lastmod>
+  </url>  <url>
+    <loc>https://janvia.github.io/2019/01/05/vscode/</loc>
+    <lastmod>2024-07-02</lastmod>
+  </url>  <url>
     <loc>https://janvia.github.io/2019/01/07/AMD%20GPU%20Pytorch%20%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2024-06-20</lastmod>
   </url>  <url>
@@ -15,9 +21,6 @@
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/05/tflite%E7%BC%96%E8%AF%91/</loc>
     <lastmod>2024-05-15</lastmod>
-  </url>  <url>
-    <loc>https://janvia.github.io/2019/01/05/vscode/</loc>
-    <lastmod>2024-04-28</lastmod>
   </url>  <url>
     <loc>https://janvia.github.io/2019/01/07/%E6%8D%A2%E6%BA%90/</loc>
     <lastmod>2024-04-27</lastmod>
