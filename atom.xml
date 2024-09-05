@@ -65,6 +65,32 @@
   </entry>
   
   <entry>
+    <title>wsl</title>
+    <link href="https://janvia.github.io/2022/08/20/wsl/"/>
+    <id>https://janvia.github.io/2022/08/20/wsl/</id>
+    <published>2022-08-20T08:55:59.000Z</published>
+    <updated>2024-02-04T02:20:54.884Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h3 id="wsl"><a href="#wsl" class="headerlink" title="wsl"></a>wsl</h3><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl -l -o #查看版本</span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br><span class="line">wsl --install -d Ubuntu-18.04</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl --set-version Ubuntu-18.04 2</span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure><h5 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h5><p>1.设置防火墙 ,不勾选wsl</p><p>2.设置代理软件allow alan</p><p>3.安装配置proxychains4,见配置proxychains4</p><p>​    对于wsl2,配置的地址需要是ipconfig的地址172.xx.xx.1</p><h5 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h5><p>将wsl 安装在其他盘</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl --export Ubuntu-20.04 d:\wsl-ubuntu20.04.tar #导出</span><br><span class="line">wsl --unregister Ubuntu-20.04 #注销</span><br><span class="line">#重新导入</span><br><span class="line">wsl --import Ubuntu-20.04 d:\wsl-ubuntu20.04 d:\wsl-ubuntu20.04.tar --version 2</span><br><span class="line">ubuntu2004 config --default-user USERNAME #设置usr</span><br><span class="line">del d:\wsl-ubuntu20.04.tar#删除包</span><br></pre></td></tr></table></figure><h5 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h5><p>查看/etc/resolv.conf</p><p>如果出现网络错误,nameserver为红色</p><p>1.在/etc/wsl.conf中加入：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[network]</span><br><span class="line">generateResolvConf = false</span><br></pre></td></tr></table></figure><p>2.PowerShell重启WSL</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl --shutdown</span><br></pre></td></tr></table></figure><p>3.修改/etc/resolv.conf,去掉发红的nameserver</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 223.6.6.6</span><br></pre></td></tr></table></figure><h4 id="网络故障修复"><a href="#网络故障修复" class="headerlink" title="网络故障修复"></a>网络故障修复</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl --shutdown</span><br><span class="line">netsh winsock reset</span><br><span class="line">netsh int ip reset all</span><br><span class="line">netsh winhttp reset proxy</span><br><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure><p>然后重启</p><h3 id="wsl-gui"><a href="#wsl-gui" class="headerlink" title="wsl gui"></a>wsl gui</h3><p>更新wsl,在powershell 或者windows cmd运行</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl --update</span><br></pre></td></tr></table></figure><h4 id="google-chrome"><a href="#google-chrome" class="headerlink" title="google chrome"></a>google chrome</h4><p>安装</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</span><br><span class="line">sudo apt install --fix-missing ./google-chrome-stable_current_amd64.deb</span><br></pre></td></tr></table></figure><p>启动：<code>google-chrome</code></p><h4 id="Microsoft-Edge"><a href="#Microsoft-Edge" class="headerlink" title="Microsoft Edge"></a>Microsoft Edge</h4><p>安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">## Setup</span><br><span class="line">curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor &gt; microsoft.gpg</span><br><span class="line">sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/</span><br><span class="line">sudo sh -c &apos;echo &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main&quot; &gt; /etc/apt/sources.list.d/microsoft-edge-beta.list&apos;</span><br><span class="line">sudo rm microsoft.gpg</span><br><span class="line">## Install</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install microsoft-edge-beta</span><br></pre></td></tr></table></figure></p><p>启动： <code>microsoft-edge</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;wsl&quot;&gt;&lt;a href=&quot;#wsl&quot; class=&quot;headerlink&quot; title=&quot;wsl&quot;&gt;&lt;/a&gt;wsl&lt;/h3&gt;&lt;h5 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="https://janvia.github.io/categories/linux/"/>
+    
+    
+      <category term="wsl" scheme="https://janvia.github.io/tags/wsl/"/>
+    
+  </entry>
+  
+  <entry>
     <title>双系统安装</title>
     <link href="https://janvia.github.io/2022/08/20/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
     <id>https://janvia.github.io/2022/08/20/双系统安装/</id>
@@ -88,32 +114,6 @@
     
     
       <category term="双系统安装" scheme="https://janvia.github.io/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>wsl</title>
-    <link href="https://janvia.github.io/2022/08/20/wsl/"/>
-    <id>https://janvia.github.io/2022/08/20/wsl/</id>
-    <published>2022-08-20T08:55:59.000Z</published>
-    <updated>2024-02-04T02:20:54.884Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><h3 id="wsl"><a href="#wsl" class="headerlink" title="wsl"></a>wsl</h3><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl -l -o #查看版本</span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br><span class="line">wsl --install -d Ubuntu-18.04</span><br><span class="line">wsl --shutdown</span><br><span class="line">wsl --set-version Ubuntu-18.04 2</span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure><h5 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h5><p>1.设置防火墙 ,不勾选wsl</p><p>2.设置代理软件allow alan</p><p>3.安装配置proxychains4,见配置proxychains4</p><p>​    对于wsl2,配置的地址需要是ipconfig的地址172.xx.xx.1</p><h5 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h5><p>将wsl 安装在其他盘</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl --export Ubuntu-20.04 d:\wsl-ubuntu20.04.tar #导出</span><br><span class="line">wsl --unregister Ubuntu-20.04 #注销</span><br><span class="line">#重新导入</span><br><span class="line">wsl --import Ubuntu-20.04 d:\wsl-ubuntu20.04 d:\wsl-ubuntu20.04.tar --version 2</span><br><span class="line">ubuntu2004 config --default-user USERNAME #设置usr</span><br><span class="line">del d:\wsl-ubuntu20.04.tar#删除包</span><br></pre></td></tr></table></figure><h5 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h5><p>查看/etc/resolv.conf</p><p>如果出现网络错误,nameserver为红色</p><p>1.在/etc/wsl.conf中加入：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[network]</span><br><span class="line">generateResolvConf = false</span><br></pre></td></tr></table></figure><p>2.PowerShell重启WSL</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl --shutdown</span><br></pre></td></tr></table></figure><p>3.修改/etc/resolv.conf,去掉发红的nameserver</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 223.6.6.6</span><br></pre></td></tr></table></figure><h4 id="网络故障修复"><a href="#网络故障修复" class="headerlink" title="网络故障修复"></a>网络故障修复</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl --shutdown</span><br><span class="line">netsh winsock reset</span><br><span class="line">netsh int ip reset all</span><br><span class="line">netsh winhttp reset proxy</span><br><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure><p>然后重启</p><h3 id="wsl-gui"><a href="#wsl-gui" class="headerlink" title="wsl gui"></a>wsl gui</h3><p>更新wsl,在powershell 或者windows cmd运行</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wsl --update</span><br></pre></td></tr></table></figure><h4 id="google-chrome"><a href="#google-chrome" class="headerlink" title="google chrome"></a>google chrome</h4><p>安装</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</span><br><span class="line">sudo apt install --fix-missing ./google-chrome-stable_current_amd64.deb</span><br></pre></td></tr></table></figure><p>启动：<code>google-chrome</code></p><h4 id="Microsoft-Edge"><a href="#Microsoft-Edge" class="headerlink" title="Microsoft Edge"></a>Microsoft Edge</h4><p>安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">## Setup</span><br><span class="line">curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor &gt; microsoft.gpg</span><br><span class="line">sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/</span><br><span class="line">sudo sh -c &apos;echo &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main&quot; &gt; /etc/apt/sources.list.d/microsoft-edge-beta.list&apos;</span><br><span class="line">sudo rm microsoft.gpg</span><br><span class="line">## Install</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install microsoft-edge-beta</span><br></pre></td></tr></table></figure></p><p>启动： <code>microsoft-edge</code></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;wsl&quot;&gt;&lt;a href=&quot;#wsl&quot; class=&quot;headerlink&quot; title=&quot;wsl&quot;&gt;&lt;/a&gt;wsl&lt;/h3&gt;&lt;h5 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=
-      
-    
-    </summary>
-    
-      <category term="linux" scheme="https://janvia.github.io/categories/linux/"/>
-    
-    
-      <category term="wsl" scheme="https://janvia.github.io/tags/wsl/"/>
     
   </entry>
   
@@ -144,32 +144,6 @@
   </entry>
   
   <entry>
-    <title>matplotlib补充</title>
-    <link href="https://janvia.github.io/2022/08/18/matplotlib%E8%A1%A5%E5%85%85/"/>
-    <id>https://janvia.github.io/2022/08/18/matplotlib补充/</id>
-    <published>2022-08-18T08:44:41.000Z</published>
-    <updated>2022-08-19T15:21:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><h4 id="防止中文乱码"><a href="#防止中文乱码" class="headerlink" title="防止中文乱码"></a>防止中文乱码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import matplotlib as mpl</span><br><span class="line">mpl.rcParams[&apos;font.sans-serif&apos;] = [u&apos;simHei&apos;]</span><br><span class="line">mpl.rcParams[&apos;axes.unicode_minus&apos;] = False</span><br></pre></td></tr></table></figure><h4 id="调整子图布局"><a href="#调整子图布局" class="headerlink" title="调整子图布局"></a>调整子图布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plt.tight_layout()</span><br></pre></td></tr></table></figure><h4 id="设置坐标轴"><a href="#设置坐标轴" class="headerlink" title="设置坐标轴"></a>设置坐标轴</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">axis(‘off’)#：关闭轴线和标签。</span><br><span class="line">axis(‘equal’)#：使x轴与y轴保持与屏幕一致的高宽比（横纵比）。</span><br><span class="line">axis(‘tight’)#：使x轴与y轴限制在有数据的区域。</span><br><span class="line">axis(‘square’)#：使x轴与y轴坐标一致。</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h4 id=&quot;防止中文乱码&quot;&gt;&lt;a href=&quot;#防止中文乱码&quot; class=&quot;headerlink&quot; title=&quot;防止中文乱码&quot;&gt;&lt;/a&gt;防止中文乱码&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="matplotlib" scheme="https://janvia.github.io/tags/matplotlib/"/>
-    
-  </entry>
-  
-  <entry>
     <title>linux系统代理</title>
     <link href="https://janvia.github.io/2022/08/18/linux%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86/"/>
     <id>https://janvia.github.io/2022/08/18/linux系统代理/</id>
@@ -192,6 +166,32 @@
     
     
       <category term="代理" scheme="https://janvia.github.io/tags/%E4%BB%A3%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>matplotlib补充</title>
+    <link href="https://janvia.github.io/2022/08/18/matplotlib%E8%A1%A5%E5%85%85/"/>
+    <id>https://janvia.github.io/2022/08/18/matplotlib补充/</id>
+    <published>2022-08-18T08:44:41.000Z</published>
+    <updated>2022-08-19T15:21:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h4 id="防止中文乱码"><a href="#防止中文乱码" class="headerlink" title="防止中文乱码"></a>防止中文乱码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import matplotlib as mpl</span><br><span class="line">mpl.rcParams[&apos;font.sans-serif&apos;] = [u&apos;simHei&apos;]</span><br><span class="line">mpl.rcParams[&apos;axes.unicode_minus&apos;] = False</span><br></pre></td></tr></table></figure><h4 id="调整子图布局"><a href="#调整子图布局" class="headerlink" title="调整子图布局"></a>调整子图布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plt.tight_layout()</span><br></pre></td></tr></table></figure><h4 id="设置坐标轴"><a href="#设置坐标轴" class="headerlink" title="设置坐标轴"></a>设置坐标轴</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">axis(‘off’)#：关闭轴线和标签。</span><br><span class="line">axis(‘equal’)#：使x轴与y轴保持与屏幕一致的高宽比（横纵比）。</span><br><span class="line">axis(‘tight’)#：使x轴与y轴限制在有数据的区域。</span><br><span class="line">axis(‘square’)#：使x轴与y轴坐标一致。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h4 id=&quot;防止中文乱码&quot;&gt;&lt;a href=&quot;#防止中文乱码&quot; class=&quot;headerlink&quot; title=&quot;防止中文乱码&quot;&gt;&lt;/a&gt;防止中文乱码&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="matplotlib" scheme="https://janvia.github.io/tags/matplotlib/"/>
     
   </entry>
   
@@ -476,31 +476,6 @@
   </entry>
   
   <entry>
-    <title>hexo系统重装恢复</title>
-    <link href="https://janvia.github.io/2019/03/12/hexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D/"/>
-    <id>https://janvia.github.io/2019/03/12/hexo系统重装恢复/</id>
-    <published>2019-03-12T09:13:01.000Z</published>
-    <updated>2024-02-04T01:56:42.026Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="安装node-js和npm"><a href="#安装node-js和npm" class="headerlink" title="安装node.js和npm"></a>安装node.js和npm</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install nodejs</span><br><span class="line">sudo apt install npm</span><br></pre></td></tr></table></figure><p>新版本安装(hexo不支持)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure></p><p>nvm指定版本安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">proxychains4 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | proxychains4 bash</span><br><span class="line">source ~/.zshrc</span><br><span class="line">export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/</span><br><span class="line">export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojs</span><br><span class="line">nvm install 12.16.2</span><br><span class="line">nvm use 12.16.2</span><br></pre></td></tr></table></figure></p><p>换源<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install -g nrm</span><br><span class="line">nrm ls</span><br><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure></p><h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">`sudo npm install -g hexo-cli`</span><br></pre></td></tr></table></figure><h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure><h4 id="配置github-git"><a href="#配置github-git" class="headerlink" title="配置github-git"></a>配置github-git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;your github name&quot;</span><br><span class="line">git config --global user.email &quot;example@email.com&quot;</span><br></pre></td></tr></table></figure><p>填写github账户名和注册邮箱</p><h4 id="创建公钥"><a href="#创建公钥" class="headerlink" title="创建公钥"></a>创建公钥</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;example@email.com&quot;</span><br></pre></td></tr></table></figure><p>将在~/.ssh/文件夹下生成github_name 和 github_name.pub两个文件，</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gedit github_name.pub</span><br></pre></td></tr></table></figure><p>打开github登录，点击头像setting -&gt; SSH and GPG keys，将.pub 文件内容复制到 SSH keys中</p><p>测试是否设置成功<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure></p><h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><p>测试是否成功</p><h4 id="加速"><a href="#加速" class="headerlink" title="加速"></a>加速</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i hexo-offline-popup --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;安装node-js和npm&quot;&gt;&lt;a href=&quot;#安装node-js和npm&quot; class=&quot;headerlink&quot; title=&quot;安装node.js和npm&quot;&gt;&lt;/a&gt;安装node.js和npm&lt;/h4&gt;&lt;figure class=&quot;highlight plai
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="hexo" scheme="https://janvia.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>hexo加速</title>
     <link href="https://janvia.github.io/2019/03/12/hexo%E5%8A%A0%E9%80%9F/"/>
     <id>https://janvia.github.io/2019/03/12/hexo加速/</id>
@@ -515,6 +490,31 @@
       
         &lt;h4 id=&quot;购买域名&quot;&gt;&lt;a href=&quot;#购买域名&quot; class=&quot;headerlink&quot; title=&quot;购买域名&quot;&gt;&lt;/a&gt;购买域名&lt;/h4&gt;&lt;p&gt;以阿里云域名为例，可选择10块以内的&lt;br&gt;网址为：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://wanwang.ali
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://janvia.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="hexo" scheme="https://janvia.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo系统重装恢复</title>
+    <link href="https://janvia.github.io/2019/03/12/hexo%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85%E6%81%A2%E5%A4%8D/"/>
+    <id>https://janvia.github.io/2019/03/12/hexo系统重装恢复/</id>
+    <published>2019-03-12T09:13:01.000Z</published>
+    <updated>2024-02-04T01:56:42.026Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="安装node-js和npm"><a href="#安装node-js和npm" class="headerlink" title="安装node.js和npm"></a>安装node.js和npm</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install nodejs</span><br><span class="line">sudo apt install npm</span><br></pre></td></tr></table></figure><p>新版本安装(hexo不支持)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure></p><p>nvm指定版本安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">proxychains4 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | proxychains4 bash</span><br><span class="line">source ~/.zshrc</span><br><span class="line">export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/</span><br><span class="line">export NVM_IOJS_ORG_MIRROR=http://npm.taobao.org/mirrors/iojs</span><br><span class="line">nvm install 12.16.2</span><br><span class="line">nvm use 12.16.2</span><br></pre></td></tr></table></figure></p><p>换源<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install -g nrm</span><br><span class="line">nrm ls</span><br><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure></p><h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">`sudo npm install -g hexo-cli`</span><br></pre></td></tr></table></figure><h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure><h4 id="配置github-git"><a href="#配置github-git" class="headerlink" title="配置github-git"></a>配置github-git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;your github name&quot;</span><br><span class="line">git config --global user.email &quot;example@email.com&quot;</span><br></pre></td></tr></table></figure><p>填写github账户名和注册邮箱</p><h4 id="创建公钥"><a href="#创建公钥" class="headerlink" title="创建公钥"></a>创建公钥</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;example@email.com&quot;</span><br></pre></td></tr></table></figure><p>将在~/.ssh/文件夹下生成github_name 和 github_name.pub两个文件，</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gedit github_name.pub</span><br></pre></td></tr></table></figure><p>打开github登录，点击头像setting -&gt; SSH and GPG keys，将.pub 文件内容复制到 SSH keys中</p><p>测试是否设置成功<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure></p><h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><p>测试是否成功</p><h4 id="加速"><a href="#加速" class="headerlink" title="加速"></a>加速</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i hexo-offline-popup --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;安装node-js和npm&quot;&gt;&lt;a href=&quot;#安装node-js和npm&quot; class=&quot;headerlink&quot; title=&quot;安装node.js和npm&quot;&gt;&lt;/a&gt;安装node.js和npm&lt;/h4&gt;&lt;figure class=&quot;highlight plai
       
     
     </summary>

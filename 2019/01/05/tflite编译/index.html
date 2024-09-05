@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tflite编译,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="sylvia" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
+<meta name="keywords" content="tflite编译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tflite编译">
+<meta property="og:url" content="https://janvia.github.io/2019/01/05/tflite编译/index.html">
+<meta property="og:site_name" content="sylvia">
+<meta property="og:description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2024-05-15T07:41:19.328Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tflite编译">
+<meta name="twitter:description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9CNLK347LC',
+      apiKey: '5d000d330392ce1b44b614961e14f53e',
+      indexName: 'dev_janviablog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://janvia.github.io/2019/01/05/tflite编译/">
+
+
+
+
+
+
+  <title>tflite编译 | sylvia</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sylvia</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Viva La Vida</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/05/tflite编译/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">tflite编译</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-05T17:16:43+08:00">
+                2019-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习移植/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习移植</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/05/tflite编译/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/05/tflite编译/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="安装bazel"><a href="#安装bazel" class="headerlink" title="安装bazel"></a>安装bazel</h3><h4 id="从apt安装"><a href="#从apt安装" class="headerlink" title="从apt安装"></a>从apt安装</h4><p>1.添加配置<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install apt-transport-https curl gnupg -y</span><br><span class="line">curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &gt;bazel-archive-keyring.gpg</span><br><span class="line">sudo mv bazel-archive-keyring.gpg /usr/share/keyrings</span><br><span class="line">echo &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8&quot; | sudo tee /etc/apt/sources.list.d/bazel.list</span><br></pre></td></tr></table></figure></p>
+<p>2.安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt install bazel=4.2.1</span><br></pre></td></tr></table></figure></p>
+<h4 id="从源码安装"><a href="#从源码安装" class="headerlink" title="从源码安装"></a>从源码安装</h4><p>1.安装依赖<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install pkg-config zip g++ zlib1g-dev unzip python</span><br></pre></td></tr></table></figure></p>
+<p>2.下载源码<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/bazelbuild/bazel.git</span><br><span class="line">cd bazel</span><br></pre></td></tr></table></figure></p>
+<p>3.编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./compile.sh</span><br></pre></td></tr></table></figure></p>
+<p>4.安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo cp output/bazel /usr/local/bin/bazel</span><br></pre></td></tr></table></figure></p>
+<h4 id="下载预编译二进制安装"><a href="#下载预编译二进制安装" class="headerlink" title="下载预编译二进制安装"></a>下载预编译二进制安装</h4><p>下载地址： <a href="https://github.com/bazelbuild/bazel/releases" target="_blank" rel="noopener">https://github.com/bazelbuild/bazel/releases</a><br>运行方式<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x bazel-version-installer-linux-x86_64.sh</span><br><span class="line">./bazel-version-installer-linux-x86_64.sh --user</span><br></pre></td></tr></table></figure></p>
+<p>配置环境变量<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH=&quot;$PATH:$HOME/bin&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装TensorFlow-Lite"><a href="#安装TensorFlow-Lite" class="headerlink" title="安装TensorFlow Lite"></a>安装TensorFlow Lite</h3><p>官方教程： <a href="https://www.tensorflow.org/lite/guide/build_arm?hl=zh-cn" target="_blank" rel="noopener">https://www.tensorflow.org/lite/guide/build_arm?hl=zh-cn</a></p>
+<h4 id="1-下载源码"><a href="#1-下载源码" class="headerlink" title="1.下载源码"></a>1.下载源码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/tensorflow/tensorflow.git</span><br><span class="line">cd tensorflow</span><br></pre></td></tr></table></figure>
+<p>或者下载指定版本<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone -b v2.15.0 https://github.com/tensorflow/tensorflow.git</span><br></pre></td></tr></table></figure></p>
+<p>手动下载<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://github.com/tensorflow/tensorflow/archive/v2.15.0.zip</span><br><span class="line">unzip v2.15.0.zip</span><br><span class="line">cd tensorflow-2.15.0</span><br></pre></td></tr></table></figure></p>
+<h4 id="通过bazel安装"><a href="#通过bazel安装" class="headerlink" title="通过bazel安装"></a>通过bazel安装</h4><p>配置<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./configure</span><br></pre></td></tr></table></figure></p>
+<p>3.编译x86<br>on wsl(18.04)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bazel build --config=monolithic //tensorflow/lite:libtensorflowlite.so</span><br></pre></td></tr></table></figure></p>
+<p>经测试，报GLIB2.7错误，发现编译的Ubuntu（22.04）版本与应用的UBUNTU（20.04）版本不同，<br>使用相同的WSL版本或者docker版本可解决</p>
+<p>4.编译arm64<br>官方<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bazel build --config=elinux_aarch64 -c opt //tensorflow/lite:libtensorflowlite.so</span><br></pre></td></tr></table></figure></p>
+<p>经测试，报GLIB2.7错误，默认使用的是 GCC 8.3 ，构建的二进制文件需要 glibc 2.28 或更高版本。如果您的目标是较低版本的 glibc，则需要使用旧版 GCC 工具链。</p>
+<h4 id="bazel方式复制头文件和lib文件"><a href="#bazel方式复制头文件和lib文件" class="headerlink" title="bazel方式复制头文件和lib文件"></a>bazel方式复制头文件和lib文件</h4><p>此方式不好挂代理和不好设置交叉编译工具链，可编译出动态库<br>头文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd tensorflow/tensorflow</span><br><span class="line">find ./lite -name &quot;*.h&quot; | tar -cf headers.tar -T -</span><br></pre></td></tr></table></figure></p>
+<p>lib文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tensorflow/bazel-bin/tensorflow/lite/libtensorflowlite.so</span><br></pre></td></tr></table></figure></p>
+<p>flatbuffer<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tensorflow/bazel-bin/external/flatbuffers/libflatbuffers.a</span><br></pre></td></tr></table></figure></p>
+<p>tensorflow/tensorflow/lite/tools/make下执行download_dependencies.sh，<br>或者直接下载flatbuffers压缩包，然后取出include的内容放置到cpp_tflite/include中即可。</p>
+<h4 id="通过cmake方式安装"><a href="#通过cmake方式安装" class="headerlink" title="通过cmake方式安装"></a>通过cmake方式安装</h4><p>官网地址: <a href="https://www.tensorflow.org/lite/guide/build_cmake_arm?hl=zh-cn" target="_blank" rel="noopener">https://www.tensorflow.org/lite/guide/build_cmake_arm?hl=zh-cn</a></p>
+<p>1.本地编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake ../tensorflow_src/tensorflow/lite</span><br></pre></td></tr></table></figure></p>
+<p>实际测试，将所有a文件拷到离线设备上也无法使用</p>
+<p>2.交叉编译</p>
+<p>下载工具链<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-linux-gnu/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz</span><br><span class="line">tar xvJf gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz</span><br><span class="line">mv gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu $DIR/</span><br><span class="line">export PATH=&quot;$PATH:$DIR/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin&quot;</span><br></pre></td></tr></table></figure></p>
+<p>配置<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ARMCC_PREFIX=$&#123;HOME&#125;/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-</span><br><span class="line">ARMCC_FLAGS=&quot;-funsafe-math-optimizations&quot;</span><br><span class="line">cmake -DCMAKE_C_COMPILER=$&#123;ARMCC_PREFIX&#125;gcc \</span><br><span class="line">  -DCMAKE_CXX_COMPILER=$&#123;ARMCC_PREFIX&#125;g++ \</span><br><span class="line">  -DCMAKE_C_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \</span><br><span class="line">  -DCMAKE_CXX_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \</span><br><span class="line">  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \</span><br><span class="line">  -DCMAKE_SYSTEM_NAME=Linux \</span><br><span class="line">  -DCMAKE_SYSTEM_PROCESSOR=aarch64 \</span><br><span class="line">  ../tensorflow/lite/</span><br></pre></td></tr></table></figure></p>
+<p>make<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make -j8</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake --build . -j</span><br></pre></td></tr></table></figure></p>
+<p>注意： 此方式复制.a文件无法运行</p>
+<h4 id="cmake方式直接集成到项目"><a href="#cmake方式直接集成到项目" class="headerlink" title="cmake方式直接集成到项目"></a>cmake方式直接集成到项目</h4><p>在Cmakelists.txt中添加代码<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set(TENSORFLOW_SOURCE_DIR &quot;&quot; CACHE PATH</span><br><span class="line">  &quot;Directory that contains the TensorFlow project&quot;</span><br><span class="line">)</span><br><span class="line">if(NOT TENSORFLOW_SOURCE_DIR)</span><br><span class="line">  get_filename_component(TENSORFLOW_SOURCE_DIR</span><br><span class="line">    &quot;$&#123;CMAKE_CURRENT_LIST_DIR&#125;/../../../../&quot;</span><br><span class="line">    ABSOLUTE</span><br><span class="line">  )</span><br><span class="line">endif()</span><br><span class="line"></span><br><span class="line">add_subdirectory(</span><br><span class="line">  &quot;$&#123;TENSORFLOW_SOURCE_DIR&#125;/tensorflow/lite&quot;</span><br><span class="line">  &quot;$&#123;CMAKE_CURRENT_BINARY_DIR&#125;/tensorflow-lite&quot;</span><br><span class="line">  EXCLUDE_FROM_ALL</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">set(CMAKE_CXX_STANDARD 11)</span><br></pre></td></tr></table></figure></p>
+<p>设置 TENSORFLOW_SOURCE_DIR 为自己的tensorflow路径<br>然后直接编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir build </span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br></pre></td></tr></table></figure></p>
+<p>交叉编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export cross_compile_toolchain=/home/jw/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu</span><br><span class="line"></span><br><span class="line">mkdir -p build_arm &amp;&amp; cd  build_arm</span><br><span class="line"></span><br><span class="line">cmake .. \</span><br><span class="line"> -DCMAKE_SYSTEM_NAME=Linux \</span><br><span class="line"> -DCMAKE_SYSTEM_VERSION=1 \</span><br><span class="line"> -DCMAKE_SYSTEM_PROCESSOR=aarch64 \</span><br><span class="line"> -DCMAKE_C_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-gcc \</span><br><span class="line"> -DCMAKE_CXX_COMPILER=$cross_compile_toolchain/bin/aarch64-linux-gnu-g++ \</span><br><span class="line"> -DCMAKE_BUILD_TYPE=release</span><br><span class="line"></span><br><span class="line">make -j4</span><br></pre></td></tr></table></figure></p>
+<p>测试发现如果程序有静态库，会自动生成静态库,将静态库保存到lib文件夹内<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find ./build -name &quot;*.so*&quot; -exec cp &#123;&#125; /path/to/save/directory/ \;</span><br></pre></td></tr></table></figure></p>
+<h4 id="cmake-方式报错解决"><a href="#cmake-方式报错解决" class="headerlink" title="cmake 方式报错解决"></a>cmake 方式报错解决</h4><p>错误内容： cc1: error: invalid feature modifier in ‘-march=armv8.2-a+i8mm+fp16’<br>或者cc1: error: invalid feature modifier in ‘-march=armv8.2-a+bf16’<br>由于目标板子不支持i8mm,fp16,bf16，所以编译时去掉选项<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ARMCC_PREFIX=$&#123;HOME&#125;/toolchains/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-</span><br><span class="line">ARMCC_FLAGS=&quot;-funsafe-math-optimizations&quot;</span><br><span class="line">cmake -DCMAKE_C_COMPILER=$&#123;ARMCC_PREFIX&#125;gcc \</span><br><span class="line">  -DCMAKE_CXX_COMPILER=$&#123;ARMCC_PREFIX&#125;g++ \</span><br><span class="line">  -DCMAKE_C_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \</span><br><span class="line">  -DCMAKE_CXX_FLAGS=&quot;$&#123;ARMCC_FLAGS&#125;&quot; \</span><br><span class="line">  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \</span><br><span class="line">  -DCMAKE_SYSTEM_NAME=Linux \</span><br><span class="line">  -DCMAKE_SYSTEM_PROCESSOR=aarch64 \</span><br><span class="line">  -DXNNPACK_ENABLE_ARM_BF16=OFF \</span><br><span class="line">  -DXNNPACK_ENABLE_ARM_I8MM=OFF \</span><br><span class="line">  ../tensorflow/lite</span><br></pre></td></tr></table></figure></p>
+<p>测试发现tensorflow2.16.1编译时无法去掉，将版本改为2.15.0，成功编译,也可以运行2.16.1转换的模型</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tflite编译/" rel="tag">✿✿✿ tflite编译</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/05/vscode/" rel="next" title="vscode">
+                <i class="fa fa-chevron-left"></i> vscode
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/05/torch安装/" rel="prev" title="torch和apex安装">
+                torch和apex安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
+
+    
+</div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="sylvia">
+            
+              <p class="site-author-name" itemprop="name">sylvia</p>
+              <p class="site-description motion-element" itemprop="description">君がいるだから、今の僕は幸せです。今日もありがとう。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:836753560@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:live:836753560?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装bazel"><span class="nav-number">1.</span> <span class="nav-text">安装bazel</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从apt安装"><span class="nav-number">1.1.</span> <span class="nav-text">从apt安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从源码安装"><span class="nav-number">1.2.</span> <span class="nav-text">从源码安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载预编译二进制安装"><span class="nav-number">1.3.</span> <span class="nav-text">下载预编译二进制安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装TensorFlow-Lite"><span class="nav-number">2.</span> <span class="nav-text">安装TensorFlow Lite</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-下载源码"><span class="nav-number">2.1.</span> <span class="nav-text">1.下载源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过bazel安装"><span class="nav-number">2.2.</span> <span class="nav-text">通过bazel安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bazel方式复制头文件和lib文件"><span class="nav-number">2.3.</span> <span class="nav-text">bazel方式复制头文件和lib文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过cmake方式安装"><span class="nav-number">2.4.</span> <span class="nav-text">通过cmake方式安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmake方式直接集成到项目"><span class="nav-number">2.5.</span> <span class="nav-text">cmake方式直接集成到项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmake-方式报错解决"><span class="nav-number">2.6.</span> <span class="nav-text">cmake 方式报错解决</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sylvia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">144.1k</span>
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/05/tflite编译/';
+          this.page.identifier = '2019/01/05/tflite编译/';
+          this.page.title = 'tflite编译';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tsumiki"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

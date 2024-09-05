@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="文件,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="sylvia" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="私有属性和私有方法python3中有没有私有属性这种说法？如果有的话有是怎么使用的？ ”私有“变量、方法 1、封装类的实例上面的“私有”数据，但是Python语言并没有访问控制。 2、Python程序员不去依赖语言特性去封装数据，而是通过遵循一定的属性和方法命名规约来达到这个效果。  单下滑线(_) 第一个约定是任何以单下划线_开头的名字都应该是内部实现。  class A:    def __i">
+<meta name="keywords" content="文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件">
+<meta property="og:url" content="https://janvia.github.io/2019/01/28/文件/index.html">
+<meta property="og:site_name" content="sylvia">
+<meta property="og:description" content="私有属性和私有方法python3中有没有私有属性这种说法？如果有的话有是怎么使用的？ ”私有“变量、方法 1、封装类的实例上面的“私有”数据，但是Python语言并没有访问控制。 2、Python程序员不去依赖语言特性去封装数据，而是通过遵循一定的属性和方法命名规约来达到这个效果。  单下滑线(_) 第一个约定是任何以单下划线_开头的名字都应该是内部实现。  class A:    def __i">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/python10.jpg">
+<meta property="og:updated_time" content="2019-01-28T08:56:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件">
+<meta name="twitter:description" content="私有属性和私有方法python3中有没有私有属性这种说法？如果有的话有是怎么使用的？ ”私有“变量、方法 1、封装类的实例上面的“私有”数据，但是Python语言并没有访问控制。 2、Python程序员不去依赖语言特性去封装数据，而是通过遵循一定的属性和方法命名规约来达到这个效果。  单下滑线(_) 第一个约定是任何以单下划线_开头的名字都应该是内部实现。  class A:    def __i">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/python10.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9CNLK347LC',
+      apiKey: '5d000d330392ce1b44b614961e14f53e',
+      indexName: 'dev_janviablog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://janvia.github.io/2019/01/28/文件/">
+
+
+
+
+
+
+  <title>文件 | sylvia</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sylvia</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Viva La Vida</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/28/文件/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-28T16:15:44+08:00">
+                2019-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/28/文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/28/文件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="私有属性和私有方法"><a href="#私有属性和私有方法" class="headerlink" title="私有属性和私有方法"></a>私有属性和私有方法</h3><p>python3中有没有私有属性这种说法？如果有的话有是怎么使用的？</p>
+<h4 id="”私有“变量、方法"><a href="#”私有“变量、方法" class="headerlink" title="”私有“变量、方法"></a>”私有“变量、方法</h4><blockquote>
+<p>1、封装类的实例上面的“私有”数据，但是Python语言并没有访问控制。</p>
+<p>2、Python程序员不去依赖语言特性去封装数据，而是通过遵循一定的属性和方法命名规约来达到这个效果。</p>
+</blockquote>
+<h4 id="单下滑线"><a href="#单下滑线" class="headerlink" title="单下滑线(_)"></a>单下滑线(_)</h4><blockquote>
+<p>第一个约定是任何以单下划线_开头的名字都应该是内部实现。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._internal = <span class="number">0</span> <span class="comment"># An internal attribute</span></span><br><span class="line">        self.public = <span class="number">1</span> <span class="comment"># A public attribute</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">public_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        A public method</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_internal_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'_internal_method'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Python并不会真的阻止别人访问内部名称。但是如果你这么做肯定是不好的，可能会导致脆弱的代码。 同时还要注意到，使用下划线开头的约定同样适用于模块名和模块级别函数。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = A()</span><br><span class="line">a._internal_method()</span><br><span class="line">a._internal</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_internal_method</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="双下滑线（-）"><a href="#双下滑线（-）" class="headerlink" title="双下滑线（__）"></a>双下滑线（__）</h4><p>你还可能会遇到在类定义中使用两个下划线(__)开头的命名。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__private = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'_B__private_method'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">public_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        self.__private_method()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用双下划线开始会导致访问名称变成其他形式。 比如，在前面的类B中，私有属性会被分别重命名为 <code>_B__private</code> 和 <code>_B__private_method</code> 。 这时候你可能会问这样重命名的目的是什么，答案就是继承——这种属性通过继承是无法被覆盖的。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">b = B()</span><br><span class="line">b._B__private</span><br><span class="line">b._B__private_method()</span><br><span class="line">b.public_method()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_B__private_method</span><br><span class="line">_B__private_method</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>私有名称 <code>__private</code> 和 <code>__private_method</code> 被重命名为 <code>_C__private</code> 和 <code>_C__private_method</code> ，这个跟父类B中的名称是完全不同的。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(B)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self.__private = <span class="number">1</span> <span class="comment"># Does not override B.__private</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Does not override B.__private_method()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__private_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'_C__private_method'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_B__private_method</span><br><span class="line">_B__private_method</span><br><span class="line">_C__private_method</span><br></pre></td></tr></table></figure>
+<h3 id="文件基本操作"><a href="#文件基本操作" class="headerlink" title="文件基本操作"></a>文件基本操作</h3><p>我们的程序都是运行在内存中的，内存是不可持久化存储的，那怎样才能持久存储呢？</p>
+<h4 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">path = &apos;text.txt&apos;  # 相对路径</span><br><span class="line">path = &apos;home/seven/text.txt&apos;  # 绝对路径</span><br><span class="line">file = open(path, mode=&apos;w+&apos;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以w+模式打开文件，是为写入和读取的模式，没有文件会新建文件，有文件会清空文件。</p>
+</blockquote>
+<h4 id="文件打开模式"><a href="#文件打开模式" class="headerlink" title="文件打开模式"></a>文件打开模式</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/python10.jpg" alt=""></p>
+<blockquote>
+<p>不同的文件打开模式，对文件的操作有不同</p>
+</blockquote>
+<h4 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.write(<span class="string">'python'</span>)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="number">6</span></span><br><span class="line">file.write(<span class="string">'python2'</span>)</span><br><span class="line">Out[<span class="number">5</span>]: <span class="number">7</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>写单个字符串</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.writelines([<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>])</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>写一行数据</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.flush()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本来写入的数据是存在内存里的，使用flush方法，把数据保存到硬盘中。</p>
+</blockquote>
+<h4 id="读取与关闭"><a href="#读取与关闭" class="headerlink" title="读取与关闭"></a>读取与关闭</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.seek(<span class="number">0</span>) <span class="comment"># 把光标移到首位</span></span><br><span class="line">file.read()</span><br><span class="line">Out[<span class="number">18</span>]: <span class="string">'python\n\npython3\n\nc++\n\nc\n\njava\n\nmachine learning\n\ndeep learning\n'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>读取全部数据</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.readline()</span><br><span class="line">Out[<span class="number">21</span>]: <span class="string">'python\n'</span></span><br><span class="line">file.readline()</span><br><span class="line">Out[<span class="number">22</span>]: <span class="string">'\n'</span></span><br><span class="line">file.readline()</span><br><span class="line">Out[<span class="number">23</span>]: <span class="string">'python3\n'</span></span><br><span class="line">file.readline()</span><br><span class="line">Out[<span class="number">24</span>]: <span class="string">'\n'</span></span><br><span class="line">file.readline()</span><br><span class="line">Out[<span class="number">25</span>]: <span class="string">'c++\n'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一行一行的读取数据</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.readlines()</span><br><span class="line">Out[<span class="number">26</span>]: </span><br><span class="line">[<span class="string">'\n'</span>,</span><br><span class="line"> <span class="string">'c\n'</span>,</span><br><span class="line"> <span class="string">'\n'</span>,</span><br><span class="line"> <span class="string">'java\n'</span>,</span><br><span class="line"> <span class="string">'\n'</span>,</span><br><span class="line"> <span class="string">'machine learning\n'</span>,</span><br><span class="line"> <span class="string">'\n'</span>,</span><br><span class="line"> <span class="string">'deep learning\n'</span>]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>读取所有行并以列表形式返回</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.flush() <span class="comment"># 把内存中的数据保存到硬盘中</span></span><br><span class="line">file.close() <span class="comment"># 关闭并保存文件</span></span><br><span class="line">file.closed  <span class="comment"># 判断文件是否关闭</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.close()</span><br><span class="line">file.closed</span><br><span class="line">Out[<span class="number">28</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h4 id="查看与移动指针"><a href="#查看与移动指针" class="headerlink" title="查看与移动指针"></a>查看与移动指针</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">file.tell()</span><br><span class="line">Out[<span class="number">9</span>]: <span class="number">50</span></span><br><span class="line">file.seek(<span class="number">0</span>, <span class="number">0</span>)  <span class="comment">#0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。</span></span><br><span class="line">Out[<span class="number">10</span>]: <span class="number">0</span></span><br><span class="line">file.tell()</span><br><span class="line">Out[<span class="number">11</span>]: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>tell 查看光标位置，seek移动光标的位置。</p>
+</blockquote>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
+<p>持久存储：保存内存中数据都是易丢失的，只有保存在硬盘中才能持久的存储，保存在硬盘中的基本方法就是把数据写入文件中。</p>
+<p>打开与关闭：在python中文件的打开与关闭变得十分简单快捷，文件在关闭的时候就会自动保存</p>
+<p>写入与读取：文件的写入和读取是必须要十分熟练的内容</p>
+</blockquote>
+<h3 id="上下文管理"><a href="#上下文管理" class="headerlink" title="上下文管理"></a>上下文管理</h3><p>文件能够自动关闭吗？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">with open(&apos;test.txt&apos;,&apos;r&apos;) as file:</span><br><span class="line">    st = file.read()</span><br><span class="line">    print(st)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">c</span><br><span class="line">java</span><br><span class="line">machine learning</span><br><span class="line">deep learning</span><br><span class="line">file.closed</span><br><span class="line">Out[3]: True</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>with能够自动关闭文件，不需要执行close方法</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RunTime</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.start_time = time.time()</span><br><span class="line">        <span class="keyword">return</span> self.start_time</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_type, exc_val, exc_tb)</span>:</span></span><br><span class="line">        self.end_time = time.time()</span><br><span class="line">        self.run_time = self.end_time - self.start_time</span><br><span class="line">        print(<span class="string">'Time consuming %s '</span> % self.run_time)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> RunTime():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100000</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Time consuming 0.005983591079711914</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过这两个方法可以方便的实现上下文管理</p>
+<p>with会把 <strong>enter</strong> 的返回值赋值给 as 后的变量</p>
+</blockquote>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><blockquote>
+<p>with: 使用with打开文件，则文件不需要自己关闭，会自动的关闭</p>
+<p><strong>enter</strong>: 进入时需要执行的代码，相当于准备工作</p>
+<p><strong>exit</strong> : 退出时需要执行的代码，相当于收尾工作</p>
+</blockquote>
+<h3 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h3><p>文件可以持久存储，但是现在类似于临时的一些文件，不需要持久存储，如一些临时的二维码等，这个不需要持久存储，但是却需要短时间内大量读取，这是时候还是只能保存在文件里面吗？</p>
+<h4 id="StringIO"><a href="#StringIO" class="headerlink" title="StringIO"></a><a href="https://docs.python.org/3/library/io.html" target="_blank" rel="noopener">StringIO</a></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">4</span>]: <span class="keyword">import</span> io</span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: sio = io.StringIO()  <span class="comment"># 创建io</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: sio.write(<span class="string">'abc'</span>)  <span class="comment"># 写入数据</span></span><br><span class="line">Out[<span class="number">6</span>]: <span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: sio</span><br><span class="line">Out[<span class="number">7</span>]: &lt;_io.StringIO at <span class="number">0x7f0b775ddaf8</span>&gt;</span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: sio.read()</span><br><span class="line">Out[<span class="number">8</span>]: <span class="string">''</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: sio.seek(<span class="number">0</span>)</span><br><span class="line">Out[<span class="number">9</span>]: <span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: sio.read()</span><br><span class="line">Out[<span class="number">10</span>]: <span class="string">'abc'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: sio.getvalue()  <span class="comment"># 读取数据，全部的，不管光标位置</span></span><br><span class="line">Out[<span class="number">11</span>]: <span class="string">'abc'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: sio.close()</span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: sio</span><br><span class="line">Out[<span class="number">13</span>]: &lt;_io.StringIO at <span class="number">0x7f0b775ddaf8</span>&gt;</span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: sio.getvalue()</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ValueError                                Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input<span class="number">-14</span><span class="number">-2</span>c8cd5e6194b&gt; <span class="keyword">in</span> &lt;module&gt;()</span><br><span class="line">----&gt; 1 sio.getvalue()</span><br><span class="line"></span><br><span class="line">ValueError: I/O operation on closed file</span><br></pre></td></tr></table></figure>
+<p>StringIO在内存中如同打开文件一样操作字符串，因此也有文件的很多方法</p>
+<p>当创建的StringIO调用 close() 方法时，在内存中的数据会被丢失</p>
+<h4 id="BytesIO"><a href="#BytesIO" class="headerlink" title="BytesIO"></a><a href="https://docs.python.org/3/library/io.html" target="_blank" rel="noopener">BytesIO</a></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [17]: bio = io.BytesIO()  # 创建IO</span><br><span class="line"></span><br><span class="line">In [18]: bio</span><br><span class="line">Out[18]: &lt;_io.BytesIO at 0x7f0b775b9150&gt;</span><br><span class="line"></span><br><span class="line">In [19]: bio.write(b&apos;abc&apos;)  # 写入数据</span><br><span class="line">Out[19]: 3</span><br><span class="line"></span><br><span class="line">In [20]: bio.read()</span><br><span class="line">Out[20]: b&apos;&apos;</span><br><span class="line"></span><br><span class="line">In [21]: bio.seek(0)</span><br><span class="line">Out[21]: 0</span><br><span class="line"></span><br><span class="line">In [22]: bio.read()</span><br><span class="line">Out[22]: b&apos;abc&apos;</span><br><span class="line"></span><br><span class="line">In [23]: bio.getvalue()  # 读取数据 </span><br><span class="line">Out[23]: b&apos;abc&apos;</span><br><span class="line"></span><br><span class="line">In [24]: bio.close()</span><br><span class="line"></span><br><span class="line">In [25]: bio.read()</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ValueError                                Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-25-dca3ff2736f4&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 bio.read()</span><br><span class="line"></span><br><span class="line">ValueError: I/O operation on closed file.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>BytesIO和 StringIO 类似，但是BytesIO操作的是 Bytes数据</p>
+</blockquote>
+<h3 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h3><p>文件可以直接新建，但是现在如果需要创建文件夹和移动文件夹怎么办呢？</p>
+<h4 id="os-操作系统交互"><a href="#os-操作系统交互" class="headerlink" title="os 操作系统交互"></a><a href="https://docs.python.org/3/library/os.html" target="_blank" rel="noopener">os</a> 操作系统交互</h4><blockquote>
+<p>os模块提供python和操作系统交互的接口</p>
+</blockquote>
+<h5 id="直接调用吸引命令"><a href="#直接调用吸引命令" class="headerlink" title="直接调用吸引命令"></a>直接调用吸引命令</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: os.system(<span class="string">'ls'</span>)</span><br><span class="line">Data  PythonClassEnv  ReadMe.md</span><br><span class="line">Out[<span class="number">2</span>]: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h5 id="通用路径操作"><a href="#通用路径操作" class="headerlink" title="通用路径操作"></a>通用路径操作</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">5</span>]: os.path</span><br><span class="line">Out[<span class="number">5</span>]: &lt;module <span class="string">'posixpath'</span> <span class="keyword">from</span> <span class="string">'/usr/lib/python3.5/posixpath.py'</span>&gt;</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: os.path.join(<span class="string">r'Data'</span>, <span class="string">r'a'</span>)</span><br><span class="line">Out[<span class="number">6</span>]: <span class="string">'Data/a'</span></span><br></pre></td></tr></table></figure>
+<h5 id="文件目录操作"><a href="#文件目录操作" class="headerlink" title="文件目录操作"></a>文件目录操作</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">7</span>]: os.mkdir(<span class="string">'text'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: os.system(<span class="string">'ls'</span>)</span><br><span class="line">Data  PythonClassEnv  ReadMe.md  text</span><br><span class="line">Out[<span class="number">8</span>]: <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">In [<span class="number">9</span>]: os.rename(<span class="string">'text'</span>, <span class="string">'text1'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: os.system(<span class="string">'ls'</span>)</span><br><span class="line">Data  PythonClassEnv  ReadMe.md  text1</span><br><span class="line">Out[<span class="number">10</span>]: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>os 提供了Python和操作系统交互方式，只要是和操作系统相关，就可以尝试在os模块中找方法</p>
+</blockquote>
+<h4 id="shutil-高级文件操作"><a href="#shutil-高级文件操作" class="headerlink" title="shutil 高级文件操作"></a><a href="https://docs.python.org/3/library/shutil.html" target="_blank" rel="noopener">shutil</a> 高级文件操作</h4><blockquote>
+<p>shutil 模块提供了许多关于文件和文件集合的高级操作</p>
+<p>引入： import shutil</p>
+</blockquote>
+<h4 id="copy"><a href="#copy" class="headerlink" title="copy()"></a>copy()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：复制文件</span><br><span class="line">格式：shutil.copy(&apos;来源文件&apos;,&apos;目标地址&apos;)</span><br><span class="line">返回值：复制之后的路径</span><br></pre></td></tr></table></figure>
+<h4 id="copy2"><a href="#copy2" class="headerlink" title="copy2()"></a>copy2()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：复制文件，保留元数据</span><br><span class="line">格式：shutil.copy2(&apos;来源文件&apos;,&apos;目标地址&apos;)</span><br><span class="line">返回值：复制之后的路径</span><br></pre></td></tr></table></figure>
+<h4 id="copyfileobj"><a href="#copyfileobj" class="headerlink" title="copyfileobj()"></a>copyfileobj()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">将一个文件的内容拷贝的另外一个文件当中</span><br><span class="line">格式：shutil.copyfileobj(open(来源文件,&apos;r&apos;),open（&apos;目标文件&apos;,&apos;w&apos;）)</span><br><span class="line">返回值：无</span><br></pre></td></tr></table></figure>
+<h4 id="copyfile"><a href="#copyfile" class="headerlink" title="copyfile()"></a>copyfile()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：将一个文件的内容拷贝的另外一个文件当中</span><br><span class="line">格式:shutil.copyfile(来源文件,目标文件)</span><br><span class="line">返回值：目标文件的路径</span><br></pre></td></tr></table></figure>
+<h4 id="copytree"><a href="#copytree" class="headerlink" title="copytree()"></a>copytree()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：复制整个文件目录</span><br><span class="line">格式:shutil.copytree(来源目录,目标目录)</span><br><span class="line">返回值：目标目录的路径</span><br><span class="line">注意：无论文件夹是否为空，均可以复制，而且会复制文件夹中的所有内容</span><br></pre></td></tr></table></figure>
+<h4 id="copymode"><a href="#copymode" class="headerlink" title="copymode()"></a>copymode()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：拷贝权限</span><br></pre></td></tr></table></figure>
+<h4 id="copystat"><a href="#copystat" class="headerlink" title="copystat()"></a>copystat()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：拷贝元数据（状态）</span><br></pre></td></tr></table></figure>
+<h4 id="rmtree"><a href="#rmtree" class="headerlink" title="rmtree()"></a>rmtree()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：移除整个目录，无论是否空</span><br><span class="line">格式：shutil.rmtree(目录路径)</span><br><span class="line">返回值：无</span><br></pre></td></tr></table></figure>
+<h4 id="move"><a href="#move" class="headerlink" title="move()"></a>move()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：移动文件或者文件夹</span><br><span class="line">格式：shutil.move(来源地址,目标地址)</span><br><span class="line">返回值：目标地址</span><br></pre></td></tr></table></figure>
+<h4 id="which"><a href="#which" class="headerlink" title="which()"></a>which()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：检测命令对应的文件路径</span><br><span class="line">格式：shutil.which(‘命令字符串’)</span><br><span class="line">返回值：命令文件所在位置</span><br><span class="line">注意：window和linux不太一样。 window的命令都是.exe结尾，linux则不是</span><br></pre></td></tr></table></figure>
+<h4 id="disk-usage"><a href="#disk-usage" class="headerlink" title="disk_usage()"></a>disk_usage()</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">功能：检测磁盘使用信息</span><br><span class="line">格式：disk_usage(‘盘符’)</span><br><span class="line">返回值：元组</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文件/" rel="tag">✿✿✿ 文件</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/28/异常/" rel="next" title="异常">
+                <i class="fa fa-chevron-left"></i> 异常
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/28/描述器和装饰器/" rel="prev" title="描述器和装饰器">
+                描述器和装饰器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
+
+    
+</div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="sylvia">
+            
+              <p class="site-author-name" itemprop="name">sylvia</p>
+              <p class="site-description motion-element" itemprop="description">君がいるだから、今の僕は幸せです。今日もありがとう。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:836753560@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:live:836753560?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#私有属性和私有方法"><span class="nav-number">1.</span> <span class="nav-text">私有属性和私有方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#”私有“变量、方法"><span class="nav-number">1.1.</span> <span class="nav-text">”私有“变量、方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单下滑线"><span class="nav-number">1.2.</span> <span class="nav-text">单下滑线(_)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双下滑线（-）"><span class="nav-number">1.3.</span> <span class="nav-text">双下滑线（__）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件基本操作"><span class="nav-number">2.</span> <span class="nav-text">文件基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打开文件"><span class="nav-number">2.1.</span> <span class="nav-text">打开文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件打开模式"><span class="nav-number">2.2.</span> <span class="nav-text">文件打开模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写入文件"><span class="nav-number">2.3.</span> <span class="nav-text">写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取与关闭"><span class="nav-number">2.4.</span> <span class="nav-text">读取与关闭</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看与移动指针"><span class="nav-number">2.5.</span> <span class="nav-text">查看与移动指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">2.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文管理"><span class="nav-number">3.</span> <span class="nav-text">上下文管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结-1"><span class="nav-number">3.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO流"><span class="nav-number">4.</span> <span class="nav-text">IO流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#StringIO"><span class="nav-number">4.1.</span> <span class="nav-text">StringIO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BytesIO"><span class="nav-number">4.2.</span> <span class="nav-text">BytesIO</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用工具"><span class="nav-number">5.</span> <span class="nav-text">使用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#os-操作系统交互"><span class="nav-number">5.1.</span> <span class="nav-text">os 操作系统交互</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接调用吸引命令"><span class="nav-number">5.1.1.</span> <span class="nav-text">直接调用吸引命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通用路径操作"><span class="nav-number">5.1.2.</span> <span class="nav-text">通用路径操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件目录操作"><span class="nav-number">5.1.3.</span> <span class="nav-text">文件目录操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shutil-高级文件操作"><span class="nav-number">5.2.</span> <span class="nav-text">shutil 高级文件操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy"><span class="nav-number">5.3.</span> <span class="nav-text">copy()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy2"><span class="nav-number">5.4.</span> <span class="nav-text">copy2()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copyfileobj"><span class="nav-number">5.5.</span> <span class="nav-text">copyfileobj()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copyfile"><span class="nav-number">5.6.</span> <span class="nav-text">copyfile()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copytree"><span class="nav-number">5.7.</span> <span class="nav-text">copytree()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copymode"><span class="nav-number">5.8.</span> <span class="nav-text">copymode()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copystat"><span class="nav-number">5.9.</span> <span class="nav-text">copystat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmtree"><span class="nav-number">5.10.</span> <span class="nav-text">rmtree()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#move"><span class="nav-number">5.11.</span> <span class="nav-text">move()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#which"><span class="nav-number">5.12.</span> <span class="nav-text">which()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#disk-usage"><span class="nav-number">5.13.</span> <span class="nav-text">disk_usage()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sylvia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">144.1k</span>
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/28/文件/';
+          this.page.identifier = '2019/01/28/文件/';
+          this.page.title = '文件';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tsumiki"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

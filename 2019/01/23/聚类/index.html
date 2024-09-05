@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="聚类,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="sylvia" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="聚类的概念聚类是一种无监督机器学习方法，它基于数据的内部结构寻找观察样本的自然族群（即集群），常用于新闻分类、推荐系统等。聚类的特点是训练数据没有标注，通常使用数据可视化评价结果。 聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的（相关的），而不同组中的对象是不同的（不相关的）。组内的相似性（同质性）越大，组间差别越大，聚类就越好。 聚类的方">
+<meta name="keywords" content="聚类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聚类">
+<meta property="og:url" content="https://janvia.github.io/2019/01/23/聚类/index.html">
+<meta property="og:site_name" content="sylvia">
+<meta property="og:description" content="聚类的概念聚类是一种无监督机器学习方法，它基于数据的内部结构寻找观察样本的自然族群（即集群），常用于新闻分类、推荐系统等。聚类的特点是训练数据没有标注，通常使用数据可视化评价结果。 聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的（相关的），而不同组中的对象是不同的（不相关的）。组内的相似性（同质性）越大，组间差别越大，聚类就越好。 聚类的方">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类1.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类3.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类9.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类10.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类11.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类12.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类4.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类5.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类6.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类7.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类13.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类14.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类15.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类16.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类17.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类8.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类18.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类19.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类20.png">
+<meta property="og:updated_time" content="2019-01-23T06:59:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="聚类">
+<meta name="twitter:description" content="聚类的概念聚类是一种无监督机器学习方法，它基于数据的内部结构寻找观察样本的自然族群（即集群），常用于新闻分类、推荐系统等。聚类的特点是训练数据没有标注，通常使用数据可视化评价结果。 聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的（相关的），而不同组中的对象是不同的（不相关的）。组内的相似性（同质性）越大，组间差别越大，聚类就越好。 聚类的方">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9CNLK347LC',
+      apiKey: '5d000d330392ce1b44b614961e14f53e',
+      indexName: 'dev_janviablog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://janvia.github.io/2019/01/23/聚类/">
+
+
+
+
+
+
+  <title>聚类 | sylvia</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sylvia</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Viva La Vida</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/23/聚类/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">聚类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T10:23:37+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/23/聚类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/23/聚类/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  595
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="聚类的概念"><a href="#聚类的概念" class="headerlink" title="聚类的概念"></a>聚类的概念</h3><p>聚类是一种无监督机器学习方法，它基于数据的内部结构寻找观察样本的自然族群（即集群），常用于新闻分类、推荐系统等。聚类的特点是训练数据没有标注，通常使用数据可视化评价结果。</p>
+<p>聚类分析仅根据在数据中发现的描述对象及其关系的信息，将数据对象分组。其目标是，组内的对象相互之间是相似的（相关的），而不同组中的对象是不同的（不相关的）。组内的相似性（同质性）越大，组间差别越大，聚类就越好。</p>
+<h3 id="聚类的方法"><a href="#聚类的方法" class="headerlink" title="聚类的方法"></a>聚类的方法</h3><p>聚类的常用方法包括：</p>
+<ul>
+<li><strong>划分聚类法</strong>，<strong>K均值</strong>:是基于原型的、划分的聚类技术。它试图发现用户指定个数K的簇（由质心代表）。</li>
+<li><strong>层次聚类。凝聚的层次聚类：</strong>开始，每个点作为一个单点簇；然后，重复地合并两个最靠近的簇，直到产生单个的、包含所有点的簇。</li>
+<li><strong>基于密度的聚类，</strong> <strong>DBSCAN</strong>是一种产生划分聚类的基于密度的聚类算法，簇的个数由算法自动地确定。低密度区域中的点被视为噪声而忽略，因此DBSCAN不产生完全聚类。</li>
+</ul>
+<h3 id="常用的聚类数据集"><a href="#常用的聚类数据集" class="headerlink" title="常用的聚类数据集"></a>常用的聚类数据集</h3><p>常用的聚类数据集包括</p>
+<ul>
+<li>scikit-learn blob: 简单聚类</li>
+<li>scikit-learn circle: 非线性可分数据集</li>
+<li>scikit-learn moon: 更复杂的数据集</li>
+</ul>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类.png" alt=""></p>
+<h3 id="聚类的性能度量"><a href="#聚类的性能度量" class="headerlink" title="聚类的性能度量"></a>聚类的性能度量</h3><p>我们希望聚类结果的<strong>“簇内相似度”高</strong>且<strong>“簇间相似度”低</strong>。</p>
+<p>其性能度量大致有两类：</p>
+<ul>
+<li><p>将聚类结果与某个“参考模型”进行比较。称为“外部指标”。</p>
+</li>
+<li><p>直接考查聚类结果而不利于任何参考模型。称为“内部指标”。</p>
+</li>
+</ul>
+<h3 id="外部指标"><a href="#外部指标" class="headerlink" title="外部指标"></a>外部指标</h3><p>对数据集<script type="math/tex">D={x_1,x_2,…,x_m}</script>,假定通过聚类给出的簇划分为<script type="math/tex">C=C_1,C_2,…,C_k</script>,参考模型给出的簇划分为<script type="math/tex">C’=C_1^T,C_2^T,…,C_s^T</script>。相应的，令λ与<script type="math/tex">λ^T</script>分别表示与<script type="math/tex">C</script>和<script type="math/tex">C^T</script>对应的簇标记向量。注意的是，参考模型给出的划分类别数量不一定等于通过聚类得到的数量。</p>
+<p>样本两两配对：</p>
+<p>1.<script type="math/tex">a=\mid SS \mid ,SS={(x_i,x_j)\mid \lambda_i = \lambda_j,\lambda_i^T=\lambda_j^T,i<j}</script></p>
+<p>2.<script type="math/tex">b=\mid SD \mid ,SD={(x_i,x_j)\mid \lambda_i = \lambda_j,\lambda_i^T\neq \lambda_j^T,i<j}</script></p>
+<p>3.<script type="math/tex">c=\mid DS \mid ,DS={(x_i,x_j)\mid \lambda_i \neq \lambda_j,\lambda_i^T=\lambda_j^T,i<j}</script></p>
+<p>4.<script type="math/tex">d=\mid DD \mid ,DD={(x_i,x_j)\mid \lambda_i \neq \lambda_j,\lambda_i^T \neq \lambda_j^T,i<j}</script></p>
+<p>集合SS包含了C中隶属于相同簇且在C′中也隶属于相同簇的样本对，集合SD包含了在C中隶属于相同簇但在$C_T$中隶属于不同簇的样本对 .</p>
+<p>Jaccard系数：<script type="math/tex">JC=\frac{a}{a+b+c}</script></p>
+<p>FM指数：<script type="math/tex">FMI=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}</script></p>
+<p>Rand指数：<script type="math/tex">RI=\frac{2(a+d)}{m(m-1)}</script></p>
+<p>上述性能度量的结果值均在[0,1]区间，值越大越好。</p>
+<h3 id="内部指标"><a href="#内部指标" class="headerlink" title="内部指标"></a>内部指标</h3><p>考虑聚类结果的簇划分<script type="math/tex">C=C_1,C_2,…,C_k</script>，定义:</p>
+<ol>
+<li><script type="math/tex; mode=display">avg(C)=\frac{2}{\mid C \mid(\mid C \mid -1)}\sum_{1 \leq i < j \leq \mid C \mid}dist(x_i,x_j)</script></li>
+<li><script type="math/tex; mode=display">diam(C)=\max_{1 \leq i <j \leq \mid C \mid}dist(x_i,x_j)</script></li>
+<li><script type="math/tex; mode=display">d_\min(C_i,C_j)=\min_{x_i \in C_i , x_j \in C_j} dist(x_i,x_j)</script></li>
+<li><script type="math/tex; mode=display">d_{cen}(C_i,C_j)=dist(\mu_i,\mu_j)</script></li>
+</ol>
+<p>我们在上面的式子中，dist是计算两个样本之间的距离，$\mu$代表簇的中心点<script type="math/tex">\mu=\frac{\sum_{1 \leq i \leq \mid C \mid x_i}}{\mid C \mid}</script> ，avg(C)代表簇内样本间的平均距离，diam(C)对应与簇C内样本间的最远距离，<script type="math/tex">d_{min}(C_i,C_j)</script>对应与簇 i 和簇 j 最近样本间的距离；<script type="math/tex">d_{cen}(C_i,C_j)</script>对应与簇 i 和 j 中心点间的距离。</p>
+<p>基于上面的指标，推出下面几个内部指标</p>
+<ol>
+<li><script type="math/tex; mode=display">DBI=\frac{1}{k}\sum\limits_{i=1}^k\max\limits_{j \neq i}(\frac{avg(C_i)+avg(C_j)}{d_{cen}(\mu_i,\mu_j)})</script></li>
+<li><script type="math/tex; mode=display">DI=\min\limits_{1 \leq i \leq k} \{ \min\limits_{j \neq i}(\frac{d_{min}(C_i,C_j)}{\max_{1\leq l \leq k} diam(C_l)}) \}</script></li>
+</ol>
+<p>显然，DBI的值越小越好，DI值越大越好</p>
+<h3 id="相似度-距离度量"><a href="#相似度-距离度量" class="headerlink" title="相似度/距离度量"></a>相似度/距离度量</h3><p>“距离度量”需满足一些基本性质，如<strong>非负性、同一性、对称性和直递性</strong>。最常用的是闵可夫斯基距离、欧氏距离(p=2)和曼哈顿距离(p=1)（后两者其实都是闵可夫斯基距离的特例）。</p>
+<p>闵可夫斯基距离只可用于有序属性，对无序属性可采用VDM（Value Difference Metric）。</p>
+<p>计算方法总结：</p>
+<ul>
+<li><p>闵可夫斯基距离Minkowski/欧式距离：<script type="math/tex">dist(X,Y)=(\sum_{i=1}^n|x_i-y_i|^p)^\frac1p</script></p>
+</li>
+<li><p>杰卡德相似系数(Jaccard): <script type="math/tex">J(A,B)=\frac{|A\cap B|}{|A\cup B|}</script></p>
+</li>
+<li><p>余弦相似度(cosine similarity):<script type="math/tex">cos(\theta)=\frac{a^Tb}{|a|\cdot |b|}</script></p>
+</li>
+<li><p>Pearson相似系数: <script type="math/tex">\rho_{xy}=\frac{cov(x,y)}{\sigma_x\sigma_y}=\frac{E[(x-u_x)(y-u_y)]}{\sigma_x\sigma_y}=\frac{\sum_{i=1}^n (x_i-u_x)(y_i-u_y) }{\sqrt{\sum_{i=1}^n(x_i-u_x)^2} \sqrt{\sum_{i=1}^n(y_i-u_y)^2}}</script></p>
+</li>
+<li><p>相对熵（K-L距离）：<script type="math/tex">D(P||q)=\sum_xp(x)log\frac{p(x)}{q(x)}=E_{p(x)}log\frac{p(x)}{q(x)}</script></p>
+</li>
+<li><p>Hellinger距离：<script type="math/tex">D_a(p||q)=\frac{2}{1-a^2}(1-\int p(x)^\frac{1+a}{2}\cdot q(x)^\frac{1-a}{2}dx)</script></p>
+</li>
+</ul>
+<h3 id="聚类的基本思想"><a href="#聚类的基本思想" class="headerlink" title="聚类的基本思想"></a>聚类的基本思想</h3><p>给定一个有N个对象的数据集，构造数据的K个簇，$k≤n$,满足下列条件：</p>
+<ul>
+<li>每一个簇至少包含一个对象</li>
+<li>每一个对象属于且仅属于一个簇</li>
+<li>将满足上述条件的K个簇称作一个合理的划分</li>
+</ul>
+<p><strong>基本思想</strong>：对于给定的类别数目K，首先给出初始划分，通过迭代改变样本和簇的隶属关系，使得每一次改进之后的划分方案都比前一次好。</p>
+<h3 id="原型聚类"><a href="#原型聚类" class="headerlink" title="原型聚类"></a>原型聚类</h3><p>原型聚类亦称“基于原型的聚类”，假设聚类结构能通过一组原型（原型是指样本空间中具有代表性的点）刻画。</p>
+<p>常用的方法包括</p>
+<ul>
+<li>k均值算法</li>
+<li>学习向量化</li>
+<li>高斯混合聚类（基于概率模型）</li>
+</ul>
+<h3 id="K-Means-聚类"><a href="#K-Means-聚类" class="headerlink" title="K-Means 聚类"></a>K-Means 聚类</h3><p><strong>K-Means</strong>算法的基本思想是初始随机给定K个簇中心，按照最邻近原则把待分类样本点分到各个簇。然后按平均法重新计算各个簇的质心(这个点可以不是样本点)，从而确定新的簇心。一直迭代，直到簇心的移动距离小于某个给定的值。</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类1.png" alt=""></p>
+<p>K-Means聚类算法步骤:</p>
+<p>1、给定数据</p>
+<p>2、确定类别数K（如K=5），并初始化K个类的中心（如随机选择K个点）</p>
+<p>3、对每个数据点，计算离其最近的类（使得每个类拥有自己的一些数据）</p>
+<script type="math/tex; mode=display">
+C_i^{(t)}=\arg \limits_{k} \min(\mu_k-x_i)^2</script><p>4、对每个类，计算其所有数据的中心，并跳到新的中心</p>
+<script type="math/tex; mode=display">
+\mu_k^{(t+1)}=\arg \limits_{\mu} \min \sum_{i \in C(k)}(\mu-x_i)^2</script><p>– 等价于$µ_i$ 为类中数据的均值</p>
+<p>5、重复3~4步，知道数据点所属类别类不再改变</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类3.png" alt=""></p>
+<h4 id="K-means的优化目标"><a href="#K-means的优化目标" class="headerlink" title="K-means的优化目标"></a>K-means的优化目标</h4><p>均值$\mu$和数据点所属集合Ｃ的势能函数为：</p>
+<script type="math/tex; mode=display">
+F(\mu,C)=\sum_{i=1}^N (\mu_{C(i)}-x_i)^2</script><p>-$C_{(i)}$:样本 i 所属的簇</p>
+<p>K-means的优化目标：</p>
+<script type="math/tex; mode=display">
+min_\mu min_C F(\mu,C)</script><h4 id="K-means的收敛性"><a href="#K-means的收敛性" class="headerlink" title="K-means的收敛性"></a>K-means的收敛性</h4><p>优化势能函数：</p>
+<script type="math/tex; mode=display">
+min_\mu min_C F(\mu,C)＝min_\mu min_C \sum_{k=1}^K \sum_{i\in C_{(i)}}(\mu_k-x_i)^2</script><p><strong>坐标下降：</strong></p>
+<ul>
+<li><p>固定$\mu$，优化Ｃ</p>
+</li>
+<li><p>固定Ｃ，优化$\mu$</p>
+</li>
+</ul>
+<p><strong>收敛性</strong>:</p>
+<ul>
+<li><p>若Ｆ有界，会收敛到一个局部极小</p>
+</li>
+<li><p>K-means不保证达到全局最优（收敛，但没有达到全局最优的情况）</p>
+</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<p>•  仔细寻找初始值<br>– 随机确定第一个类的中心，其他类中心的位置尽量远离已有类的中心<br>– Scikit learn中K-means实现中参数（ init=’k-means++’ ）将初始化 centroids （质心）彼此远离，得到比随机初始化更好的结果。<br>•  重复多次（如10次），每次初始值不同，最后选择使目标函数最小的结果</p>
+<p><strong>如何决定k</strong></p>
+<ul>
+<li><p>尝试不同的 k</p>
+</li>
+<li><p>当 K = 2, SSE = 173.1</p>
+</li>
+<li><p>当 K = 3, SSE = 133.6</p>
+</li>
+<li><p>画出不同K=1 到 6 的误差曲线图<br>-转折点 K=2 较好<br>-有些情况并没有明显的转折点</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类9.png" alt=""></p>
+</li>
+</ul>
+<h3 id="Scikit-learn中的K-means实现"><a href="#Scikit-learn中的K-means实现" class="headerlink" title="Scikit learn中的K-means实现"></a>Scikit learn中的K-means实现</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类10.png" alt=""></p>
+<h3 id="K-centers聚类"><a href="#K-centers聚类" class="headerlink" title="K-centers聚类"></a>K-centers聚类</h3><p>• 亦被称为K-median聚类、 K-mediods聚类</p>
+<p>• 与K-means类似，只是将K-means聚类中的均值换成中值<br>    – 均值极有可能是一个不存在的样本点，不足以代表该簇中    的样本，而中值是一个样本集合中真实存在的一个样本点<br>    – 同时中值相对均值而言，对噪声（孤立点、离群点）不那    么敏感</p>
+<h3 id="K-Means"><a href="#K-Means" class="headerlink" title="K-Means++"></a>K-Means++</h3><p>k个初始化的质心的位置选择对最后的聚类结果和运行时间都有很大的影响，因此需要选择合适的k个质</p>
+<p>心。如果仅仅是完全随机的选择，有可能导致算法收敛很慢。K-Means++算法就是对<strong>K-Means随机初始</strong></p>
+<p><strong>化质心的方法的优化</strong>。</p>
+<p>K-Means++的对于初始化质心的优化策略也很简单，如下：</p>
+<p>a)  从输入的数据点集合中随机选择一个点作为第一个聚类中心μ1</p>
+<p>b) 对于数据集中的每一个点xi，计算它与已选择的聚类中心中最近聚类中心的距离 </p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类11.png" alt=""></p>
+<p>c) 选择一个新的数据点作为新的聚类中心，选择的原则是：D(x) 较大的点，被选取作为聚类中心的概率较大</p>
+<p>d) 重复b和c直到选择出k个聚类质心</p>
+<p>e) 利用这k个质心来作为初始化质心去运行标准的K-Means算法 </p>
+<h3 id="Mini-Batch-K-Means"><a href="#Mini-Batch-K-Means" class="headerlink" title="Mini Batch K-Means"></a>Mini Batch K-Means</h3><p>• MiniBatchKMeans 是 K-Means 算法的一个变体：<br>– 使用 mini-batches （小批量）减少计算时间<br>– 目标函数相同<br>– 收敛速度比 K-Means 快，但是结果的质量会降低（在实践中，质量差异可能相当小）</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类12.png" alt=""></p>
+<h3 id="K均值算法"><a href="#K均值算法" class="headerlink" title="K均值算法"></a>K均值算法</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类4.png" alt=""></p>
+<p><strong>k均值常用的邻近度，质心和目标函数</strong>的选择：</p>
+<p>邻近度函数：曼哈顿距离。质心：中位数。目标函数：最小化对象到其簇质心的距离和。</p>
+<p>邻近度函数：平方欧几里德距离。质心：均值。目标函数：最小化对象到其簇质心的距离的平方和。</p>
+<p>邻近度函数：余弦。质心：均值。最大化对象与其质心的余弦相似度和。</p>
+<p>邻近度函数：Bregman散度。质心：均值。目标函数：最小化对象到其簇质心的Bregman散度和。</p>
+<p>由于基本K均值算法采取随机地选取初始质心的办法，导致最后形成的簇的质量常常很糟糕。在此基础上引出了基本K均值算法的扩充：<strong>二分K均值算法</strong>。二分K均值算法不太受初始化问题的影响。</p>
+<h3 id="二分K均值算法"><a href="#二分K均值算法" class="headerlink" title="二分K均值算法"></a>二分K均值算法</h3><ol>
+<li>把所有数据作为一个cluster加入cluster list</li>
+<li>repeat</li>
+<li>从cluster list中挑选出一个SSE最大的cluster来进行划分</li>
+<li>for i=1 to预设的循环次数</li>
+<li>用基本K均值算法把挑选出来的cluster划分成两个子cluster</li>
+<li>计算两个子cluster的SSE和。</li>
+<li>end for</li>
+<li>把for循环中SSE和最小的那两个子cluster加入cluster list</li>
+<li><strong>until</strong> cluster list拥有K个cluster</li>
+</ol>
+<p>除此以外，每次划分不止执行一次基本K均值算法，而是预先设置一个ITER值，然后对这个cluster进行ITER次执行基本K均值运算。因为基本K均值每次一开始都是随机选K个质心来执行，所以i一般来说ITER次执行基本K均值，每次都会得到不同的两个cluster。那么应该选哪对cluster来作为划分以后的cluster呢？答案就是在每次循环中，每次都计算当次基本K均值划分出来的两个cluster的SSE和，最后就选SSE和最小的那对cluster作为划分以后的cluster。</p>
+<h3 id="学习向量化"><a href="#学习向量化" class="headerlink" title="学习向量化"></a>学习向量化</h3><p>与k均值算法类似，“学习向量量化”（Learning Vector Quantization，简称LVQ）也是试图找到一组原型向量来刻画聚类结构，但与一般的聚类算法不同的是，LVQ假设数据样本带有类别标记，学习过程用样本的这些监督信息来辅助聚类。</p>
+<h3 id="学习向量化算法"><a href="#学习向量化算法" class="headerlink" title="学习向量化算法"></a>学习向量化算法</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类5.png" alt=""></p>
+<h3 id="高斯混合模型"><a href="#高斯混合模型" class="headerlink" title="高斯混合模型"></a>高斯混合模型</h3><p>高斯混合聚类使用了一个很流行的算法：GMM(Gaussian Mixture Model)。高斯混合聚类与k均值聚类类似，但是采用了<strong>概率模型</strong>来表达聚类原型。每个高斯模型（Gaussian Model）就代表了一个簇（类）。GMM是单一高斯概率密度函数的延伸，能够平滑地近似任意形状的密度分布。在高斯混合聚类中，每个GMM会由k个高斯模型分布组成，每个高斯模型被称为一个component，这些component线性加乘在一起就组成了GMM的。</p>
+<p>简单地来说，k-Means的结果是每个数据点没分配到其中某一个cluster,而GMM则给出的是这个数据点被分配到每个cluster的概率，又称为soft assignment。</p>
+<h3 id="高斯混合模型聚类算法"><a href="#高斯混合模型聚类算法" class="headerlink" title="高斯混合模型聚类算法"></a>高斯混合模型聚类算法</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类6.png" alt=""></p>
+<h3 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h3><p>层次聚类（hierarchical clustering）试图在不同层次对数据集进行划分，从而形成树形的聚类结构。数据集的划分可采用“自底向上”的聚合策略，也可采用“自顶向下”的分拆策略。 典型的<strong>AGNES</strong>是一种采用自底向上聚合策略的层次聚类算法。它先将数据集中的每个样本看作一个初始聚类簇，然后在算法运行的每一步中找出距离最近的两个聚类簇进行合并，该过程不断重复，直至达到预设的聚类簇个数。</p>
+<h4 id="有两种产生层次聚类的基本方法："><a href="#有两种产生层次聚类的基本方法：" class="headerlink" title="有两种产生层次聚类的基本方法："></a>有两种产生层次聚类的基本方法：</h4><ol>
+<li>凝聚的。从点作为个体簇开始，每一步合并两个最接近的簇。这需要定义簇的临近性概念。凝聚层次聚类技术最常见。</li>
+<li>分裂的。从包含所有点的某个簇开始，每一步分裂一个簇，直到仅剩下单点簇。在这种情况下，我们需要确定每一步分裂哪个簇，以及如何分裂。</li>
+<li></li>
+</ol>
+<h3 id="层次聚类算法"><a href="#层次聚类算法" class="headerlink" title="层次聚类算法"></a>层次聚类算法</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类7.png" alt=""></p>
+<p><strong>基本凝聚层次聚类算法：</strong></p>
+<ol>
+<li>如果需要，计算临近度矩阵</li>
+<li>repeat</li>
+<li>合并最接近的两个簇</li>
+<li>更新临近度矩阵，以反映新的簇与原来的簇之间的临近性。</li>
+<li>until 仅剩下一个簇</li>
+</ol>
+<p><strong>簇之间的临近性有3种定义方式：</strong></p>
+<ol>
+<li>MIN（单链）。不同簇中的两个最近的点之间的距离作为临近度。</li>
+<li>MAX（全链）。不同簇中的两个最远的点之间的距离作为临近度。</li>
+<li>GROUP（组平均）。取自不同簇的所有点对距离的平均值作为临近度。</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ol>
+<li>簇与簇合并的原则永远是dist最小。</li>
+<li>但在计算dist值的时候，可以采用MIN, MAX, GROUP AVG 3中方式得出dist的值。</li>
+</ol>
+<h3 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a>密度聚类</h3><p>密度聚类亦称“基于密度的聚类”，假设聚类结构能通过样本分布的紧密程度确定。典型的代表算法为<strong>DBSCAN算法</strong>，它基于一组“领域”（neighborhood）参数来刻画样本分布的紧密程度。</p>
+<p>DBSCAN将“簇”定义为：由密度可达关系导出的最大的密度相连样本集合。</p>
+<h3 id="DBSCAN算法"><a href="#DBSCAN算法" class="headerlink" title="DBSCAN算法"></a>DBSCAN算法</h3><p>基于密度的聚类寻找被低密度区域分离的高密度区域。DBSCAN是一种简单、有效的基于密度的聚类算法。</p>
+<h4 id="DBSCAN基础概念"><a href="#DBSCAN基础概念" class="headerlink" title="DBSCAN基础概念"></a>DBSCAN基础概念</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类13.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类14.png" alt=""></p>
+<p>(6) 边界点：非核心点，从某一核心点直接密度可达。</p>
+<p>(7) 噪声：聚类结束时，不属于任何簇的点。</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类15.png" alt=""></p>
+<h4 id="DBSCAN算法描述"><a href="#DBSCAN算法描述" class="headerlink" title="DBSCAN算法描述"></a>DBSCAN算法描述</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类16.png" alt=""></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类17.png" alt=""></p>
+<p><strong>DBSCAN算法：</strong></p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类8.png" alt=""></p>
+<ol>
+<li>将所有点标记为核心点、边界点或噪声点。</li>
+<li>删除噪声点。</li>
+<li>为距离在Eps之内的所有核心点之间连线。</li>
+<li>每组连通的核心点形成一个簇。</li>
+<li>将每个边界点指派到一个与之关联的核心点的簇中。</li>
+</ol>
+<p><strong>DBSCAN算法阐释：</strong></p>
+<ol>
+<li><p>算法需要用户输入2个参数： 半径Eps; 最小（少）点值MinPts。</p>
+</li>
+<li><p>确定Eps和MinPts需要用到K-距离的概念。K-距离就是“到第K近的点的距离”，按经验一般取值为4。并且，一般取K的值为MinPts参数的值。</p>
+</li>
+<li><p>首先计算每个点到所有其余点的欧式距离，升序排序后，选出每个点的“K距离”。</p>
+</li>
+<li><p>所有点的K距离形成一个集合D。对D进行升序排序，依此可以形成一个样本数据的K距离图。</p>
+</li>
+<li><p>图中急剧变化处的值，即为Eps。</p>
+</li>
+<li><p>根据Eps和MinPts，计算出所有的核心点。</p>
+</li>
+<li><p>给核心点到小于Eps的另一个核心点赋予一个连线，到核心点的距离等于Eps的点被识别为边界点。最后，核心点、边界点之外的点都是噪声点。</p>
+</li>
+<li><p>将能够连线的点和与之关联的边界点都放到一起，形成了一个簇。</p>
+</li>
+</ol>
+<h4 id="DBSCAN算法举例"><a href="#DBSCAN算法举例" class="headerlink" title="DBSCAN算法举例"></a>DBSCAN算法举例</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类18.png" alt=""></p>
+<p>第1步，在数据库中选择一点1，由于在以它为圆心的，以1为半径的圆内包含2个点（小于4），因此它不是核心点，选择下一个点。<br>第2步，在数据库中选择一点2，由于在以它为圆心的，以1为半径的圆内包含2个点，因此它不是核心点，选择下一个点。<br>第3步，在数据库中选择一点3，由于在以它为圆心的，以1为半径的圆内包含3个点，因此它不是核心点，选择下一个点。<br>第4步，在数据库中选择一点4，由于在以它为圆心的，以1为半径的圆内包含5个点，因此它是核心点，寻找从它出发可达的点（直接可达4个，间接可达3个），聚出的新类{1，3，4，5，9，10，12}，选择下一个点。<br>第5步，在数据库中选择一点5，已经在簇1中，选择下一个点。<br>第6步，在数据库中选择一点6，由于在以它为圆心的，以1为半径的圆内包含3个点，因此它不是核心点，选择下一个点。<br>第7步，在数据库中选择一点7，由于在以它为圆心的，以1为半径的圆内包含5个点，因此它是核心点，寻找从它出发可达的点，聚出的新类{2，6，7，8，11}，选择下一个点。<br>第8步，在数据库中选择一点8，已经在簇2中，选择下一个点。<br>第9步，在数据库中选择一点9，已经在簇1中，选择下一个点。<br>第10步，在数据库中选择一点10，已经在簇1中，选择下一个点。<br>第11步，在数据库中选择一点11，已经在簇2中，选择下一个点。<br>第12步，选择12点，已经在簇1中，由于这已经是最后一点所有点都以处理，</p>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类19.png" alt=""></p>
+<h4 id="Scikit-learn中DBSCAN算法的实现"><a href="#Scikit-learn中DBSCAN算法的实现" class="headerlink" title="Scikit learn中DBSCAN算法的实现"></a>Scikit learn中DBSCAN算法的实现</h4><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/聚类/聚类20.png" alt=""></p>
+<h3 id="几种聚类的优缺点"><a href="#几种聚类的优缺点" class="headerlink" title="几种聚类的优缺点"></a>几种聚类的优缺点</h3><h4 id="层次聚类的优缺点"><a href="#层次聚类的优缺点" class="headerlink" title="层次聚类的优缺点"></a><strong>层次聚类的优缺点</strong></h4><p>优点：</p>
+<ol>
+<li>距离和规则的相似度容易定义，限制少；</li>
+<li>不需要预先指定聚类数；</li>
+<li>可以发现类的层次关系；</li>
+<li>可以聚类成其他形状。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>计算复杂度太高；</li>
+<li>奇异值也能产生很大影响；</li>
+<li>算法很可能聚类成链状。</li>
+</ol>
+<h4 id="DBSCAN的优缺点"><a href="#DBSCAN的优缺点" class="headerlink" title="DBSCAN的优缺点"></a><strong>DBSCAN的优缺点</strong></h4><p>优点：</p>
+<ol>
+<li>不需要事先知道要形成的簇的数量。</li>
+<li>可以发现任意形状的簇类。</li>
+<li>对噪声点不敏感。</li>
+<li>对样本点的顺序不敏感。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>簇的密度变化太大时，DBSCAN会有麻烦。</li>
+<li>对于高维数据，密度定义困难，DBSCAN也有问题。</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>K均值对于圆形区域聚类的效果很好，DBSCAN基于密度，对于集中区域效果很好。</li>
+<li>对于不规则形状，K均值完全无法使用。DBSCAN可以起到很好的效果。</li>
+</ol>
+<h4 id="K均值的优缺点"><a href="#K均值的优缺点" class="headerlink" title="K均值的优缺点"></a><strong>K均值的优缺点</strong></h4><p>优点：</p>
+<ol>
+<li>简单，易于理解和实现。</li>
+<li>时间复杂度低。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>要手工输入K值，对初始值的设置很敏感。</li>
+<li>对噪声和离群点很敏感。</li>
+<li>只用于数值型数据，不适用于categorical类型的数据。</li>
+<li>不能解决非凸数据。</li>
+<li>主要发现圆形或者球形簇，不能识别非球形的簇。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/聚类/" rel="tag">✿✿✿ 聚类</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/23/决策树与随机森林/" rel="next" title="决策树与随机森林">
+                <i class="fa fa-chevron-left"></i> 决策树与随机森林
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/23/numpy/" rel="prev" title="numpy">
+                numpy <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
+
+    
+</div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="sylvia">
+            
+              <p class="site-author-name" itemprop="name">sylvia</p>
+              <p class="site-description motion-element" itemprop="description">君がいるだから、今の僕は幸せです。今日もありがとう。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:836753560@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:live:836753560?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类的概念"><span class="nav-number">1.</span> <span class="nav-text">聚类的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类的方法"><span class="nav-number">2.</span> <span class="nav-text">聚类的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的聚类数据集"><span class="nav-number">3.</span> <span class="nav-text">常用的聚类数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类的性能度量"><span class="nav-number">4.</span> <span class="nav-text">聚类的性能度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部指标"><span class="nav-number">5.</span> <span class="nav-text">外部指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部指标"><span class="nav-number">6.</span> <span class="nav-text">内部指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相似度-距离度量"><span class="nav-number">7.</span> <span class="nav-text">相似度/距离度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类的基本思想"><span class="nav-number">8.</span> <span class="nav-text">聚类的基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型聚类"><span class="nav-number">9.</span> <span class="nav-text">原型聚类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Means-聚类"><span class="nav-number">10.</span> <span class="nav-text">K-Means 聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means的优化目标"><span class="nav-number">10.1.</span> <span class="nav-text">K-means的优化目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means的收敛性"><span class="nav-number">10.2.</span> <span class="nav-text">K-means的收敛性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scikit-learn中的K-means实现"><span class="nav-number">11.</span> <span class="nav-text">Scikit learn中的K-means实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-centers聚类"><span class="nav-number">12.</span> <span class="nav-text">K-centers聚类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Means"><span class="nav-number">13.</span> <span class="nav-text">K-Means++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mini-Batch-K-Means"><span class="nav-number">14.</span> <span class="nav-text">Mini Batch K-Means</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K均值算法"><span class="nav-number">15.</span> <span class="nav-text">K均值算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二分K均值算法"><span class="nav-number">16.</span> <span class="nav-text">二分K均值算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习向量化"><span class="nav-number">17.</span> <span class="nav-text">学习向量化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习向量化算法"><span class="nav-number">18.</span> <span class="nav-text">学习向量化算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯混合模型"><span class="nav-number">19.</span> <span class="nav-text">高斯混合模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯混合模型聚类算法"><span class="nav-number">20.</span> <span class="nav-text">高斯混合模型聚类算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次聚类"><span class="nav-number">21.</span> <span class="nav-text">层次聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有两种产生层次聚类的基本方法："><span class="nav-number">21.1.</span> <span class="nav-text">有两种产生层次聚类的基本方法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次聚类算法"><span class="nav-number">22.</span> <span class="nav-text">层次聚类算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密度聚类"><span class="nav-number">23.</span> <span class="nav-text">密度聚类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBSCAN算法"><span class="nav-number">24.</span> <span class="nav-text">DBSCAN算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DBSCAN基础概念"><span class="nav-number">24.1.</span> <span class="nav-text">DBSCAN基础概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBSCAN算法描述"><span class="nav-number">24.2.</span> <span class="nav-text">DBSCAN算法描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBSCAN算法举例"><span class="nav-number">24.3.</span> <span class="nav-text">DBSCAN算法举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scikit-learn中DBSCAN算法的实现"><span class="nav-number">24.4.</span> <span class="nav-text">Scikit learn中DBSCAN算法的实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几种聚类的优缺点"><span class="nav-number">25.</span> <span class="nav-text">几种聚类的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#层次聚类的优缺点"><span class="nav-number">25.1.</span> <span class="nav-text">层次聚类的优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBSCAN的优缺点"><span class="nav-number">25.2.</span> <span class="nav-text">DBSCAN的优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K均值的优缺点"><span class="nav-number">25.3.</span> <span class="nav-text">K均值的优缺点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sylvia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">144.1k</span>
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/23/聚类/';
+          this.page.identifier = '2019/01/23/聚类/';
+          this.page.title = '聚类';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tsumiki"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

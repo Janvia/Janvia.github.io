@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="pandas,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="sylvia" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Series对象pandas库的Series对象用来表示一维数据结构，跟数组类似，但多了一些额外的功能，它的内部结构很简单(如下表)，由两个相互关联的数组组成，其中主数组用于存放数据（Numpy任意类型数据）。主数组的每个元素都有一个与之相关联的标签，这些标签存储的另一个叫做Index的数组中。 |Series| -|- index|value 0|12 1|-4 2|7 3|9 In: s =">
+<meta name="keywords" content="pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas">
+<meta property="og:url" content="https://janvia.github.io/2019/01/25/pandas/index.html">
+<meta property="og:site_name" content="sylvia">
+<meta property="og:description" content="Series对象pandas库的Series对象用来表示一维数据结构，跟数组类似，但多了一些额外的功能，它的内部结构很简单(如下表)，由两个相互关联的数组组成，其中主数组用于存放数据（Numpy任意类型数据）。主数组的每个元素都有一个与之相关联的标签，这些标签存储的另一个叫做Index的数组中。 |Series| -|- index|value 0|12 1|-4 2|7 3|9 In: s =">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_001.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_002.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_003.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_004.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_005.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_005.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_006.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_007.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_008.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_009.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_010.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_011.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_012.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_013.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_014.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_015.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_016.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_017.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_018.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_019.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_020.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_021.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_022.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_023.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_024.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_025.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_025.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_026.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_027.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_028.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_029.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_030.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_031.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_032.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_033.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_034.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_035.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_036.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_037.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_038.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_039.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_040.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_041.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_042.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_043.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_044.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_045.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_046.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_047.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_048.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_049.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_050.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_051.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_052.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_053.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_054.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_055.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_056.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_057.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_058.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_059.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_060.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_061.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_062.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_063.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_064.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_065.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_066.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_067.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_068.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_069.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_070.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_071.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_072.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_073.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_074.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_075.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_076.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_077.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_078.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_079.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_001.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_002.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_003.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_004.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_005.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_006.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_007.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_008.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_009.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_010.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_011.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_012.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_013.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_013.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_014.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_015.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_016.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_017.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_018.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_019.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_020.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_021.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_022.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_023.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_024.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_025.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_026.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_027.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_028.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_029.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_030.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_031.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_032.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_033.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_034.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_035.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_036.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_037.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_038.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_039.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_040.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_041.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_040.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_042.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_043.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_044.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_045.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_046.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_047.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_048.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_049.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_050.png">
+<meta property="og:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_051.png">
+<meta property="og:updated_time" content="2022-08-20T06:35:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pandas">
+<meta name="twitter:description" content="Series对象pandas库的Series对象用来表示一维数据结构，跟数组类似，但多了一些额外的功能，它的内部结构很简单(如下表)，由两个相互关联的数组组成，其中主数组用于存放数据（Numpy任意类型数据）。主数组的每个元素都有一个与之相关联的标签，这些标签存储的另一个叫做Index的数组中。 |Series| -|- index|value 0|12 1|-4 2|7 3|9 In: s =">
+<meta name="twitter:image" content="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_001.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '9CNLK347LC',
+      apiKey: '5d000d330392ce1b44b614961e14f53e',
+      indexName: 'dev_janviablog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://janvia.github.io/2019/01/25/pandas/">
+
+
+
+
+
+
+  <title>pandas | sylvia</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sylvia</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Viva La Vida</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/25/pandas/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sylvia">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">pandas</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-25T08:43:41+08:00">
+                2019-01-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/25/pandas/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/25/pandas/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  9.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  46
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Series对象"><a href="#Series对象" class="headerlink" title="Series对象"></a>Series对象</h2><p>pandas库的Series对象用来表示一维数据结构，跟数组类似，但多了一些额外的功能，它的内部结构很简单(如下表)，由两个相互关联的数组组成，其中主数组用于存放数据（Numpy任意类型数据）。主数组的每个元素都有一个与之相关联的标签，这些标签存储的另一个叫做Index的数组中。</p>
+<p>|Series| -|- index|value 0|12 1|-4 2|7 3|9</p>
+<p>In:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = pd.Series([<span class="number">12</span>,<span class="number">-4</span>,<span class="number">7</span>,<span class="number">9</span>])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    12</span><br><span class="line">1    -4</span><br><span class="line">2     7</span><br><span class="line">3     9</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>可以看出左侧Index是一列标签，右侧是标签对应的元素</p>
+<p>声明Series时，若不指定标签，pandas默认使用从0开始一次递增的数值作为标签。这种情况下，标签与Series对象中的元素索引一致。但是最好使用有意义的标签，用以区分和识别每个元素</p>
+<p>in:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = pd.Series([<span class="number">12</span>,<span class="number">-4</span>,<span class="number">7</span>,<span class="number">9</span>],index=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a    12</span><br><span class="line">b    -4</span><br><span class="line">c     7</span><br><span class="line">d     9</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s.values</span><br></pre></td></tr></table></figure>
+<p>array([12, -4,  7,  9], dtype=int64)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s.index</span><br></pre></td></tr></table></figure>
+<p>Index([‘a’, ‘b’, ‘c’, ‘d’], dtype=’object’)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[2]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>7</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[&apos;c&apos;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>7</li>
+</ul>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[:2]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a    12</span><br><span class="line">b    -4</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[[&apos;b&apos;,&apos;c&apos;]]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b   -4</span><br><span class="line">c    7</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="为元素赋值"><a href="#为元素赋值" class="headerlink" title="为元素赋值"></a>为元素赋值</h3><p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[1]=0</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a    12</span><br><span class="line">b     0</span><br><span class="line">c     7</span><br><span class="line">d     9</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[&apos;b&apos;] = 1</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a    12</span><br><span class="line">b     1</span><br><span class="line">c     7</span><br><span class="line">d     9</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="用Numpy数组或其他Series对象定义新Series对象"><a href="#用Numpy数组或其他Series对象定义新Series对象" class="headerlink" title="用Numpy数组或其他Series对象定义新Series对象"></a>用Numpy数组或其他Series对象定义新Series对象</h3><p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a = np.array([1,2,3,4])</span><br><span class="line">b= pd.Series(a)</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    1</span><br><span class="line">1    2</span><br><span class="line">2    3</span><br><span class="line">3    4</span><br><span class="line">dtype: int32</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">c= pd.Series(b)</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    1</span><br><span class="line">1    2</span><br><span class="line">2    3</span><br><span class="line">3    4</span><br><span class="line">dtype: int32</span><br></pre></td></tr></table></figure>
+<p>这样做时不要忘记新Series对象中的元素不是原Num数组或Series对象的副本，而是对他们的引用，也就是说，这些对象是动态插入到新Series对象中。如改变原有对象元素的值，新Series对象中这些元素也会发生改变。</p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b[2]=11</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0     1</span><br><span class="line">1     2</span><br><span class="line">2    11</span><br><span class="line">3     4</span><br><span class="line">dtype: int32</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">c</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0     1</span><br><span class="line">1     2</span><br><span class="line">2    11</span><br><span class="line">3     4</span><br><span class="line">dtype: int32</span><br></pre></td></tr></table></figure>
+<h3 id="筛选元素"><a href="#筛选元素" class="headerlink" title="筛选元素"></a>筛选元素</h3><p>pandas库的开发是以NumPy库为基础的，因此就数据结构而言，NumPy数组的多种操作方法得以扩展到Series对象中，其中就是根据条件筛选数据结构中的元素之一方法。</p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[s&gt;8]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a    12</span><br><span class="line">d     9</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="运算和数学函数"><a href="#运算和数学函数" class="headerlink" title="运算和数学函数"></a>运算和数学函数</h3><p>适用于NumPy数组的运算符（+，-，* ，/ ）或其他数学函数，也适用于Series对象。</p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s / 2</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a    6.0</span><br><span class="line">b    0.5</span><br><span class="line">c    3.5</span><br><span class="line">d    4.5</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a    12</span><br><span class="line">b     1</span><br><span class="line">c     7</span><br><span class="line">d     9</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>NumPy库的数学函数，必须制定他们出处np,并把Series实例作为参数传入。</p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">np.log(s)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a    2.484907</span><br><span class="line">b    0.000000</span><br><span class="line">c    1.945910</span><br><span class="line">d    2.197225</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h3 id="Series对象的组成元素"><a href="#Series对象的组成元素" class="headerlink" title="Series对象的组成元素"></a>Series对象的组成元素</h3><p>in:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">color = pd.Series([<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],index=[<span class="string">'white'</span>,<span class="string">'white'</span>,<span class="string">'blue'</span>,<span class="string">'green'</span>,<span class="string">'green'</span>,<span class="string">'yellow'</span>])</span><br><span class="line">color</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">white     1</span><br><span class="line">white     0</span><br><span class="line">blue      2</span><br><span class="line">green     1</span><br><span class="line">green     2</span><br><span class="line">yellow    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">color.unique()</span><br></pre></td></tr></table></figure>
+<p>array([1, 0, 2, 3], dtype=int64)</p>
+<p>返回一个数组，包含去重后的元素，但乱序</p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">color.value_counts()</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2    2</span><br><span class="line">1    2</span><br><span class="line">3    1</span><br><span class="line">0    1</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>返回各个不同的元素，还计算每个元素在Series中出现次数</p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">color.isin([0,3])</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">white     False</span><br><span class="line">white      True</span><br><span class="line">blue      False</span><br><span class="line">green     False</span><br><span class="line">green     False</span><br><span class="line">yellow     True</span><br><span class="line">dtype: bool</span><br></pre></td></tr></table></figure>
+<p>判断给定的一列元素是否包含在数据结构中,返回布尔值</p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">color[color.isin([0,3])]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">white     0</span><br><span class="line">yellow    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h3><p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s = pd.Series([1,2,np.NaN,14])</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0     1.0</span><br><span class="line">1     2.0</span><br><span class="line">2     NaN</span><br><span class="line">3    14.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s.isnull()</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    False</span><br><span class="line">1    False</span><br><span class="line">2     True</span><br><span class="line">3    False</span><br><span class="line">dtype: bool</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s.notnull()</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0     True</span><br><span class="line">1     True</span><br><span class="line">2    False</span><br><span class="line">3     True</span><br><span class="line">dtype: bool</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[s.notnull()]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0     1.0</span><br><span class="line">1     2.0</span><br><span class="line">3    14.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[s.isnull()]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2   NaN</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h3 id="Series用作字典"><a href="#Series用作字典" class="headerlink" title="Series用作字典"></a>Series用作字典</h3><p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mydict = &#123;&apos;red&apos;:2000,&apos;blue&apos;:1000,&apos;yellow&apos;:500,&apos;orange&apos;:1000&#125;</span><br><span class="line">myseries = pd.Series(mydict)</span><br><span class="line">myseries</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">blue      1000</span><br><span class="line">orange    1000</span><br><span class="line">red       2000</span><br><span class="line">yellow     500</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>索引数组用字典的键来填充，每个索引所对应的元素为用作索引的键在字典中对应的值。你还可以单独制定索引，pandas会控制字典的键和数组索引标签之间的相关性。如遇缺失值处，pandas就会为其添加NaN。</p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">colors = [&apos;red&apos;,&apos;yellow&apos;,&apos;orange&apos;,&apos;blue&apos;,&apos;green&apos;]</span><br><span class="line">myseries = pd.Series(mydict,index =colors)</span><br><span class="line">myseries</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       2000.0</span><br><span class="line">yellow     500.0</span><br><span class="line">orange    1000.0</span><br><span class="line">blue      1000.0</span><br><span class="line">green        NaN</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h3 id="Series-对象之间的运算"><a href="#Series-对象之间的运算" class="headerlink" title="Series 对象之间的运算"></a>Series 对象之间的运算</h3><p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mydict = &#123;&apos;red&apos;:200,&apos;blue&apos;:100,&apos;yellow&apos;:50,&apos;orange&apos;:100,&apos;black&apos;:700&#125;</span><br><span class="line">myseries2 = pd.Series(mydict)</span><br><span class="line">myseries2</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">black     700</span><br><span class="line">blue      100</span><br><span class="line">orange    100</span><br><span class="line">red       200</span><br><span class="line">yellow     50</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">myseries + myseries2</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">black        NaN</span><br><span class="line">blue      1100.0</span><br><span class="line">green        NaN</span><br><span class="line">orange    1100.0</span><br><span class="line">red       2200.0</span><br><span class="line">yellow     550.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h2 id="DataFrame对象"><a href="#DataFrame对象" class="headerlink" title="DataFrame对象"></a>DataFrame对象</h2><p>DataFrame这种列表式数据结构跟工作表（最常见的是Excel工作表）极为相似，其设计初衷是将Series的使用场景由一维扩展到多维。DataFrame由按一定顺序排列的多列数据组成，各列数据类型可以有不同。</p>
+<h3 id="定义DataFrame对象"><a href="#定义DataFrame对象" class="headerlink" title="定义DataFrame对象"></a>定义DataFrame对象</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data = &#123;&apos;color&apos;:[&apos;blue&apos;,&apos;green&apos;,&apos;yellow&apos;,&apos;red&apos;,&apos;white&apos;],&apos;object&apos;:[&apos;ball&apos;,&apos;pen&apos;,&apos;pecil&apos;,&apos;paper&apos;,&apos;mug&apos;],&apos;price&apos;:[1.2,1.0,0.6,0.9,1.7]&#125;</span><br><span class="line">frame = pd.DataFrame(data)</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_001.png" alt=""></p>
+<p>如果用来创建DataFrame对象的dict对象包含一些用不到的数据，你可以只选择自己感兴趣的。在DataFrame构造函数中，用columns选项制定需要的列即可。新建的DataFrame各列顺序与你制定的列顺序一致，而与他们在字典中的顺序无关。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2 = pd.DataFrame(data,columns=[&apos;object&apos;,&apos;price&apos;])</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_002.png" alt=""></p>
+<p>DataFrame对象和Series一样，如果Index数组没有明确制定标签，pandas也会自动为其添加一列从0开始的数值作为索引。如果想用标签作为DataFrame的索引，则要把标签放在数组中，赋给index选项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3 = pd.DataFrame(data,index=[&apos;one&apos;,&apos;two&apos;,&apos;three&apos;,&apos;four&apos;,&apos;five&apos;])</span><br><span class="line">frame3</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_003.png" alt=""></p>
+<h3 id="选取元素"><a href="#选取元素" class="headerlink" title="选取元素"></a>选取元素</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.columns #列名</span><br></pre></td></tr></table></figure>
+<p>Index([‘color’, ‘object’, ‘price’], dtype=’object’)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.index #索引</span><br></pre></td></tr></table></figure>
+<p>RangeIndex(start=0, stop=5, step=1)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.values #所有元素</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">array([[&apos;blue&apos;, &apos;ball&apos;, 1.2],</span><br><span class="line">       [&apos;green&apos;, &apos;pen&apos;, 1.0],</span><br><span class="line">       [&apos;yellow&apos;, &apos;pecil&apos;, 0.6],</span><br><span class="line">       [&apos;red&apos;, &apos;paper&apos;, 0.9],</span><br><span class="line">       [&apos;white&apos;, &apos;mug&apos;, 1.7]], dtype=object)</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame[&apos;price&apos;]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    1.2</span><br><span class="line">1    1.0</span><br><span class="line">2    0.6</span><br><span class="line">3    0.9</span><br><span class="line">4    1.7</span><br><span class="line">Name: price, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.price</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    1.2</span><br><span class="line">1    1.0</span><br><span class="line">2    0.6</span><br><span class="line">3    0.9</span><br><span class="line">4    1.7</span><br><span class="line">Name: price, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.ix[2]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">color     yellow</span><br><span class="line">object     pecil</span><br><span class="line">price        0.6</span><br><span class="line">Name: 2, dtype: object</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_004.png" alt=""></p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.loc[2]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">color     yellow</span><br><span class="line">object     pecil</span><br><span class="line">price        0.6</span><br><span class="line">Name: 2, dtype: object</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.iloc[2]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">color     yellow</span><br><span class="line">object     pecil</span><br><span class="line">price        0.6</span><br><span class="line">Name: 2, dtype: object</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.loc[[2,4]]</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_005.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.iloc[[2,4]] #i表示整数</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_005.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3.loc[&apos;one&apos;]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">color     blue</span><br><span class="line">object    ball</span><br><span class="line">price      1.2</span><br><span class="line">Name: one, dtype: object</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame[1:3]</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_006.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame[&apos;object&apos;][3]</span><br></pre></td></tr></table></figure>
+<p>‘paper’</p>
+<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.index.name = &apos;id&apos;</span><br><span class="line">frame.columns.name = &apos;item&apos;</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_007.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame[&apos;new&apos;] = 12</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_008.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame[&apos;new&apos;] = [3.0,1.3,2.2,0.8,1.1]</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_009.png" alt=""></p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser = pd.Series(np.arange(5))</span><br><span class="line">ser</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    0</span><br><span class="line">1    1</span><br><span class="line">2    2</span><br><span class="line">3    3</span><br><span class="line">4    4</span><br><span class="line">dtype: int32</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame[&apos;new&apos;]  = ser</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_010.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame[&apos;price&apos;][2] = 3.3</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_011.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.set_value(2,&apos;price&apos;,2)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_012.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.at[2,&apos;price&apos;]=22</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_013.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.isin([1.0,&apos;pen&apos;])</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_014.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame[frame.isin([1.0,&apos;pen&apos;])]</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_015.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">del</span> frame[<span class="string">'new'</span>]</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_016.png" alt=""></p>
+<p>删除一列</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">d1 = &#123;&apos;red&apos;:&#123;2012:22,2013:33&#125;,&apos;white&apos;:&#123;2011:13,2012:22,2013:16&#125;,&apos;blue&apos;:&#123;2011:17,2012:27,2013:18&#125;&#125;</span><br><span class="line">frame2 = pd.DataFrame(d1)</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_017.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.T</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_018.png" alt=""></p>
+<h3 id="Index对象"><a href="#Index对象" class="headerlink" title="Index对象"></a>Index对象</h3><p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ins = pd.Series([5,0,3,8,4],index=[&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;white&apos;,&apos;green&apos;])</span><br><span class="line">ins</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       5</span><br><span class="line">blue      0</span><br><span class="line">yellow    3</span><br><span class="line">white     8</span><br><span class="line">green     4</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ins.index</span><br></pre></td></tr></table></figure>
+<p>Index([‘red’, ‘blue’, ‘yellow’, ‘white’, ‘green’], dtype=’object’)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ins.idxmin() #返回索引值最小的元素</span><br></pre></td></tr></table></figure>
+<p>‘blue’</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ins.idxmax() #返回索引值最大的元素</span><br></pre></td></tr></table></figure>
+<p>‘white’</p>
+<h3 id="重复标签的Index"><a href="#重复标签的Index" class="headerlink" title="重复标签的Index"></a>重复标签的Index</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">serd = pd.Series(range(6),index=[&apos;white&apos;,&apos;white&apos;,&apos;blue&apos;,&apos;green&apos;,&apos;green&apos;,&apos;yellow&apos;])</span><br><span class="line">serd</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">white     0</span><br><span class="line">white     1</span><br><span class="line">blue      2</span><br><span class="line">green     3</span><br><span class="line">green     4</span><br><span class="line">yellow    5</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">serd[&apos;white&apos;]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">white    0</span><br><span class="line">white    1</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">serd.index.is_unique</span><br></pre></td></tr></table></figure>
+<p>False</p>
+<p>判断是否存在重复项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.index.is_unique</span><br></pre></td></tr></table></figure>
+<p>True</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_019.png" alt=""></p>
+<h3 id="索引对象的其他功能"><a href="#索引对象的其他功能" class="headerlink" title="索引对象的其他功能"></a>索引对象的其他功能</h3><h4 id="更换索引"><a href="#更换索引" class="headerlink" title="更换索引"></a>更换索引</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([2,3,4,5],index=[&apos;one&apos;,&apos;two&apos;,&apos;three&apos;,&apos;four&apos;])</span><br><span class="line">ser</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">one      2</span><br><span class="line">two      3</span><br><span class="line">three    4</span><br><span class="line">four     5</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser.reindex([&apos;three&apos;,&apos;four&apos;,&apos;five&apos;,&apos;one&apos;])</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">three    4.0</span><br><span class="line">four     5.0</span><br><span class="line">five     NaN</span><br><span class="line">one      2.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h4 id="自动编制索引"><a href="#自动编制索引" class="headerlink" title="自动编制索引"></a>自动编制索引</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser2 = pd.Series([1,5,6,3],index =[0,3,5,6])</span><br><span class="line">ser2</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    1</span><br><span class="line">3    5</span><br><span class="line">5    6</span><br><span class="line">6    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser2.reindex(range(6),method=&apos;ffill&apos;) #插值，以得到一个完整的序列（前插）</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    1</span><br><span class="line">1    1</span><br><span class="line">2    1</span><br><span class="line">3    5</span><br><span class="line">4    5</span><br><span class="line">5    6</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser2.reindex(range(6),method=&apos;bfill&apos;) #插值，以得到一个完整的序列（后插）</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    1</span><br><span class="line">1    5</span><br><span class="line">2    5</span><br><span class="line">3    5</span><br><span class="line">4    6</span><br><span class="line">5    6</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>pandas提供专门的删除操作函数：drop()</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser3 = pd.Series(np.arange(4.),index=[&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;white&apos;])</span><br><span class="line">ser3</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       0.0</span><br><span class="line">blue      1.0</span><br><span class="line">yellow    2.0</span><br><span class="line">white     3.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser3.drop(<span class="string">'yellow'</span>)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red      0.0</span><br><span class="line">blue     1.0</span><br><span class="line">white    3.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser3.drop([&apos;blue&apos;,&apos;white&apos;])</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       0.0</span><br><span class="line">yellow    2.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame = pd.DataFrame(np.arange(16).reshape((4,4)),index=[&apos;blue&apos;,&apos;yellow&apos;,&apos;red&apos;,&apos;white&apos;],columns=[&apos;ball&apos;,&apos;pen&apos;,&apos;pencil&apos;,&apos;paper&apos;])</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_020.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.drop([&apos;blue&apos;,&apos;yellow&apos;]) #默认删除行</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_021.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.drop([&apos;pen&apos;,&apos;pencil&apos;],axis=1) #删除列</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_022.png" alt=""></p>
+<h3 id="add-sub-div-mul"><a href="#add-sub-div-mul" class="headerlink" title="add() sub() div() mul()"></a>add() sub() div() mul()</h3><p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser4 = pd.Series(np.arange(4.),index=[&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;white&apos;])</span><br><span class="line">ser4</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       0.0</span><br><span class="line">blue      1.0</span><br><span class="line">yellow    2.0</span><br><span class="line">white     3.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser5 = pd.Series(np.arange(5.),index=[&apos;red&apos;,&apos;blue&apos;,&apos;black&apos;,&apos;brown&apos;,&apos;yellow&apos;])</span><br><span class="line">ser5</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       0.0</span><br><span class="line">blue      1.0</span><br><span class="line">black     2.0</span><br><span class="line">brown     3.0</span><br><span class="line">yellow    4.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser4 + ser5</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">black     NaN</span><br><span class="line">blue      2.0</span><br><span class="line">brown     NaN</span><br><span class="line">red       0.0</span><br><span class="line">white     NaN</span><br><span class="line">yellow    6.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame1 = pd.DataFrame(np.arange(16).reshape((4,4)),index=[&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;white&apos;],columns=[&apos;ball&apos;,&apos;pen&apos;,&apos;pencil&apos;,&apos;paper&apos;])</span><br><span class="line">frame1</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_023.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2 = pd.DataFrame(np.arange(12).reshape((4,3)),index=[&apos;blue&apos;,&apos;green&apos;,&apos;white&apos;,&apos;yellow&apos;],columns=[&apos;mug&apos;,&apos;pen&apos;,&apos;ball&apos;])</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_024.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame1 + frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_025.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame1.add(frame2)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_025.png" alt=""></p>
+<h4 id="-1"><a href="#-1" class="headerlink" title=" "></a> </h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2 = pd.DataFrame(np.arange(16).reshape((4,4)),index=[&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;white&apos;],columns=[&apos;ball&apos;,&apos;pen&apos;,&apos;pencil&apos;,&apos;paper&apos;])</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_026.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser1 = pd.Series(np.arange(4),index=[&apos;ball&apos;,&apos;pen&apos;,&apos;pencil&apos;,&apos;paper&apos;])</span><br><span class="line">ser1</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball      0</span><br><span class="line">pen       1</span><br><span class="line">pencil    2</span><br><span class="line">paper     3</span><br><span class="line">dtype: int32</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2 - ser1</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_027.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser1[&apos;mug&apos;] = 9</span><br><span class="line">ser1</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball      0</span><br><span class="line">pen       1</span><br><span class="line">pencil    2</span><br><span class="line">paper     3</span><br><span class="line">mug       9</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2 - ser1</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_028.png" alt=""></p>
+<h3 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">np.sqrt(frame2) #平方根</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_029.png" alt=""></p>
+<h3 id="按行或列执行操作的函数"><a href="#按行或列执行操作的函数" class="headerlink" title="按行或列执行操作的函数"></a>按行或列执行操作的函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f = lambda x:x.max() - x.min()</span><br><span class="line"></span><br><span class="line">frame2.apply(f)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball      12</span><br><span class="line">pen       12</span><br><span class="line">pencil    12</span><br><span class="line">paper     12</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.apply(f,axis = 1) # 行</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       3</span><br><span class="line">blue      3</span><br><span class="line">yellow    3</span><br><span class="line">white     3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> pd.Series([x.min(),x.max()],index=[<span class="string">'min'</span>,<span class="string">'max'</span>])</span><br><span class="line">    </span><br><span class="line">frame2.apply(f)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_030.png" alt=""></p>
+<h3 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.sum()</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball      24</span><br><span class="line">pen       28</span><br><span class="line">pencil    32</span><br><span class="line">paper     36</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.describe()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_031.png" alt=""></p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="根据索引排序"><a href="#根据索引排序" class="headerlink" title="根据索引排序"></a>根据索引排序</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([5,0,3,8,4],index=[&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;white&apos;,&apos;green&apos;])</span><br><span class="line">ser</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       5</span><br><span class="line">blue      0</span><br><span class="line">yellow    3</span><br><span class="line">white     8</span><br><span class="line">green     4</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser.sort_index() #a-zp升序</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">blue      0</span><br><span class="line">green     4</span><br><span class="line">red       5</span><br><span class="line">white     8</span><br><span class="line">yellow    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser.sort_index(ascending=False)  #降序</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yellow    3</span><br><span class="line">white     8</span><br><span class="line">red       5</span><br><span class="line">green     4</span><br><span class="line">blue      0</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_032.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.sort_index()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_033.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.sort_index(axis=1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_034.png" alt=""></p>
+<h4 id="根据对象排序"><a href="#根据对象排序" class="headerlink" title="根据对象排序"></a>根据对象排序</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.sort_values(by = &apos;pen&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_035.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.at[&apos;red&apos;,&apos;pen&apos;]=18</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_036.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.sort_values(by = &apos;pen&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_037.png" alt=""></p>
+<h4 id="排位"><a href="#排位" class="headerlink" title="排位"></a>排位</h4><p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser.rank() #排位</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       4.0</span><br><span class="line">blue      1.0</span><br><span class="line">yellow    2.0</span><br><span class="line">white     5.0</span><br><span class="line">green     3.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser.rank(method = &apos;first&apos;)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       4.0</span><br><span class="line">blue      1.0</span><br><span class="line">yellow    2.0</span><br><span class="line">white     5.0</span><br><span class="line">green     3.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser.rank(ascending=False) #降序</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">red       2.0</span><br><span class="line">blue      5.0</span><br><span class="line">yellow    4.0</span><br><span class="line">white     1.0</span><br><span class="line">green     3.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.rank()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_038.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3 = frame2.sort_values(by = &apos;pen&apos;)</span><br><span class="line">frame3.rank()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_039.png" alt=""></p>
+<h3 id="相关性和协方差"><a href="#相关性和协方差" class="headerlink" title="相关性和协方差"></a>相关性和协方差</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">seq2 = pd.Series([3,4,3,4,5,4,3,2],[&apos;2006&apos;,&apos;2007&apos;,&apos;2008&apos;,&apos;2009&apos;,&apos;2010&apos;,&apos;2011&apos;,&apos;2012&apos;,&apos;2013&apos;])</span><br><span class="line">seq2</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2006    3</span><br><span class="line">2007    4</span><br><span class="line">2008    3</span><br><span class="line">2009    4</span><br><span class="line">2010    5</span><br><span class="line">2011    4</span><br><span class="line">2012    3</span><br><span class="line">2013    2</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">seq = pd.Series([1,2,3,4,4,3,2,1],[&apos;2006&apos;,&apos;2007&apos;,&apos;2008&apos;,&apos;2009&apos;,&apos;2010&apos;,&apos;2011&apos;,&apos;2012&apos;,&apos;2013&apos;])</span><br><span class="line">seq</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2006    1</span><br><span class="line">2007    2</span><br><span class="line">2008    3</span><br><span class="line">2009    4</span><br><span class="line">2010    4</span><br><span class="line">2011    3</span><br><span class="line">2012    2</span><br><span class="line">2013    1</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">seq.corr(seq2)</span><br></pre></td></tr></table></figure>
+<p>0.7745966692414835</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">seq.cov(seq2)</span><br></pre></td></tr></table></figure>
+<p>0.8571428571428571</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2 = pd.DataFrame([[1,4,3,6],[4,5,6,1],[3,3,1,5],[4,1,6,4]],index=[&apos;red&apos;,&apos;blue&apos;,&apos;yellow&apos;,&apos;white&apos;],columns = [&apos;ball&apos;,&apos;pen&apos;,&apos;pencil&apos;,&apos;paper&apos;])</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_040.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.corr()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_041.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.cov()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_042.png" alt=""></p>
+<p><strong>corrwith()方法可以计算DataFrame对象的列或行与Series对象或其他DataFrame对象元素两两之间的相关性</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.corrwith(ser)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball     -0.140028</span><br><span class="line">pen      -0.869657</span><br><span class="line">pencil    0.080845</span><br><span class="line">paper     0.595854</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f1 = frame2.corrwith(frame)</span><br><span class="line">f1</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball     -0.182574</span><br><span class="line">pen      -0.831522</span><br><span class="line">pencil    0.105409</span><br><span class="line">paper     0.597614</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f1.dropna() #删除NaN</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball     -0.182574</span><br><span class="line">pen      -0.831522</span><br><span class="line">pencil    0.105409</span><br><span class="line">paper     0.597614</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f1[f1.notnull()]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball     -0.182574</span><br><span class="line">pen      -0.831522</span><br><span class="line">pencil    0.105409</span><br><span class="line">paper     0.597614</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3 = pd.DataFrame([[6,np.nan,6],[np.nan,np.nan,np.nan],[2,np.nan,5]],index = [&apos;blue&apos;,&apos;green&apos;,&apos;red&apos;],columns = [&apos;ball&apos;,&apos;mug&apos;,&apos;pen&apos;])</span><br><span class="line">frame3</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_043.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3.dropna()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_044.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3.dropna(how =&apos;all&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_045.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3.fillna(0) #指定缺失值填充</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_046.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3.fillna(&#123;&apos;ball&apos;:1,&apos;mug&apos;:0,&apos;pen&apos;:99&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_047.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mser = pd.Series(np.random.rand(8),index=[[&apos;white&apos;,&apos;white&apos;,&apos;white&apos;,&apos;blue&apos;,&apos;blue&apos;,&apos;red&apos;,&apos;red&apos;,&apos;red&apos;],[&apos;up&apos;,&apos;down&apos;,&apos;right&apos;,&apos;up&apos;,&apos;down&apos;,&apos;up&apos;,&apos;down&apos;,&apos;left&apos;]])</span><br><span class="line">mser #等级索引</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">white  up       0.096961</span><br><span class="line">       down     0.633575</span><br><span class="line">       right    0.652724</span><br><span class="line">blue   up       0.269485</span><br><span class="line">       down     0.518140</span><br><span class="line">red    up       0.143647</span><br><span class="line">       down     0.335544</span><br><span class="line">       left     0.574777</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mser.index</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MultiIndex(levels=[[&apos;blue&apos;, &apos;red&apos;, &apos;white&apos;], [&apos;down&apos;, &apos;left&apos;, &apos;right&apos;, &apos;up&apos;]],</span><br><span class="line">           labels=[[2, 2, 2, 0, 0, 1, 1, 1], [3, 0, 2, 3, 0, 3, 0, 1]])</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mser[&apos;white&apos;]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">up       0.096961</span><br><span class="line">down     0.633575</span><br><span class="line">right    0.652724</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mser[:,&apos;up&apos;]</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">white    0.096961</span><br><span class="line">blue     0.269485</span><br><span class="line">red      0.143647</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mser[&apos;white&apos;,&apos;up&apos;]</span><br></pre></td></tr></table></figure>
+<p>0.09696136257353527</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame = mser.unstack() #把等级索引Series转换成简单的DataFrame对象</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_048.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame.stack()</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">blue   down     0.518140</span><br><span class="line">       up       0.269485</span><br><span class="line">red    down     0.335544</span><br><span class="line">       left     0.574777</span><br><span class="line">       up       0.143647</span><br><span class="line">white  down     0.633575</span><br><span class="line">       right    0.652724</span><br><span class="line">       up       0.096961</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mframe = pd.DataFrame(np.random.randn(16).reshape(4,4),</span><br><span class="line">                     index =[[&apos;white&apos;,&apos;white&apos;,&apos;red&apos;,&apos;red&apos;],[&apos;up&apos;,&apos;down&apos;,&apos;up&apos;,&apos;down&apos;]],</span><br><span class="line">                     columns=[[&apos;pen&apos;,&apos;pen&apos;,&apos;paper&apos;,&apos;paper&apos;],[1,2,1,2]])</span><br><span class="line">mframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_049.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mframe.columns.names =[&apos;objects&apos;,&apos;id&apos;]</span><br><span class="line">mframe.index.names = [&apos;colors&apos;,&apos;status&apos;]</span><br><span class="line">mframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_050.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mframe.swaplevel(&apos;colors&apos;,&apos;status&apos;) #互换位置</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_051.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mframe.sort_index(level=&apos;colors&apos;) #根据层级排序</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_052.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mframe.sum(level=&apos;colors&apos;)  #按照层级统计</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_053.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mframe.sum(level=&apos;id&apos;,axis=1)  #按照层级统计</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_054.png" alt=""></p>
+<h3 id="pandas：数据读写"><a href="#pandas：数据读写" class="headerlink" title="pandas：数据读写"></a>pandas：数据读写</h3><p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_055.png" alt=""></p>
+<h4 id="csv和文本文件"><a href="#csv和文本文件" class="headerlink" title="csv和文本文件"></a>csv和文本文件</h4><p>多年以来，人们已习惯于文本文件的读写，特别是列表形式的数据。如果文件每一行的多 个元素是用逗号隔开的，则这种格式叫作CSV，这可能是最广为人知和最受欢迎的格式。</p>
+<p>其他由空格或制表符分隔的列表数据通常存储在各种类型的文本文件中（扩展名一般 为.txt )。</p>
+<p>因此这种文件类型是最常见的数据源，它易于转录和解释。pandas的下列函数专门用来处理 这种文件类型：</p>
+<ul>
+<li>read_csv</li>
+<li>read_table</li>
+<li>to_csv</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">csvframe = pd.read_csv(&apos;myCSV_01.csv&apos;)</span><br><span class="line">csvframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_056.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">csvframe = pd.read_table(&apos;myCSV_01.csv&apos;,sep=&apos;,&apos;)</span><br><span class="line">csvframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_057.png" alt=""></p>
+<p>第一行作为列名称，但是往往很多数据第一行不是列名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">csvframe = pd.read_csv(&apos;myCSV_02.csv&apos;)</span><br><span class="line">csvframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_058.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">csvframe = pd.read_csv(&apos;myCSV_02.csv&apos;,header=None) #添加默认表头</span><br><span class="line">csvframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_059.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">csvframe = pd.read_csv(&apos;myCSV_02.csv&apos;,names=[&apos;white&apos;,&apos;red&apos;,&apos;blue&apos;,&apos;green&apos;,&apos;animal&apos;]) #指定表头</span><br><span class="line">csvframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_060.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">csvframe = pd.read_csv(&apos;myCSV_03.csv&apos;)</span><br><span class="line">csvframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_061.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">csvframe = pd.read_csv(&apos;myCSV_03.csv&apos;,index_col=[&apos;color&apos;,&apos;status&apos;]) #等级索引</span><br><span class="line">csvframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_062.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.read_table(&apos;ch05_04.txt&apos;,sep=&apos;\s+&apos;) #根据正则解析</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_063.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.read_table(&apos;ch05_05.txt&apos;,sep=r&apos;\D+&apos;,header=None,engine=&apos;python&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_064.png" alt=""></p>
+<p>另一种很常见的情况是，解析数据时把空行排除在外。文件中的表头或没有必要的注释，有时用不到。使用skiprows选项，可以排除多余的行。把要排除的行的行号放到数组中，赋给该选项即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.read_table(&apos;ch05_06.txt&apos;,sep=&apos;,&apos;,skiprows=[0,1,3,6])</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_065.png" alt=""></p>
+<h4 id="从TXT文件读取部分数据"><a href="#从TXT文件读取部分数据" class="headerlink" title="从TXT文件读取部分数据"></a>从TXT文件读取部分数据</h4><p>处理大文件或是只对文件部分数据感兴趣时，往往需要按照部分（块）读取文件，因为只需 要部分数据s这两种情况都得使用迭代。 举例来说，假如只想读取文件的一部分，可明确指定要解析的行号，这时要用到nrows和skiprows选项。你可以指定起始行n (n = SkipRows)和从起始行往后读多少行（nrows = i).</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.read_csv(&apos;myCSV_02.csv&apos;,skiprows=[2],nrows=3,header=None)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_066.png" alt=""></p>
+<p>另外一项既有趣又很常用的操作是切分想要解析的文本，然后遍历各个部分，逐一对其执行 某一特定操作。</p>
+<p>例如，对于一列数字，每隔两行取一个累加起来，最后把和插人到Series对象中„这个小例 子理解起来很简单，也没有实际应用价值，但是一旦领会了其原理，你就能将其用到更加复杂的情况。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">out = pd.Series()</span><br><span class="line">pieces = pd.read_csv(&apos;myCSV_01.csv&apos;,chunksize=3)</span><br><span class="line">pieces</span><br></pre></td></tr></table></figure>
+<pandas.io.parsers.textfilereader at="" 0x11dfa4a8="">
+
+<p>In:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> piece <span class="keyword">in</span> pieces:</span><br><span class="line">    print(piece[<span class="string">'white'</span>])</span><br><span class="line">    out.at[i] = piece[<span class="string">'white'</span>].sum()</span><br><span class="line">    i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0    1</span><br><span class="line">1    2</span><br><span class="line">2    3</span><br><span class="line">Name: white, dtype: int64</span><br><span class="line">3    2</span><br><span class="line">4    4</span><br><span class="line">5    4</span><br><span class="line">Name: white, dtype: int64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">out</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0     6</span><br><span class="line">1    10</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="往CSV文件写入数据"><a href="#往CSV文件写入数据" class="headerlink" title="往CSV文件写入数据"></a>往CSV文件写入数据</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame1</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_067.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame1.to_csv(&apos;ch05_07.csv&apos;)</span><br></pre></td></tr></table></figure>
+<p>把DataFrame写人文件时，索引和列名称连同数据一起写入。使用index和 header选项，把它们的值设置为False,可取消这一默认行为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame1.to_csv(&apos;ch05_07b.csv&apos;,index =False,header=False)</span><br><span class="line">frame3</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_068.png" alt=""></p>
+<p>需要注意的是，数据结构中的NaN写入文件后，显示为空字段</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3.to_csv(&apos;ch05_08.csv&apos;)</span><br></pre></td></tr></table></figure>
+<p>可以用to_csv()函数的na_rep选项把空字段替换为你需要的值。常用值有NULL、0和NaN</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame3.to_csv(&apos;ch05_09.csv&apos;,na_rep=&apos;NaN&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="读写HTML文件"><a href="#读写HTML文件" class="headerlink" title="读写HTML文件"></a>读写HTML文件</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame = pd.DataFrame(np.arange(4).reshape(2,2))</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_069.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(frame.to_html())</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot; class=&quot;dataframe&quot;&gt;</span><br><span class="line">  &lt;thead&gt;</span><br><span class="line">    &lt;tr style=&quot;text-align: right;&quot;&gt;</span><br><span class="line">      &lt;th&gt;&lt;/th&gt;</span><br><span class="line">      &lt;th&gt;0&lt;/th&gt;</span><br><span class="line">      &lt;th&gt;1&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/thead&gt;</span><br><span class="line">  &lt;tbody&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;0&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;0&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;1&lt;/th&gt;</span><br><span class="line">      &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> frame = pd.DataFrame( np.random.random((4,4)),</span><br><span class="line">index = [&apos;white&apos;,&apos;black&apos;,&apos;red&apos;,&apos;blue1&apos;],</span><br><span class="line">columns = [&apos;up&apos;,&apos;down&apos;,&apos;right&apos;,&apos;left&apos;])</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_070.png" alt=""></p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s = [&apos;&lt;HTML&gt;&apos;]</span><br><span class="line">s.append(&apos;&lt;HEAD&gt;&lt;TITLE&gt;My DataFrame&lt;/TITLE&gt;&lt;/HEAD&gt;&apos;)</span><br><span class="line">s.append(&apos; &lt;B0DY&gt;&apos;)</span><br><span class="line">s.append(frame.to_html())</span><br><span class="line">s.append(&apos;&lt;/BODY&gt;&lt;/HTML&gt;&apos;)</span><br><span class="line">html = &apos;&apos;.join(s)</span><br><span class="line">html_file = open(&apos;myFrame.html&apos;,&apos;w&apos;)</span><br><span class="line">html_file.write(html)</span><br><span class="line">html_file.close()</span><br></pre></td></tr></table></figure>
+<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">web_frames = pd.read_html(&apos;myFrame.html&apos;)</span><br><span class="line">web_frames[0]</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_071.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ranking = pd.read_html(&apos;http://www.meccanismocomplesso.org/en/ meccanismo-complesso-sito-2/classifica-punteggio/&apos;)</span><br><span class="line">ranking[0]</span><br></pre></td></tr></table></figure>
+<p>此处省略。。。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ranking[1]</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_072.png" alt=""></p>
+<h3 id="从XML读取数据"><a href="#从XML读取数据" class="headerlink" title="从XML读取数据"></a>从XML读取数据</h3><p>pandas的所有I/O API函数中，没有专门用来处理XML(可扩展标记语言）格式的。虽然没有， 但这种格式其实很重要，因为很多结构化数据都是以XML格式存储的。pandas没有专门的处理函 数也没关系，因为Python有很多读写XML格式数据的库（除了pandas)。</p>
+<p>其中一个库叫作lxml,它在大文件处理方面性能优异，因而从众多同类库之中脱颖而出。这 一节将介绍如何用它处理XML文件，以及如何把它和pandas整合起来，以最终从XML文件中获 取到所需数据并将其转换为DataFrame对象。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> objectify</span><br><span class="line"></span><br><span class="line">xml = objectify.parse(<span class="string">'books.xml'</span>)</span><br><span class="line">xml</span><br></pre></td></tr></table></figure>
+<lxml.etree._elementtree at="" 0x124ee988="">
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root = xml.getroot()</span><br><span class="line">root</span><br></pre></td></tr></table></figure>
+<element catalog="" at="" 0x124ee948="">
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root.Book.Author</span><br></pre></td></tr></table></figure>
+<p>‘ 272103_l_EnRoss, Mark’</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root.Book.PublishDate</span><br></pre></td></tr></table></figure>
+<p>‘2014-22-0l’</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mes = root.Book.getchildren()</span><br><span class="line">mes</span><br></pre></td></tr></table></figure>
+<p>[‘ 272103_l_EnRoss, Mark’, ‘XML Cookbook’, ‘Computer’, 23.56, ‘2014-22-0l’]</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[child.tag for child in mes]</span><br></pre></td></tr></table></figure>
+<p>[‘Author’, ‘Title’, ‘Genre’, ‘Price’, ‘PublishDate’]</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[child.text for child in mes]</span><br></pre></td></tr></table></figure>
+<p>[‘ 272103_l_EnRoss, Mark’, ‘XML Cookbook’, ‘Computer’, ‘23.56’, ‘2014-22-0l’]</p>
+<h3 id="读写-Microsoft-Excel文件"><a href="#读写-Microsoft-Excel文件" class="headerlink" title="读写 Microsoft Excel文件"></a>读写 Microsoft Excel文件</h3><ul>
+<li>to_excel()</li>
+<li>read_excel()</li>
+</ul>
+<p>能够读取.xls和.xlsx两种类型的文件</p>
+<h3 id="读写JSON数据"><a href="#读写JSON数据" class="headerlink" title="读写JSON数据"></a>读写JSON数据</h3><ul>
+<li>read_json()</li>
+<li>to_json()</li>
+</ul>
+<h3 id="HDF5格式"><a href="#HDF5格式" class="headerlink" title="HDF5格式"></a>HDF5格式</h3><p>至此，已学习了文本格式的读写。若要分析大量数据，最好使用二进制格式。Python有多 种二进制数据处理工具。HDF5库在这个方面取得了一定的成功。</p>
+<p>HDF代表等级数据格式（hierarchical data format )。HDF5库关注的是HDF5文件的读写，这种文件的数据结构由节点组成，能够存储大量数据集。</p>
+<p>该库全部用c语言开发，提供了python/matlab和Java语言接口。它的迅速扩展得益于开发人 员的广泛使用，还得益于它的效率，尤其是使用这种格式存储大量数据，其效率很高。比起其他处理起二进制数据更为简单的格式，HDF5支持实时压缩，因而能够利用数据结构中的重复模式压缩文件。</p>
+<p>目前，Python提供两种操纵HDF5格式数据的方法：PyTables和h5py。这两种方法有几点不同，选用哪一种很大程度上取决于具体需求。</p>
+<p>h5py为HDF5的高级API提供接口。PyTables封装了很多HDF5细节，提供更加灵活的数据容器、索引表、搜索功能和其他计算相关的介质。</p>
+<p>pandas还有一个叫作HDFStore、类似于diet的类，它用PyTables存储pandas对象。使用HDF5格式之前，必须导人HDFStore类。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas.io.pytables <span class="keyword">import</span> HDFStore</span><br><span class="line"></span><br><span class="line">frame = pd.DataFrame(np.arange(<span class="number">16</span>).reshape(<span class="number">4</span>,<span class="number">4</span>),</span><br><span class="line"></span><br><span class="line">index=[<span class="string">'white'</span>,<span class="string">'black1'</span>,<span class="string">'red'</span>,<span class="string">'blue'</span>],</span><br><span class="line"></span><br><span class="line">columns=[<span class="string">'up'</span>,<span class="string">'down'</span>,<span class="string">'right'</span>,<span class="string">'left'</span>])</span><br><span class="line"></span><br><span class="line">frame1</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_073.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">store = HDFStore(&apos;mydata.h5&apos;)</span><br><span class="line">store[&apos;obj1&apos;] = frame</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_074.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">store[&apos;obj2&apos;] = frame2</span><br><span class="line">store</span><br></pre></td></tr></table></figure>
+<p><class 'pandas.io.pytables.hdfstore'=""><br>File path: mydata.h5</class></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">store[&apos;obj2&apos;]</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_075.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">store[&apos;obj1&apos;]</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_076.png" alt=""></p>
+<h3 id="pickle-——python对象序列化"><a href="#pickle-——python对象序列化" class="headerlink" title="pickle ——python对象序列化"></a>pickle ——python对象序列化</h3><p>pickle模块实现了一个强大的算法，能够对用Python实现的数据结构进行序列化（pickling) 和反序列化操作。序列化是指把对象的层级结构转换为字节流的过程。序列化便于对象的传输、存储和重建，仅用接收器就能重建对象，还能保留它的所有原始特征。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">data = &#123; <span class="string">'color'</span>: [<span class="string">'white'</span>,<span class="string">'red'</span>], <span class="string">'value'</span>: [<span class="number">5</span>, <span class="number">7</span>]&#125;</span><br><span class="line"></span><br><span class="line">pickled_data = pickle.dumps(data)</span><br><span class="line"></span><br><span class="line">pickled_data</span><br></pre></td></tr></table></figure>
+<p>b’\x80\x03}q\x00(X\x05\x00\x00\x00colorq\x01]q\x02(X\x05\x00\x00\x00whiteq\x03X\x03\x00\x00\x00redq\x04eX\x05\x00\x00\x00valueq\x05]q\x06(K\x05K\x07eu.’</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nframe = pickle.loads(pickled_data)</span><br><span class="line">nframe</span><br></pre></td></tr></table></figure>
+<p>{‘color’: [‘white’, ‘red’], ‘value’: [5, 7]}</p>
+<h4 id="用pandas实现对象序列化"><a href="#用pandas实现对象序列化" class="headerlink" title="用pandas实现对象序列化"></a>用pandas实现对象序列化</h4><p>用pandas库实现对象序列化（反序列化）很方便，所有工具都是现成的，无需在Python会话中导入cPickle模块，所有的操作都是隐式进行的。 pandas的序列化格式并不是完全使用ASCII编码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame = pd.DataFrame(np.arange(16).reshape(4,4), index = [&apos;up&apos;,&apos;down&apos;,&apos;left&apos;,&apos;right&apos;])</span><br><span class="line"></span><br><span class="line">frame.to_pickle(&apos;frame.pkl&apos;)</span><br><span class="line"></span><br><span class="line">pd.read_pickle(&apos;frame.pkl&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_077.png" alt=""></p>
+<p>pandas的所有序列化和反序列化操作都在后台运行，用户根本看不到。这使得这两项操作对数据分析人员而言尽可能简单和易于理解。</p>
+<p><strong>注意 :</strong>使用这种格式时，要确保打开的文件的安全性。pickle格式无法规避错误和恶意数据。</p>
+<h3 id="对接数据库"><a href="#对接数据库" class="headerlink" title="对接数据库"></a>对接数据库</h3><p>在很多应用中，所使用的数据来自于文本文件的很少，因为文本文件不是存储数据最有效的方式</p>
+<p>数据往往存储于SQL类关系型数据库，作为补充，NoSQL数据库近来也已流行开来。</p>
+<p>从SQL数据库加载数据，将其转换为DataFrame对象很简单pandas提供的几个函数简化了该过程。</p>
+<p>pandas.io.sql模块提供独立于数据库、叫作sqlalchemy的统一接口。该接口简化了连接模式， 不管对于什么类型的数据库，操作命令都只有一套。连接数据库使用create_engine()函数，你可以用它配置驱动器所需的用户名、密码、端口和数据库实例等所有属性。 数据库URL的典型形式是：</p>
+<p>dialect+driver://username:password@host:port/database</p>
+<p>名称的标识名称，例如sqlite，mysql，postgresql，oracle，或mssql。drivername是用于使用全小写字母连接到数据库的DBAPI的名称。如果未指定，则将导入“默认”DBAPI（如果可用） - 此默认值通常是该后端可用的最广泛的驱动程序。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from sqlalchemy import create_engine</span><br></pre></td></tr></table></figure>
+<h4 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h4><h5 id="default"><a href="#default" class="headerlink" title="default"></a>default</h5><p>engine = create_engine(‘postgresql://scott:tiger@localhost/mydatabase’)</p>
+<h5 id="psycopg2"><a href="#psycopg2" class="headerlink" title="psycopg2"></a>psycopg2</h5><p>engine = create_engine(‘postgresql+psycopg2://scott:tiger@localhost/mydatabase’)</p>
+<h5 id="pg8000"><a href="#pg8000" class="headerlink" title="pg8000"></a>pg8000</h5><p>engine = create_engine(‘postgresql+pg8000://scott:tiger@localhost/mydatabase’)</p>
+<h4 id="MySql"><a href="#MySql" class="headerlink" title="MySql"></a>MySql</h4><h5 id="default-1"><a href="#default-1" class="headerlink" title="default"></a>default</h5><p>engine = create_engine(‘mysql://scott:tiger@localhost/foo’)</p>
+<h5 id="mysql-python"><a href="#mysql-python" class="headerlink" title="mysql-python"></a>mysql-python</h5><p>engine = create_engine(‘mysql+mysqldb://scott:tiger@localhost/foo’)</p>
+<h5 id="MySQL-connector-python"><a href="#MySQL-connector-python" class="headerlink" title="MySQL-connector-python"></a>MySQL-connector-python</h5><p>engine = create_engine(‘mysql+mysqlconnector://scott:tiger@localhost/foo’)</p>
+<h5 id="OurSQL"><a href="#OurSQL" class="headerlink" title="OurSQL"></a>OurSQL</h5><p>engine = create_engine(‘mysql+oursql://scott:tiger@localhost/foo’)</p>
+<h4 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h4><p>engine = create_engine(‘oracle://scott:<a href="mailto:tiger@127.0.0.1" target="_blank" rel="noopener">tiger@127.0.0.1</a>:1521/sidname’)</p>
+<p>engine = create_engine(‘oracle+cx_oracle://scott:tiger@tnsname’)</p>
+<h4 id="Microsoft-SQL"><a href="#Microsoft-SQL" class="headerlink" title="Microsoft SQL"></a>Microsoft SQL</h4><h5 id="pyodbc"><a href="#pyodbc" class="headerlink" title="pyodbc"></a>pyodbc</h5><p>engine = create_engine(‘mssql+pyodbc://scott:tiger@mydsn’)</p>
+<h5 id="pymssql"><a href="#pymssql" class="headerlink" title="pymssql"></a>pymssql</h5><p>engine = create_engine(‘mssql+pymssql://scott:tiger@hostname:port/dbname’)</p>
+<h4 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h4><p>由于SQLite连接到本地文件，因此URL格式略有不同。URL的“文件”部分是数据库的文件名。</p>
+<p>对于相对文件路径，这需要三个斜杠：</p>
+<p>sqlite:///</p>
+<p>where is relative:</p>
+<p>engine = create_engine(‘sqlite:///foo.db’)</p>
+<p>对于绝对文件路径，三个斜杠后面是绝对路径：</p>
+<p><strong>Unix/Mac - 4 initial slashes in total</strong></p>
+<p>engine = create_engine(‘sqlite:////absolute/path/to/foo.db’)</p>
+<p><strong>Windows</strong></p>
+<p>engine = create_engine(‘sqlite:///C:\path\to\foo.db’)</p>
+<p><strong>Windows alternative using raw string</strong></p>
+<p>engine = create_engine(r’sqlite:///C:\path\to\foo.db’)</p>
+<h4 id="SQLite3数据读写"><a href="#SQLite3数据读写" class="headerlink" title="SQLite3数据读写"></a>SQLite3数据读写</h4><p>学习使用Python内置的SQLite数据库sqlite3。SQLite3工具实现了简单、 轻量级的DBMS SQL,因此可以内置于用Python语言实现的任何应用。它很实用，你可以在单个文件中创建一个嵌入式数据库。</p>
+<p>若想使用数据库的所有功能而又不想安装真正的数据库，这个工具就是最佳选择。若想在使用真正的数据库之前练习数据库操作，或在单一程序中使用数据库存储数据而无需考虑接口， SQLite3都是不错的选择。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame = pd.DataFrame( np.arange(<span class="number">20</span>).reshape(<span class="number">4</span>,<span class="number">5</span>),</span><br><span class="line">                        columns=[<span class="string">'white'</span>,<span class="string">'red'</span>,<span class="string">'blue'</span>,<span class="string">'black'</span>,<span class="string">'green'</span>])</span><br><span class="line">frame</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_078.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#连接SQLite3数据库</span><br><span class="line">engine = create_engine(&apos;sqlite:///foo.db&apos;)</span><br><span class="line"></span><br><span class="line">#把DataFrame转换为数据库表。</span><br><span class="line">frame.to_sql(&apos;colors&apos;,engine)</span><br><span class="line"></span><br><span class="line">#读取。</span><br><span class="line">pd.read_sql(&apos;colors&apos;,engine)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/matplotlib/pandas_079.png" alt=""></p>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3><ul>
+<li>加载</li>
+<li>组装</li>
+<li><ul>
+<li>合并（merging）</li>
+</ul>
+</li>
+<li><ul>
+<li>拼接（concatenation）</li>
+</ul>
+</li>
+<li><ul>
+<li>组合（combine）</li>
+</ul>
+</li>
+<li>变形（轴向旋转）</li>
+<li>删除</li>
+</ul>
+<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>对于合并操作，熟悉SQL的读者可以将其理解为JOIN操作，它使用一个或多个键把多行数据 结合在一起.</p>
+<p>事实上，跟关系型数据库打交道的开发人员通常使用SQL的JOIN查询，用几个表共有的引用 值（键）从不同的表获取数据。以这些键为基础，我们能够获取到列表形式的新数据，这些数据是对几个表中的数据进行组合得到的。pandas库中这类操作叫作合并，执行合并操作的函数为 merge().</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">frame1 = pd.DataFrame( &#123;<span class="string">'id'</span>:[<span class="string">'ball'</span>,<span class="string">'pencil'</span>,<span class="string">'pen'</span>,<span class="string">'mug'</span>,<span class="string">'ashtray'</span>],</span><br><span class="line">                        <span class="string">'price'</span>: [<span class="number">12.33</span>,<span class="number">11.44</span>,<span class="number">33.21</span>,<span class="number">13.23</span>,<span class="number">33.62</span>]&#125;)</span><br><span class="line">frame1</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_001.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame2 = pd.DataFrame( &#123;<span class="string">'id'</span>:[<span class="string">'pencil'</span>,<span class="string">'pencil'</span>,<span class="string">'ball'</span>,<span class="string">'pen'</span>],</span><br><span class="line">                    <span class="string">'color'</span>: [<span class="string">'white'</span>,<span class="string">'red'</span>,<span class="string">'red'</span>,<span class="string">'black'</span>]&#125;)</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_002.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame1,frame2)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_003.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame1 = pd.DataFrame( &#123;<span class="string">'id'</span>:[<span class="string">'ball'</span>,<span class="string">'pencil'</span>,<span class="string">'pen'</span>,<span class="string">'mug'</span>,<span class="string">'ashtray'</span>],</span><br><span class="line">                        <span class="string">'color'</span>: [<span class="string">' white'</span>,<span class="string">'red'</span>,<span class="string">'red'</span>,<span class="string">'black'</span>,<span class="string">'green'</span>],</span><br><span class="line">                        <span class="string">'brand'</span>: [<span class="string">'OMG'</span>,<span class="string">'ABC'</span>,<span class="string">'ABC'</span>,<span class="string">'POD'</span>,<span class="string">'POD'</span>]&#125;)</span><br><span class="line">frame1</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_004.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2 = pd.DataFrame( &#123;&apos;id&apos;:[&apos;pencil&apos;,&apos;pencil&apos;,&apos;ball&apos;,&apos;pen&apos;],</span><br><span class="line">                        &apos;brand&apos;: [&apos;OMG&apos;,&apos;POD&apos;,&apos;ABC&apos;,&apos;POD&apos;]&#125;)</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_005.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame1,frame2)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_006.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame1,frame2,on=&apos;id&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_007.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame1,frame2,on=&apos;brand&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_008.png" alt=""></p>
+<p>假如两个DataFrame基准列的名称不一致，该怎样进行合并呢？为 了解决这个问题，你可以用left_on和right_on选项指定第一个和第二个DataFrame的基准列。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.columns = [&apos;brand&apos;,&apos;sid&apos;]</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_009.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame1,frame2,left_on=&apos;id&apos;,right_on=&apos;sid&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_010.png" alt=""></p>
+<p>merge()函数默认执行的是内连接操作；上述结果中的键是由交叉操作（intersection)得到的。</p>
+<p>其他选项有左连接、右连接和外连接。外连接把所有的键整合到一起，其效果相当于左连接 和右连接的效果之和。连接类型用how选项指定。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.columns = [&apos;brand&apos;,&apos;id&apos;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame4 = pd.DataFrame( &#123;&apos;id&apos;:[&apos;ball&apos;,&apos;pencil&apos;,&apos;pen&apos;,&apos;mug&apos;,&apos;ashtray&apos;],</span><br><span class="line">                        &apos;color&apos;: [&apos; white&apos;,&apos;red&apos;,&apos;red&apos;,&apos;black&apos;,&apos;green&apos;],</span><br><span class="line">                        &apos;brand&apos;: [&apos;OMG&apos;,&apos;ABC&apos;,&apos;ABC&apos;,&apos;POD&apos;,&apos;POD&apos;]&#125;)</span><br><span class="line"></span><br><span class="line">frame4</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_011.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame4,frame2,on=&apos;id&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_012.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame4,frame2,on=&apos;id&apos;,how=&apos;outer&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_013.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame4,frame2,on=&apos;id&apos;,how=&apos;left&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_013.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame4,frame2,on=&apos;id&apos;,how=&apos;right&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_014.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame4,frame2,on=[&apos;id&apos;,&apos;brand&apos;],how=&apos;outer&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_015.png" alt=""></p>
+<h3 id="根据索引合并"><a href="#根据索引合并" class="headerlink" title="根据索引合并"></a>根据索引合并</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.merge(frame4,frame2,right_index=True, left_index=True)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_016.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#frame4.join(frame2)  #会报错，因为列名有重合</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame2.columns = [&apos;brand2&apos;,&apos;id2&apos;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame4.join(frame2)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_017.png" alt=""></p>
+<h3 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h3><p>另外一种数据整合操作叫作拼接（concatenation)。NumPy的concatenate()函数就是用于数 组的拼接操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">array1  = np.arange(9).reshape((3,3))</span><br><span class="line">array1</span><br></pre></td></tr></table></figure>
+<p>array([[0, 1, 2],<br>       [3, 4, 5],<br>       [6, 7, 8]])</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">array2  = np.arange(9).reshape((3,3))+6</span><br><span class="line">array2</span><br></pre></td></tr></table></figure>
+<p>array([[ 6,  7,  8],<br>       [ 9, 10, 11],<br>       [12, 13, 14]])</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">np.concatenate([array1,array2],axis = 1)</span><br></pre></td></tr></table></figure>
+<p>array([[ 0,  1,  2,  6,  7,  8],<br>       [ 3,  4,  5,  9, 10, 11],<br>       [ 6,  7,  8, 12, 13, 14]])</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">np.concatenate([array1,array2],axis = 0)</span><br></pre></td></tr></table></figure>
+<p>array([[ 0,  1,  2],<br>       [ 3,  4,  5],<br>       [ 6,  7,  8],<br>       [ 6,  7,  8],<br>       [ 9, 10, 11],<br>       [12, 13, 14]])</p>
+<p>pandas库以及它的Series和DataFrame等数据结构实现了带编号的轴，它可以进一步扩展数组</p>
+<p>拼接功能。pandas的concat()函数实现了按轴拼接的功能。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser1 = pd.Series(np.random.rand(4),index=[1,2,3,4])</span><br><span class="line">ser1</span><br></pre></td></tr></table></figure>
+<p>1    0.676614<br>2    0.607490<br>3    0.491370<br>4    0.687731<br>dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser2 = pd.Series(np.random.rand(4),index=[5,6,7,8])</span><br><span class="line">ser2</span><br></pre></td></tr></table></figure>
+<p>5    0.129962<br>6    0.650653<br>7    0.701635<br>8    0.820312<br>dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat([ser1,ser2])</span><br></pre></td></tr></table></figure>
+<p>1    0.676614<br>2    0.607490<br>3    0.491370<br>4    0.687731<br>5    0.129962<br>6    0.650653<br>7    0.701635<br>8    0.820312<br>dtype: float64</p>
+<p>concat()函数默认按照axis=0这条轴拼接数据，返回Series对象。如果指定axis=l，返回结果将是DataFrame对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat([ser1,ser2],axis=1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_018.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat([ser1,ser2],keys=[1,2]) #等级索引</span><br></pre></td></tr></table></figure>
+<p>1  1    0.676614<br>    2    0.607490<br>    3    0.491370<br>    4    0.687731<br>2  5    0.129962<br>    6    0.650653<br>    7    0.701635<br>    8    0.820312<br>dtype: float64</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame5 = pd.DataFrame(np.random.rand(<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>), index=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],columns=[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>])</span><br><span class="line">frame5</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_019.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame2 = pd.DataFrame(np.random.rand(<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>), index=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],columns=[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>])</span><br><span class="line">frame2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_020.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat([frame5,frame2])</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_021.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.concat([frame5,frame2],axis = 1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_022.png" alt=""></p>
+<h3 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h3><p>还有另外一种情况，我们无法通过合并或拼接方法组合数据。例如，两个数据集的索引完全或部分重合。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser1 = pd.Series(np.random.rand(5),index=[1,2,3,4,5])</span><br><span class="line">ser1</span><br></pre></td></tr></table></figure>
+<p>1    0.479704<br>2    0.956898<br>3    0.785966<br>4    0.868556<br>5    0.134064<br>dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser2 = pd.Series(np.random.rand(4),index=[2,4,5,6])</span><br><span class="line">ser2</span><br></pre></td></tr></table></figure>
+<p>2    0.337220<br>4    0.570806<br>5    0.419785<br>6    0.140270<br>dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser1.combine_first(ser2)</span><br></pre></td></tr></table></figure>
+<p>1    0.479704<br>2    0.956898<br>3    0.785966<br>4    0.868556<br>5    0.134064<br>6    0.140270<br>dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser2.combine_first(ser1)</span><br></pre></td></tr></table></figure>
+<p>1    0.479704<br>2    0.337220<br>3    0.785966<br>4    0.570806<br>5    0.419785<br>6    0.140270<br>dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser1[:3].combine_first(ser2[:3])</span><br></pre></td></tr></table></figure>
+<p>1    0.479704<br>2    0.956898<br>3    0.785966<br>4    0.570806<br>5    0.419785<br>dtype: float64</p>
+<h3 id="轴向旋转"><a href="#轴向旋转" class="headerlink" title="轴向旋转"></a>轴向旋转</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame5 = pd.DataFrame(np.arange(<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>),</span><br><span class="line">                        index=[<span class="string">'white'</span>,<span class="string">'black'</span>,<span class="string">'red'</span>],</span><br><span class="line">                        columns=[<span class="string">'ball'</span>,<span class="string">'pen'</span>,<span class="string">'pencil'</span>])</span><br><span class="line">print(frame5)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">       ball  pen  pencil</span><br><span class="line">white     0    1       2</span><br><span class="line">black     3    4       5</span><br><span class="line">red       6    7       8</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame6 = frame5.stack()  #列变行</span><br><span class="line">frame6</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">white  ball      0</span><br><span class="line">       pen       1</span><br><span class="line">       pencil    2</span><br><span class="line">black  ball      3</span><br><span class="line">       pen       4</span><br><span class="line">       pencil    5</span><br><span class="line">red    ball      6</span><br><span class="line">       pen       7</span><br><span class="line">       pencil    8</span><br><span class="line">dtype: int32</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame6.unstack()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_023.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame6.unstack(0)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_024.png" alt=""></p>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame5.unstack()</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ball    white    0</span><br><span class="line">        black    3</span><br><span class="line">        red      6</span><br><span class="line">pen     white    1</span><br><span class="line">        black    4</span><br><span class="line">        red      7</span><br><span class="line">pencil  white    2</span><br><span class="line">        black    5</span><br><span class="line">        red      8</span><br><span class="line">dtype: int32</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">longframe = pd.DataFrame(&#123; <span class="string">'color'</span>:[<span class="string">'white'</span>,<span class="string">'white'</span>,<span class="string">'white'</span>,<span class="string">'red'</span>,<span class="string">'red'</span>,<span class="string">'red'</span>,<span class="string">'black'</span>,<span class="string">'black'</span>,<span class="string">'black'</span>],</span><br><span class="line">                <span class="string">'item'</span>:[<span class="string">'ball'</span>,<span class="string">'pen'</span>,<span class="string">'mug'</span>,<span class="string">'ball'</span>,<span class="string">'pen'</span>,<span class="string">'mug'</span>,<span class="string">'ball'</span>,<span class="string">'pen'</span>,<span class="string">'mug'</span>], </span><br><span class="line">                <span class="string">'value'</span>: np.random.rand(<span class="number">9</span>)&#125;)</span><br><span class="line">longframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_025.png" alt=""></p>
+<p>这种记录数据的模式有几个缺点。例如其中一个缺点是，因为一些字段具有多样性和 重复性特点，所以选取列作为键时，这种格式的数据可读性较差，尤其是无法完全理解基准列和 其他列之间的关系a</p>
+<p>除了长格式，还有一种把数据调整为表格形式的宽格式。这种模式可读性强，也易于连接其他表，且占用空间较少。因此一般而言，用它存储数据效率更高，虽然它的可操作性差，这一点 尤其体现在填充数据时。</p>
+<p>如要选择一列或几列作为主键，所要遵循的规则是其中的元素必须是唯一的。</p>
+<p>讲到格式转换，pandas提供了能够把长格式DataFrame转换为宽格式的pivot()函数，它以用 作键的一列或多列作为参数。</p>
+<p>接着上面的例子，选择color列作为主键，item列作为第二主键，而它们所对应的元素则作 为DataFrame的新列。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">wideframe = longframe.pivot(<span class="string">'color'</span>,<span class="string">'item'</span>)</span><br><span class="line">wideframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_026.png" alt=""></p>
+<p>这种格式的DataFrame对象更加紧凑，它里面的数据可读性也更强。</p>
+<h3 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h3><p>数据处理的最后一步是删除多余的行和列。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame7 = pd.DataFrame(np.arange(<span class="number">9</span>).reshape(<span class="number">3</span>,<span class="number">3</span>),</span><br><span class="line">                    index=[<span class="string">'white'</span>,<span class="string">'black'</span>,<span class="string">'red'</span>],</span><br><span class="line">                    columns=[<span class="string">'ball'</span>,<span class="string">'pen'</span>,<span class="string">'pencil'</span>])</span><br><span class="line">frame7</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_027.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">del</span> frame7[<span class="string">'ball'</span>]  <span class="comment">#删除列</span></span><br><span class="line">frame7</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_028.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame7.drop(&apos;white&apos;) #删除行</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_029.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame7.drop(&apos;pen&apos;,axis=1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_030.png" alt=""></p>
+<h3 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h3><h4 id="删除重复元素"><a href="#删除重复元素" class="headerlink" title="删除重复元素"></a>删除重复元素</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dframe = pd.DataFrame(&#123; <span class="string">'color'</span>: [<span class="string">'white'</span>,<span class="string">'white'</span>,<span class="string">'red'</span>,<span class="string">'red'</span>,<span class="string">'white'</span>],<span class="string">'value'</span>: [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>]&#125;)</span><br><span class="line">dframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_031.png" alt=""></p>
+<p>DataFrame对象的duplicated()函数可用来检测重复的行，返回元素为布尔型的Series对象。 每个元素对应一行，如果该行与其他行重复（也就是说该行不是第一次出现），则元素为True; 如果跟前面不重复，则元素就为False。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dframe.duplicated()</span><br></pre></td></tr></table></figure>
+<p>0    False<br>1    False<br>2    False<br>3     True<br>4     True<br>dtype: bool</p>
+<p>返回元素为布尔值的Series对象用处很大，特别适用于过滤操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dframe[dframe.duplicated()]</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_032.png" alt=""></p>
+<p>通常，所有重复的行都需要从DataFrame对象中删除。pandas库的drop_duplicates()函数实</p>
+<p>现了删除功能，该函数返回的是删除重复行后的DataFmme对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dframe.drop_duplicates()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_033.png" alt=""></p>
+<h3 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h3><h4 id="用映射替换元素"><a href="#用映射替换元素" class="headerlink" title="用映射替换元素"></a>用映射替换元素</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame8 = pd.DataFrame(&#123; <span class="string">'item'</span>:[<span class="string">'ball'</span>,<span class="string">'mug'</span>,<span class="string">'pen'</span>,<span class="string">'pencil'</span>,<span class="string">'ashtray'</span>],</span><br><span class="line">                       <span class="string">'color'</span>: [<span class="string">'white'</span>,<span class="string">'rosso'</span>,<span class="string">'verde'</span>,<span class="string">'black'</span>,<span class="string">'yellow'</span>],</span><br><span class="line">                       <span class="string">'price'</span>:[<span class="number">5.56</span>,<span class="number">4.20</span>,<span class="number">1.30</span>,<span class="number">0.56</span>,<span class="number">2.75</span>]&#125;)</span><br><span class="line">frame8</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_034.png" alt=""></p>
+<p>要用新元素替换不正确的元素，需要定义一组映射关系。在映射关系中，旧元素作为键，新元素作为值。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">newcolors =&#123;</span><br><span class="line">    <span class="string">'rosso'</span>:<span class="string">'red'</span>,</span><br><span class="line">    <span class="string">'verde'</span>:<span class="string">'green'</span></span><br><span class="line">&#125;</span><br><span class="line">frame8.replace(newcolors)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_035.png" alt=""></p>
+<p>DataFrame对象中两种旧颜色被替换为正确的元素。还有一种常见情况，是把NaN替换为其他值，比如0。这种情况下，仍然可以用replace()函数，它能优雅地完成该项操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([13,np.nan,4,6,np.nan,3])</span><br><span class="line">ser</span><br></pre></td></tr></table></figure>
+<p>0    13.0<br>1     NaN<br>2     4.0<br>3     6.0<br>4     NaN<br>5     3.0<br>dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ser.replace(np.nan,0)</span><br></pre></td></tr></table></figure>
+<p>0    13.0<br>1     0.0<br>2     4.0<br>3     6.0<br>4     0.0<br>5     3.0<br>dtype: float64</p>
+<h4 id="用映射添加元素"><a href="#用映射添加元素" class="headerlink" title="用映射添加元素"></a>用映射添加元素</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame9  = pd.DataFrame(&#123; <span class="string">'item'</span>:[<span class="string">'ball'</span>,<span class="string">'mug'</span>,<span class="string">'pen'</span>,<span class="string">'pencil'</span>,<span class="string">'ashtray'</span>], <span class="string">'color'</span>:[<span class="string">'white'</span>,<span class="string">'red'</span>,<span class="string">'green'</span>,<span class="string">'black'</span>,<span class="string">'yellow'</span>]&#125;)</span><br><span class="line">frame9</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_036.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">price = &#123;</span><br><span class="line">    <span class="string">'ball'</span> : <span class="number">5.56</span>,</span><br><span class="line">    <span class="string">'mug'</span> : <span class="number">4.20</span>,</span><br><span class="line">    <span class="string">'bottle1'</span> : <span class="number">1.30</span>,</span><br><span class="line">    <span class="string">'scissors'</span> : <span class="number">3.41</span>,</span><br><span class="line">    <span class="string">'pen'</span> : <span class="number">1.30</span>,</span><br><span class="line">    <span class="string">'pencil'</span> : <span class="number">0.56</span>,</span><br><span class="line">    <span class="string">'ashtray'</span> : <span class="number">2.75</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame9[<span class="string">'price'</span>] = frame9[<span class="string">'item'</span>].map(price)</span><br><span class="line">frame9</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_037.png" alt=""></p>
+<h4 id="重命名轴索引"><a href="#重命名轴索引" class="headerlink" title="重命名轴索引"></a>重命名轴索引</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">reindex = &#123;</span><br><span class="line">    <span class="number">0</span>:<span class="string">'first'</span>,</span><br><span class="line">    <span class="number">1</span>:<span class="string">'second'</span>,</span><br><span class="line">    <span class="number">2</span>:<span class="string">'third'</span>,</span><br><span class="line">    <span class="number">3</span>:<span class="string">'fourth'</span>,</span><br><span class="line">    <span class="number">4</span>:<span class="string">'fifth'</span></span><br><span class="line">&#125;</span><br><span class="line">frame9.rename(reindex)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_038.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">recolumn =&#123;</span><br><span class="line">        <span class="string">'item'</span>:<span class="string">'object'</span>,</span><br><span class="line">        <span class="string">'price'</span>:<span class="string">'value'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>索引被重命名。若要重命名各列，必须使用columns选项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame9.rename(index = reindex,columns=recolumn)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_039.png" alt=""></p>
+<p>对于只有单个元素要替换的最简单情况，可以对传入的参数做进一步限定，而无需把多个变 量都写出来，也避免产生多次赋值操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame9.rename(index=&#123;1:&apos;first&apos;&#125;,columns = &#123;&apos;item&apos;:&apos;object&apos;&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_040.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame9</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_041.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame9.rename(index=&#123;<span class="number">1</span>:<span class="string">'first'</span>&#125;,columns = &#123;<span class="string">'item'</span>:<span class="string">'object'</span>&#125;,inplace=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame9</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_040.png" alt=""></p>
+<h3 id="离散化和面元划分"><a href="#离散化和面元划分" class="headerlink" title="离散化和面元划分"></a>离散化和面元划分</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ages=[<span class="number">20</span>,<span class="number">22</span>,<span class="number">25</span>,<span class="number">27</span>,<span class="number">21</span>,<span class="number">23</span>,<span class="number">37</span>,<span class="number">31</span>,<span class="number">61</span>,<span class="number">45</span>,<span class="number">41</span>,<span class="number">32</span>]</span><br><span class="line">bins=[<span class="number">18</span>,<span class="number">25</span>,<span class="number">35</span>,<span class="number">60</span>,<span class="number">100</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cat = pd.cut(ages,bins)</span><br><span class="line">cat</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[(18, 25], (18, 25], (18, 25], (25, 35], (18, 25], ..., (25, 35], (60, 100], (35, 60], (35, 60], (25, 35]]</span><br><span class="line">Length: 12</span><br><span class="line">Categories (4, interval[int64]): [(18, 25] &lt; (25, 35] &lt; (35, 60] &lt; (60, 100]]</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat.codes</span><br></pre></td></tr></table></figure>
+<p>array([0, 0, 0, 1, 0, 0, 2, 1, 3, 2, 2, 1], dtype=int8)</p>
+<p>每个面元的出现次数，即每个类别有多少个元素，可使用value_counts()函数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.value_counts(cat)  ##查看每个种类的数量</span><br></pre></td></tr></table></figure>
+<p>(18, 25]     5<br>(35, 60]     3<br>(25, 35]     3<br>(60, 100]    1<br>dtype: int64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cuts = pd.cut(ages,bins,right=False)   ## 使用right=False可以修改开端和闭端</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[18, 25), [18, 25), [25, 35), [25, 35), [18, 25), ..., [25, 35), [60, 100), [35, 60), [35, 60), [25, 35)]</span><br><span class="line">Length: 12</span><br><span class="line">Categories (4, interval[int64]): [[18, 25) &lt; [25, 35) &lt; [35, 60) &lt; [60, 100)]</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cut1 = pd.cut(ages,bins,right=False,labels=list(&apos;abcd&apos;))</span><br><span class="line">cut1</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[a, a, b, b, a, ..., b, d, c, c, b]</span><br><span class="line">Length: 12</span><br><span class="line">Categories (4, object): [a &lt; b &lt; c &lt; d]</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.cut(ages,5)  # 如果cut传入的是数字n，那么就会均分成n份。</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[(19.959, 28.2], (19.959, 28.2], (19.959, 28.2], (19.959, 28.2], (19.959, 28.2], ..., (28.2, 36.4], (52.8, 61.0], (44.6, 52.8], (36.4, 44.6], (28.2, 36.4]]</span><br><span class="line">Length: 12</span><br><span class="line">Categories (5, interval[float64]): [(19.959, 28.2] &lt; (28.2, 36.4] &lt; (36.4, 44.6] &lt; (44.6, 52.8] &lt; (52.8, 61.0]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.value_counts(pd.cut(ages,4))</span><br></pre></td></tr></table></figure>
+<p>(19.959, 30.25]    6<br>(30.25, 40.5]      3<br>(40.5, 50.75]      2<br>(50.75, 61.0]      1<br>dtype: int64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.qcut(ages,5)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[(19.999, 22.2], (19.999, 22.2], (22.2, 25.8], (25.8, 31.6], (19.999, 22.2], ..., (25.8, 31.6], (40.2, 61.0], (40.2, 61.0], (40.2, 61.0], (31.6, 40.2]]</span><br><span class="line">Length: 12</span><br><span class="line">Categories (5, interval[float64]): [(19.999, 22.2] &lt; (22.2, 25.8] &lt; (25.8, 31.6] &lt; (31.6, 40.2] &lt; (40.2, 61.0]]</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pd.value_counts(pd.qcut(ages,4))</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(38.0, 61.0]       3</span><br><span class="line">(29.0, 38.0]       3</span><br><span class="line">(22.75, 29.0]      3</span><br><span class="line">(19.999, 22.75]    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+<h3 id="异常值检测和过滤"><a href="#异常值检测和过滤" class="headerlink" title="异常值检测和过滤"></a>异常值检测和过滤</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data = pd.DataFrame(np.random.randn(1000,3))</span><br><span class="line">data.describe()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_042.png" alt=""></p>
+<p>可能会将比标准差大3倍的元素视作异常值。用std()函数就可以求得DataFrame对象每一列的标准差。</p>
+<p>3σ原则<script type="math/tex">(|x-\mu|>3σ)</script></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data.std()</span><br></pre></td></tr></table></figure>
+<p>0    1.049592<br>1    1.025227<br>2    1.001221<br>dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data[(np.abs(data-data.mean())&gt;(3*data.std())).any(1)]  #过滤条件</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_043.png" alt=""></p>
+<h3 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nframe = pd.DataFrame(np.arange(25).reshape(5,5))</span><br><span class="line">nframe</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_044.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new_order = np.random.permutation(5)  #乱序整数[0-4]  如果是100 [0-99]</span><br><span class="line">new_order</span><br></pre></td></tr></table></figure>
+<p>array([4, 0, 3, 1, 2])</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nframe.take(new_order)  #排序</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_045.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">np.random.permutation(100)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">array([94,  5, 24, 55, 99, 80, 76, 25, 82, 66, 52, 37, 87, 16, 15, 78, 69,</span><br><span class="line">       41, 72, 71, 89,  3, 58, 10, 17, 35, 30, 77, 22, 14, 13, 98, 88, 32,</span><br><span class="line">       36,  4, 33, 11, 59, 40, 79, 46, 50,  8, 54,  1, 23, 93, 95, 38, 90,</span><br><span class="line">        9, 62, 26, 73, 91, 75, 21,  7, 56, 83, 18,  6, 67, 42, 74, 43, 84,</span><br><span class="line">       47, 86, 65, 49, 60, 29, 34, 96, 19, 81,  2, 20, 31, 51, 70, 39, 63,</span><br><span class="line">       48, 53, 45, 28, 12, 68, 57, 27,  0, 97, 92, 61, 64, 85, 44])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nframe.take([3,4,2])  #只对一部分排序</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_046.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sample = np.random.randint(len(nframe),size =3)  #随机整数</span><br><span class="line">sample</span><br></pre></td></tr></table></figure>
+<p>array([2, 2, 4])</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nframe.take(sample)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_047.png" alt=""></p>
+<h3 id="数据聚合"><a href="#数据聚合" class="headerlink" title="数据聚合"></a>数据聚合</h3><h4 id="GroupBy"><a href="#GroupBy" class="headerlink" title="GroupBy"></a>GroupBy</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">frame10 = pd.DataFrame(&#123; <span class="string">'color'</span>: [<span class="string">'white'</span>,<span class="string">'red'</span>,<span class="string">'green'</span>,<span class="string">'red'</span>,<span class="string">'green'</span>],<span class="string">'object'</span>: [<span class="string">'pen'</span>,<span class="string">'pencil'</span>,<span class="string">'pencil'</span>,<span class="string">'ashtray'</span>,<span class="string">'pen'</span>],</span><br><span class="line">                       <span class="string">'price1'</span> : [<span class="number">5.56</span>,<span class="number">4.20</span>,<span class="number">1.30</span>,<span class="number">0.56</span>,<span class="number">2.75</span>],<span class="string">'price2'</span> : [<span class="number">4.75</span>,<span class="number">4.12</span>,<span class="number">1.60</span>,<span class="number">0.75</span>,<span class="number">3.15</span>]&#125;)</span><br><span class="line">frame10</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_048.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">group = frame10[&apos;price1&apos;].groupby(frame10[&apos;color&apos;])</span><br><span class="line">group</span><br></pre></td></tr></table></figure>
+<pandas.core.groupby.seriesgroupby object="" at="" 0x000000001132b908="">
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">group.groups</span><br></pre></td></tr></table></figure>
+<p>{‘green’: Int64Index([2, 4], dtype=’int64’),<br> ‘red’: Int64Index([1, 3], dtype=’int64’),<br> ‘white’: Int64Index([0], dtype=’int64’)}</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">group.sum()</span><br></pre></td></tr></table></figure>
+<p>color<br>green    4.05<br>red      4.76<br>white    5.56<br>Name: price1, dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">group.mean()</span><br></pre></td></tr></table></figure>
+<p>color<br>green    2.025<br>red      2.380<br>white    5.560<br>Name: price1, dtype: float64</p>
+<h4 id="等级分组"><a href="#等级分组" class="headerlink" title="等级分组"></a>等级分组</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ggroup = frame10[&apos;price1&apos;].groupby([frame10[&apos;color&apos;],frame10[&apos;object&apos;]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ggroup.groups</span><br></pre></td></tr></table></figure>
+<p>{(‘green’, ‘pen’): Int64Index([4], dtype=’int64’),<br> (‘green’, ‘pencil’): Int64Index([2], dtype=’int64’),<br> (‘red’, ‘ashtray’): Int64Index([3], dtype=’int64’),<br> (‘red’, ‘pencil’): Int64Index([1], dtype=’int64’),<br> (‘white’, ‘pen’): Int64Index([0], dtype=’int64’)}</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ggroup.sum()</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">color  object </span><br><span class="line">green  pen        2.75</span><br><span class="line">       pencil     1.30</span><br><span class="line">red    ashtray    0.56</span><br><span class="line">       pencil     4.20</span><br><span class="line">white  pen        5.56</span><br><span class="line">Name: price1, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>in:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame10[[&apos;price1&apos;,&apos;price2&apos;]].groupby(frame10[&apos;color&apos;]).mean()</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_049.png" alt=""></p>
+<h4 id="组迭代"><a href="#组迭代" class="headerlink" title="组迭代"></a>组迭代</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> name,group <span class="keyword">in</span> frame10.groupby(<span class="string">'color'</span>):</span><br><span class="line">    print(name)</span><br><span class="line">    print(group)</span><br></pre></td></tr></table></figure>
+<p>out:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">green</span><br><span class="line">   color  object  price1  price2</span><br><span class="line">2  green  pencil    1.30    1.60</span><br><span class="line">4  green     pen    2.75    3.15</span><br><span class="line">red</span><br><span class="line">  color   object  price1  price2</span><br><span class="line">1   red   pencil    4.20    4.12</span><br><span class="line">3   red  ashtray    0.56    0.75</span><br><span class="line">white</span><br><span class="line">   color object  price1  price2</span><br><span class="line">0  white    pen    5.56    4.75</span><br></pre></td></tr></table></figure>
+<h4 id="链式转换"><a href="#链式转换" class="headerlink" title="链式转换"></a>链式转换</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">result1 = frame10[&apos;price1&apos;].groupby(frame10[&apos;color&apos;]).mean()</span><br><span class="line">result1</span><br></pre></td></tr></table></figure>
+<p>color<br>green    2.025<br>red      2.380<br>white    5.560<br>Name: price1, dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">result2 = frame10.groupby(frame10[&apos;color&apos;]).mean()</span><br><span class="line">result2</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_050.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame10.groupby(frame10[&apos;color&apos;])[&apos;price1&apos;].mean()</span><br></pre></td></tr></table></figure>
+<p>color<br>green    2.025<br>red      2.380<br>white    5.560<br>Name: price1, dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(frame10.groupby(frame10[&apos;color&apos;]).mean())[&apos;price1&apos;]</span><br></pre></td></tr></table></figure>
+<p>color<br>green    2.025<br>red      2.380<br>white    5.560<br>Name: price1, dtype: float64</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frame10.groupby(&apos;color&apos;).mean().add_prefix(&apos;mean_&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiangvia.oss-cn-shenzhen.aliyuncs.com/pandas/pd_051.png" alt=""></p>
+<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">maps = &#123;&apos;x&apos;:xx&#125;</span><br><span class="line">data[&apos;name&apos;] = data[&apos;name&apos;].apply(lamda x: maps[x])</span><br></pre></td></tr></table></figure>
+<h3 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sub_data = data.loc[data[&apos;name&apos;]==1]</span><br></pre></td></tr></table></figure>
+</pandas.core.groupby.seriesgroupby></element></lxml.etree._elementtree></pandas.io.parsers.textfilereader>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pandas/" rel="tag">✿✿✿ pandas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/24/matplotlib/" rel="next" title="matplotlib">
+                <i class="fa fa-chevron-left"></i> matplotlib
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/25/语义分割/" rel="prev" title="语义分割">
+                语义分割 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:14px;margin-top:2rem;">------ 本文结束 🎉🎉 谢谢观看  ------</div>
+    
+</div>
+
+    
+</div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="sylvia">
+            
+              <p class="site-author-name" itemprop="name">sylvia</p>
+              <p class="site-description motion-element" itemprop="description">君がいるだから、今の僕は幸せです。今日もありがとう。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:836753560@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:live:836753560?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Series对象"><span class="nav-number">1.</span> <span class="nav-text">Series对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取元素"><span class="nav-number">1.1.</span> <span class="nav-text">获取元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为元素赋值"><span class="nav-number">1.2.</span> <span class="nav-text">为元素赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用Numpy数组或其他Series对象定义新Series对象"><span class="nav-number">1.3.</span> <span class="nav-text">用Numpy数组或其他Series对象定义新Series对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#筛选元素"><span class="nav-number">1.4.</span> <span class="nav-text">筛选元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算和数学函数"><span class="nav-number">1.5.</span> <span class="nav-text">运算和数学函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Series对象的组成元素"><span class="nav-number">1.6.</span> <span class="nav-text">Series对象的组成元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NaN"><span class="nav-number">1.7.</span> <span class="nav-text">NaN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Series用作字典"><span class="nav-number">1.8.</span> <span class="nav-text">Series用作字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Series-对象之间的运算"><span class="nav-number">1.9.</span> <span class="nav-text">Series 对象之间的运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataFrame对象"><span class="nav-number">2.</span> <span class="nav-text">DataFrame对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义DataFrame对象"><span class="nav-number">2.1.</span> <span class="nav-text">定义DataFrame对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选取元素"><span class="nav-number">2.2.</span> <span class="nav-text">选取元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值"><span class="nav-number">2.3.</span> <span class="nav-text">赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Index对象"><span class="nav-number">2.4.</span> <span class="nav-text">Index对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复标签的Index"><span class="nav-number">2.5.</span> <span class="nav-text">重复标签的Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引对象的其他功能"><span class="nav-number">2.6.</span> <span class="nav-text">索引对象的其他功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更换索引"><span class="nav-number">2.6.1.</span> <span class="nav-text">更换索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动编制索引"><span class="nav-number">2.6.2.</span> <span class="nav-text">自动编制索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">2.7.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.8.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-sub-div-mul"><span class="nav-number">2.9.</span> <span class="nav-text">add() sub() div() mul()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-number">2.9.1.</span> <span class="nav-text"> </span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用函数"><span class="nav-number">2.10.</span> <span class="nav-text">通用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按行或列执行操作的函数"><span class="nav-number">2.11.</span> <span class="nav-text">按行或列执行操作的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计函数"><span class="nav-number">2.12.</span> <span class="nav-text">统计函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">2.13.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#根据索引排序"><span class="nav-number">2.13.1.</span> <span class="nav-text">根据索引排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据对象排序"><span class="nav-number">2.13.2.</span> <span class="nav-text">根据对象排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排位"><span class="nav-number">2.13.3.</span> <span class="nav-text">排位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关性和协方差"><span class="nav-number">2.14.</span> <span class="nav-text">相关性和协方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas：数据读写"><span class="nav-number">2.15.</span> <span class="nav-text">pandas：数据读写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#csv和文本文件"><span class="nav-number">2.15.1.</span> <span class="nav-text">csv和文本文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从TXT文件读取部分数据"><span class="nav-number">2.15.2.</span> <span class="nav-text">从TXT文件读取部分数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#往CSV文件写入数据"><span class="nav-number">2.16.</span> <span class="nav-text">往CSV文件写入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写HTML文件"><span class="nav-number">2.17.</span> <span class="nav-text">读写HTML文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#读取"><span class="nav-number">2.17.1.</span> <span class="nav-text">读取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从XML读取数据"><span class="nav-number">2.18.</span> <span class="nav-text">从XML读取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写-Microsoft-Excel文件"><span class="nav-number">2.19.</span> <span class="nav-text">读写 Microsoft Excel文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写JSON数据"><span class="nav-number">2.20.</span> <span class="nav-text">读写JSON数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDF5格式"><span class="nav-number">2.21.</span> <span class="nav-text">HDF5格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pickle-——python对象序列化"><span class="nav-number">2.22.</span> <span class="nav-text">pickle ——python对象序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用pandas实现对象序列化"><span class="nav-number">2.22.1.</span> <span class="nav-text">用pandas实现对象序列化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对接数据库"><span class="nav-number">2.23.</span> <span class="nav-text">对接数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PostgreSQL"><span class="nav-number">2.23.1.</span> <span class="nav-text">PostgreSQL</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#default"><span class="nav-number">2.23.1.1.</span> <span class="nav-text">default</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#psycopg2"><span class="nav-number">2.23.1.2.</span> <span class="nav-text">psycopg2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pg8000"><span class="nav-number">2.23.1.3.</span> <span class="nav-text">pg8000</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySql"><span class="nav-number">2.23.2.</span> <span class="nav-text">MySql</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#default-1"><span class="nav-number">2.23.2.1.</span> <span class="nav-text">default</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql-python"><span class="nav-number">2.23.2.2.</span> <span class="nav-text">mysql-python</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL-connector-python"><span class="nav-number">2.23.2.3.</span> <span class="nav-text">MySQL-connector-python</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OurSQL"><span class="nav-number">2.23.2.4.</span> <span class="nav-text">OurSQL</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Oracle"><span class="nav-number">2.23.3.</span> <span class="nav-text">Oracle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Microsoft-SQL"><span class="nav-number">2.23.4.</span> <span class="nav-text">Microsoft SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pyodbc"><span class="nav-number">2.23.4.1.</span> <span class="nav-text">pyodbc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pymssql"><span class="nav-number">2.23.4.2.</span> <span class="nav-text">pymssql</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQLite"><span class="nav-number">2.23.5.</span> <span class="nav-text">SQLite</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQLite3数据读写"><span class="nav-number">2.23.6.</span> <span class="nav-text">SQLite3数据读写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理"><span class="nav-number">3.</span> <span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据准备"><span class="nav-number">3.1.</span> <span class="nav-text">数据准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并"><span class="nav-number">3.2.</span> <span class="nav-text">合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据索引合并"><span class="nav-number">3.3.</span> <span class="nav-text">根据索引合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拼接"><span class="nav-number">3.4.</span> <span class="nav-text">拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合"><span class="nav-number">3.5.</span> <span class="nav-text">组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#轴向旋转"><span class="nav-number">3.6.</span> <span class="nav-text">轴向旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除-1"><span class="nav-number">3.7.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据转换"><span class="nav-number">3.8.</span> <span class="nav-text">数据转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#删除重复元素"><span class="nav-number">3.8.1.</span> <span class="nav-text">删除重复元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#映射"><span class="nav-number">3.9.</span> <span class="nav-text">映射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用映射替换元素"><span class="nav-number">3.9.1.</span> <span class="nav-text">用映射替换元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用映射添加元素"><span class="nav-number">3.9.2.</span> <span class="nav-text">用映射添加元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重命名轴索引"><span class="nav-number">3.9.3.</span> <span class="nav-text">重命名轴索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散化和面元划分"><span class="nav-number">3.10.</span> <span class="nav-text">离散化和面元划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常值检测和过滤"><span class="nav-number">3.11.</span> <span class="nav-text">异常值检测和过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序-1"><span class="nav-number">3.12.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据聚合"><span class="nav-number">3.13.</span> <span class="nav-text">数据聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GroupBy"><span class="nav-number">3.13.1.</span> <span class="nav-text">GroupBy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等级分组"><span class="nav-number">3.13.2.</span> <span class="nav-text">等级分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组迭代"><span class="nav-number">3.13.3.</span> <span class="nav-text">组迭代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链式转换"><span class="nav-number">3.13.4.</span> <span class="nav-text">链式转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#替换"><span class="nav-number">3.13.5.</span> <span class="nav-text">替换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取值"><span class="nav-number">3.14.</span> <span class="nav-text">取值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sylvia</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">144.1k</span>
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://sylvia.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://janvia.github.io/2019/01/25/pandas/';
+          this.page.identifier = '2019/01/25/pandas/';
+          this.page.title = 'pandas';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sylvia.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-tsumiki"},"display":{"superSample":2,"position":"left","width":75,"height":120,"hOffset":0,"vOffset":-5},"mobile":{"show":true,"scale":0.1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
