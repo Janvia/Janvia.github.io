@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="conda环境导出conda 环境导出跟mamba一样conda env export --name th2 &amp;gt; conda_env.ymlconda create -f conda_env.yml mamba官网：https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html 安装curl -">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-11-08T15:39:11.670Z">
+<meta property="og:updated_time" content="2024-11-09T05:58:34.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mamba">
 <meta name="twitter:description" content="conda环境导出conda 环境导出跟mamba一样conda env export --name th2 &amp;gt; conda_env.ymlconda create -f conda_env.yml mamba官网：https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html 安装curl -">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  151
+                  189
                 </span>
               
 
@@ -425,6 +425,8 @@
 <h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">micromamba activate  # this activates the base environment</span><br><span class="line">micromamba install python=3.6 jupyter -c conda-forge</span><br><span class="line"># or</span><br><span class="line">micromamba create -n env_name xtensor -c conda-forge</span><br><span class="line">micromamba activate env_name</span><br></pre></td></tr></table></figure>
 <h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">micromamba config append channels conda-forge</span><br><span class="line">micromamba config set channel_priority strict</span><br></pre></td></tr></table></figure>
 <h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">conda install mamba -n base -c conda-forge</span><br><span class="line">conda config --add channels https://mirrors.aliyun.com/anaconda/pkgs/main/linux-64</span><br></pre></td></tr></table></figure>
+<p>配置vscode的jupyter<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">micromamba activate env_name</span><br><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure></p>
+<p>在vscode中打开一个Python文件，先点击右下角配置python环境<br>然后打开ipynb ,select kenal配置Python环境</p>
 
       
     </div>
@@ -455,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/05/vscode/" rel="next" title="vscode">
-                <i class="fa fa-chevron-left"></i> vscode
+              <a href="/2019/01/05/tflite编译/" rel="next" title="tflite编译">
+                <i class="fa fa-chevron-left"></i> tflite编译
               </a>
             
           </div>
@@ -681,7 +683,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">144.6k</span>
+    <span title="Site words total count">144.7k</span>
   
 </div>
 
