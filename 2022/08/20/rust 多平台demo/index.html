@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="rust 多平台demorust 安装官网：https://rustup.rs/ curl --proto &amp;apos;=https&amp;apos; --tlsv1.2 -sSf https://sh.rustup.rs | sh 提高init速度 export RUSTUP_DIST_SERVER=&quot;https://mirrors.ustc.edu.cn/rust-static&quot;export RU">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-11-08T12:07:55.940Z">
+<meta property="og:updated_time" content="2024-11-09T05:05:14.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rust 多平台demo">
 <meta name="twitter:description" content="rust 多平台demorust 安装官网：https://rustup.rs/ curl --proto &amp;apos;=https&amp;apos; --tlsv1.2 -sSf https://sh.rustup.rs | sh 提高init速度 export RUSTUP_DIST_SERVER=&quot;https://mirrors.ustc.edu.cn/rust-static&quot;export RU">
@@ -534,6 +534,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cargo run --bin aec --release --features=&quot;aec bin&quot;</span><br></pre></td></tr></table></figure>
 <h4 id="编译ubuntu16-04兼容的python库"><a href="#编译ubuntu16-04兼容的python库" class="headerlink" title="编译ubuntu16.04兼容的python库"></a>编译ubuntu16.04兼容的python库</h4><h5 id="docker-安装"><a href="#docker-安装" class="headerlink" title="docker 安装"></a>docker 安装</h5><p><a href="https://docs.docker.com/desktop/wsl/#download" target="_blank" rel="noopener">https://docs.docker.com/desktop/wsl/#download</a></p>
 <h5 id="拉取docker"><a href="#拉取docker" class="headerlink" title="拉取docker"></a>拉取docker</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull ubuntu:16.04</span><br><span class="line">docker run -it \</span><br><span class="line">  --name ubuntu16-rust3 \</span><br><span class="line">  --net=host \</span><br><span class="line">  -v /home/jw/.cargo:/root/.cargo \</span><br><span class="line">  -v /home/jw:/home/jw \</span><br><span class="line">  -v /mnt/c/share:/mnt/c/share \</span><br><span class="line">  ubuntu:16.04</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y curl build-essential</span><br><span class="line">apt-get install libhdf5-dev</span><br></pre></td></tr></table></figure>
+<p>或者docker pull quay.io/pypa/manylinux2014_x86_64</p>
 <p>配置rust</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl https://sh.rustup.rs -sSf | sh</span><br><span class="line">source $HOME/.cargo/env #root</span><br></pre></td></tr></table></figure>
 <p>配置Python</p>
