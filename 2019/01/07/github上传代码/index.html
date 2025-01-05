@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="先在github上创建一个仓库，不勾选readme 初次上传 clash换个窗口echo &amp;quot;# demo&amp;quot; &amp;gt;&amp;gt; README.mdgit initgit add README.mdgit commit -m &amp;quot;first commit&amp;quot;git branch -M maingit remote add origin https://github.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-01-05T06:44:59.130Z">
+<meta property="og:updated_time" content="2025-01-05T11:52:08.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github上传代码">
 <meta name="twitter:description" content="先在github上创建一个仓库，不勾选readme 初次上传 clash换个窗口echo &amp;quot;# demo&amp;quot; &amp;gt;&amp;gt; README.mdgit initgit add README.mdgit commit -m &amp;quot;first commit&amp;quot;git branch -M maingit remote add origin https://github.">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  108
+                  202
                 </span>
               
 
@@ -424,6 +424,8 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clash</span><br><span class="line">换个窗口</span><br><span class="line">echo &quot;# demo&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https://github.com/ddxxz/demo.git</span><br><span class="line">proxychains4 git push -u origin main</span><br></pre></td></tr></table></figure>
 <p>第二次上传</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;second commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">#git remote add origin https://github.com/ddxxz/demo.git</span><br><span class="line">proxychains4 git push -u origin main</span><br><span class="line">#图片路径直接复制上传图片的网页地址</span><br></pre></td></tr></table></figure>
+<p>上传大文件至github</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git-lfs</span><br><span class="line">git lfs install</span><br><span class="line">git lfs track &quot;*.rar&quot;  #指定要跟踪的大文件类型</span><br><span class="line">git add .gitattributes  # 添加 .gitattributes 文件</span><br><span class="line">git add &lt;large_file&gt;    # 添加你要上传的大文件</span><br><span class="line">git commit -m &quot;Add large file with LFS&quot;</span><br><span class="line">proxychains4 git push origin main</span><br><span class="line">git lfs ls-files</span><br><span class="line"></span><br><span class="line">git lfs push --all origin main #如果上面上传不上去就用这个强制上传</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -454,8 +456,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/07/docker安装/" rel="next" title="docker安装">
-                <i class="fa fa-chevron-left"></i> docker安装
+              <a href="/2019/01/07/kaldi 安装/" rel="next" title="kaldi安装">
+                <i class="fa fa-chevron-left"></i> kaldi安装
               </a>
             
           </div>
@@ -464,8 +466,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/07/docker代理/" rel="prev" title="docker代理">
-                docker代理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/07/docker容器挂载硬盘/" rel="prev" title="docker容器挂载硬盘">
+                docker容器挂载硬盘 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -655,7 +657,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">145.1k</span>
+    <span title="Site words total count">145.2k</span>
   
 </div>
 
