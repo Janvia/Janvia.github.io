@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2#查看系统版本lsb_release -a# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/jammy/amdgpu-install_5.4.50402-1_all.debsudo a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-06-20T07:17:49.000Z">
+<meta property="og:updated_time" content="2025-04-25T10:31:56.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="amd配置">
 <meta name="twitter:description" content="AMD GPU Pytorch 配置安装AMD显卡驱动sudo apt updatesudo apt install wget gnupg2#查看系统版本lsb_release -a# 安装驱动wget https://repo.radeon.com/amdgpu-install/5.4.2/ubuntu/jammy/amdgpu-install_5.4.50402-1_all.debsudo a">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  665
+                  974
                 </span>
               
 
@@ -398,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -451,6 +451,15 @@
 <h4 id="版本依赖解决"><a href="#版本依赖解决" class="headerlink" title="版本依赖解决"></a>版本依赖解决</h4><p>指定版本如：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install rocm-dev5.2.4</span><br><span class="line">sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms --rocmrelease=5.2.4</span><br></pre></td></tr></table></figure></p>
 <p>最好不要手动指定，amdgpu-install已经包含了版本信息<br>依赖问题dpkg faild to overwrite ….</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo dpkg -P xxx</span><br></pre></td></tr></table></figure>
+<h4 id="tensorflow-安装"><a href="#tensorflow-安装" class="headerlink" title="tensorflow 安装"></a>tensorflow 安装</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#卸载旧版本</span><br><span class="line">sudo amdgpu-uninstall</span><br><span class="line">sudo apt autoremove</span><br><span class="line">#安装新版本</span><br><span class="line">wget https://repo.radeon.com/amdgpu-install/6.3.2/ubuntu/jammy/amdgpu-install_6.3.60302-1_all.deb</span><br><span class="line">sudo apt-get install ./amdgpu-install_6.3.60302-1_all.deb</span><br><span class="line"># 然后安装单个用例</span><br><span class="line">sudo amdgpu-install --usecase=rocm,hip,mllib --no-dkms</span><br><span class="line"></span><br><span class="line">pip3 install https://repo.radeon.com/rocm/manylinux/rocm-rel-6.3.2/tensorflow_rocm-2.15.1-cp310-cp310-manylinux_2_28_x86_64.whl</span><br></pre></td></tr></table></figure>
+<p>docker 方式安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull rocm/tensorflow:latest</span><br><span class="line"></span><br><span class="line">docker run -it --network=host --device=/dev/kfd --device=/dev/dri \</span><br><span class="line">--ipc=host --shm-size 16G --group-add video --cap-add=SYS_PTRACE \</span><br><span class="line">--security-opt seccomp=unconfined rocm/tensorflow:latest</span><br></pre></td></tr></table></figure></p>
+<p>两种方式都报错tensorflow.python.framework.errors_impl.UnknownError: Failed to query available memory for GPU 0</p>
+<h4 id="参考官网重新安装"><a href="#参考官网重新安装" class="headerlink" title="参考官网重新安装"></a>参考官网重新安装</h4><p>官网地址： <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html" target="_blank" rel="noopener">https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html</a></p>
+<p>安装rocm<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://repo.radeon.com/amdgpu-install/6.4/ubuntu/jammy/amdgpu-install_6.4.60400-1_all.deb</span><br><span class="line">sudo apt install ./amdgpu-install_6.4.60400-1_all.deb</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install python3-setuptools python3-wheel</span><br><span class="line">sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groups</span><br><span class="line">sudo apt install rocm</span><br></pre></td></tr></table></figure></p>
+<p>按照官网不需要安装hip,mllib，节约了一半内存<br>安装dkms<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install &quot;linux-headers-$(uname -r)&quot; &quot;linux-modules-extra-$(uname -r)&quot;</span><br><span class="line">sudo apt install amdgpu-dkms</span><br></pre></td></tr></table></figure></p>
+<p>安装tensorflow<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install tensorflow-rocm==2.18.1 -f https://repo.radeon.com/rocm/manylinux/rocm-rel-6.4/ --upgrade</span><br></pre></td></tr></table></figure></p>
+<p>重启<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure></p>
+<p>此方式测试成功，推测原因是安装了dkms或者是没有安装hip</p>
 
       
     </div>
@@ -481,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/07/docker-ldap-mysql-arm64/" rel="next" title="docker-ldap-mysql-arm64">
-                <i class="fa fa-chevron-left"></i> docker-ldap-mysql-arm64
+              <a href="/2019/01/07/cuda 手动配置/" rel="next" title="cuda配置">
+                <i class="fa fa-chevron-left"></i> cuda配置
               </a>
             
           </div>
@@ -673,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-GPU-Pytorch-配置"><span class="nav-number">1.</span> <span class="nav-text">AMD GPU Pytorch 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装AMD显卡驱动"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装AMD显卡驱动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置torch"><span class="nav-number">1.0.2.</span> <span class="nav-text">配置torch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-配置"><span class="nav-number">1.1.</span> <span class="nav-text">docker 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置ssh-登录（可选）"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置ssh 登录（可选）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch2-0-依赖安装（可选）"><span class="nav-number">1.2.</span> <span class="nav-text">torch2.0 依赖安装（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch等rocm相关包手动安装"><span class="nav-number">1.3.</span> <span class="nav-text">torch等rocm相关包手动安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版本依赖解决"><span class="nav-number">1.4.</span> <span class="nav-text">版本依赖解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-GPU-Pytorch-配置"><span class="nav-number">1.</span> <span class="nav-text">AMD GPU Pytorch 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装AMD显卡驱动"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装AMD显卡驱动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置torch"><span class="nav-number">1.0.2.</span> <span class="nav-text">配置torch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-配置"><span class="nav-number">1.1.</span> <span class="nav-text">docker 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置ssh-登录（可选）"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置ssh 登录（可选）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch2-0-依赖安装（可选）"><span class="nav-number">1.2.</span> <span class="nav-text">torch2.0 依赖安装（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#torch等rocm相关包手动安装"><span class="nav-number">1.3.</span> <span class="nav-text">torch等rocm相关包手动安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版本依赖解决"><span class="nav-number">1.4.</span> <span class="nav-text">版本依赖解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tensorflow-安装"><span class="nav-number">1.5.</span> <span class="nav-text">tensorflow 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考官网重新安装"><span class="nav-number">1.6.</span> <span class="nav-text">参考官网重新安装</span></a></li></ol></div>
             
 
           </div>
@@ -707,7 +716,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">147.7k</span>
+    <span title="Site words total count">148.3k</span>
   
 </div>
 
