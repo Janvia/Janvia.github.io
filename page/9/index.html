@@ -1844,7 +1844,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/docker安装/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/docker代理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -1863,7 +1863,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/07/docker安装/" itemprop="url">docker安装</a></h1>
+                <a class="post-title-link" href="/2019/01/07/docker代理/" itemprop="url">docker代理</a></h1>
         
 
         <div class="post-meta">
@@ -1916,8 +1916,8 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/07/docker安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/docker安装/" itemprop="commentCount"></span>
+                <a href="/2019/01/07/docker代理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/docker代理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1939,7 +1939,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  490
+                  404
                 </span>
               
 
@@ -1978,12 +1978,12 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
       
         
           
-          换源aliyun1.卸载老版本sudo apt-get remove docker docker-engine docker-ce docker.io
-2.添加秘钥curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | su
+          本地代理clash 与clashverge任选一个安装
+安装clashsudo apt install curl wget jqcd /tmp \&amp;&amp; rm -f clash* || true \&amp;&amp; wget https://github.com/Kuingsmil
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/07/docker安装/#more" rel="contents">
+            <a class="btn" href="/2019/01/07/docker代理/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2038,7 +2038,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/docker容器挂载硬盘/">
+    <link itemprop="mainEntityOfPage" href="https://janvia.github.io/2019/01/07/github上传代码/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sylvia">
@@ -2057,7 +2057,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/07/docker容器挂载硬盘/" itemprop="url">docker容器挂载硬盘</a></h1>
+                <a class="post-title-link" href="/2019/01/07/github上传代码/" itemprop="url">github上传代码</a></h1>
         
 
         <div class="post-meta">
@@ -2092,8 +2092,8 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
+                  <a href="/categories/dxz/" itemprop="url" rel="index">
+                    <span itemprop="name">dxz</span>
                   </a>
                 </span>
 
@@ -2110,8 +2110,8 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/07/docker容器挂载硬盘/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/docker容器挂载硬盘/" itemprop="commentCount"></span>
+                <a href="/2019/01/07/github上传代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/github上传代码/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2133,7 +2133,7 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  353
+                  202
                 </span>
               
 
@@ -2172,13 +2172,13 @@ cudnn:https://developer.nvidia.com/rdp/cudnn-archive
       
         
           
-          容器挂载硬盘1.停止 docker 引擎systemctl stop docker.service
-2.编辑config.v2.jsonvim /var/lib/docker/containers/&lt;container-ID&gt;/config.v2.json
-‘其中就是你想让哪个docke
+          先在github上创建一个仓库，不勾选readme
+初次上传
+clash换个窗口echo &quot;# demo&quot; &gt;&gt; README.mdgit initgit add README.mdgit commit -m &quot;first commit&quot;git b
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/01/07/docker容器挂载硬盘/#more" rel="contents">
+            <a class="btn" href="/2019/01/07/github上传代码/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

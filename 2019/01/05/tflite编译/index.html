@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="sylvia">
 <meta property="og:description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-04-28T03:20:03.140Z">
+<meta property="og:updated_time" content="2025-04-29T03:27:43.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tflite编译">
 <meta name="twitter:description" content="安装bazel从apt安装1.添加配置sudo apt install apt-transport-https curl gnupg -ycurl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor &amp;gt;bazel-archive-keyring.gpgsudo mv bazel-archive-keyring.gpg">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.9k
+                  3k
                 </span>
               
 
@@ -447,7 +447,8 @@
 <p>检查工具链<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bazel query //rk3308_toolchain:toolchain</span><br></pre></td></tr></table></figure></p>
 <p>编辑tensorflow-2.15.0/.bazelrc<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">build:rk3308 --crosstool_top=//rk3308_toolchain:toolchain</span><br><span class="line">build:rk3308 --host_crosstool_top=@bazel_tools//tools/cpp:toolchain</span><br><span class="line">build:rk3308 --cpu=aarch64</span><br></pre></td></tr></table></figure></p>
 <p>运行<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bazel build --config=rk3308 -c opt //tensorflow/lite:libtensorflowlite.so</span><br></pre></td></tr></table></figure></p>
-<p>报错<br>tensorflow/lite/kernels/internal/optimized/4bit/neon_fully_connected.cc:382:44: error: ‘vld1q_f32_x4’ was not declared in this scope<br>tensorflow/lite/kernels/internal/optimized/4bit/neon_fully_connected.cc:404:44: error: ‘vld1q_f32_x2’ was not declared in this scope<br><code>bazel clean</code>清空缓存后报错<br>cc1: error: invalid feature modifier in ‘-march=armv8.2-a+i8mm’</p>
+<p>报错<br>tensorflow/lite/kernels/internal/optimized/4bit/neon_fully_connected.cc:382:44: error: ‘vld1q_f32_x4’ was not declared in this scope<br>tensorflow/lite/kernels/internal/optimized/4bit/neon_fully_connected.cc:404:44: error: ‘vld1q_f32_x2’ was not declared in this scope<br>解决办法<br>修改tensorflow/lite/kernels/internal/BUILD<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;:aarch64_any&quot;: [</span><br><span class="line">            #&quot;FC_4BIT_NEON&quot;,</span><br><span class="line">        ],</span><br></pre></td></tr></table></figure></p>
+<p><code>bazel clean</code>清空缓存后报错<br>cc1: error: invalid feature modifier in ‘-march=armv8.2-a+i8mm’<br>解决办法<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bazel build --config=rk3308 --define=xnn_enable_arm_fp16_scalar=false --define=xnn_enable_arm_fp16_vector=false --define=xnn_enable_arm_i8mm=false //tensorflow/lite:libtensorflowlite.so</span><br></pre></td></tr></table></figure></p>
 <h4 id="通过cmake方式安装"><a href="#通过cmake方式安装" class="headerlink" title="通过cmake方式安装"></a>通过cmake方式安装</h4><p>官网地址: <a href="https://www.tensorflow.org/lite/guide/build_cmake_arm?hl=zh-cn" target="_blank" rel="noopener">https://www.tensorflow.org/lite/guide/build_cmake_arm?hl=zh-cn</a></p>
 <p>1.本地编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake ../tensorflow_src/tensorflow/lite</span><br></pre></td></tr></table></figure></p>
 <p>实际测试，将所有a文件拷到离线设备上也无法使用</p>
@@ -495,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/05/vscode/" rel="next" title="vscode">
-                <i class="fa fa-chevron-left"></i> vscode
+              <a href="/2019/01/04/一些忘记书名的心理学笔记/" rel="next" title="一些忘记书名的心理学笔记">
+                <i class="fa fa-chevron-left"></i> 一些忘记书名的心理学笔记
               </a>
             
           </div>
@@ -505,8 +506,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/05/torch安装/" rel="prev" title="torch和apex安装">
-                torch和apex安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/05/vscode/" rel="prev" title="vscode">
+                vscode <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
